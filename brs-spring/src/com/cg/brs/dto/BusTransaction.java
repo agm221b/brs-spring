@@ -5,19 +5,26 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
 @Entity
 public class BusTransaction {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "transaction_id")
 	private Integer transactionId;
-	@Column
+	@Column(name = "date")
 	private LocalDate date;
+	@Column(name = "available_seats")
 	private Integer availableSeats;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
 	// private String transactionStatus;
+	@Column(name = "delete_flag")
 	private Integer deleteFlag;
 
 	public BusTransaction() {

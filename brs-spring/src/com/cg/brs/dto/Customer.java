@@ -3,35 +3,48 @@ package com.cg.brs.dto;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Customer {
-	
+
 	@Id
-	private Integer userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_id")
+	private Integer customerId;
+	@Column(name = "username")
 	private String username;
+	@Column(name="pass")
 	private String pass;
-	private Character userType;
+	@Column(name = "customer_type")
+	private Character customerType;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "phone_number")
 	private Integer phoneNumber;
 	@OneToMany(cascade = CascadeType.MERGE)
-	@JoinColumn
+	@JoinColumn(name = "booking_fk")
 	private List<Booking> bookingsList;
+	@Column(name = "delete_flag")
 	private Integer deleteFlag;
-	
+
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Customer(Integer userId, String username, String pass, Character userType, String email, Integer phoneNumber,
 			List<Booking> bookingsList, Integer deleteFlag) {
 		super();
-		this.userId = userId;
+		this.customerId = userId;
 		this.username = username;
 		this.pass = pass;
-		this.userType = userType;
+		this.customerType = userType;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.bookingsList = bookingsList;
@@ -40,8 +53,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
-				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList + ", deleteFlag=" + deleteFlag + "]";
+		return "Customer [customerId=" + customerId + ", username=" + username + ", pass=" + pass + ", customerType="
+				+ customerType + ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
+				+ ", deleteFlag=" + deleteFlag + "]";
 	}
 
 	@Override
@@ -49,12 +63,12 @@ public class Customer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bookingsList == null) ? 0 : bookingsList.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((customerType == null) ? 0 : customerType.hashCode());
 		result = prime * result + ((deleteFlag == null) ? 0 : deleteFlag.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -72,6 +86,16 @@ public class Customer {
 			if (other.bookingsList != null)
 				return false;
 		} else if (!bookingsList.equals(other.bookingsList))
+			return false;
+		if (customerId == null) {
+			if (other.customerId != null)
+				return false;
+		} else if (!customerId.equals(other.customerId))
+			return false;
+		if (customerType == null) {
+			if (other.customerType != null)
+				return false;
+		} else if (!customerType.equals(other.customerType))
 			return false;
 		if (deleteFlag == null) {
 			if (other.deleteFlag != null)
@@ -93,16 +117,6 @@ public class Customer {
 				return false;
 		} else if (!phoneNumber.equals(other.phoneNumber))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		if (userType == null) {
-			if (other.userType != null)
-				return false;
-		} else if (!userType.equals(other.userType))
-			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -111,12 +125,12 @@ public class Customer {
 		return true;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getUsername() {
@@ -135,12 +149,12 @@ public class Customer {
 		this.pass = pass;
 	}
 
-	public Character getUserType() {
-		return userType;
+	public Character getCustomerType() {
+		return customerType;
 	}
 
-	public void setUserType(Character userType) {
-		this.userType = userType;
+	public void setCustomerType(Character customerType) {
+		this.customerType = customerType;
 	}
 
 	public String getEmail() {
@@ -174,6 +188,5 @@ public class Customer {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-
 
 }
