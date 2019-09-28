@@ -18,7 +18,6 @@ public class BRSController {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String showHomePage() {
-		
 		return "jsp/home";
 	}
 	

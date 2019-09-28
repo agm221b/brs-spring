@@ -4,21 +4,30 @@ import java.time.LocalDate;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
-import com.cg.brs.dto.Customer;
+import com.cg.brs.dto.User;
 import com.cg.brs.dto.Passenger;
 
 @Repository("brsDao")
 public class BRSDaoImpl implements BRSDao {
+	
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Override
 	public Bus saveBus(Bus bus) {
 		// TODO Auto-generated method stub
-		return null;
+		bus=entityManager.merge(bus);
+		bus.setBusId(bus.getBusId());
+		entityManager.persist(bus);
+		return bus;
 	}
 
 	@Override
@@ -106,7 +115,7 @@ public class BRSDaoImpl implements BRSDao {
 	}
 
 	@Override
-	public Customer saveCustomer(Customer customer) {
+	public User saveUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -118,7 +127,7 @@ public class BRSDaoImpl implements BRSDao {
 	}
 
 	@Override
-	public List<Customer> viewAllCustomers() {
+	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

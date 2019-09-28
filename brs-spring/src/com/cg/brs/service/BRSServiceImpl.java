@@ -3,20 +3,24 @@ package com.cg.brs.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.brs.dao.BRSDao;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
-import com.cg.brs.dto.Customer;
+import com.cg.brs.dto.User;
 
 @Service("brsService")
 public class BRSServiceImpl implements BRSService {
 
+	@Autowired
+	BRSDao brsDao;
 	@Override
 	public Bus addBusDetails(Bus bus) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.saveBus(bus);
 	}
 
 	@Override
@@ -92,7 +96,7 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
-	public Customer addUser(Customer customer) {
+	public User addUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -104,7 +108,7 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
-	public List<Customer> viewAllCustomers() {
+	public List<User> viewAllCustomers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

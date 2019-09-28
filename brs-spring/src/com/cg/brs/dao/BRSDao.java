@@ -6,7 +6,7 @@ import java.util.List;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
-import com.cg.brs.dto.Customer;
+import com.cg.brs.dto.User;
 import com.cg.brs.dto.Passenger;
 
 public interface BRSDao {
@@ -33,7 +33,7 @@ public interface BRSDao {
 	
 //	public BusTransaction insertBookingIntoTransaction(Booking booking, BusTransaction busTransaction);
 	
-	public Customer saveCustomer(Customer customer);
+	public User saveUser(User user);
 	public Integer removeUser(Integer customerId);
-	public List<Customer> viewAllCustomers();
+	public List<User> viewAllUsers();
 }

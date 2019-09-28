@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Table(name = "bus")
 public class Bus {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
+	@Column(name = "bus_id")
 	private Integer busId;
 
 	@Column(name = "bus_name")
@@ -54,17 +55,16 @@ public class Bus {
 
 	}
 
-	public Bus(Integer busId, String busName, String busType, String busClass, String source, String destination,
-			Integer noOfSeats, Integer delete_flag, LocalTime startTime, LocalTime endTime, Double costPerSeat) {
-		super();
+	public Bus(Integer busId, String busName, BusType busType, BusClass busClass, String source, String destination,
+			Integer noOfSeats, Integer deleteFlag, LocalTime startTime, LocalTime endTime, Double costPerSeat) {
 		this.busId = busId;
 		this.busName = busName;
-		this.busType = BusType.valueOf(busType);
-		this.busClass = BusClass.valueOf(busClass);
+		this.busType = busType;
+		this.busClass = busClass;
 		this.source = source;
 		this.destination = destination;
 		this.noOfSeats = noOfSeats;
-		this.deleteFlag = delete_flag;
+		this.deleteFlag = deleteFlag;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.costPerSeat = costPerSeat;
@@ -86,20 +86,20 @@ public class Bus {
 		this.busName = busName;
 	}
 
-	public String getBusType() {
-		return busType.toString();
+	public BusType getBusType() {
+		return busType;
 	}
 
-	public void setBusType(String busType) {
-		this.busType = BusType.valueOf(busType.toUpperCase());
+	public void setBusType(BusType busType) {
+		this.busType = busType;
 	}
 
-	public String getBusClass() {
-		return busClass.toString();
+	public BusClass getBusClass() {
+		return busClass;
 	}
 
-	public void setBusClass(String busClass) {
-		this.busClass = BusClass.valueOf(busClass.toUpperCase());
+	public void setBusClass(BusClass busClass) {
+		this.busClass = busClass;
 	}
 
 	public String getSource() {
@@ -130,8 +130,8 @@ public class Bus {
 		return deleteFlag;
 	}
 
-	public void setDelete_flag(Integer delete_flag) {
-		this.deleteFlag = delete_flag;
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	public LocalTime getStartTime() {
@@ -159,31 +159,6 @@ public class Bus {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((busId == null) ? 0 : busId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Bus other = (Bus) obj;
-		if (busId == null) {
-			if (other.busId != null)
-				return false;
-		} else if (!busId.equals(other.busId))
-			return false;
-		return true;
-	}
-
-	@Override
 	public String toString() {
 		return "Bus [busId=" + busId + ", busName=" + busName + ", busType=" + busType + ", busClass=" + busClass
 				+ ", source=" + source + ", destination=" + destination + ", noOfSeats=" + noOfSeats + ", deleteFlag="
@@ -191,4 +166,5 @@ public class Bus {
 				+ "]";
 	}
 
+	
 }

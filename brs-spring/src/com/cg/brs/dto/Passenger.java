@@ -5,13 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "passenger")
 public class Passenger {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "column_name")
+	@GeneratedValue
+	@Column(name = "passenger_id")
 	private Integer passengerId;
 	@Column(name = "passenger_name")
 	private String passengerName;
@@ -25,7 +27,6 @@ public class Passenger {
 	}
 
 	public Passenger(Integer passengerId, String passengerName, Integer passengerAge, Character passengerGender) {
-		super();
 		this.passengerId = passengerId;
 		this.passengerName = passengerName;
 		this.passengerAge = passengerAge;
@@ -69,5 +70,7 @@ public class Passenger {
 		return "Passenger [passengerId=" + passengerId + ", passengerName=" + passengerName + ", passengerAge="
 				+ passengerAge + ", passengerGender=" + passengerGender + "]";
 	}
+
+	
 
 }
