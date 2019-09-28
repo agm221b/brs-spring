@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cg.brs.dto.Booking;
+import com.cg.brs.dto.Bus;
 import com.cg.brs.service.BRSService;
 
 @Controller
@@ -49,6 +50,12 @@ public class BRSController {
 	
 	public String showBusDetails() {
 		return "jsp/test";
+	}
+	
+	@RequestMapping(value="/addbus", method = RequestMethod.GET)
+	public String addBus(@ModelAttribute("bus") Bus bus) {
+		
+		return "jsp/Admin/AddBus";
 	}
 
 }
