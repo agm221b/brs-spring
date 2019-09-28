@@ -13,15 +13,19 @@
 
 </head>
 <body>
-<h2><i>Welcome to Busnama </i><br></h2>
-<a href="addpage">Login</a><br>
-<a href="showall">Gallery</a><br>
-<a href="delete">About Us</a><br>
+
+<h2><i>Welcome to BusNama </i><br></h2>
+<a href="login">Login</a><br>
+<a href="register">Register</a><br>
+<a href="help">Help</a><br>
+<a href="aboutUs">About Us</a><br>
+<a href="test">Testing</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
