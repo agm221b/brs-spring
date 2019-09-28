@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<% response.sendRedirect("showHomePage"); %>
+<% response.sendRedirect("myfirst"); %>
 	
 </body>
 </html>

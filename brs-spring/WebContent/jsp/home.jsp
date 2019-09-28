@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome Page</title>
 </head>
 <body>
-Welcome to Busnama
-<a href="addpage">Add Product</a>
-<a href="showall">Show Product</a>
-<a href="delete">Delete Product</a>
-<a href="find">Search Product</a>
+<h2><i>Welcome to Busnama </i><br></h2>
+<a href="addpage">Login</a><br>
+<a href="showall">Gallery</a><br>
+<a href="delete">About Us</a><br>
 
 </body>
 </html>
