@@ -3,10 +3,10 @@ package com.cg.brs.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+//github.com/agm221b/brs-spring
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
+import com.cg.brs.dto.Passenger;
 import com.cg.brs.service.BRSService;
 
 @Controller
@@ -29,7 +30,16 @@ public class BRSController {
 	public String showHomePage() {
 		return "jsp/home";
 	}
-	
+	@RequestMapping(value="/adminhome",method=RequestMethod.GET)
+	public String viewAdminHome() {
+		return "AdminHome";
+		
+	}
+	@RequestMapping(value="/customerhome",method=RequestMethod.GET)
+	public String viewCustomerHome() {
+		return "CustomerHome";
+		
+	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {
 		return "jsp/login";
@@ -87,6 +97,12 @@ public class BRSController {
 		
 	}
 	
+	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
+	public ModelAndView getAllData() {
+		List<Bus> busList = brsService.viewAllBuses();
+		return new ModelAndView("jsp/Admin/ShowBuses", "busList", busList);
+	}
+	
 	@RequestMapping(value="/showrunningbuses",method=RequestMethod.POST)
 	public ModelAndView showRunningBuses(@RequestParam("source")String source,@RequestParam("destination")String destination, @RequestParam("date_of_journey")String dateOfJourney) {
 		System.out.println(source+" "+destination+" "+dateOfJourney);
@@ -100,5 +116,27 @@ public class BRSController {
 		System.out.println(transactionsByDate);
 		return new ModelAndView("searchBus", "transactions", transactionsByDate);
 	}
+	
+	@RequestMapping(value="/addbooking", method = RequestMethod.GET)
+	public String addBooking(@ModelAttribute("booking") Booking booking) { 
+		return "jsp/Customer/AddBooking";
+	}
+	
+	@RequestMapping(value="/addbookingdetails", method = RequestMethod.GET)
+	public String addBookingDetails(@ModelAttribute("booking") Booking booking) { 
+		return "jsp/home";
+	}
+	
+	@RequestMapping(value="/addpassenger", method = RequestMethod.GET)
+	public String addPassenger(@ModelAttribute("booking") Booking booking) { 
+		return "jsp/Customer/AddPassenger";
+	}
+	
+	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.GET)
+	public String addPassengerDetails(@ModelAttribute("passenger") Passenger passenger) { 
+		return "jsp/home";
+	}
+	
+	
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="tab" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +9,45 @@
 </head>
 <body>
 
+<h1>Here are the list of buses :-</h1>
+	<table border="1">
+		<tr>
+			
+			<th>Bus ID</th>
+			<th>Bus Name</th>
+			<th>Bus Type</th>
+			<th>Bus Class</th>
+			<th>Source</th>
+			<th>Destination</th>
+			<th>Seats</th>
+			<th>Start Time</th>
+			<th>End Time</th>
+			<th>Cost Per Seat</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+
+		<tab:forEach var="bus" items="${busList}">
+			<tr>
+				<td>${bus.busId}</td>
+				<td>${bus.busName}</td>
+				<td>${bus.busType}</td>
+				<td>${bus.busClass}</td>
+				<td>${bus.source}</td>
+				<td>${bus.destination}</td>
+				<td>${trans.availableSeats}</td>
+				<td>${bus.startTime}</td>
+				<td>${bus.endTime}</td>
+				<td>${bus.costPerSeat}</td>
+				
+				
+				<td><a href="modifybus"> <input type="button"
+						value="Edit" /></a>
+				<td><a href="deletebus"> <input type="button"
+						value="Delete" /></a>
+			</tr>
+		</tab:forEach>
+
+	</table>
 </body>
 </html>
