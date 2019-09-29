@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -24,8 +27,11 @@ public class BusTransaction {
 	private Integer transactionId;
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "journey_date")
+	@NotNull // more date validation
 	private LocalDate date;
 	@Column(name = "available_seats")
+	@NotNull(message= "seats required")
+	@Min(0)@Max(40)
 	private Integer availableSeats;
 
 	@OneToOne(cascade = CascadeType.ALL)
