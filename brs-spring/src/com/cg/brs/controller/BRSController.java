@@ -1,6 +1,9 @@
 package com.cg.brs.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+//github.com/agm221b/brs-spring
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,20 +93,28 @@ public class BRSController {
 	
 	@RequestMapping(value="/searchbuses",method=RequestMethod.GET)
 	public String searchBuses() {
-		return "SearchBus";
+		return "jsp/Customer/SearchBus";
 		
 	}
 	
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
 	public ModelAndView getAllData() {
 		List<Bus> busList = brsService.viewAllBuses();
-		return new ModelAndView("ShowBusList", "busList", busList);
+		return new ModelAndView("jsp/Admin/ShowBuses", "busList", busList);
 	}
 	
-	
-	@RequestMapping(value = "/showRunningBuses", method = RequestMethod.GET)
-	public ModelAndView showRunningBuses(@RequestParam("source")String source,@RequestParam("destination")String destination, @RequestParam("date_of_journey")LocalDate dateOfJourney) {
-		return null;
+	@RequestMapping(value="/showrunningbuses",method=RequestMethod.POST)
+	public ModelAndView showRunningBuses(@RequestParam("source")String source,@RequestParam("destination")String destination, @RequestParam("date_of_journey")String dateOfJourney) {
+		System.out.println(source+" "+destination+" "+dateOfJourney);
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate journeyDate=LocalDate.parse(dateOfJourney, formatter);
+		List<BusTransaction> transactionList=brsService.searchBuses(source, destination, journeyDate);
+		List<BusTransaction> transactionsByDate=new ArrayList<BusTransaction>();
+		for(BusTransaction busTransaction:transactionList) {
+			transactionsByDate.add(busTransaction);
+		}
+		System.out.println(transactionsByDate);
+		return new ModelAndView("searchBus", "transactions", transactionsByDate);
 	}
 	
 	@RequestMapping(value="/addbooking", method = RequestMethod.GET)

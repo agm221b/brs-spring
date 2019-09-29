@@ -12,8 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component("user")
 @Entity
-@Table(name = "user")
+@Table(name = "user_details")
 public class User {
 
 	@Id

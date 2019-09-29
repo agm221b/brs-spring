@@ -116,5 +116,11 @@ public class BRSServiceImpl implements BRSService {
 		return null;
 	}
 
+	@Override
+	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
+		// TODO Auto-generated method stub
+		return brsDao.searchBuses(source, destination, dateOfJourney);
+	}
+
 	
 }

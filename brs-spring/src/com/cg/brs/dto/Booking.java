@@ -13,19 +13,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
+@Component("booking")
 @Entity
 @Table(name = "booking")
 public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "booking_id")
+	@NotNull(message="cannot be empty")
 	private Integer bookingId;
 	
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
+	//date validation to be done here
 	private LocalDate dateOfJourney;
 
 	@OneToOne(cascade = CascadeType.MERGE)
@@ -35,12 +42,16 @@ public class Booking {
 	@JoinColumn(name = "passenger_fk")
 	private List<Passenger> passengers;
 	@Column(name = "mode_of_payment")
+	@NotEmpty(message="cannot be empty")
 	private String modeOfPayment;
 	@Column(name = "total_cost")
+	@NotNull(message="cannot be empty")
 	private Double totalCost;
 	@Column(name = "booking_status")
+	@NotBlank(message="cannot be empty")
 	private String bookingStatus;
 	@Column(name = "delete_flag")
+	@NotNull(message="cannot be empty")
 	private Integer deleteFlag;
 
 	public Booking() {

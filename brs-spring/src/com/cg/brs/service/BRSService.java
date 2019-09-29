@@ -27,6 +27,8 @@ public interface BRSService {
 	public BusTransaction viewTransactionById(Integer busTransactionId);
 	public BusTransaction updateTransaction(Integer busTransactionId);
 	
+	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney);
+	
 	
 	public User addUser(User user);
 	public Integer removeCustomer(Integer customerId);
