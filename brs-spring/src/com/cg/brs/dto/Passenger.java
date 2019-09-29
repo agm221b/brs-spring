@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Component("passenger")
@@ -19,10 +21,13 @@ public class Passenger {
 	@Column(name = "passenger_id")
 	private Integer passengerId;
 	@Column(name = "passenger_name")
+	@NotBlank(message="name required")
 	private String passengerName;
 	@Column(name = "passenger_age")
+	@NotNull(message="age required")
 	private Integer passengerAge;
 	@Column(name = "passenger_gender")
+	@NotNull(message="gender required")
 	private Character passengerGender;
 
 	public Passenger() {
