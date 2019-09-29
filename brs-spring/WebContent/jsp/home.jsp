@@ -19,7 +19,8 @@
 <a href="register">Register</a><br>
 <a href="help">Help</a><br>
 <a href="aboutUs">About Us</a><br>
-<a href="addbus">Add Bus</a>
+<a href="addbus">Add Bus</a><br/>
+<a href="searchbuses">Search Buses</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

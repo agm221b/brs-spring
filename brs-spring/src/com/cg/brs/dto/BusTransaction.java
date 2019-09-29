@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
+@Component("bus_transaction")
 @Entity
 @Table(name="bus_transaction")
 public class BusTransaction {
@@ -18,6 +22,7 @@ public class BusTransaction {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "transaction_id")
 	private Integer transactionId;
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "journey_date")
 	private LocalDate date;
 	@Column(name = "available_seats")

@@ -15,7 +15,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
+@Component("booking")
 @Entity
 @Table(name = "booking")
 public class Booking {

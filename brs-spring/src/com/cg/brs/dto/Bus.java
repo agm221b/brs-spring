@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
+@Component("bus")
 @Entity
 @Table(name = "bus")
 public class Bus {
