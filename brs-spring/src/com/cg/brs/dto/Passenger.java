@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class Passenger {
 	private Integer passengerId;
 	@Column(name = "passenger_name")
 	@NotBlank(message="name required")
+	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String passengerName;
 	@Column(name = "passenger_age")
 	@NotNull(message="age required")

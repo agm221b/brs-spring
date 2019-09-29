@@ -11,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Component("user")
@@ -24,14 +28,21 @@ public class User {
 	@Column(name = "user_id")
 	private Integer userId;
 	@Column(name = "username")
+	@NotBlank(message="name required")
+	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String username;
 	@Column(name="pass")
+	@NotBlank(message="required")
 	private String pass;
 	@Column(name = "user_type")
+	@NotNull(message=" customer type required")
 	private Character customerType;
 	@Column(name = "email")
+	@Email
+	@NotBlank(message="email required")
 	private String email;
 	@Column(name = "phone_number")
+	@NotNull(message="phone number required")
 	private Integer phoneNumber;
 	@OneToMany(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "booking_fk")
