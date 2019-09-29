@@ -10,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -21,9 +24,12 @@ public class Bus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "bus_id")
+	@NotNull(message="id required")
 	private Integer busId;
 
 	@Column(name = "bus_name")
+	@NotBlank(message="name required")
+	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String busName;
 
 	@Column(name = "bus_type")
@@ -35,26 +41,33 @@ public class Bus {
 	private BusClass busClass;
 
 	@Column(name = "bus_source")
+	@NotBlank(message="source required")
 	private String source;
 
 	@Column(name = "bus_destination")
+	@NotBlank(message="destination required")
 	private String destination;
 
 	@Column(name = "no_of_seats")
+	@NotNull(message="number of seats required")
 	private Integer noOfSeats;
 
 	@Column(name = "delete_flag")
+	@NotNull(message="flag required")
 	private Integer deleteFlag = 0;
 
 	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "start_time")
+	@NotNull(message="time validation to be done")
 	private LocalTime startTime;
 
 	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "end_time")
+	@NotNull // end time validation to be done here
 	private LocalTime endTime;
 
 	@Column(name = "cost_per_seat")
+	@NotNull(message=" cost per seat required")
 	private Double costPerSeat;
 
 	public Bus() {
