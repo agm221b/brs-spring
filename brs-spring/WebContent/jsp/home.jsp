@@ -20,6 +20,8 @@
 <a href="help">Help</a><br>
 <a href="aboutUs">About Us</a><br>
 <a href="addbus">Add Bus</a>
+<a href="adminhome">Admin Home</a>
+<a href="customerhome">Customer Home</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
