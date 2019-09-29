@@ -10,7 +10,7 @@
 </head>
 <body>
 Enter bus details
-<addbus:form action="addBusDetails" method="post" modelAttribute="bus_details">
+<addbus:form action="addbusdetails" method="post" modelAttribute="bus">
 <table>
 <tr>
 <td></td>
@@ -22,14 +22,14 @@ Enter bus details
 </tr>
 <tr>
 <td>Bus Type</td>
-<td><addbus:radiobutton path="busType"/>Sleeper
-<addbus:radiobutton path="busType"/>Semi-Sleeper
+<td><addbus:radiobutton path="busType" value="SLEEPER"/>Sleeper
+<addbus:radiobutton path="busType" value="SEMI_SLEEPER"/>Semi-Sleeper
 </td>
 </tr>
 <tr>
 <td>Bus Class</td>
-<td><addbus:radiobutton path="busClass"/>Sleeper
-<addbus:radiobutton path="busClass"/>Semi-Sleeper
+<td><addbus:radiobutton path="busClass" value="AC"/>AC
+<addbus:radiobutton path="busClass" value="NON_AC"/>Non-AC
 </td>
 </tr>
 <tr>
@@ -46,9 +46,18 @@ Enter bus details
 </tr>
 <tr>
 <td>End time</td>
-<td><input type="time" name="startTime"></td>
+<td><input type="time" name="endTime"></td>
+</tr>
+<tr>
+<td>Number of Seats</td>
+<td><addbus:input path="noOfSeats"/></td>
+</tr>
+<tr>
+<td>Cost per seat</td>
+<td><addbus:input path="costPerSeat"/></td>
 </tr>
 </table>
+<input type="submit" value="Add"/>
 </addbus:form>
 </body>
 </html>

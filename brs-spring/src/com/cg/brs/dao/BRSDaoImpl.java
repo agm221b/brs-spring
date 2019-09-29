@@ -1,11 +1,12 @@
 package com.cg.brs.dao;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +25,6 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public Bus saveBus(Bus bus) {
 		// TODO Auto-generated method stub
-		bus=entityManager.merge(bus);
-		bus.setBusId(bus.getBusId());
 		entityManager.persist(bus);
 		return bus;
 	}
@@ -87,13 +86,17 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public BusTransaction saveTransaction(BusTransaction busTransaction) {
 		// TODO Auto-generated method stub
+		busTransaction=entityManager.merge(busTransaction);
+		busTransaction.setBus(busTransaction.getBus());
+		entityManager.persist(busTransaction);
 		return null;
 	}
 
 	@Override
 	public List<BusTransaction> findAllTransactions() {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<BusTransaction> query=entityManager.createQuery("FROM BusTransaction", BusTransaction.class);
+		return query.getResultList();
 	}
 
 	@Override
@@ -111,7 +114,9 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public List<BusTransaction> findTransactionsByDate(LocalDate date) {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<BusTransaction> query=entityManager.createQuery("FROM BusTransaction WHERE date=:date", BusTransaction.class);
+		query.setParameter("date", date);
+		return query.getResultList();
 	}
 
 	@Override
@@ -130,6 +135,20 @@ public class BRSDaoImpl implements BRSDao {
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
+		// TODO Auto-generated method stub
+		List<BusTransaction> transactionsByRoutes=new ArrayList<BusTransaction>();
+		for(BusTransaction busTransaction:findTransactionsByDate(dateOfJourney)) {
+			if(busTransaction.getDate().equals(dateOfJourney)) {
+				if(busTransaction.getBus().getSource().equalsIgnoreCase(source) && busTransaction.getBus().getDestination().equalsIgnoreCase(destination)) {
+					transactionsByRoutes.add(busTransaction);
+				}
+			}
+		}
+		return transactionsByRoutes;
 	}
 
 }

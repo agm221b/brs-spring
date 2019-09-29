@@ -3,6 +3,8 @@ package com.cg.brs.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.cg.brs.dto.BusTransaction;
 import com.cg.brs.dto.User;
 
 @Service("brsService")
+@Transactional
 public class BRSServiceImpl implements BRSService {
 
 	@Autowired
@@ -68,7 +71,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public BusTransaction addTransaction(BusTransaction transaction) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.saveTransaction(transaction);
 	}
 
 	@Override

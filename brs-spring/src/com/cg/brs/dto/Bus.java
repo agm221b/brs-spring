@@ -11,11 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "bus")
 public class Bus {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "bus_id")
 	private Integer busId;
 
@@ -30,10 +32,10 @@ public class Bus {
 	@Column(name = "bus_class")
 	private BusClass busClass;
 
-	@Column(name = "source")
+	@Column(name = "bus_source")
 	private String source;
 
-	@Column(name = "destination")
+	@Column(name = "bus_destination")
 	private String destination;
 
 	@Column(name = "no_of_seats")
@@ -42,9 +44,11 @@ public class Bus {
 	@Column(name = "delete_flag")
 	private Integer deleteFlag = 0;
 
+	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "start_time")
 	private LocalTime startTime;
 
+	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "end_time")
 	private LocalTime endTime;
 
