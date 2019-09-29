@@ -36,4 +36,6 @@ public interface BRSDao {
 	public User saveUser(User user);
 	public Integer removeUser(Integer customerId);
 	public List<User> viewAllUsers();
+	
+	public List<BusTransaction> searchBuses(String source,String destination,LocalDate dateOfJourney);
 }

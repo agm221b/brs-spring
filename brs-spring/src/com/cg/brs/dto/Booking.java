@@ -14,12 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "booking")
 public class Booking {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "booking_id")
 	private Integer bookingId;
+	
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
 	private LocalDate dateOfJourney;
 
