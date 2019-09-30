@@ -29,8 +29,17 @@
 
 			<tr>
 				<td>Passenger Gender</td>
-				<td><form:radiobutton path="passengerGender" value='M'/>Male
-				<form:radiobutton path="passengerGender" value='F'/>Female
+				<td>
+					<p>
+						<label> <form:radiobutton path="passengerGender" value="M" />
+							<span>Male</span>
+						</label>
+					</p>
+					<p>
+						<label> <form:radiobutton path="passengerGender" value="F" />
+							<span>Female</span>
+						</label>
+					</p>
 				</td>
 				<td><span><form:errors path="passengerGender"
 							delimiter=","></form:errors></span></td>

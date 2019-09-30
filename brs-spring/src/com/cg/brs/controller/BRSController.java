@@ -134,8 +134,9 @@ public class BRSController {
 	}
 	
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
-		public String createBooking() {
-			return "jsp/Customer/createBooking";
+		public String createBooking(@RequestParam("busId")Integer busId) {
+		brsService.viewBusById(busId);
+			return "jsp/home";
 	}
 	
 	@RequestMapping(value="/showbooking",method=RequestMethod.GET)
