@@ -6,6 +6,7 @@ import java.util.List;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
+import com.cg.brs.dto.Passenger;
 import com.cg.brs.dto.User;
 
 public interface BRSService {
@@ -34,5 +35,7 @@ public interface BRSService {
 	public Integer removeCustomer(Integer customerId);
 	public List<User> viewAllUsers();
 	public User validateUser(String username, String password);
+	
+	public Passenger addPassenger(Passenger passenger);
 	
 }

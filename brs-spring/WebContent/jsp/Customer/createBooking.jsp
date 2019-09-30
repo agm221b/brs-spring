@@ -27,6 +27,7 @@ Bus details:
 <td>${currentBusTransaction.getBus().getBusClass() }</td>
 <td>${currentBusTransaction.getBus().getStartTime() }</td>
 <td>${currentBusTransaction.getBus().getEndTime() }</td>
+
 </tr>
 </show:forEach>
 </table>
