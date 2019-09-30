@@ -16,13 +16,13 @@
 			<tr>
 				<td>Passenger Name</td>
 				<td><form:input path="passengerName" /></td>
-				<td><span><form:errors path="passengerName"></form:errors></span></td>
+				<td><span style="color:red;"><form:errors path="passengerName"></form:errors></span></td>
 			</tr>
 
 			<tr>
 				<td>Passenger Age</td>
 				<td><form:input path="passengerAge" /></td>
-				<td><span><form:errors path="passengerAge"></form:errors></span></td>
+				<td><span style="color:red;"><form:errors path="passengerAge"></form:errors></span></td>
 			</tr>
 
 			<tr>
@@ -30,7 +30,7 @@
 				<td><form:radiobutton path="passengerGender" value='M'/>Male
 				<form:radiobutton path="passengerGender" value='F'/>Female
 				</td>
-				<td><span><form:errors path="passengerGender"
+				<td><span style="color:red;"><form:errors path="passengerGender"
 							delimiter=","></form:errors></span></td>
 			</tr>
 
