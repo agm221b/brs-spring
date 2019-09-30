@@ -171,6 +171,21 @@ public class BRSDaoImpl implements BRSDao {
 				User.class);
 		return query.getResultList();
 	}
+	
+	
+
+	@Override
+	public User validateUser(String username, String password) {
+		// TODO Auto-generated method stub
+		List<User> users =viewAllUsers();
+		for (User user : users) {
+			if(username.equals(user.getUsername()) && password.equals(user.getPass())){
+				
+				return user;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {

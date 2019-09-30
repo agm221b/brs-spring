@@ -38,6 +38,7 @@ public interface BRSDao {
 	public User saveUser(User user);
 	public Integer removeUser(Integer userId);
 	public List<User> viewAllUsers();
+	public User validateUser(String username, String password);
 	
 	public List<BusTransaction> searchBuses(String source,String destination,LocalDate dateOfJourney);
 }

@@ -126,9 +126,14 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
+
 	public Passenger addPassenger(Passenger passenger) {
 		// TODO Auto-generated method stub
 		return brsDao.savePassenger(passenger);
+	}
+	public User validateUser(String username, String password) {
+		// TODO Auto-generated method stub
+		return brsDao.validateUser(username, password);
 	}
 
 	
