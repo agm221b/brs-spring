@@ -14,9 +14,33 @@
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<br>
 	<search:form method="post" action="showrunningbuses">
-Source:<input type="text" name="source" />
-Destination:<input type="text" name="destination" />
-Date Of Journey:<input type="date" name="date_of_journey" />
+		<p>
+			<label for="source">Source</label> <input id="source" type="text"
+				class="validate" name="source">
+		</p>
+		<br>
+		<p>
+			<label for="destination">Destination</label> <input id="destination"
+				type="text" class="validate" name="destination">
+
+		</p>
+		<br>
+		<p>																					<!-- to work on datepicker  -->
+			<label for="datepicker">Enter date:</label> <input type="date"
+				class="datepicker" id="datepicker" />
+		</p>
+		<br>
+		
+		<div class="section">
+			
+
+			<script>
+				$(function() {
+					$(".datepicker").datepicker();
+				});
+			</script>
+
+		</div>
 		<input type="submit" value="Search Buses">
 	</search:form>
 	<br />

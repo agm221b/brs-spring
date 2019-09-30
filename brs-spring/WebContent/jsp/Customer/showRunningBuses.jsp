@@ -31,8 +31,8 @@
 <td>${transaction.getBus().getStartTime()}</td>
 <td>${transaction.getBus().getEndTime()}</td>
 <td>${transaction.getAvailableSeats()}</td>
-
 <td><a href="createbooking?transactionId=${transaction.getTransactionId()}">Book</a></td>
+
 </tr>
 </show:forEach>
 </table>

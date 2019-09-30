@@ -11,10 +11,10 @@
 <body>
 
 <h2><i>Welcome to BusNama </i><br></h2>
-<a href="addbus">Add Bus</a><br>
-<a href="showbuses">Show All Buses</a><br>
-<a href="showusers">Show All Users</a><br>
-<a href="logout">Logout</a><br>
+<a class="waves-effect waves-light btn" href="addbus">Add Bus</a><br>
+<a class="waves-effect waves-light btn" href="showbuses">Show All Buses</a><br>
+<a class="waves-effect waves-light btn" href="showusers">Show All Users</a><br>
+<a class="waves-effect waves-light btn" href="logout">Logout</a><br>
 
 <jsp:include page="../linklib.jsp"></jsp:include>
 </body>
