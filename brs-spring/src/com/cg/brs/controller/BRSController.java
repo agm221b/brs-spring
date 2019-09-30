@@ -59,15 +59,22 @@ public class BRSController {
 	public String login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) {
 		User user = brsService.validateUser(username, password);
+		model.put("errormessage", "Invalid credentials");
 		if (user != null) {
 			session.setAttribute("user", user);
 			if (user.getUserType() == 'C')
-				return "jsp/CustomerHome";
+				return "jsp/Customer/CustomerHome";
 			else if (user.getUserType() == 'A')
-				return "jsp/AdminHome";
+				return "jsp/Admin/AdminHome";
 		}
-		model.put("errormessage", "Invalid credentials");
+		
 		return "jsp/login";
+	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		return "jsp/logout";
 	}
 
 	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
@@ -80,10 +87,18 @@ public class BRSController {
 		return "jsp/register";
 	}
 
-	@RequestMapping(value = "/adduser", method = RequestMethod.GET)
+	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
-		brsService.addUser(user);
-		return "jsp/home";
+		
+		if(result.hasErrors()) {
+			System.out.println("Hi");
+		return "jsp/register";
+		}
+		else
+		{
+			brsService.addUser(user);
+			return "jsp/home";
+		}
 	}
 
 	@RequestMapping(value = "/help", method = RequestMethod.GET)

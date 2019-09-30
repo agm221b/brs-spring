@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="login" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +10,32 @@
 
 </head>
 <body>
-Enter Login Details
-<login:form method="post" action="loginVerify" modelAttribute="login_details">
-<table>
-<tr>Username</tr>
-</table>
-</login:form>
-<jsp:include page="linklib.jsp"></jsp:include>
+
+	<div class="row">
+		<form class="col s6" action="login" method="post">
+			
+
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="Username" type="text" name="username" required="required">
+					<label for="username">Username</label> <span style="color: red;"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="Password" type="password" name="password" required="required">
+					<label for="password">Password</label> <span style="color: red;"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="submit" class="waves-effect waves-light btn" value="LOGIN"><br>
+				</div>
+			</div>
+		</form>
+		${errormessage }
+	</div>
+
+	<jsp:include page="linklib.jsp"></jsp:include>
 </body>
 </html>
