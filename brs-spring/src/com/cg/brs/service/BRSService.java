@@ -33,5 +33,6 @@ public interface BRSService {
 	public User addUser(User user);
 	public Integer removeCustomer(Integer customerId);
 	public List<User> viewAllUsers();
+	public User validateUser(String username, String password);
 	
 }

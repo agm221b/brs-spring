@@ -27,7 +27,7 @@
 		<br>
 		<p>																					<!-- to work on datepicker  -->
 			<label for="datepicker">Enter date:</label> <input type="date"
-				class="datepicker" id="datepicker" />
+				class="datepicker" id="datepicker" name="date_of_journey"/>
 		</p>
 		<br>
 		

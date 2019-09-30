@@ -124,5 +124,12 @@ public class BRSServiceImpl implements BRSService {
 		return brsDao.searchBuses(source, destination, dateOfJourney);
 	}
 
+	@Override
+	public User validateUser(String username, String password) {
+		// TODO Auto-generated method stub
+		return brsDao.validateUser(username, password);
+		
+	}
+
 	
 }
