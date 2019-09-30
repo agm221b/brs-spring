@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Here are the list of buses running accordingly :-</h1>
+<h2>Passenger Details</h2>
 	<table border="1">
 		<tr>
 			<th>Passenger Name</th>
@@ -22,7 +22,7 @@
 				<td>${pass.passngerName}</td>
 				<td>${pass.passengerAge}</td>
 				<td>${pass.passengerGender}</td>
-				<td><button value="Add" type="submit"></button> </td>
+				<td></button> </td>
 			</tr>
 		</tab:forEach>
 

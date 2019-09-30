@@ -23,6 +23,8 @@ public interface BRSDao {
 	public Booking findBookingById(Integer bookingId);
 	public List<Booking> findAllBookings();
 	
+	public Passenger savePassenger(Passenger passenger);
+	
 	public List<Passenger> findAllPassengers(Integer bookingId);
 	
 	public BusTransaction saveTransaction(BusTransaction busTransaction);

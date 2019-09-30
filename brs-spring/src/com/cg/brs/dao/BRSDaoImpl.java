@@ -68,8 +68,11 @@ public class BRSDaoImpl implements BRSDao {
 
 	@Override
 	public Booking saveBooking(Booking booking) {
-		// TODO Auto-generated method stub
-		return null;								//to be set
+		booking=entityManager.merge(booking);
+		booking.setBus(booking.getBus());
+		booking.setPassengers(booking.getPassengers());
+		booking.setBookingStatus("BOOKED");
+		return booking;								//to be set
 	}
 
 	@Override
@@ -181,6 +184,13 @@ public class BRSDaoImpl implements BRSDao {
 			}
 		}
 		return transactionsByRoutes;
+	}
+
+	@Override
+	public Passenger savePassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		entityManager.persist(passenger);
+		return passenger;
 	}
 
 }

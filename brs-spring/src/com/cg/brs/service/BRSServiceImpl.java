@@ -12,6 +12,7 @@ import com.cg.brs.dao.BRSDao;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
+import com.cg.brs.dto.Passenger;
 import com.cg.brs.dto.User;
 
 @Service("brsService")
@@ -122,6 +123,12 @@ public class BRSServiceImpl implements BRSService {
 	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
 		// TODO Auto-generated method stub
 		return brsDao.searchBuses(source, destination, dateOfJourney);
+	}
+
+	@Override
+	public Passenger addPassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		return brsDao.savePassenger(passenger);
 	}
 
 	

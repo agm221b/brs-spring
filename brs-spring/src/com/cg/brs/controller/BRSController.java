@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ import com.cg.brs.service.BRSService;
 
 @Controller
 public class BRSController {
+	
+	@Autowired
+	HttpSession session;
 	
 	@Autowired
 	BRSService brsService;
@@ -139,13 +143,16 @@ public class BRSController {
 		if (result.hasErrors()) {
 			return "jsp/Customer/AddPassenger";
 		} else {
-		return "jsp/home";
+			System.out.println(passenger);
+			brsService.addPassenger(passenger);
+			return "redirect:/createbooking?transactionId="+session.getAttribute("transactionId");
 		}
 	}
 	
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
 		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
+		session.setAttribute("transactionId", busTransactionId);
 		List<BusTransaction> currentBusTransaction=new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
 		System.out.println(currentBusTransaction);
