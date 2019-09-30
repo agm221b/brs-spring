@@ -21,6 +21,7 @@ Enter bus details
 <tr>
 <td>Bus Name</td>
 <td><addbus:input path="busName"/></td>
+<td><span style="color:red;"><addbus:errors path="busName"></addbus:errors></span></td>
 </tr>
 <tr>
 <td>Bus Type</td>
@@ -54,10 +55,12 @@ Enter bus details
 <tr>
 <td>Bus Source</td>
 <td><addbus:input path="source"/></td>
+<td><span style="color:red;"><addbus:errors path="source"></addbus:errors></span></td>
 </tr>
 <tr>
 <td>Bus Destination</td>
 <td><addbus:input path="destination"/></td>
+<td><span style="color:red;"><addbus:errors path="destination"></addbus:errors></span></td>
 </tr>
 <tr>
 <td>Start time</td>
@@ -70,10 +73,12 @@ Enter bus details
 <tr>
 <td>Number of Seats</td>
 <td><addbus:input path="noOfSeats"/></td>
+<td><span style="color:red;"><addbus:errors path="noOfSeats"></addbus:errors></span></td>
 </tr>
 <tr>
 <td>Cost per seat</td>
 <td><addbus:input path="costPerSeat"/></td>
+<td><span style="color:red;"><addbus:errors path="CostPerSeat"></addbus:errors></span></td>
 </tr>
 </table>
 <input type="submit" value="Add"/>

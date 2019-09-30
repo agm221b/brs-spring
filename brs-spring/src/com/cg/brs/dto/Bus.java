@@ -52,7 +52,6 @@ public class Bus {
 	private Integer noOfSeats;
 
 	@Column(name = "delete_flag")
-	@NotNull(message="flag required")
 	private Integer deleteFlag = 0;
 
 	@DateTimeFormat(pattern = "HH:mm")
