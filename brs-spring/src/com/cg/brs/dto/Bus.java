@@ -24,7 +24,6 @@ public class Bus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "bus_id")
-	@NotNull(message="id required")
 	private Integer busId;
 
 	@Column(name = "bus_name")
