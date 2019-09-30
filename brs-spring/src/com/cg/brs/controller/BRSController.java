@@ -22,6 +22,7 @@ import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
 import com.cg.brs.dto.Passenger;
+import com.cg.brs.dto.User;
 import com.cg.brs.service.BRSService;
 
 @Controller
@@ -81,6 +82,10 @@ public class BRSController {
 	
 	@RequestMapping(value="/addbusdetails",method=RequestMethod.POST)
 	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
+		if (result.hasErrors()) {
+			return "jsp/Admin/AddBus";
+			
+		} else {
 		System.out.println(bus);
 		brsService.addBusDetails(bus);
 		
@@ -91,8 +96,9 @@ public class BRSController {
 			busTransaction.setAvailableSeats(bus.getNoOfSeats());
 			busTransaction.setDeleteFlag(0);
 			brsService.addTransaction(busTransaction);
-		}
+			}
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping(value="/searchbuses",method=RequestMethod.GET)
@@ -131,8 +137,12 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.POST)
-	public String addPassengerDetails(@ModelAttribute("passenger") Passenger passenger) { 
+	public String addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult result) { 
+		if (result.hasErrors()) {
+			return "jsp/Customer/AddPassenger";
+		} else {
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
@@ -149,5 +159,12 @@ public class BRSController {
 		return "";
 	}
 	
+	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
+	public ModelAndView showAllUsers() {
+		List<User> userList = brsService.viewAllUsers();
+		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
+	}
+
+
 
 }

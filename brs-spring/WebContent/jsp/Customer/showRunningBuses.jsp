@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Show Running Buses</title>
 </head>
 <body>
 <table border=1>
@@ -31,6 +31,7 @@
 <td>${transaction.getBus().getStartTime()}</td>
 <td>${transaction.getBus().getEndTime()}</td>
 <td>${transaction.getAvailableSeats()}</td>
+
 <td><a href="createbooking?transactionId=${transaction.getTransactionId()}">Book</a></td>
 </tr>
 </show:forEach>

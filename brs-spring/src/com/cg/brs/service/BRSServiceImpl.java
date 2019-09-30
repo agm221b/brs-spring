@@ -29,13 +29,13 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public Integer removeBus(Integer busId) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.removeBus(busId);
 	}
 
 	@Override
 	public List<Bus> viewAllBuses() {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findAllBuses();
 	}
 
 	@Override
@@ -47,25 +47,26 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public List<Object[]> viewBusByRoutes(String source, String destination) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findBusByRoutes(source, destination);
+		
 	}
 
 	@Override
 	public Booking createBooking(Booking booking) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.saveBooking(booking);
 	}
 
 	@Override
 	public Integer removeBooking(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.removeBooking(bookingId);
 	}
 
 	@Override
 	public List<Booking> viewAllBookings() {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findAllBookings();
 	}
 
 	@Override
@@ -77,13 +78,13 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public List<BusTransaction> viewAllTransactions() {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findAllTransactions();
 	}
 
 	@Override
 	public List<BusTransaction> viewTransactionsByDate(LocalDate date) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findTransactionsByDate(date);
 	}
 
 	@Override
@@ -95,25 +96,26 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public BusTransaction updateTransaction(Integer busTransactionId) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return brsDao.saveTransaction(brsDao.findTransactionById(busTransactionId));
 	}
 
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.saveUser(user);
 	}
 
 	@Override
-	public Integer removeCustomer(Integer customerId) {
+	public Integer removeCustomer(Integer userId) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.removeUser(userId);
 	}
 
 	@Override
-	public List<User> viewAllCustomers() {
+	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.viewAllUsers();
 	}
 
 	@Override

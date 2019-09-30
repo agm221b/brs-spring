@@ -33,10 +33,12 @@ public class Bus {
 
 	@Column(name = "bus_type")
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private BusType busType;
 
-	@Enumerated(EnumType.STRING)
 	@Column(name = "bus_class")
+	@Enumerated(EnumType.STRING)
+	@NotNull
 	private BusClass busClass;
 
 	@Column(name = "bus_source")
@@ -52,7 +54,6 @@ public class Bus {
 	private Integer noOfSeats;
 
 	@Column(name = "delete_flag")
-	@NotNull(message="flag required")
 	private Integer deleteFlag = 0;
 
 	@DateTimeFormat(pattern = "HH:mm")

@@ -32,6 +32,6 @@ public interface BRSService {
 	
 	public User addUser(User user);
 	public Integer removeCustomer(Integer customerId);
-	public List<User> viewAllCustomers();
+	public List<User> viewAllUsers();
 	
 }
