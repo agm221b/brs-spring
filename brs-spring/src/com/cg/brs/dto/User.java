@@ -35,8 +35,8 @@ public class User {
 	@NotBlank(message="required")
 	private String pass;
 	@Column(name = "user_type")
-	@NotNull(message=" customer type required")
-	private Character customerType;
+	@NotNull(message=" user type required")
+	private Character userType;
 	@Column(name = "email")
 	@Email
 	@NotBlank(message="email required")
@@ -54,16 +54,24 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer userId, String username, String pass, Character customerType, String email, Integer phoneNumber,
+	public User(Integer userId, String username, String pass, Character userType, String email, Integer phoneNumber,
 			List<Booking> bookingsList, Integer deleteFlag) {
+		super();
 		this.userId = userId;
 		this.username = username;
 		this.pass = pass;
-		this.customerType = customerType;
+		this.userType = userType;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.bookingsList = bookingsList;
 		this.deleteFlag = deleteFlag;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
+				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
+				+ ", deleteFlag=" + deleteFlag + "]";
 	}
 
 	public Integer getUserId() {
@@ -90,12 +98,12 @@ public class User {
 		this.pass = pass;
 	}
 
-	public Character getCustomerType() {
-		return customerType;
+	public Character getUserType() {
+		return userType;
 	}
 
-	public void setCustomerType(Character customerType) {
-		this.customerType = customerType;
+	public void setUserType(Character userType) {
+		this.userType = userType;
 	}
 
 	public String getEmail() {
@@ -131,12 +139,71 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", customerType=" + customerType
-				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
-				+ ", deleteFlag=" + deleteFlag + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bookingsList == null) ? 0 : bookingsList.hashCode());
+		result = prime * result + ((deleteFlag == null) ? 0 : deleteFlag.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (bookingsList == null) {
+			if (other.bookingsList != null)
+				return false;
+		} else if (!bookingsList.equals(other.bookingsList))
+			return false;
+		if (deleteFlag == null) {
+			if (other.deleteFlag != null)
+				return false;
+		} else if (!deleteFlag.equals(other.deleteFlag))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (pass == null) {
+			if (other.pass != null)
+				return false;
+		} else if (!pass.equals(other.pass))
+			return false;
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		if (userType == null) {
+			if (other.userType != null)
+				return false;
+		} else if (!userType.equals(other.userType))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
 	
 }

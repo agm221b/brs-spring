@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -13,8 +14,8 @@ import org.springframework.stereotype.Repository;
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
-import com.cg.brs.dto.User;
 import com.cg.brs.dto.Passenger;
+import com.cg.brs.dto.User;
 
 @Repository("brsDao")
 public class BRSDaoImpl implements BRSDao {
@@ -32,55 +33,72 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public Integer removeBus(Integer busId) {
 		// TODO Auto-generated method stub
-		return null;
+		Bus busUpdate = entityManager.find(Bus.class, busId);
+		if(busUpdate==null) {
+			return 0;
+		}
+		busUpdate.setDeleteFlag(1);
+		entityManager.merge(busUpdate);
+		return 1;
 	}
 
 	@Override
 	public List<Bus> findAllBuses() {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Bus> query = entityManager.createQuery("SELECT bus FROM Bus bus where bus.deleteFlag = 0",
+				Bus.class);
+		return query.getResultList();
 	}
 
 	@Override
 	public List<Object[]> findBusByRoutes(String source, String destination) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query=entityManager.createQuery("SELECT bus.busId,bus.busName,bus.busType,bus.busClass,bus.costPerSeat FROM Bus bus WHERE bus.source=:source AND bus.destination=:destination");
+		query.setParameter("source", source);
+		query.setParameter("destination", destination);
+		List<Object[]> results=query.getResultList();
+		return results;
 	}
 
 	@Override
 	public Bus findBusById(Integer busId) {
 		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Bus.class, busId);
 	}
 
 	@Override
 	public Booking saveBooking(Booking booking) {
 		// TODO Auto-generated method stub
-		return null;
+		return null;								//to be set
 	}
 
 	@Override
-	public Integer removeBooking(Integer booking) {
+	public Integer removeBooking(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return null;
+		Booking removeBooking = entityManager.find(Booking.class, bookingId);
+		removeBooking.setBookingStatus("CANCELLED");
+		entityManager.merge(removeBooking);
+		return 1;
 	}
 
 	@Override
-	public Booking findBookingById(Integer booking) {
+	public Booking findBookingById(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Booking.class, bookingId);
 	}
 
 	@Override
 	public List<Booking> findAllBookings() {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Booking> query = entityManager.createQuery("SELECT booking FROM Booking booking ", Booking.class);
+		return query.getResultList();
 	}
 
 	@Override
 	public List<Passenger> findAllPassengers(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Passenger> query = entityManager.createQuery("SELECT passenger FROM Passenger passenger", Passenger.class);
+		return query.getResultList();
 	}
 
 	@Override
@@ -89,7 +107,7 @@ public class BRSDaoImpl implements BRSDao {
 		busTransaction=entityManager.merge(busTransaction);
 		busTransaction.setBus(busTransaction.getBus());
 		entityManager.persist(busTransaction);
-		return null;
+		return busTransaction;
 	}
 
 	@Override
@@ -102,13 +120,17 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public BusTransaction findTransactionById(Integer transactionId) {
 		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(BusTransaction.class, transactionId);
 	}
 
 	@Override
 	public BusTransaction updateTransaction(Integer transactionId) {
 		// TODO Auto-generated method stub
-		return null;
+		BusTransaction busTransaction=findTransactionById(transactionId);
+		//busTransaction.setAvailableSeats(busTransaction.getAvailableSeats()-passengersCount);		//Integer passengerCount
+		busTransaction=entityManager.merge(busTransaction);
+		
+		return busTransaction;
 	}
 
 	@Override
@@ -122,19 +144,29 @@ public class BRSDaoImpl implements BRSDao {
 	@Override
 	public User saveUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		user.setBookingsList(user.getBookingsList());
+		user.setDeleteFlag(0);
+		User userSave = entityManager.merge(user);
+		user.setUserId(user.getUserId());
+		entityManager.persist(userSave);
+		return user;
 	}
 
 	@Override
-	public Integer removeUser(Integer customerId) {
+	public Integer removeUser(Integer userId) {
 		// TODO Auto-generated method stub
-		return null;
+		User userUpdate = entityManager.find(User.class, userId);
+		userUpdate.setDeleteFlag(1);
+		entityManager.merge(userUpdate);
+		return 1;
 	}
 
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<User> query = entityManager.createQuery("SELECT user FROM User user where user.deleteFlag = 0",
+				User.class);
+		return query.getResultList();
 	}
 
 	@Override

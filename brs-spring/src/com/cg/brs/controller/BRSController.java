@@ -34,12 +34,12 @@ public class BRSController {
 	}
 	@RequestMapping(value="/adminhome",method=RequestMethod.GET)
 	public String viewAdminHome() {
-		return "AdminHome";
+		return "jsp/Admin/AdminHome";
 		
 	}
 	@RequestMapping(value="/customerhome",method=RequestMethod.GET)
 	public String viewCustomerHome() {
-		return "CustomerHome";
+		return "jsp/Customer/CustomerHome";
 		
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
