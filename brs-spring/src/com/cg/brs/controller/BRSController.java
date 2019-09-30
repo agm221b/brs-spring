@@ -1,6 +1,7 @@
 package com.cg.brs.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -79,6 +80,10 @@ public class BRSController {
 	
 	@RequestMapping(value="/addbusdetails",method=RequestMethod.POST)
 	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
+		if (result.hasErrors()) {
+			return "jsp/Admin/AddBus";
+			
+		} else {
 		System.out.println(bus);
 		brsService.addBusDetails(bus);
 		
@@ -89,8 +94,9 @@ public class BRSController {
 			busTransaction.setAvailableSeats(bus.getNoOfSeats());
 			busTransaction.setDeleteFlag(0);
 			brsService.addTransaction(busTransaction);
-		}
+			}
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping(value="/searchbuses",method=RequestMethod.GET)
@@ -124,19 +130,27 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/addpassenger", method = RequestMethod.GET)
-	public String addPassenger(@ModelAttribute("booking") Booking booking) { 
+	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) { 
 		return "jsp/Customer/AddPassenger";
 	}
 	
 	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.POST)
-	public String addPassengerDetails(@ModelAttribute("passenger") Passenger passenger) { 
+	public String addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult result) { 
+		if (result.hasErrors()) {
+			return "jsp/Customer/AddPassenger";
+		} else {
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
-		public String createBooking(@RequestParam("busId")Integer busId) {
-		brsService.viewBusById(busId);
-			return "jsp/home";
+	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
+		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
+		List<BusTransaction> currentBusTransaction=new ArrayList<BusTransaction>();
+		currentBusTransaction.add(busTransaction);
+		System.out.println(currentBusTransaction);
+		return new ModelAndView("jsp/Customer/createBooking","bus",currentBusTransaction);
+
 	}
 	
 	@RequestMapping(value="/showbooking",method=RequestMethod.GET)
@@ -149,6 +163,7 @@ public class BRSController {
 		List<User> userList = brsService.viewAllUsers();
 		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
+
 
 
 }

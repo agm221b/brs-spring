@@ -10,7 +10,29 @@
 </head>
 <body>
 Bus details:
+<table border=1>
+<tr>
+<td>Bus Id</td>
+<td>Bus Name</td>
+<td>Bus Type</td>
+<td>Bus Class</td>
+<td>Start Time</td>
+<td>End Time</td>
+</tr>
+<show:forEach var="currentBusTransaction" items="${bus}">
+<tr>
+<td>${currentBusTransaction.getBus().getBusId() }</td>
+<td>${currentBusTransaction.getBus().getBusName() }</td>
+<td>${currentBusTransaction.getBus().getBusType() }</td>
+<td>${currentBusTransaction.getBus().getBusClass() }</td>
+<td>${currentBusTransaction.getBus().getStartTime() }</td>
+<td>${currentBusTransaction.getBus().getEndTime() }</td>
+</tr>
+</show:forEach>
+</table>
 
+
+<br/>
 <a href="addpassenger">Add passenger</a>
 </body>
 </html>

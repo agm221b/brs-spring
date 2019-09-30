@@ -7,14 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>Add Passenger</title>
 
-
 </head>
 <body>
 
 	/** NavBar -Source -Destination -Date(Calendar) */
 	<table>
-		<form:form action="addpassengerdetails" method="POST"
-			modelAttribute="passenger">
+		<form:form action="addpassengerdetails" method="POST" modelAttribute="passenger">
 			<tr>
 				<td>Passenger Name</td>
 				<td><form:input path="passengerName" /></td>
