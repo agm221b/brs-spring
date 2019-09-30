@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Home</title>
+
+
 </head>
 <body>
 
@@ -12,5 +14,7 @@
 <a href="addbus">Add Bus</a><br>
 <a href="showbuses">Show All Buses</a><br>
 <a href="logout">Logout</a><br>
+
+<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

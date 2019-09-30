@@ -36,5 +36,6 @@
 	</form>
 	<br><br>
 	<jsp:include page="showRunningBuses.jsp" />
+	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

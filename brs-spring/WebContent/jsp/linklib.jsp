@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Customer Home</title>
+<title>Link Library</title>
+</head>
+<body>
+
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -23,14 +26,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  
-</head>
-<body>
-
-<h2><i>Welcome to BusNama </i><br></h2>
-<a class="waves-effect waves-light btn" href="addbooking">Create Booking</a><br>
-<a class="waves-effect waves-light btn" href="viewbookings">View Bookings</a><br>
-<a class="waves-effect waves-light btn" href="cancelbooking">Cancel Booking</a><br>
-<a class="waves-effect waves-light btn" href="logout">Logout</a><br>
 
 </body>
 </html>

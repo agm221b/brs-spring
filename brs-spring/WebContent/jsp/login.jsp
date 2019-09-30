@@ -6,6 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+
+
 </head>
 <body>
 Enter Login Details
@@ -14,5 +16,6 @@ Enter Login Details
 <tr>Username</tr>
 </table>
 </login:form>
+<jsp:include page="linklib.jsp"></jsp:include>
 </body>
 </html>
