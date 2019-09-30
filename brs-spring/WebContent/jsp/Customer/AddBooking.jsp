@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"
+	prefix="search"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,31 +12,15 @@
 </head>
 <body>
 	/** NavBar -Source -Destination -Date(Calendar) */
-	<form action="showrunningbuses" method="post">
-		<table>
+	<search:form method="post" action="showrunningbuses">
+Source:<input type="text" name="source" />
+Destination:<input type="text" name="destination" />
+Date Of Journey:<input type="date" name="date_of_journey" />
+		<input type="submit" value="Search Buses">
+	</search:form>
+	<br />
+	<h2>List Of Running Buses</h2>
+	<jsp:include page="showRunningBuses.jsp"></jsp:include>
 
-			<tr>
-				<td>Source</td>
-				<td><input name="source" /></td>
-			</tr>
-
-			<tr>
-				<td>Destination</td>
-				<td><input name="destination" /></td>
-			</tr>
-
-			<tr>
-				<td>Date(dd-MM-yyyy)</td>
-				<td><input name="dateOfJourney" /></td>
-			</tr>
-
-			<tr>
-				<td><input type="submit" value="Submit"></td>
-			</tr>
-
-		</table>
-	</form>
-	<br><br>
-	<jsp:include page="showRunningBuses.jsp" />
 </body>
 </html>
