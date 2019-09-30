@@ -10,7 +10,7 @@
 </head>
 <body>
 	/** NavBar -Source -Destination -Date(Calendar) */
-	<form action="showRunningBuses" method="post">
+	<form action="showrunningbuses" method="post">
 		<table>
 
 			<tr>
@@ -35,6 +35,6 @@
 		</table>
 	</form>
 	<br><br>
-	<jsp:include page="ShowBusList.jsp" />
+	<jsp:include page="showRunningBuses.jsp" />
 </body>
 </html>

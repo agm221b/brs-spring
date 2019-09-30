@@ -1,7 +1,6 @@
 package com.cg.brs.controller;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -34,12 +33,12 @@ public class BRSController {
 	}
 	@RequestMapping(value="/adminhome",method=RequestMethod.GET)
 	public String viewAdminHome() {
-		return "AdminHome";
+		return "jsp/Admin/AdminHome";
 		
 	}
 	@RequestMapping(value="/customerhome",method=RequestMethod.GET)
 	public String viewCustomerHome() {
-		return "CustomerHome";
+		return "jsp/Customer/CustomerHome";
 		
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -136,6 +135,11 @@ public class BRSController {
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
 		public String createBooking() {
 			return "jsp/Customer/createBooking";
+	}
+	
+	@RequestMapping(value="/showbooking",method=RequestMethod.GET)
+	public String showCurrentBooking() {
+		return "";
 	}
 
 }
