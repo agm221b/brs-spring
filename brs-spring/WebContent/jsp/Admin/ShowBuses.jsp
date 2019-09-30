@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="tab" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="tab" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<h1>Here are the list of buses :-</h1>
+	<h3>Here are the list of buses :-</h3>
 	<table border="1">
 		<tr>
-			
+
 			<th>Bus ID</th>
 			<th>Bus Name</th>
 			<th>Bus Type</th>
@@ -40,17 +40,16 @@
 				<td>${bus.startTime}</td>
 				<td>${bus.endTime}</td>
 				<td>${bus.costPerSeat}</td>
-				
-				
-				<td><a href="modifybus"> <input type="button"
-						value="Edit" /></a>
+
+
+				<td><a href="modifybus"> <input type="button" value="Edit" /></a>
 				<td><a href="deletebus"> <input type="button"
 						value="Delete" /></a>
 			</tr>
 		</tab:forEach>
 
 	</table>
-	
+
 	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

@@ -13,7 +13,7 @@
 </head>
 <body>
 	Enter bus details
-	<addbus:form action="addbusdetails" method="post" modelAttribute="bus">
+	<addbus:form  class="col s6" action="addbusdetails" method="post" modelAttribute="bus">
 		<table>
 			<tr>
 				<td></td>
