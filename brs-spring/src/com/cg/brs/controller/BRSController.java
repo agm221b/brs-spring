@@ -134,8 +134,12 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.POST)
-	public String addPassengerDetails(@ModelAttribute("passenger") Passenger passenger) { 
+	public String addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult result) { 
+		if (result.hasErrors()) {
+			return "jsp/Customer/AddPassenger";
+		} else {
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping (value="/createbooking",method = RequestMethod.GET)
