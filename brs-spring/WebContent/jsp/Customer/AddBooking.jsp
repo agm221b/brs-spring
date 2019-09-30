@@ -11,7 +11,8 @@
 
 </head>
 <body>
-	/** NavBar -Source -Destination -Date(Calendar) */
+	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
+	<br>
 	<search:form method="post" action="showrunningbuses">
 Source:<input type="text" name="source" />
 Destination:<input type="text" name="destination" />
@@ -21,5 +22,6 @@ Date Of Journey:<input type="date" name="date_of_journey" />
 	<br />
 	<h2>List Of Running Buses</h2>
 	<jsp:include page="showRunningBuses.jsp"></jsp:include>
+	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

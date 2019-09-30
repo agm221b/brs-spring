@@ -24,14 +24,31 @@ Enter bus details
 </tr>
 <tr>
 <td>Bus Type</td>
-<td><addbus:radiobutton path="busType" value="SLEEPER"/>Sleeper
-<addbus:radiobutton path="busType" value="SEMI_SLEEPER"/>Semi-Sleeper
+<td><%-- <addbus:radiobutton path="busType" value="SLEEPER"/>Sleeper
+<addbus:radiobutton path="busType" value="SEMI_SLEEPER"/>Semi-Sleeper --%>
+<addbus:select class="browser-default" path="busType">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="SLEEPER">SLEEPER</option>
+    <option value="SEMI_SLEEPER">SEMI-SLEEPER</option>
+</addbus:select>
 </td>
 </tr>
 <tr>
 <td>Bus Class</td>
-<td><addbus:radiobutton path="busClass" value="AC"/>AC
-<addbus:radiobutton path="busClass" value="NON_AC"/>Non-AC
+<td><%-- <addbus:radiobutton path="busClass" value="AC"/>AC
+<addbus:radiobutton path="busClass" value="NON_AC"/>Non-AC --%>
+	<p>
+      <label>
+        <addbus:radiobutton path="busClass" value="AC"  />
+        <span>AC</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <addbus:radiobutton path="busClass" value="NON_AC" />
+        <span>Non-AC</span>
+      </label>
+    </p>
 </td>
 </tr>
 <tr>

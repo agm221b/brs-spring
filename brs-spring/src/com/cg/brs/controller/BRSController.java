@@ -19,6 +19,7 @@ import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
 import com.cg.brs.dto.Passenger;
+import com.cg.brs.dto.User;
 import com.cg.brs.service.BRSService;
 
 @Controller
@@ -140,6 +141,12 @@ public class BRSController {
 	@RequestMapping(value="/showbooking",method=RequestMethod.GET)
 	public String showCurrentBooking() {
 		return "";
+	}
+	
+	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
+	public ModelAndView showAllUsers() {
+		List<User> userList = brsService.viewAllUsers();
+		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
 
 
