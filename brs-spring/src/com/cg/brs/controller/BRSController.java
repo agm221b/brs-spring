@@ -78,6 +78,10 @@ public class BRSController {
 	
 	@RequestMapping(value="/addbusdetails",method=RequestMethod.POST)
 	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
+		if (result.hasErrors()) {
+			return "jsp/Admin/AddBus";
+			
+		} else {
 		System.out.println(bus);
 		brsService.addBusDetails(bus);
 		
@@ -88,8 +92,9 @@ public class BRSController {
 			busTransaction.setAvailableSeats(bus.getNoOfSeats());
 			busTransaction.setDeleteFlag(0);
 			brsService.addTransaction(busTransaction);
-		}
+			}
 		return "jsp/home";
+		}
 	}
 	
 	@RequestMapping(value="/searchbuses",method=RequestMethod.GET)
