@@ -19,8 +19,8 @@ public interface BRSDao {
 	
 	
 	public Booking saveBooking(Booking booking);
-	public Integer removeBooking (Integer booking);
-	public Booking findBookingById(Integer booking);
+	public Integer removeBooking (Integer bookingId);
+	public Booking findBookingById(Integer bookingId);
 	public List<Booking> findAllBookings();
 	
 	public List<Passenger> findAllPassengers(Integer bookingId);
@@ -34,7 +34,7 @@ public interface BRSDao {
 //	public BusTransaction insertBookingIntoTransaction(Booking booking, BusTransaction busTransaction);
 	
 	public User saveUser(User user);
-	public Integer removeUser(Integer customerId);
+	public Integer removeUser(Integer userId);
 	public List<User> viewAllUsers();
 	
 	public List<BusTransaction> searchBuses(String source,String destination,LocalDate dateOfJourney);

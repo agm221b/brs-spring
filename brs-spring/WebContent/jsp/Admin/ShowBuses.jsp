@@ -35,7 +35,7 @@
 				<td>${bus.busClass}</td>
 				<td>${bus.source}</td>
 				<td>${bus.destination}</td>
-				<td>${trans.availableSeats}</td>
+				<td>${bus.noOfSeats}</td>
 				<td>${bus.startTime}</td>
 				<td>${bus.endTime}</td>
 				<td>${bus.costPerSeat}</td>
