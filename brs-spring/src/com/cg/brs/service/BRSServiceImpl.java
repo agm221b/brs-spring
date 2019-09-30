@@ -41,7 +41,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public Bus viewBusById(Integer busId) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findBusById(busId);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public BusTransaction viewTransactionById(Integer busTransactionId) {
 		// TODO Auto-generated method stub
-		return null;
+		return brsDao.findTransactionById(busTransactionId);
 	}
 
 	@Override
