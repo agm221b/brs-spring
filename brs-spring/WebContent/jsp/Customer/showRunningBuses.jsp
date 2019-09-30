@@ -34,5 +34,7 @@
 </tr>
 </show:forEach>
 </table>
+
+<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

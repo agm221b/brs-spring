@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Bus</title>
+
+
 </head>
 <body>
 Enter bus details
@@ -59,5 +61,7 @@ Enter bus details
 </table>
 <input type="submit" value="Add"/>
 </addbus:form>
+
+<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

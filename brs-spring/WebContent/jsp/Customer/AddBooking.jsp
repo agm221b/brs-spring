@@ -21,6 +21,5 @@ Date Of Journey:<input type="date" name="date_of_journey" />
 	<br />
 	<h2>List Of Running Buses</h2>
 	<jsp:include page="showRunningBuses.jsp"></jsp:include>
-
 </body>
 </html>

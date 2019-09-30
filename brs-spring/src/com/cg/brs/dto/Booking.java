@@ -27,7 +27,6 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "booking_id")
-	@NotNull(message="cannot be empty")
 	private Integer bookingId;
 	
 	@DateTimeFormat(pattern="dd-MM-yyyy")
@@ -51,7 +50,6 @@ public class Booking {
 	@NotBlank(message="cannot be empty")
 	private String bookingStatus;
 	@Column(name = "delete_flag")
-	@NotNull(message="cannot be empty")
 	private Integer deleteFlag;
 
 	public Booking() {

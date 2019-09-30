@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Show Buses</title>
+
 </head>
 <body>
 
@@ -49,5 +50,7 @@
 		</tab:forEach>
 
 	</table>
+	
+	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>
