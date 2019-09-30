@@ -142,7 +142,9 @@ public class BRSController {
 	public ModelAndView showRunningBuses(@RequestParam("source") String source,
 			@RequestParam("destination") String destination,
 			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney) {
-
+		session.setAttribute("dateOfJourney", dateOfJourney);
+		session.setAttribute("source", source);
+		session.setAttribute("destination", destination);
 		List<BusTransaction> transactionList = brsService.searchBuses(source, destination, dateOfJourney);
 		System.out.println(transactionList);
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
@@ -164,22 +166,26 @@ public class BRSController {
 	}
 
 	@RequestMapping(value = "/addpassengerdetails", method = RequestMethod.POST)
-	public String addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult result) {
+	public ModelAndView addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult result) {
 		if (result.hasErrors()) {
-			return "jsp/Customer/AddPassenger";
+			return null;
 		} else {
 
 			System.out.println(passenger);
+			List<Passenger> passengerList=new ArrayList<Passenger>();
 			brsService.addPassenger(passenger);
-			return "redirect:/createbooking?transactionId="+session.getAttribute("transactionId");
+			passengerList.add(passenger);
+			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
 
 		}
 	}
 
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
-	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
+	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId,@ModelAttribute("booking") Booking booking) {
 		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
 		session.setAttribute("transactionId", busTransactionId);
+		session.setAttribute("busId", busTransaction.getBus().getBusId());
+		session.setAttribute("availableSeats", busTransaction.getAvailableSeats());
 		List<BusTransaction> currentBusTransaction=new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
 		System.out.println(currentBusTransaction);

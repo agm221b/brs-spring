@@ -17,15 +17,13 @@
 			<th>Passenger Gender</th>
 		</tr>
 
-		<tab:forEach var="pass" items="${passengerList}">
+		<tab:forEach var="pass" items="${passengers}">
 			<tr>
-				<td>${pass.passngerName}</td>
+				<td>${pass.passengerName}</td>
 				<td>${pass.passengerAge}</td>
 				<td>${pass.passengerGender}</td>
-				<td></button> </td>
 			</tr>
 		</tab:forEach>
-
 	</table>
 </body>
 </html>
