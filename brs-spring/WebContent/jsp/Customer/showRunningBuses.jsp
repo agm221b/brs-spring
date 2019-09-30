@@ -20,17 +20,17 @@
 <th>Available Seats</th>
 <th></th>
 </tr>
-<show:forEach var="transaction" items="${transactions}">
+<show:forEach var="transaction" items="${transactionList}">
 <tr>
 <td>${transaction.getBus().getBusId()}</td>
 <td>${transaction.getBus().getBusName()}</td>
-<td>${transaction.getBus().getType()}</td>
+<td>${transaction.getBus().getBusType()}</td>
 <td>${transaction.getBus().getBusClass()}</td>
 <td>${transaction.getBus().getCostPerSeat()}</td>
 <td>${transaction.getBus().getStartTime()}</td>
 <td>${transaction.getBus().getEndTime()}</td>
 <td>${transaction.getAvailableSeats()}</td>
-<td><a href="">Book</a></td>
+<td><a href="addbooking">Book</a></td>
 </tr>
 </show:forEach>
 </table>

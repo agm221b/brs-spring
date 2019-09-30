@@ -2,13 +2,12 @@ package com.cg.brs.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-//github.com/agm221b/brs-spring
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -107,17 +106,11 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/showrunningbuses",method=RequestMethod.POST)
-	public ModelAndView showRunningBuses(@RequestParam("source")String source,@RequestParam("destination")String destination, @RequestParam("date_of_journey")String dateOfJourney) {
-		System.out.println(source+" "+destination+" "+dateOfJourney);
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate journeyDate=LocalDate.parse(dateOfJourney, formatter);
-		List<BusTransaction> transactionList=brsService.searchBuses(source, destination, journeyDate);
-		List<BusTransaction> transactionsByDate=new ArrayList<BusTransaction>();
-		for(BusTransaction busTransaction:transactionList) {
-			transactionsByDate.add(busTransaction);
-		}
-		System.out.println(transactionsByDate);
-		return new ModelAndView("searchBus", "transactions", transactionsByDate);
+	public ModelAndView showRunningBuses(@RequestParam("source")String source,@RequestParam("destination")String destination, @RequestParam("date_of_journey")@DateTimeFormat(pattern="yyyy-MM-dd")LocalDate dateOfJourney) {
+		
+		List<BusTransaction> transactionList=brsService.searchBuses(source, destination, dateOfJourney);
+		System.out.println(transactionList);
+		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
 	
 	@RequestMapping(value="/addbooking", method = RequestMethod.GET)
@@ -135,7 +128,7 @@ public class BRSController {
 		return "jsp/Customer/AddPassenger";
 	}
 	
-	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.GET)
+	@RequestMapping(value="/addpassengerdetails", method = RequestMethod.POST)
 	public String addPassengerDetails(@ModelAttribute("passenger") Passenger passenger) { 
 		return "jsp/home";
 	}
