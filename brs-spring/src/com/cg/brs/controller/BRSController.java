@@ -77,7 +77,7 @@ public class BRSController {
 		return "jsp/logout";
 	}
 
-	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
+	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
 	public String showAboutUsPage() {
 		return "jsp/aboutUs";
 	}

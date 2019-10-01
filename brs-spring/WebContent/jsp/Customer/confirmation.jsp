@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Help</title>
-
-
+<title>Confirmation</title>
 </head>
 <body>
 
-<h4>FAQs:</h4>
 
-<jsp:include page="linklib.jsp"></jsp:include>
+
+<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>
