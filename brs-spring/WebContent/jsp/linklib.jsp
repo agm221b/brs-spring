@@ -7,7 +7,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Link Library</title>
-</head>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -46,10 +45,50 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src=https://code.jquery.com/jquery-1.12.4.js></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css">
+ 
+  #footer {
+
+    height: 150px;
+    background-color: red;
+    bottom: 50px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 20px;
+}
+      
+</style>
+</head>
 <body>
 
-
-
+	<section id="footer">
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">BusNama</h5>
+					<p class="grey-text text-lighten-4">One Stop Solution for all your Bus Travel Needs.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Links</h5>
+					<ul>
+					<li><a class="grey-text text-lighten-3" href="home">Home</a></li>
+						<li><a class="grey-text text-lighten-3" href="help">Help</a></li>
+						<li><a class="grey-text text-lighten-3" href="aboutUs">About Us</a></li>
+						<li><a class="grey-text text-lighten-3" href="gallery">Gallery</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2019 Copyright BusNama Inc. <a class="grey-text text-lighten-4 right"
+					href="#!">More Links</a>
+			</div>
+		</div>
+	</footer>
+	</section>
 
 </body>
 </html>

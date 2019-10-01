@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Total Cost:
+
 
 <form method="post" action="paymentdetails">
 Payment Details:
@@ -17,6 +17,7 @@ Payment Details:
 <input type="radio" name="paymentMode" value="Credit Card">Credit Card
 <input type="radio" name="paymentMode" value="Net Banking">Net Banking
 <input type="radio" name="paymentMode" value="e-Wallets">e-Wallets
+<input type="submit" value="Proceed">
 </form>
 </body>
 </html>

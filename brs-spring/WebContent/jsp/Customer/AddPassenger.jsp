@@ -45,9 +45,8 @@
 
 			<tr>
 				<td><input type="submit" value="Add"><%session.getAttribute("transactionId"); %></td>
-				<td><a href="confirmation"> <input type="button"
-						value="Proceed" />
-				</a>
+				<td><a href="confirmation" ><input type="button">
+						value="Proceed" /></a>
 			</tr>
 		</form:form>
 	</table>

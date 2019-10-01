@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<h4>FAQs:</h4>
+
 <jsp:include page="linklib.jsp"></jsp:include>
 </body>
 </html>
