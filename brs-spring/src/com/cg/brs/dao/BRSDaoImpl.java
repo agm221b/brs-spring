@@ -72,6 +72,7 @@ public class BRSDaoImpl implements BRSDao {
 		booking.setBus(booking.getBus());
 		booking.setPassengers(booking.getPassengers());
 		booking.setBookingStatus("BOOKED");
+		entityManager.persist(booking);
 		return booking;								//to be set
 	}
 

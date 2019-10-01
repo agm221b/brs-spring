@@ -73,10 +73,10 @@
 				<div class="col l4 offset-l2 s12">
 					<h5 class="white-text">Links</h5>
 					<ul>
-					<li><a class="grey-text text-lighten-3" href="home.jsp">Home</a></li>
-						<li><a class="grey-text text-lighten-3" href="help.jsp">Help</a></li>
-						<li><a class="grey-text text-lighten-3" href="aboutUs.jsp">About Us</a></li>
-						<li><a class="grey-text text-lighten-3" href="gallery.jsp">Gallery</a></li>
+					<li><a class="grey-text text-lighten-3" href="home">Home</a></li>
+						<li><a class="grey-text text-lighten-3" href="help">Help</a></li>
+						<li><a class="grey-text text-lighten-3" href="aboutUs">About Us</a></li>
+						<li><a class="grey-text text-lighten-3" href="gallery">Gallery</a></li>
 					</ul>
 				</div>
 			</div>

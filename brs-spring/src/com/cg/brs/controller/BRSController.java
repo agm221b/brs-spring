@@ -187,10 +187,11 @@ public class BRSController {
 		} else {
 
 			System.out.println(passenger);
-			List<Passenger> passengerList=new ArrayList<Passenger>();
-			brsService.addPassenger(passenger);
+			List<Passenger> passengerList=(List<Passenger>)session.getAttribute("passengerList");
+			Booking booking=(Booking)session.getAttribute("booking");
 			passengerList.add(passenger);
-			session.setAttribute("passengers", passenger);
+			booking.setPassengers(passengerList);
+			
 			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
 
 		}
@@ -204,10 +205,22 @@ public class BRSController {
 		session.setAttribute("availableSeats", busTransaction.getAvailableSeats());
 		List<BusTransaction> currentBusTransaction=new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
-		System.out.println(currentBusTransaction);
 		Booking booking=new Booking();
+		booking.setDateOfJourney((LocalDate)session.getAttribute("dateOfJourney"));
+		booking.setBus(busTransaction.getBus());
+		List<Passenger> passengerList=new ArrayList<Passenger>();
+		session.setAttribute("passengerList", passengerList);
+		session.setAttribute("booking", booking);
+		System.out.println((Booking)session.getAttribute("booking"));
+		brsService.createBooking((Booking)session.getAttribute("booking"));
 		return new ModelAndView("jsp/Customer/createBooking", "bus", currentBusTransaction);
 
+	}
+	
+	@RequestMapping(value="/confirmation",method = RequestMethod.POST)
+	public String calculateCost(@RequestParam("paymentMode") String paymentMode) {
+		//calculate cost here
+		return "jsp/Customer/payment.jsp";
 	}
 
 	@RequestMapping(value = "/showbooking", method = RequestMethod.GET)

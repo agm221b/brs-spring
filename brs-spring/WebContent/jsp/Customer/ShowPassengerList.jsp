@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<h2>Passenger Details</h2>
-	<table border="1">
+<h4>Passenger Details</h4>
+	<table border="1" class="striped">
 		<tr>
 			<th>Passenger Name</th>
 			<th>Passenger Age</th>

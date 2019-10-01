@@ -11,6 +11,12 @@
 section.center{
 align-items: center;
 } 
+#texts{
+		padding : 1%; 
+ 
+        background-color: 009900; 
+        width: 30%; 
+}
 
 </style>
 
@@ -18,7 +24,7 @@ align-items: center;
 <body>
 	<section class="center">
 	<h4>What is BusNama?</h4>
-	<div class="row">We are a small group started in 2019 with the purpose to cater
+	<div class="row" id="texts">We are a small group started in 2019 with the purpose to cater
 		all your basic to advanced bus travel needs 24x7, 365 days a year.
 		With a technical group of developers ,we try our level best to make
 		this a smooth and happy experience for all our customers. Thank you
