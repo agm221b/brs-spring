@@ -125,8 +125,7 @@ public class BRSServiceImpl implements BRSService {
 		return brsDao.searchBuses(source, destination, dateOfJourney);
 	}
 
-	@Override
-
+	
 	public Passenger addPassenger(Passenger passenger) {
 		// TODO Auto-generated method stub
 		return brsDao.savePassenger(passenger);
