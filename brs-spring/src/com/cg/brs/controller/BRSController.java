@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -148,7 +149,7 @@ public class BRSController {
 	}
 
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
-	public ModelAndView getAllData() {
+	public ModelAndView getAllData() {										//admin
 		List<Bus> busList = brsService.viewAllBuses();
 		return new ModelAndView("jsp/Admin/ShowBuses", "busList", busList);
 	}
@@ -166,7 +167,11 @@ public class BRSController {
 	}
 
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
-	public String addBooking(@ModelAttribute("booking") Booking booking) {
+	public String addBooking(@ModelAttribute("booking") Booking booking, Map<String,Object> dropdown) {
+		Set<String> src = brsService.findSrc();
+		Set<String> dest = brsService.findDest();
+		dropdown.put("src",src);
+		dropdown.put("dest",dest);
 		return "jsp/Customer/AddBooking";
 	}
 

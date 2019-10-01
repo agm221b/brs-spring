@@ -16,13 +16,13 @@
 	<search:form method="post" action="showrunningbuses">
 		<div class="row">
 			<div class="input-field col s6">
-				<label for="source">Source</label> <input id="source" type="text"
-					class="validate" name="source"> <span style="color: red;"></span>
+				<label for="source">Source</label> <search:select id="source" type="text"
+					class="validate" path="source" items="${src }" /> <span style="color: red;"></span>
 			</div>
 			<br>
 			<div class="input-field col s6">
-				<label for="destination">Destination</label> <input id="destination"
-					type="text" class="validate" name="destination"> <span
+				<label for="destination">Destination</label> <search:select id="destination"
+					type="text" class="validate" path="destination" items="${dest }"/> <span
 					style="color: red;"></span>
 			</div>
 			<br>
@@ -40,9 +40,10 @@
 
 
 			<script>
-				$(function() {
-					$(".datepicker").datepicker();
-				});
+			$('.datepicker').datepicker({
+			    format: 'mm/dd/yyyy',
+			    startDate: '-3d'
+			});
 			</script>
 
 		</div>

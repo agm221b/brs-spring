@@ -3,6 +3,7 @@ package com.cg.brs.dao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -64,6 +65,23 @@ public class BRSDaoImpl implements BRSDao {
 	public Bus findBusById(Integer busId) {
 		// TODO Auto-generated method stub
 		return entityManager.find(Bus.class, busId);
+	}
+	
+	
+
+	@Override
+	public List<String> findSrc() {
+		// TODO Auto-generated method stub
+		TypedQuery<String> query = entityManager.createQuery("SELECT distinct(bus.source) FROM Bus bus", String.class); 
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<String> findDest() {
+		// TODO Auto-generated method stub
+		TypedQuery<String> query = entityManager.createQuery("SELECT distinct(bus.destination) FROM Bus bus", String.class);
+		return query.getResultList();
 	}
 
 	@Override

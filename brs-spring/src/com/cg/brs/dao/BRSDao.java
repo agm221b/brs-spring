@@ -2,12 +2,13 @@ package com.cg.brs.dao;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
 import com.cg.brs.dto.BusTransaction;
-import com.cg.brs.dto.User;
 import com.cg.brs.dto.Passenger;
+import com.cg.brs.dto.User;
 
 public interface BRSDao {
 
@@ -16,6 +17,9 @@ public interface BRSDao {
 	public List<Bus> findAllBuses();
 	public List<Object[]> findBusByRoutes(String source, String destination);
 	public Bus findBusById(Integer busId);
+	
+	public List<String> findSrc();
+	public List<String> findDest();
 	
 	
 	public Booking saveBooking(Booking booking);

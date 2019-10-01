@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
 	<div class="row">
 		<form class="col s6" action="login" method="post">
 			
@@ -37,5 +38,6 @@
 	</div>
 
 	<jsp:include page="linklib.jsp"></jsp:include>
+	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
 </body>
 </html>

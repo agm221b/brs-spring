@@ -70,5 +70,6 @@
 		</form:form>
 	</div>
 	<jsp:include page="linklib.jsp"></jsp:include>
+	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
 </body>
 </html>
