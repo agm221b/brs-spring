@@ -190,13 +190,14 @@ public class BRSController {
 			List<Passenger> passengerList=new ArrayList<Passenger>();
 			brsService.addPassenger(passenger);
 			passengerList.add(passenger);
+			session.setAttribute("passengers", passenger);
 			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
 
 		}
 	}
 
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
-	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId,@ModelAttribute("booking") Booking booking) {
+	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
 		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
 		session.setAttribute("transactionId", busTransactionId);
 		session.setAttribute("busId", busTransaction.getBus().getBusId());
@@ -204,6 +205,7 @@ public class BRSController {
 		List<BusTransaction> currentBusTransaction=new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
 		System.out.println(currentBusTransaction);
+		Booking booking=new Booking();
 		return new ModelAndView("jsp/Customer/createBooking", "bus", currentBusTransaction);
 
 	}
