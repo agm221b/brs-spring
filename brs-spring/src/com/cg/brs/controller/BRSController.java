@@ -212,14 +212,16 @@ public class BRSController {
 		session.setAttribute("passengerList", passengerList);
 		session.setAttribute("booking", booking);
 		System.out.println((Booking)session.getAttribute("booking"));
-		brsService.createBooking((Booking)session.getAttribute("booking"));
+		
 		return new ModelAndView("jsp/Customer/createBooking", "bus", currentBusTransaction);
 
 	}
 	
 	@RequestMapping(value="/paymentdetails",method = RequestMethod.POST)
 	public String calculateCost(@RequestParam("paymentMode") String paymentMode) {
-		
+		session.setAttribute("paymentMode", paymentMode);
+		Booking booking=(Booking)session.getAttribute("booking");
+		brsService.createBooking((Booking)session.getAttribute("booking"));
 		return "";
 	}
 
