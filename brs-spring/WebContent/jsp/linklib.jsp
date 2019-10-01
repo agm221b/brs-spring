@@ -47,6 +47,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <style type="text/css">
+<<<<<<< HEAD
 #footer {
 
 position:absolute;
@@ -56,6 +57,7 @@ position:absolute;
 	left: 0px;
 	right: 0px;
 	margin-bottom: 20px;
+
 }
 </style>
 </head>

@@ -2,7 +2,6 @@ package com.cg.brs.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -55,13 +54,13 @@ public class BRSServiceImpl implements BRSService {
 	
 
 	@Override
-	public Set<String> findSrc() {
+	public List<String> findSrc() {
 		// TODO Auto-generated method stub
 		return brsDao.findSrc();
 	}
 
 	@Override
-	public Set<String> findDest() {
+	public List<String> findDest() {
 		// TODO Auto-generated method stub
 		return brsDao.findDest();
 	}

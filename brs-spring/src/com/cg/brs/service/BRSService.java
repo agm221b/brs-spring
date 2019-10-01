@@ -2,7 +2,6 @@ package com.cg.brs.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import com.cg.brs.dto.Booking;
 import com.cg.brs.dto.Bus;
@@ -17,8 +16,8 @@ public interface BRSService {
 	public List<Bus> viewAllBuses();
 	public Bus viewBusById(Integer busId);
 	public List<Object[]> viewBusByRoutes(String source,String destination);
-	public Set<String> findSrc();
-	public Set<String> findDest();
+	public List<String> findSrc();
+	public List<String> findDest();
 	
 	public Booking createBooking(Booking booking);
 	public Integer removeBooking(Integer bookingId);

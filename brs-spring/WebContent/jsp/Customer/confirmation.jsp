@@ -8,11 +8,7 @@
 <title>Confirmation</title>
 </head>
 <body>
-
-
-	
-
-	
+<a href="viewcurrentbooking"><input type="button" value="View Current Booking"></a>
 	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -168,8 +167,8 @@ public class BRSController {
 
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("booking") Booking booking, Map<String,Object> dropdown) {
-		Set<String> src = brsService.findSrc();
-		Set<String> dest = brsService.findDest();
+		List<String> src = brsService.findSrc();
+		List<String> dest = brsService.findDest();
 		dropdown.put("src",src);
 		dropdown.put("dest",dest);
 		return "jsp/Customer/AddBooking";
@@ -217,15 +216,45 @@ public class BRSController {
 		session.setAttribute("passengerList", passengerList);
 		session.setAttribute("booking", booking);
 		System.out.println((Booking)session.getAttribute("booking"));
-		brsService.createBooking((Booking)session.getAttribute("booking"));
+		
 		return new ModelAndView("jsp/Customer/createBooking", "bus", currentBusTransaction);
 
 	}
 	
-	@RequestMapping(value="/confirmation",method = RequestMethod.POST)
-	public String calculateCost(@RequestParam("paymentMode") String paymentMode) {
-		//calculate cost here
-		return "jsp/Customer/payment.jsp";
+	@RequestMapping(value="/confirmation",method = RequestMethod.GET)
+	public String confirmPayment() {
+		return "jsp/Customer/payment";
+	}
+	
+	@RequestMapping(value="/paymentdetails",method = RequestMethod.POST)
+	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
+		Booking booking=(Booking)session.getAttribute("booking");
+		booking.setModeOfPayment(paymentMode);
+		System.out.println(booking);
+		return "jsp/Customer/confirmation";
+		
+	}
+	
+	@RequestMapping(value="/viewcurrentbooking",method=RequestMethod.GET)
+	public ModelAndView viewCurrentBooking() {
+		Booking booking=(Booking)session.getAttribute("booking");
+		List<Passenger> passengerList=booking.getPassengers();
+		System.out.println(passengerList);
+		int passengersCount=passengerList.size();
+		Integer busId=(Integer) session.getAttribute("busId");
+		Bus bus=brsService.viewBusById(busId);
+		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
+		booking.setBookingStatus("BOOKED");
+		booking.setDeleteFlag(0);
+		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
+		Integer availableSeats=(Integer) session.getAttribute("availableSeats");
+		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
+		busTransaction.setAvailableSeats(availableSeats-passengersCount);
+		List<Booking> bookings=new ArrayList<Booking>();
+		bookings.add(booking);
+		brsService.createBooking(booking);
+		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
+				
 	}
 
 	@RequestMapping(value = "/showbooking", method = RequestMethod.GET)
