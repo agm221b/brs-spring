@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -51,6 +52,10 @@ public class Booking {
 	private String bookingStatus;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
+	
+	@ManyToOne
+	@JoinColumn(name="user_fk")
+	private User user;
 
 	public Booking() {
 
@@ -131,12 +136,22 @@ public class Booking {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", dateOfJourney=" + dateOfJourney + ", bus=" + bus + ", passengers="
 				+ passengers + ", modeOfPayment=" + modeOfPayment + ", totalCost=" + totalCost + ", bookingStatus="
-				+ bookingStatus + ", deleteFlag=" + deleteFlag + "]";
+				+ bookingStatus + ", deleteFlag=" + deleteFlag + ", user="+ user +"]";
 	}
 
 	

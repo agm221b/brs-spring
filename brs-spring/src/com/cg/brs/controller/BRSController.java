@@ -253,13 +253,13 @@ public class BRSController {
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
 		booking.setBookingStatus("BOOKED");
 		User user=(User)session.getAttribute("user");
+		booking.setUser(user);
 		booking.setDeleteFlag(0);
 		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings=new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);
-		user.getBookingsList().add(booking);
 		
 		List<Passenger> passengers=booking.getPassengers();
 		model.put("passengers", passengers);
@@ -269,12 +269,18 @@ public class BRSController {
 
 	@RequestMapping(value = "/cancelcurrentbooking", method = RequestMethod.GET)
 	public String cancelCurrentBooking() {
-		return "";
+		Booking booking=(Booking)session.getAttribute("booking");
+		brsService.cancelBooking(booking.getBookingId());
+		return "jsp/Customer/CancelBooking";
 	}
 	
 	@RequestMapping(value="/viewallbookings",method=RequestMethod.GET)
 	public ModelAndView viewAllBookings() {
-		return null;
+		User user=(User)session.getAttribute("user");
+		
+		List<Booking> bookingsList=user.getBookingsList();
+		System.out.println(bookingsList);
+		return new ModelAndView("jsp/Customer/ViewBookings","bookings",bookingsList);
 	}
 
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)

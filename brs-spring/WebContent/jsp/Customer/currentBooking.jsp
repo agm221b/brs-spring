@@ -67,7 +67,7 @@
 </tr>
 </table>
 
-<a href=""><input type="button" value="Go To Home"></a>&emsp;&emsp;
+<a href="customerhome"><input type="button" value="Go To Home"></a>&emsp;&emsp;
 <a href="viewallbookings"><input type="button" value="View All Tickets"></a>&emsp;&emsp;
 <a href="cancelbooking"><input type="button" value="Cancel Ticket"></a>
 </body>

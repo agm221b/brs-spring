@@ -45,8 +45,7 @@ public class User {
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
 	private Integer phoneNumber;
-	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-	@JoinColumn(name = "booking_fk")
+	@OneToMany(cascade = CascadeType.MERGE,mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
