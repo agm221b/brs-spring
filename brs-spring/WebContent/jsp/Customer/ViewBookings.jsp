@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>Here are the list of bookings :-</h1>
+<h3>Here are the list of bookings :-</h3>
 	<table border="1" class="table table-striped">
 		<tr>
 			<th>Booking Id</th>
@@ -24,13 +24,14 @@
 
 		<a:forEach var="booking" items="${bookings}">
 			<tr>
-				<td>${booking.getBookingId()}</td>
-				<td>${booking.getDateOfJourney()}</td>
-				<td>${booking.getBus().getBusName() }</td>
-				<td>${booking.getModeOfPayment()}</td>
-				<td>${booking.getTotalCost()}</td>
-				<td>${booking.getBookingStatus()}</td>
-				<td><a  type="submit" class="waves-effect waves-light btn-small" href="cancelbooking">Cancel</a></td>
+
+				<td>${booking.bookingId}</td>
+				<td>${booking.dateOfJourney}</td>
+				<td>${booking.modeOfPayment}</td>
+				<td>${booking.totalCost}</td>
+				<td>${booking.bookingStatus}</td>
+				<td><a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a></td>
+
 			</tr>
 		</a:forEach>
 

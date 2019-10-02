@@ -39,6 +39,7 @@ public class Booking {
 	@OneToOne(cascade = CascadeType.MERGE)
 	private Bus bus;
 
+
 	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinColumn(name = "passenger_fk")
 	private List<Passenger> passengers;

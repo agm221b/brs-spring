@@ -225,6 +225,16 @@ public class BRSController {
 
 	}
 	
+	@RequestMapping(value = "/cancelbooking", method = RequestMethod.GET)
+	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
+		System.out.println(bookingId);
+		brsService.cancelBooking(bookingId);
+		Booking booking =brsService.findBookingById(bookingId);
+		System.out.println(booking);
+		session.setAttribute("booking", booking);							//failed to initialize
+		return "jsp/Customer/CancelBooking";
+	}
+	
 	@RequestMapping(value="/confirmation",method = RequestMethod.GET)
 	public String confirmPayment() {
 		return "jsp/Customer/payment";
@@ -286,5 +296,7 @@ public class BRSController {
 		List<User> userList = brsService.viewAllUsers();
 		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
+	
+	
 
 }
