@@ -261,9 +261,10 @@ public class BRSController {
 				
 	}
 
-	@RequestMapping(value = "/showbooking", method = RequestMethod.GET)
-	public String showCurrentBooking() {
-		return "";
+	@RequestMapping(value = "/viewbookings", method = RequestMethod.GET)
+	public ModelAndView viewBookings() {
+		List<Booking> bookingList =brsService.viewAllBookings();
+		return new ModelAndView("jsp/Customer/ViewBookings", "bookingList",bookingList);
 	}
 
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)

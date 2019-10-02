@@ -18,13 +18,14 @@ top: 0px;
 </style>
 </head>
 <body>
+
 <div class="page-header" align="center">
 		<h3 style="font: bolder; font-family:cursive;">BusNama : Bas Explore Karo</h3>
 	</div>
 <jsp:include page="linklib.jsp"></jsp:include>
 	
 
-	<h3 onmouseover="" align="center">
+	<h3  align="center">
 		<i>Welcome</i><br>
 	</h3>
 	<div class="container">

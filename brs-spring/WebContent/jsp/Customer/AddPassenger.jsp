@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	/** NavBar -Source -Destination -Date(Calendar) */
+	
 	<table>
 		<form:form action="addpassengerdetails" method="POST" modelAttribute="passenger">
 			<tr>
@@ -45,8 +45,11 @@
 
 			<tr>
 				<td><input type="submit" value="Add"><%session.getAttribute("transactionId"); %></td>
-				<td><a href="confirmation" ><input type="button">
-						value="Proceed" /></a>
+				<td><input type="reset" value="Clear"></td>
+				<td>
+				<a href="confirmation"> <input type="button"
+				class="waves-effect waves-light btn" value="Proceed"></a>
+				</td>
 			</tr>
 		</form:form>
 	</table>
