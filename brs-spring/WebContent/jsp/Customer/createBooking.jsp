@@ -10,7 +10,7 @@
 </head>
 <body>
 Bus details:
-<table border=1>
+<table border=1 style="table-hover">
 <tr>
 <td>Bus Id</td>
 <td>Bus Name</td>
@@ -34,6 +34,10 @@ Bus details:
 
 
 <br/>
-<a href="addpassenger">Add passenger</a>
+
+<a href="addpassenger"> <input type="button"
+				class="waves-effect waves-light btn" value="Add Passenger"></a>
+
+<jsp:include page="../linklib.jsp" />
 </body>
 </html>

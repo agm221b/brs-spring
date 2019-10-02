@@ -9,7 +9,7 @@
 <title>Show Running Buses</title>
 </head>
 <body>
-<table border=1>
+<table border=1 style="table-bordered">
 <tr>
 <th>Bus Id</th>
 <th>Bus Name</th>
@@ -31,7 +31,10 @@
 <td>${transaction.getBus().getStartTime()}</td>
 <td>${transaction.getBus().getEndTime()}</td>
 <td>${transaction.getAvailableSeats()}</td>
-<td><a href="createbooking?transactionId=${transaction.getTransactionId()}">Book</a></td>
+<td>
+<a href="createbooking?transactionId=${transaction.getTransactionId()}"> <input type="button"
+				class="waves-effect waves-light btn" value="Book"></a>
+</td>
 
 </tr>
 </show:forEach>

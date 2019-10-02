@@ -14,27 +14,33 @@
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<br>
 	<search:form method="post" action="showrunningbuses" modelAttribute="bus">
-		<div class="row">
-			<div class="input-field col s6">
-				<label for="source">Source</label> <search:select path="source" items="${src }" /> <span style="color: red;"></span>
-			</div>
+	
+				 <span style="color: red;"></span>
 			<br>
-			<div class="input-field col s6">
-				<label for="destination">Destination</label> 
-			</div>
-			<div class="input-field col s6">
-				 <search:select path="destination" items="${dest }" /> <span
-					style="color: red;"></span>
-			</div>
-			<table>
+				
+			
+				 
+			
+			<table class="striped" style="padding: 20px;">
+			
 			<tr>
-			<td><search:select path="source" items="${src }" /></td>
-			<td><search:select path="destination" items="${dest }" /></td>
+			<td><label for="source">Source</label> 
+			</td>
 			</tr>
+			
+			<tr>
+			<td><search:select cssClass="form-control" path="source" items="${src }" />
+			</td>
+			</tr>
+			
+			<tr>
+			<td><label for="destination">Destination</label>  <search:select cssClass="form-control" path="destination" items="${dest }" /> <span
+					style="color: red;"></span>
+			</td>
+			</tr>
+			
+			
 			</table>
-			<div class="input-field col s6">
-				<label for="destination">Destination</label> 
-			</div>
 			<br>
 			<div class="input-field col s6">
 				<!-- to work on datepicker  -->
@@ -43,7 +49,7 @@
 					style="color: red;"></span>
 			</div>
 			<br>
-		</div>
+		
 		
 
 		<div class="section">
@@ -61,7 +67,7 @@
 	</search:form>
 	<br />
 	<h4>List Of Running Buses</h4>
-	<%-- <jsp:include page="showRunningBuses.jsp"></jsp:include> --%>
-	<%-- <jsp:include page="../linklib.jsp"></jsp:include> --%>
+	<jsp:include page="showRunningBuses.jsp"></jsp:include>
+	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>
