@@ -72,7 +72,7 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
-	public Integer removeBooking(Integer bookingId) {
+	public Integer cancelBooking (Integer bookingId) {
 		// TODO Auto-generated method stub
 		return brsDao.removeBooking(bookingId);
 	}

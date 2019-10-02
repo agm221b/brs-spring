@@ -251,7 +251,8 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/viewcurrentbooking",method=RequestMethod.GET)
-	public ModelAndView viewCurrentBooking() {
+	public ModelAndView viewCurrentBooking(Map<String,Object> model) {
+		
 		Booking booking=(Booking)session.getAttribute("booking");
 		List<Passenger> passengerList=(List<Passenger>)session.getAttribute("passengerList");
 		System.out.println(passengerList);
@@ -261,22 +262,44 @@ public class BRSController {
 		booking.setBookingId(booking.getBookingId());
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
 		booking.setBookingStatus("BOOKED");
+		User user=(User)session.getAttribute("user");
+		booking.setUser(user);
 		booking.setDeleteFlag(0);
 		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings=new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);
+		
+		List<Passenger> passengers=booking.getPassengers();
+		model.put("passengers", passengers);
 		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
 				
 	}
 
+
+	@RequestMapping(value = "/cancelcurrentbooking", method = RequestMethod.GET)
+	public String cancelCurrentBooking() {
+		Booking booking=(Booking)session.getAttribute("booking");
+		brsService.cancelBooking(booking.getBookingId());
+		return "jsp/Customer/CancelBooking";
+	}
+	
+	@RequestMapping(value="/viewallbookings",method=RequestMethod.GET)
+	public ModelAndView viewAllBookings() {
+		User user=(User)session.getAttribute("user");
+		List<Booking> bookingsList=user.getBookingsList();
+		System.out.println(bookingsList);
+		return new ModelAndView("jsp/Customer/ViewBookings","bookings",bookingsList);
+	}
+/*=======
 	@RequestMapping(value = "/viewbookings", method = RequestMethod.GET)
 	public ModelAndView viewBookings() {
 		List<Booking> bookingList =brsService.viewAllBookings();
 		return new ModelAndView("jsp/Customer/ViewBookings", "bookingList",bookingList);
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 	}
-
+*/
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();
