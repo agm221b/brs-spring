@@ -137,7 +137,7 @@ public class BRSController {
 				busTransaction.setDeleteFlag(0);
 				brsService.addTransaction(busTransaction);
 			}
-			return "jsp/home";
+			return "jsp/Admin/AdminHome";
 		}
 	}
 
@@ -154,21 +154,26 @@ public class BRSController {
 	}
 
 	@RequestMapping(value = "/showrunningbuses", method = RequestMethod.POST)
-	public ModelAndView showRunningBuses(@RequestParam("source") String source,
-			@RequestParam("destination") String destination,
-			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney) {
+	public ModelAndView showRunningBuses(@ModelAttribute("bus") Bus bus,
+			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney, Map<String,Object> dropdown) {
+		List<String> src = brsService.findSrc();
+		List<String> dest = brsService.findDest();
+		System.out.println(src);
+		dropdown.put("src",src);
+		dropdown.put("dest",dest);
 		session.setAttribute("dateOfJourney", dateOfJourney);
-		session.setAttribute("source", source);
-		session.setAttribute("destination", destination);
-		List<BusTransaction> transactionList = brsService.searchBuses(source, destination, dateOfJourney);
+		session.setAttribute("source", bus.getSource());
+		session.setAttribute("destination", bus.getDestination());
+		List<BusTransaction> transactionList = brsService.searchBuses(bus.getSource(), bus.getDestination(), dateOfJourney);
 		System.out.println(transactionList);
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
 
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
-	public String addBooking(@ModelAttribute("booking") Bus bus, Map<String,Object> dropdown) {
+	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String,Object> dropdown) {
 		List<String> src = brsService.findSrc();
 		List<String> dest = brsService.findDest();
+		System.out.println(src);
 		dropdown.put("src",src);
 		dropdown.put("dest",dest);
 		return "jsp/Customer/AddBooking";

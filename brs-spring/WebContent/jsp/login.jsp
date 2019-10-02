@@ -12,7 +12,7 @@
 <body>
 
 
-	<div class="row">
+	<div class="container">
 		<form class="col s6" action="login" method="post">
 			
 
