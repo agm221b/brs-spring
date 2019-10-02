@@ -13,15 +13,27 @@
 <body>
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<br>
-	<search:form method="post" action="showrunningbuses" modelAttribute="booking">
+	<search:form method="post" action="showrunningbuses" modelAttribute="bus">
 		<div class="row">
 			<div class="input-field col s6">
 				<label for="source">Source</label> <search:select path="source" items="${src }" /> <span style="color: red;"></span>
 			</div>
 			<br>
 			<div class="input-field col s6">
-				<label for="destination">Destination</label> <search:select path="destination" items="${dest }"/> <span
+				<label for="destination">Destination</label> 
+			</div>
+			<div class="input-field col s6">
+				 <search:select path="destination" items="${dest }" /> <span
 					style="color: red;"></span>
+			</div>
+			<table>
+			<tr>
+			<td><search:select path="source" items="${src }" /></td>
+			<td><search:select path="destination" items="${dest }" /></td>
+			</tr>
+			</table>
+			<div class="input-field col s6">
+				<label for="destination">Destination</label> 
 			</div>
 			<br>
 			<div class="input-field col s6">
@@ -49,7 +61,7 @@
 	</search:form>
 	<br />
 	<h4>List Of Running Buses</h4>
-	<jsp:include page="showRunningBuses.jsp"></jsp:include>
-	<jsp:include page="../linklib.jsp"></jsp:include>
+	<%-- <jsp:include page="showRunningBuses.jsp"></jsp:include> --%>
+	<%-- <jsp:include page="../linklib.jsp"></jsp:include> --%>
 </body>
 </html>
