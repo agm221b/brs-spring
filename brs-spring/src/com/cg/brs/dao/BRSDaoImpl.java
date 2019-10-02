@@ -73,7 +73,6 @@ public class BRSDaoImpl implements BRSDao {
 	public List<String> findSrc() {
 		// TODO Auto-generated method stub
 		TypedQuery<String> query = entityManager.createQuery("SELECT distinct(bus.source) FROM Bus bus", String.class); 
-		
 		return query.getResultList();
 	}
 
@@ -145,12 +144,11 @@ public class BRSDaoImpl implements BRSDao {
 	}
 
 	@Override
-	public BusTransaction updateTransaction(Integer transactionId) {
+	public BusTransaction updateAvailableSeats(Integer transactionId,Integer passengersCount) {
 		// TODO Auto-generated method stub
 		BusTransaction busTransaction=findTransactionById(transactionId);
-		//busTransaction.setAvailableSeats(busTransaction.getAvailableSeats()-passengersCount);		//Integer passengerCount
+		busTransaction.setAvailableSeats(busTransaction.getAvailableSeats()-passengersCount);		//Integer passengerCount
 		busTransaction=entityManager.merge(busTransaction);
-		
 		return busTransaction;
 	}
 

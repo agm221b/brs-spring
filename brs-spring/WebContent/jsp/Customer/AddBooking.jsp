@@ -13,16 +13,14 @@
 <body>
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<br>
-	<search:form method="post" action="showrunningbuses">
+	<search:form method="post" action="showrunningbuses" modelAttribute="booking">
 		<div class="row">
 			<div class="input-field col s6">
-				<label for="source">Source</label> <search:select id="source" type="text"
-					class="validate" path="source" items="${src }" /> <span style="color: red;"></span>
+				<label for="source">Source</label> <search:select path="source" items="${src }" /> <span style="color: red;"></span>
 			</div>
 			<br>
 			<div class="input-field col s6">
-				<label for="destination">Destination</label> <search:select id="destination"
-					type="text" class="validate" path="destination" items="${dest }"/> <span
+				<label for="destination">Destination</label> <search:select path="destination" items="${dest }"/> <span
 					style="color: red;"></span>
 			</div>
 			<br>

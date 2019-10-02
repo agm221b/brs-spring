@@ -108,10 +108,9 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
-	public BusTransaction updateTransaction(Integer busTransactionId) {
+	public BusTransaction updateAvailableSeats(Integer busTransactionId,Integer passengersCount) {
 		// TODO Auto-generated method stub
-		
-		return brsDao.saveTransaction(brsDao.findTransactionById(busTransactionId));
+		return brsDao.updateAvailableSeats(busTransactionId, passengersCount);
 	}
 
 	@Override

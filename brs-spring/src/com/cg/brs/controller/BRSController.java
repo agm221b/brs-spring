@@ -166,7 +166,7 @@ public class BRSController {
 	}
 
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
-	public String addBooking(@ModelAttribute("booking") Booking booking, Map<String,Object> dropdown) {
+	public String addBooking(@ModelAttribute("booking") Bus bus, Map<String,Object> dropdown) {
 		List<String> src = brsService.findSrc();
 		List<String> dest = brsService.findDest();
 		dropdown.put("src",src);
@@ -238,18 +238,17 @@ public class BRSController {
 	@RequestMapping(value="/viewcurrentbooking",method=RequestMethod.GET)
 	public ModelAndView viewCurrentBooking() {
 		Booking booking=(Booking)session.getAttribute("booking");
-		List<Passenger> passengerList=booking.getPassengers();
+		List<Passenger> passengerList=(List<Passenger>)session.getAttribute("passengerList");
 		System.out.println(passengerList);
 		int passengersCount=passengerList.size();
 		Integer busId=(Integer) session.getAttribute("busId");
 		Bus bus=brsService.viewBusById(busId);
+		booking.setBookingId(booking.getBookingId());
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
 		booking.setBookingStatus("BOOKED");
 		booking.setDeleteFlag(0);
 		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
-		Integer availableSeats=(Integer) session.getAttribute("availableSeats");
-		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
-		busTransaction.setAvailableSeats(availableSeats-passengersCount);
+		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings=new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);

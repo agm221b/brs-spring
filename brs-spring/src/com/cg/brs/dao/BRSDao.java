@@ -34,7 +34,7 @@ public interface BRSDao {
 	public BusTransaction saveTransaction(BusTransaction busTransaction);
 	public List<BusTransaction> findAllTransactions();
 	public BusTransaction findTransactionById(Integer transactionId);
-	public BusTransaction updateTransaction(Integer transactionId);
+	public BusTransaction updateAvailableSeats(Integer transactionId,Integer passengerCount);
 	public List<BusTransaction> findTransactionsByDate(LocalDate date);
 	
 //	public BusTransaction insertBookingIntoTransaction(Booking booking, BusTransaction busTransaction);

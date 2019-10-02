@@ -35,9 +35,5 @@ Bus details:
 
 <br/>
 <a href="addpassenger">Add passenger</a>
-<br/>
-<jsp:include page="ShowPassengerList.jsp"></jsp:include>
-<br>
-<jsp:include page="payment.jsp"></jsp:include>
 </body>
 </html>

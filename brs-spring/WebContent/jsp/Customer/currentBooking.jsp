@@ -31,5 +31,14 @@
 </tr>
 </viewbooking:forEach>
 </table>
+
+<table border=1>
+<tr>
+<th>Passenger Id</th>
+<th>Passenger Name</th>
+<th>Passenger Age</th>
+<th>Passenger Gender</th>
+</tr>
+</table>
 </body>
 </html>
