@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>Here are the list of bookings :-</h1>
+<h3>Here are the list of bookings :-</h3>
 	<table border="1" class="table table-striped">
 		<tr>
 			<th>Booking Id</th>
@@ -28,7 +28,7 @@
 				<td>${booking.modeOfPayment}</td>
 				<td>${booking.totalCost}</td>
 				<td>${booking.bookingStatus}</td>
-				<td><a  type="submit" class="waves-effect waves-light btn-small" href="cancelbooking">Cancel</a></td>
+				<td><a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a></td>
 			</tr>
 		</a:forEach>
 

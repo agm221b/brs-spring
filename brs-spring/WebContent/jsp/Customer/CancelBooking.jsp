@@ -10,24 +10,10 @@
 </head>
 <body>
 
-Cancel a Booking:
-	<form action="cancelbooking" method="POST">
-		<table>
-
-			<tr>
-				<td>Booking ID</td>
-				<td><input name="bookingId" /></td>
-			</tr>
-
-
-			<tr>
-				<td><input type="submit" value="Cancel"></td>
-			</tr>
-
-		</table>
-		</form>
-		<br><br>
-		<jsp:include page="ViewBookings.jsp"/>
+<h4>Your Booking has been cancelled</h4>
+	
+		<br>
+		<a  href="jsp/Customer/CustomerHome.jsp" class="waves-effect waves-light btn-small" >Go Back</a>
 		<jsp:include page="../linklib.jsp" />
 
 </body>

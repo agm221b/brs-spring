@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Current Booking Details</title>
 </head>
 <body>
-<h1>Current Booking Details</h1>
+<h4>Current Booking Details</h4>
 <br>
-<table border=1>
+<table border=1 class="table-hover">
 <tr>
-<th>Booking Id</th>
+<th style="display: none">Booking Id</th>
 <th>Source</th>
 <th>Destination</th>
 <th>Date Of Journey</th>
@@ -22,7 +22,7 @@
 </tr>
 <viewbooking:forEach var="booking" items="${bookings}">
 <tr>
-<td>${booking.getBookingId()}</td>
+<td style="display: none">${booking.getBookingId()}</td>
 <td>${booking.getBus().getSource() }</td>
 <td>${booking.getBus().getDestination() }</td>
 <td>${booking.getDateOfJourney() }</td>
@@ -40,5 +40,6 @@
 <th>Passenger Gender</th>
 </tr>
 </table>
+<jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

@@ -82,6 +82,14 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return brsDao.findAllBookings();
 	}
+	
+	
+
+	@Override
+	public Booking findBookingById(Integer bookingId) {
+		// TODO Auto-generated method stub
+		return brsDao.findBookingById(bookingId);
+	}
 
 	@Override
 	public BusTransaction addTransaction(BusTransaction transaction) {

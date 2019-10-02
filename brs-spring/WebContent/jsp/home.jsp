@@ -9,10 +9,13 @@
 <style type="text/css">
 
 .page-header{
-position:relative;
-top: 0px;
+
+	top: 0px;
 	align-content:center;
 	background-color: #ffe0b2;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	
 }
 </style>

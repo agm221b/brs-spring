@@ -22,6 +22,7 @@ public interface BRSService {
 	public Booking createBooking(Booking booking);
 	public Integer removeBooking(Integer bookingId);
 	public List<Booking> viewAllBookings();
+	public Booking findBookingById(Integer bookingId);
 	
 	public BusTransaction addTransaction(BusTransaction transaction);
 	public List<BusTransaction> viewAllTransactions();
