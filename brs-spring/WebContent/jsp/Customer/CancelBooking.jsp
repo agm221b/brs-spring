@@ -13,7 +13,7 @@
 <h4>Your Booking has been cancelled</h4>
 	
 		<br>
-		<a  href="jsp/Customer/CustomerHome.jsp" class="waves-effect waves-light btn-small" >Go Back</a>
+		<a  href="viewallbookings" class="waves-effect waves-light btn-small" >Go Back</a>
 		<jsp:include page="../linklib.jsp" />
 
 </body>

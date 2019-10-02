@@ -100,17 +100,13 @@ public class BRSController {
 			return "jsp/home";
 		}
 	}
+	
+	
 
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
 	public String showHelpPage() {
 		return "jsp/help";
 	}
-
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String showTestPage(@ModelAttribute("test") Booking booking) {
-		return "jsp/test";
-	}
-
 	public String showBusDetails() {
 		return "jsp/test";
 	}
@@ -168,7 +164,10 @@ public class BRSController {
 		System.out.println(transactionList);
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
-
+	
+	public String deleteBus() {
+		return "jsp/Admin/DeleteBuses";
+	}
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String,Object> dropdown) {
 		List<String> src = brsService.findSrc();
@@ -271,8 +270,7 @@ public class BRSController {
 		bookings.add(booking);
 		brsService.createBooking(booking);
 		
-		List<Passenger> passengers=booking.getPassengers();
-		model.put("passengers", passengers);
+		model.put("passengers", passengerList);
 		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
 				
 	}
@@ -292,14 +290,7 @@ public class BRSController {
 		System.out.println(bookingsList);
 		return new ModelAndView("jsp/Customer/ViewBookings","bookings",bookingsList);
 	}
-/*=======
-	@RequestMapping(value = "/viewbookings", method = RequestMethod.GET)
-	public ModelAndView viewBookings() {
-		List<Booking> bookingList =brsService.viewAllBookings();
-		return new ModelAndView("jsp/Customer/ViewBookings", "bookingList",bookingList);
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
-	}
-*/
+
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();

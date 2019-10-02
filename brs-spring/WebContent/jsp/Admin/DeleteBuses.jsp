@@ -10,7 +10,6 @@
 </head>
 <body>
 
-
 <jsp:include page="../linklib.jsp"></jsp:include>
 
 </body>

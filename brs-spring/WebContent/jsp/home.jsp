@@ -38,9 +38,12 @@
 			<!-- MENU LINKS -->
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#home" class="smoothScroll">Home</a></li>
-					<li><a href="#feature" class="smoothScroll">Features</a></li>
-					<li><a href="#about" class="smoothScroll">About us</a></li>
+					<li><a href="home" class="smoothScroll">Home</a></li>
+					<li><a href="aboutUs" class="smoothScroll">About us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login" class="smoothScroll">Login</a></li>
+					<li><a href="register" class="smoothScroll">Register</a></li>
 				</ul>
 
 			</div>
@@ -78,7 +81,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img class="second-slide" src="webjar/img/bus1.jpg"
+				<img class="second-slide" src="webjar/img/bus2.jpg"
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -94,7 +97,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img class="third-slide" src="webjar/img/bus1.jpg"
+				<img class="third-slide" src="webjar/img/bus3.png"
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
