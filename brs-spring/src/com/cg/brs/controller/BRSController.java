@@ -236,7 +236,8 @@ public class BRSController {
 	}
 	
 	@RequestMapping(value="/viewcurrentbooking",method=RequestMethod.GET)
-	public ModelAndView viewCurrentBooking() {
+	public ModelAndView viewCurrentBooking(Map<String,Object> model) {
+		
 		Booking booking=(Booking)session.getAttribute("booking");
 		List<Passenger> passengerList=(List<Passenger>)session.getAttribute("passengerList");
 		System.out.println(passengerList);
@@ -246,19 +247,29 @@ public class BRSController {
 		booking.setBookingId(booking.getBookingId());
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
 		booking.setBookingStatus("BOOKED");
+		User user=(User)session.getAttribute("user");
 		booking.setDeleteFlag(0);
 		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings=new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);
+		user.getBookingsList().add(booking);
+		
+		List<Passenger> passengers=booking.getPassengers();
+		model.put("passengers", passengers);
 		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
 				
 	}
 
-	@RequestMapping(value = "/showbooking", method = RequestMethod.GET)
-	public String showCurrentBooking() {
+	@RequestMapping(value = "/cancelcurrentbooking", method = RequestMethod.GET)
+	public String cancelCurrentBooking() {
 		return "";
+	}
+	
+	@RequestMapping(value="/viewallbookings",method=RequestMethod.GET)
+	public ModelAndView viewAllBookings() {
+		return null;
 	}
 
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)

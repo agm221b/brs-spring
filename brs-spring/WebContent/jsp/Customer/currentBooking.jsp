@@ -32,6 +32,25 @@
 </viewbooking:forEach>
 </table>
 
+<h3>Bus details</h3>
+
+<table border=1>
+<tr>
+<th>Bus Name</th>
+<th>Bus Type</th>
+<th>Bus Class</th>
+<th>Start Time</th>
+<th>End Time</th>
+</tr>
+<viewbooking:forEach var="booking" items="${bookings }">
+<td>${booking.getBus().getBusName() }</td>
+<td>${booking.getBus().getBusType() }</td>
+<td>${booking.getBus().getBusClass() }</td>
+<td>${booking.getBus().getStartTime() }</td>
+<td>${booking.getBus().getEndTime() }</td>
+</viewbooking:forEach>
+</table>
+<h3>Passenger Details</h3>
 <table border=1>
 <tr>
 <th>Passenger Id</th>
@@ -39,6 +58,17 @@
 <th>Passenger Age</th>
 <th>Passenger Gender</th>
 </tr>
+<viewbooking:forEach var="passenger" items="${passengers }"></viewbooking:forEach>
+<tr>
+<td>${passenger.getPassengerId() }</td>
+<td>${passenger.getPassengerName() }</td>
+<td>${passenger.getPassengerAge() }</td>
+<td>${passenger.getPassengerGender() }</td>
+</tr>
 </table>
+
+<a href=""><input type="button" value="Go To Home"></a>&emsp;&emsp;
+<a href="viewallbookings"><input type="button" value="View All Tickets"></a>&emsp;&emsp;
+<a href="cancelbooking"><input type="button" value="Cancel Ticket"></a>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class User {
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
 	private Integer phoneNumber;
-	@OneToMany(cascade = CascadeType.MERGE)
+	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinColumn(name = "booking_fk")
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
