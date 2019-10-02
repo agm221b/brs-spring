@@ -58,7 +58,7 @@
 <th>Passenger Age</th>
 <th>Passenger Gender</th>
 </tr>
-<viewbooking:forEach var="passenger" items="${bookings.getPassengers() }"></viewbooking:forEach>
+<viewbooking:forEach var="passenger" items="${passengers}"></viewbooking:forEach>
 <tr>
 <td>${passenger.getPassengerId() }</td>
 <td>${passenger.getPassengerName() }</td>

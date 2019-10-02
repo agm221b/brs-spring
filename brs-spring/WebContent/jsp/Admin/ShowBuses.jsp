@@ -42,8 +42,8 @@
 				<td>${bus.costPerSeat}</td>
 
 
-				<td><a href="modifybus"> <input type="button" value="Edit" /></a>
-				<td><a href="deletebus"> <input type="button"
+				<td><a href="modifybus?busId=${bus.getBusId()}"> <input type="button" value="Edit" /></a>
+				<td><a href="deletebus?busId=${bus.getBusId()}"> <input type="button"
 						value="Delete" /></a>
 			</tr>
 		</tab:forEach>
