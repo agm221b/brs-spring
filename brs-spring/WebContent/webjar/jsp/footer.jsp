@@ -5,6 +5,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Footer</title>
+<style type="text/css">
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+</style>
+
 </head>
 <body>
 <jsp:include page="../../jsp/linklib.jsp"></jsp:include>
@@ -37,6 +49,8 @@
 			</div>
 		</footer>
 	</section>
+	
+	
 
 </body>
 </html>
