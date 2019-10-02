@@ -64,6 +64,7 @@
 
 		</div>
 		<input type="submit" value="Search Buses">
+		
 	</search:form>
 	<br />
 	<h4>List Of Running Buses</h4>

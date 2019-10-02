@@ -229,7 +229,7 @@ public class BRSController {
 	@RequestMapping(value = "/cancelbooking", method = RequestMethod.GET)
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
 		System.out.println(bookingId);
-		brsService.removeBooking(bookingId);
+		brsService.cancelBooking(bookingId);
 		Booking booking =brsService.findBookingById(bookingId);
 		System.out.println(booking);
 		session.setAttribute("booking", booking);							//failed to initialize
