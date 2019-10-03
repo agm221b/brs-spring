@@ -38,19 +38,28 @@ public class BRSController {
 	BRSService brsService;
 
 	/**
-	 * @return
+	 * directs to the home page of the web site
+	 * @return jsp/home
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String showHomePage() {
 		return "jsp/home";
 	}
 
+	/**
+	 * directs to the home page of the admin
+	 * @return jsp/Admin/AdminHome
+	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
 		return "jsp/Admin/AdminHome";
 
 	}
 
+	/**
+	 * directs to the home page of the customer
+	 * @return jsp/Customer/CustomerHome
+	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
 		return "jsp/Customer/CustomerHome";
@@ -58,13 +67,22 @@ public class BRSController {
 	}
 
 	/**
-	 * @return
+	 * directs to the login page. Common for both admin and customer
+	 * @return jsp/login
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {
 		return "jsp/login";
 	}
 
+	/**
+	 * validates the login credentials
+	 * @param username
+	 * @param password
+	 * @param model
+	 * @param session
+	 * @return 
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) {
@@ -81,6 +99,10 @@ public class BRSController {
 		return "jsp/login";
 	}
 
+	/**
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
