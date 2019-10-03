@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,21 @@
 .page-header {
 	top: 0px;
 	align-content: center;
-	background-color: #ffe0b2;
+	/* background-color: #ffe0b2; */
 	margin: 0px;
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+
+#myCarousel{
+	height: 700px;
+	width: 100%;
 }
 </style>
 </head>
 <body>
 
-<jsp:include page="linklib.jsp"></jsp:include>
+	<jsp:include page="linklib.jsp"></jsp:include>
 	<section class="navbar custom-navbar navbar-fixed-top"
 		role="navigation">
 		<div class="container">
@@ -31,8 +37,7 @@
 					<span class="icon icon-bar"></span>
 				</button>
 
-				<!-- lOGO TEXT HERE-->
-				<!-- <a href="index.html" class="navbar-brand">Soft Landing</a> -->
+				
 			</div>
 
 			<!-- MENU LINKS -->
@@ -60,54 +65,44 @@
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="item active" style="padding: 40px; ">
-				<img class="first-slide" src="webjar/img/bus1.jpg" style="width: 100%; height: 350px;"
-					alt="First slide">
+			<div class="item active" style="padding: 40px;">
+				<img class="first-slide" src="webjar/img/bus1.jpg"
+					style="width: 100%; height: 600px;" alt="First slide">
+
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Example headline.</h1>
+						<h1 style="color: orange;">BusNama : Bas Explore Karo</h1>
+						<p></p>
 						<p>
-							Note: If you're viewing this page via a
-							<code>file://</code>
-							URL, the "next" and "previous" Glyphicon buttons on the left and
-							right might not load/display properly due to web browser security
-							rules.
-						</p>
-						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Sign
-								up today</a>
+							<a class="btn btn-lg btn-primary" href="login" role="button">Login</a>
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="item" style="padding-left: 10px; padding-right: 10px; ">
-				<img class="second-slide" src="webjar/img/bus2.jpg" style="width: 100%; height: 150px;"
+
+			<div class="item" style="padding: 40px;">
+				<img class="second-slide" src='<c:out value="webjar/img/bus2.jpg"/>' style="width: 100%; height: 600px;"	
+
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
+						<!-- <h1>Welcome</h1> -->
+						<p></p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-								more</a>
+							<a class="btn btn-lg btn-primary" href="aboutUs" role="button">About Us</a>
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="item" style="padding-left: 10px; padding-right: 10px; ">
-				<img class="third-slide" src="webjar/img/bus3.png" style="width: 100%; height: 150px;"
-					alt="Third slide">
+
+			<div class="item" style="padding: 40px;">
+				<img class="third-slide" src="webjar/img/bus3.jpg" style="width: 100%; height: 600px;" alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>One more for good measure.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-							dolor id nibh ultricies vehicula ut id elit.</p>
+						<h1>One stop for all your favorite buses.</h1>
+						<p></p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
-								gallery</a>
+							
 						</p>
 					</div>
 				</div>
@@ -123,11 +118,9 @@
 		</a>
 	</div>
 
-
-
-	<section id="home" 
-		style="background-image: url(brs-spring/WebContent/webjar/img/bus2.jpg); ">
-		<!-- <div class="overlay"></div> -->
+	<!-- <section id="home"  background-size: 100%;">
+		<div class="overlay"></div>
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 		<div class="container">
 			<div class="page-header" align="center">
 				<h3 style="font: bolder; font-family: cursive;">BusNama : Bas
@@ -137,40 +130,24 @@
 
 				<div class="col-md-offset-3 col-md-6 col-sm-12">
 					<div class="home-info">
-						<h3 align="center">
-							<i>Welcome</i><br>
-						</h3>
+						
 						<div class="container">
-							<div class="row" align="left">
-								<a href="login"> <input type="button"
-									class="waves-effect waves-light btn" value="Login"></a><br>
-							</div>
-							<div class="row" align="left">
-								<a href="register"> <input type="button"
-									class="waves-effect waves-light btn" value="Register"></a><br>
-							</div>
-							<div class="row" align="left">
-								<a href="help"> <input type="button"
-									class="waves-effect waves-light btn" value="Help"></a><br>
-							</div>
-							<div class="row" align="left">
-								<a href="aboutUs"> <input type="button"
-									class="waves-effect waves-light btn" value="About Us"></a><br>
-							</div>
+							
+						
 						</div>
 					</div>
 
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 
-<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
+	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
 
 
-	
-	
+
+
 
 </body>
 </html>

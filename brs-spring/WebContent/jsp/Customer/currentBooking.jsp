@@ -5,10 +5,9 @@
     <%@ page import="java.util.List" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="com.cg.brs.dto.Passenger" %>
+    
 <!DOCTYPE html>
-<% List<Passenger> passengers= (ArrayList)session.getAttribute("passengerList");
-request.setAttribute("passengers",passengers);
-%>
+<% List<Passenger> passengers= (ArrayList)session.getAttribute("passengerList");%>
 <html>
 <head>
 <meta charset="ISO-8859-1">

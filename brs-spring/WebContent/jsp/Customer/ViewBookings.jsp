@@ -41,6 +41,7 @@
 				<td>${booking.modeOfPayment}</td>
 				<td>${booking.totalCost}</td>
 				<td>${booking.bookingStatus}</td>
+				
 				<td><a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a></td>
 
 			</tr>
@@ -49,6 +50,8 @@
 	</table>
 	
 	<a href="customerhome"><input type="button" value="Go to home"></a>
+	<a href="report"><input type="button" value="Download booking report"></a>
+	
 <jsp:include page="../linklib.jsp"></jsp:include>
 </body>
 </html>

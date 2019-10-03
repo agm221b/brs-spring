@@ -9,7 +9,8 @@
 #footer {
 	position: fixed;
 	left: 0;
-	bottom: 0 px;
+	height: auto;
+	bottom: 0px;
 	width: 100%;
 	background-color: red;
 	color: white;

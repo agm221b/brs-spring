@@ -64,7 +64,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input type="submit" class="waves-effect waves-light btn">Add User</a><br>
+					<input type="submit" class="waves-effect waves-light btn"><br>
 				</div>
 			</div>
 		</form:form>
