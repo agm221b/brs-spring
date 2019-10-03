@@ -9,7 +9,10 @@
 
 </head>
 <body>
-
+<h1>The bus has been deleted successfully.</h1>
+<br>
+<br>
+<a href="showbuses"><input type="button" value="Show All Buses"></a>
 <jsp:include page="../linklib.jsp"></jsp:include>
 
 </body>

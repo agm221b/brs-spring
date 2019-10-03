@@ -165,7 +165,10 @@ public class BRSController {
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
 	
-	public String deleteBus() {
+	@RequestMapping(value="/deletebus",method = RequestMethod.GET)
+	public String deleteBus(@RequestParam("busId") Integer busId) {
+		brsService.removeBus(busId);
+		
 		return "jsp/Admin/DeleteBuses";
 	}
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
@@ -233,6 +236,14 @@ public class BRSController {
 		System.out.println(booking);
 		session.setAttribute("booking", booking);							//failed to initialize
 		return "jsp/Customer/CancelBooking";
+	}
+	
+	@RequestMapping(value = "/viewupdatedbookings")
+	public ModelAndView updateBookingsList() {
+		User user=(User)session.getAttribute("user");
+		List<Booking> bookings=user.getBookingsList();
+		System.out.println("bookings");
+		return new ModelAndView("jsp/Customer/UpdatedBookings","bookings",bookings);
 	}
 	
 	@RequestMapping(value="/confirmation",method = RequestMethod.GET)
