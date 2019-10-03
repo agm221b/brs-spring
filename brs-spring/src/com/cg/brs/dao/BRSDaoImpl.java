@@ -24,6 +24,9 @@ public class BRSDaoImpl implements BRSDao {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/**
+	 *method to add bus object by orm methodology
+	 */
 	@Override
 	public Bus saveBus(Bus bus) {
 		// TODO Auto-generated method stub
@@ -31,6 +34,9 @@ public class BRSDaoImpl implements BRSDao {
 		return bus;
 	}
 
+	/**
+	 *method to remove bus, returns 1 if removed else 0
+	 */
 	@Override
 	public Integer removeBus(Integer busId) {
 		// TODO Auto-generated method stub
@@ -43,6 +49,9 @@ public class BRSDaoImpl implements BRSDao {
 		return 1;
 	}
 
+	/**
+	 *method to findAllBuses using typedquery
+	 */
 	@Override
 	public List<Bus> findAllBuses() {
 		// TODO Auto-generated method stub
@@ -51,6 +60,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to 
+	 */
 	@Override
 	public List<Object[]> findBusByRoutes(String source, String destination) {
 		// TODO Auto-generated method stub
