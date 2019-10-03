@@ -61,7 +61,7 @@ public class BRSDaoImpl implements BRSDao {
 	}
 
 	/**
-	 *method to 
+	 *method to return list of buses based on given route
 	 */
 	@Override
 	public List<Object[]> findBusByRoutes(String source, String destination) {
@@ -73,6 +73,9 @@ public class BRSDaoImpl implements BRSDao {
 		return results;
 	}
 
+	/**
+	 *method to find bus based on given busId 
+	 */
 	@Override
 	public Bus findBusById(Integer busId) {
 		// TODO Auto-generated method stub
@@ -81,6 +84,9 @@ public class BRSDaoImpl implements BRSDao {
 	
 	
 
+	/**
+	 *method to return the list of unique bus sources
+	 */
 	@Override
 	public List<String> findSrc() {
 		// TODO Auto-generated method stub
@@ -88,6 +94,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to return the list of unique bus destinations
+	 */
 	@Override
 	public List<String> findDest() {
 		// TODO Auto-generated method stub
@@ -95,6 +104,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to add booking object
+	 */
 	@Override
 	public Booking saveBooking(Booking booking) {
 		booking=entityManager.merge(booking);
@@ -104,6 +116,9 @@ public class BRSDaoImpl implements BRSDao {
 		return booking;								//to be set
 	}
 
+	/**
+	 *method to remove booking based on given bookingId
+	 */
 	@Override
 	public Integer removeBooking(Integer bookingId) {
 		// TODO Auto-generated method stub
@@ -113,12 +128,18 @@ public class BRSDaoImpl implements BRSDao {
 		return 1;
 	}
 
+	/**
+	 *method to find booking based on given bookingId
+	 */
 	@Override
 	public Booking findBookingById(Integer bookingId) {
 		// TODO Auto-generated method stub
 		return entityManager.find(Booking.class, bookingId);
 	}
 
+	/**
+	 *method to return list of all bookings
+	 */
 	@Override
 	public List<Booking> findAllBookings() {
 		// TODO Auto-generated method stub
