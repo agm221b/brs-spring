@@ -11,7 +11,7 @@
 <body>
 
 <h4>Your Booking has been cancelled</h4>
-		<a href="viewallbookings"><input type="button" value="View All Bookings"></a>
+		<a href="customerhome"><!-- <input type="button" value="Go back"> -->Go Back</a>
 		<jsp:include page="../linklib.jsp" />
 
 </body>

@@ -60,8 +60,8 @@
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<img class="first-slide" src="webjar/img/bus1.jpg"
+			<div class="item active" style="padding: 40px; ">
+				<img class="first-slide" src="webjar/img/bus1.jpg" style="width: 100%; height: 350px;"
 					alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -80,8 +80,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="item">
-				<img class="second-slide" src="webjar/img/bus2.jpg"
+			<div class="item" style="padding-left: 10px; padding-right: 10px; ">
+				<img class="second-slide" src="webjar/img/bus2.jpg" style="width: 100%; height: 150px;"
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -96,8 +96,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="item">
-				<img class="third-slide" src="webjar/img/bus3.png"
+			<div class="item" style="padding-left: 10px; padding-right: 10px; ">
+				<img class="third-slide" src="webjar/img/bus3.png" style="width: 100%; height: 150px;"
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -126,7 +126,7 @@
 
 
 	<section id="home" 
-		style="background-image: url(brs-spring/WebContent/webjar/img/bus-car.jpg); ">
+		style="background-image: url(brs-spring/WebContent/webjar/img/bus2.jpg); ">
 		<!-- <div class="overlay"></div> -->
 		<div class="container">
 			<div class="page-header" align="center">

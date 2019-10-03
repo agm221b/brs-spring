@@ -12,6 +12,16 @@
 </head>
 <body>
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="customerhome">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="customerhome">Home</a></li>
+    </ul>
+  </div>
+</nav>
 	<br>
 	<search:form method="post" action="showrunningbuses" modelAttribute="bus">
 	

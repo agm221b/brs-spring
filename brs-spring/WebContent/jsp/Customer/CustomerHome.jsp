@@ -12,8 +12,11 @@
 
 <h2><i>Welcome to BusNama </i><br></h2>
 <a class="waves-effect waves-light btn" href="addbooking">Create Booking</a><br>
+<br>
 <a class="waves-effect waves-light btn" href="viewallbookings">View Bookings</a><br>
+<br>
 <a class="waves-effect waves-light btn" href="cancelbooking">Cancel Booking</a><br>
+<br>
 <a class="waves-effect waves-light btn" href="logout">Logout</a><br>
 
 <jsp:include page="../linklib.jsp" />
