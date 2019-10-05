@@ -20,7 +20,7 @@ public interface BRSService {
 	public List<String> findDest();
 	
 	public Booking createBooking(Booking booking);
-	public Integer cancelBooking(Integer bookingId);
+	public Booking cancelBooking(Integer bookingId);
 	public List<Booking> viewAllBookings();
 	public Booking findBookingById(Integer bookingId);
 	
