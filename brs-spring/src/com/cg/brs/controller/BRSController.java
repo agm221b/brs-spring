@@ -32,30 +32,30 @@ public class BRSController {
 
 	@Autowired
 	BRSService brsService;
-
+	//directs to the main home page
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String showHomePage() {
 		return "jsp/home";
 	}
-
+	//directs to the admin home page
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
 		return "jsp/Admin/AdminHome";
 
 	}
-
+	//directs to the customer home page
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
 		return "jsp/Customer/CustomerHome";
 
 	}
-
+	//directs to the login page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {
 		return "jsp/login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) {
 		User user = brsService.validateUser(username, password);
