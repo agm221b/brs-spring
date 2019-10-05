@@ -8,6 +8,7 @@ public class BrsSpringBootMvcApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BrsSpringBootMvcApplication.class, args);
+		System.out.println("Hello Springboot");
 	}
 
 }
