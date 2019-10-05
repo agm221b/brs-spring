@@ -140,11 +140,7 @@
 			</div>
 		</div>
 	</section> -->
-
-
-
-
-
+<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
 
 </body>
 </html>

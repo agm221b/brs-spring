@@ -43,7 +43,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
-		return "home";
+		return "jsp/home";
 	}
 
 	/**
