@@ -4,7 +4,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="viewbooking"%>
     <%@ page import="java.util.List" %>
     <%@ page import="java.util.ArrayList" %>
-    <%@ page import="com.cg.BrsSpringBootMVC.dto.Passenger" %>
+    <%@ page import="com.cg.brs.dto.Passenger" %>
     
 <!DOCTYPE html>
 <% List<Passenger> passengers= (ArrayList)session.getAttribute("passengerList");%>
