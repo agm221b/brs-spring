@@ -27,7 +27,6 @@ public class Bus {
 	private Integer busId;
 
 	@Column(name = "bus_name")
-	@NotBlank(message="name required")
 	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String busName;
 
@@ -42,11 +41,9 @@ public class Bus {
 	private BusClass busClass;
 
 	@Column(name = "bus_source")
-	@NotBlank(message="source required")
 	private String source;
 
 	@Column(name = "bus_destination")
-	@NotBlank(message="destination required")
 	private String destination;
 
 	@Column(name = "no_of_seats")

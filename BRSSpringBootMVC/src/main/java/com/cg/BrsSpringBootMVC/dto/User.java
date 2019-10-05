@@ -29,18 +29,17 @@ public class User {
 	@Column(name = "user_id")
 	private Integer userId;
 	@Column(name = "username")
-	@NotBlank(message="name required")
+	
 	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String username;
 	@Column(name="pass")
-	@NotBlank(message="required")
+	
 	private String pass;
 	@Column(name = "user_type")
 	@NotNull(message=" user type required")
 	private Character userType;
 	@Column(name = "email")
-	@Email
-	@NotBlank(message="email required")
+	
 	private String email;
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
