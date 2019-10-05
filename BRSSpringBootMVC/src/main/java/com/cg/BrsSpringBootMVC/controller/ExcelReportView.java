@@ -12,7 +12,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
 import com.cg.BrsSpringBootMVC.dto.Booking;
-import com.cg.BrsSpringBootMVC.dto.User;
 
 public class ExcelReportView extends AbstractXlsView {
 

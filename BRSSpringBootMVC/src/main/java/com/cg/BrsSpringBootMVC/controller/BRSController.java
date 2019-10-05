@@ -41,9 +41,9 @@ public class BRSController {
 	 * directs to the home page of the web site
 	 * @return jsp/home
 	 */
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
-		return "jsp/home";
+		return "home";
 	}
 
 	/**
