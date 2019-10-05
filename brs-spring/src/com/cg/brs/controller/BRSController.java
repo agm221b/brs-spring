@@ -25,6 +25,10 @@ import com.cg.brs.dto.Passenger;
 import com.cg.brs.dto.User;
 import com.cg.brs.service.BRSService;
 
+/**
+ * @author OSIS11
+ *
+ */
 @Controller
 public class BRSController {
 	@Autowired
@@ -32,29 +36,57 @@ public class BRSController {
 
 	@Autowired
 	BRSService brsService;
-	//directs to the main home page
+
+	/**
+	 * directs to the home page of the web site
+	 * @return jsp/home
+	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String showHomePage() {
 		return "jsp/home";
 	}
-	//directs to the admin home page
+
+
+	/**
+	 * directs to the home page of the admin
+	 * @return jsp/Admin/AdminHome
+	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
 		return "jsp/Admin/AdminHome";
 
 	}
-	//directs to the customer home page
+
+
+	/**
+	 * directs to the home page of the customer
+	 * @return jsp/Customer/CustomerHome
+	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
 		return "jsp/Customer/CustomerHome";
 
 	}
-	//directs to the login page
+
+
+	/**
+	 * directs to the login page. Common for both admin and customer
+	 * @return jsp/login
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {
 		return "jsp/login";
 	}
 
+
+	/**
+	 * validates the login credentials
+	 * @param username
+	 * @param password
+	 * @param model
+	 * @param session
+	 * @return 
+	 */
 	@RequestMapping(value = "/logincheck", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) {
@@ -71,6 +103,10 @@ public class BRSController {
 		return "jsp/login";
 	}
 
+	/**
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
@@ -179,6 +215,11 @@ public class BRSController {
 		return "jsp/Admin/DeleteBuses";
 	}
 
+	/**
+	 * @param bus
+	 * @param dropdown
+	 * @return
+	 */
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
 		List<String> src = brsService.findSrc();
@@ -279,7 +320,8 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		booking.setUser(user);
 		booking.setDeleteFlag(0);
-		Integer busTransactionId = (Integer) session.getAttribute("transactionId");
+		user.getBookingsList().add(booking);
+		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings.add(booking);
@@ -302,7 +344,7 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		List<Booking> bookingsList = user.getBookingsList();
 		System.out.println(bookingsList);
-		return new ModelAndView("jsp/Customer/ViewBookings", "bookings", bookingsList);
+		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)

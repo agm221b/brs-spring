@@ -34,7 +34,6 @@ public class Booking {
 	
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
-	@Future(message = "date must be of the future")
 	private LocalDate dateOfJourney;
 
 	@OneToOne(cascade = CascadeType.MERGE)

@@ -70,6 +70,7 @@
 			<div class="item active" style="padding: 40px;">
 				<img class="first-slide" src="webjar/img/bus1.jpg"
 					style="width: 100%; height: 600px;" alt="First slide">
+
 				<div class="container">
 					<div class="carousel-caption">
 						<h1 style="color: orange;">BusNama : Bas Explore Karo</h1>
@@ -80,8 +81,10 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="item" style="padding: 40px;">
 				<img class="second-slide" src='<c:out value="webjar/img/bus2.jpg"/>' style="width: 100%; height: 600px;"	
+
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -100,6 +103,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="item" style="padding: 40px;">
 				<img class="third-slide" src="webjar/img/bus3.jpg" style="width: 100%; height: 600px;" alt="Third slide">
 				<div class="container">
@@ -123,10 +127,9 @@
 		</a>
 	</div>
 
-
-
 	<!-- <section id="home"  background-size: 100%;">
 		<div class="overlay"></div>
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 		<div class="container">
 			<div class="page-header" align="center">
 				<h3 style="font: bolder; font-family: cursive;">BusNama : Bas

@@ -24,6 +24,9 @@ public class BRSDaoImpl implements BRSDao {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/**
+	 *method to add bus object by orm methodology
+	 */
 	@Override
 	public Bus saveBus(Bus bus) {
 		// TODO Auto-generated method stub
@@ -31,6 +34,9 @@ public class BRSDaoImpl implements BRSDao {
 		return bus;
 	}
 
+	/**
+	 *method to remove bus, returns 1 if removed else 0
+	 */
 	@Override
 	public Integer removeBus(Integer busId) {
 		// TODO Auto-generated method stub
@@ -43,6 +49,9 @@ public class BRSDaoImpl implements BRSDao {
 		return 1;
 	}
 
+	/**
+	 *method to findAllBuses using typedquery
+	 */
 	@Override
 	public List<Bus> findAllBuses() {
 		// TODO Auto-generated method stub
@@ -51,6 +60,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to return list of buses based on given route
+	 */
 	@Override
 	public List<Object[]> findBusByRoutes(String source, String destination) {
 		// TODO Auto-generated method stub
@@ -61,6 +73,9 @@ public class BRSDaoImpl implements BRSDao {
 		return results;
 	}
 
+	/**
+	 *method to find bus based on given busId 
+	 */
 	@Override
 	public Bus findBusById(Integer busId) {
 		// TODO Auto-generated method stub
@@ -69,6 +84,9 @@ public class BRSDaoImpl implements BRSDao {
 	
 	
 
+	/**
+	 *method to return the list of unique bus sources
+	 */
 	@Override
 	public List<String> findSrc() {
 		// TODO Auto-generated method stub
@@ -76,6 +94,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to return the list of unique bus destinations
+	 */
 	@Override
 	public List<String> findDest() {
 		// TODO Auto-generated method stub
@@ -83,6 +104,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to add booking object
+	 */
 	@Override
 	public Booking saveBooking(Booking booking) {
 		booking=entityManager.merge(booking);
@@ -92,6 +116,9 @@ public class BRSDaoImpl implements BRSDao {
 		return booking;								//to be set
 	}
 
+	/**
+	 *method to remove booking based on given bookingId
+	 */
 	@Override
 	public Integer removeBooking(Integer bookingId) {
 		// TODO Auto-generated method stub
@@ -101,12 +128,18 @@ public class BRSDaoImpl implements BRSDao {
 		return 1;
 	}
 
+	/**
+	 *method to find booking based on given bookingId
+	 */
 	@Override
 	public Booking findBookingById(Integer bookingId) {
 		// TODO Auto-generated method stub
 		return entityManager.find(Booking.class, bookingId);
 	}
 
+	/**
+	 *method to return list of all bookings
+	 */
 	@Override
 	public List<Booking> findAllBookings() {
 		// TODO Auto-generated method stub
@@ -114,6 +147,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to return list of all passengers based on given bookingId
+	 */
 	@Override
 	public List<Passenger> findAllPassengers(Integer bookingId) {
 		// TODO Auto-generated method stub
@@ -121,6 +157,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to add busTransacton object
+	 */
 	@Override
 	public BusTransaction saveTransaction(BusTransaction busTransaction) {
 		// TODO Auto-generated method stub
@@ -130,6 +169,9 @@ public class BRSDaoImpl implements BRSDao {
 		return busTransaction;
 	}
 
+	/**
+	 *method to list all BusTransactions using typedquery
+	 */
 	@Override
 	public List<BusTransaction> findAllTransactions() {
 		// TODO Auto-generated method stub
@@ -137,12 +179,18 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to return BusTransaction using transactionId
+	 */
 	@Override
 	public BusTransaction findTransactionById(Integer transactionId) {
 		// TODO Auto-generated method stub
 		return entityManager.find(BusTransaction.class, transactionId);
 	}
 
+	/**
+	 *method to return updated available seats
+	 */
 	@Override
 	public BusTransaction updateAvailableSeats(Integer transactionId,Integer passengersCount) {
 		// TODO Auto-generated method stub
@@ -152,6 +200,9 @@ public class BRSDaoImpl implements BRSDao {
 		return busTransaction;
 	}
 
+	/**
+	 *method to list BusTransaction based on date
+	 */
 	@Override
 	public List<BusTransaction> findTransactionsByDate(LocalDate date) {
 		// TODO Auto-generated method stub
@@ -160,6 +211,9 @@ public class BRSDaoImpl implements BRSDao {
 		return query.getResultList();
 	}
 
+	/**
+	 *method to add user object
+	 */
 	@Override
 	public User saveUser(User user) {
 		// TODO Auto-generated method stub
@@ -171,6 +225,9 @@ public class BRSDaoImpl implements BRSDao {
 		return user;
 	}
 
+	/**
+	 *method to remove user based on given userId
+	 */
 	@Override
 	public Integer removeUser(Integer userId) {
 		// TODO Auto-generated method stub
@@ -180,6 +237,9 @@ public class BRSDaoImpl implements BRSDao {
 		return 1;
 	}
 
+	/**
+	 *method to list AllUsers
+	 */
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method stub
@@ -190,6 +250,9 @@ public class BRSDaoImpl implements BRSDao {
 	
 	
 
+	/**
+	 *method to validate user
+	 */
 	@Override
 	public User validateUser(String username, String password) {
 		// TODO Auto-generated method stub
@@ -203,6 +266,9 @@ public class BRSDaoImpl implements BRSDao {
 		return null;
 	}
 
+	/**
+	 *method to return transaction based on given route
+	 */
 	@Override
 	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
 		// TODO Auto-generated method stub
@@ -217,6 +283,9 @@ public class BRSDaoImpl implements BRSDao {
 		return transactionsByRoutes;
 	}
 
+	/**
+	 *method to add passenger 
+	 */
 	@Override
 	public Passenger savePassenger(Passenger passenger) {
 		// TODO Auto-generated method stub

@@ -19,7 +19,7 @@ public class ExcelReportView extends AbstractXlsView {
 		
 		@Override
 		protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request, HttpServletResponse response) throws Exception{
-			response.setHeader("Content-Disposition", "attachment;filename=\"student.xls\"");
+			response.setHeader("Content-Disposition", "attachment;filename=\"bookings.xls\"");
 			
 			 List<Booking> bookingList = (List<Booking>)model.get("bookingList");
 			 Sheet sheet = workbook.createSheet("Booking Data");
