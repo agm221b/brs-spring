@@ -22,7 +22,6 @@ public class Passenger {
 	@Column(name = "passenger_id")
 	private Integer passengerId;
 	@Column(name = "passenger_name")
-	@NotBlank(message="name required")
 	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String passengerName;
 	@Column(name = "passenger_age")

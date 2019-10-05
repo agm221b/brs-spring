@@ -22,6 +22,8 @@
 	width: 100%;
 }
 </style>
+
+
 </head>
 <body>
 
@@ -90,6 +92,13 @@
 						<p></p>
 						<p>
 							<a class="btn btn-lg btn-primary" href="aboutUs" role="button">About Us</a>
+							<script>
+      $(document).ready(function() {
+         function disablePrev() { window.history.forward() }
+         window.onload = disablePrev();
+         window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+      });
+   </script>
 						</p>
 					</div>
 				</div>

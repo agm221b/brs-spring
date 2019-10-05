@@ -44,13 +44,11 @@ public class Booking {
 	@JoinColumn(name = "passenger_fk")
 	private List<Passenger> passengers;
 	@Column(name = "mode_of_payment")
-	@NotEmpty(message="cannot be empty")
 	private String modeOfPayment;
 	@Column(name = "total_cost")
 	@NotNull(message="cannot be empty")
 	private Double totalCost;
 	@Column(name = "booking_status")
-	@NotBlank(message="cannot be empty")
 	private String bookingStatus;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;

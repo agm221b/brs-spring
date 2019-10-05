@@ -20,7 +20,38 @@ padding-right: 20%;
 </style>
 
 </head>
-<body style="background-color: #fff8e1;">
+<body style="background-color: #fff8e1;" >
+
+<section class="navbar custom-navbar navbar-fixed-top"
+		role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon icon-bar"></span> <span class="icon icon-bar"></span>
+					<span class="icon icon-bar"></span>
+				</button>
+
+				
+			</div>
+
+			<!-- MENU LINKS -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="home" class="smoothScroll">Home</a></li>
+					<li><a href="aboutUs" class="smoothScroll">About us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login" class="smoothScroll">Login</a></li>
+					<li><a href="register" class="smoothScroll">Register</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+	</section>
+
 	<section class="center">
 	<h4>What is BusNama?</h4>
 	
