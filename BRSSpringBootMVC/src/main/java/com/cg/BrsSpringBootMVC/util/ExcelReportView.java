@@ -1,4 +1,4 @@
-package com.cg.BrsSpringBootMVC.controller;
+package com.cg.BrsSpringBootMVC.util;
 
 import java.util.List;
 import java.util.Map;
