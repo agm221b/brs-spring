@@ -9,7 +9,28 @@
 
 </head>
 <body>
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="customerhome">BusName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="customerhome">Home</a></li>
+      <li><a href="help">FAQs</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Book Ticket</a></li>
+          <li><a href="#">View Ticket</a></li>
+          <li><a href="#">Manage Bookings</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 <h2><i>Welcome to BusNama </i><br></h2>
 <a class="waves-effect waves-light btn" href="addbooking">Create Booking</a><br>
 <br>

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.BrsSpringBootMVC.dao.BRSDao;
-import com.cg.BrsSpringBootMVC.dao.BookingDao;
+import com.cg.BrsSpringBootMVC.dao.BookingRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
@@ -21,7 +21,7 @@ import com.cg.BrsSpringBootMVC.dto.User;
 public class BRSServiceImpl implements BRSService {
 
 	@Autowired
-	BookingDao bookingDao;
+	BookingRepository bookingRepository;
 	@Override
 	public Bus addBusDetails(Bus bus) {
 		// TODO Auto-generated method stub
@@ -69,13 +69,13 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public Booking createBooking(Booking booking) {
 		// TODO Auto-generated method stub
-		return bookingDao.save(booking);
+		return bookingRepository.save(booking);
 	}
 
 	@Override
 	public Booking cancelBooking (Integer bookingId) {
 		// TODO Auto-generated method stub
-		Booking booking=bookingDao.findById(bookingId).get();
+		Booking booking=bookingRepository.findById(bookingId).get();
 		booking.setBookingStatus("CANCELLED");
 		return booking;
 	}
@@ -83,7 +83,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public List<Booking> viewAllBookings() {
 		// TODO Auto-generated method stub
-		return bookingDao.findAll();
+		return bookingRepository.findAll();
 	}
 	
 	
@@ -91,7 +91,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public Booking findBookingById(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return bookingDao.findById(bookingId).get();
+		return bookingRepository.findById(bookingId).get();
 	}
 
 	@Override
