@@ -23,9 +23,10 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Book Ticket</a></li>
-          <li><a href="#">View Ticket</a></li>
-          <li><a href="#">Manage Bookings</a></li>
+          <li><a href="addbooking">Book Ticket</a></li>
+          <li><a href="cancelbooking">Cancel Ticket</a></li>
+          <li><a href="viewallbookings">Manage Bookings</a></li>
+          <li><a href="logout">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -39,6 +40,8 @@
 <a class="waves-effect waves-light btn" href="cancelbooking">Cancel Booking</a><br>
 <br>
 <a class="waves-effect waves-light btn" href="logout">Logout</a><br>
+
+<div class="container"></div>
 
 <jsp:include page="../linklib.jsp" />
 

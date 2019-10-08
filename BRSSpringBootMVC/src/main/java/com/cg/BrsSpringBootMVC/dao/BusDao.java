@@ -13,6 +13,8 @@ public interface BusDao extends JpaRepository<Bus, Integer> {
 	
 	public List<Bus> findByDeleteFlag(Integer deleteflag);
 	
+	public List<Bus> findBySourceAndDestination(String source, String destination);
+	
 	
 
 }
