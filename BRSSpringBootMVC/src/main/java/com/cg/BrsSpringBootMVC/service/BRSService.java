@@ -29,7 +29,7 @@ public interface BRSService {
 
 	public Booking cancelBooking(Integer bookingId);
 
-	public List<Booking> viewAllBookings();
+	public List<Booking> viewAllBookings(User user);
 
 	public Booking findBookingById(Integer bookingId);
 

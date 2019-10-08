@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View Bookings</title>
-
+<link rel="stylesheet" href="css/customer.css">
 </head>
 <body>
 <nav class="navbar navbar-inverse">

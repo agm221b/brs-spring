@@ -1,6 +1,7 @@
 package com.cg.BrsSpringBootMVC.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import java.lang.Integer;
@@ -34,6 +35,10 @@ public interface BusRepository extends JpaRepository<Bus, Integer> {
 	 */
 	public List<Bus> findBySourceAndDestinationAndDeleteFlag(String source, String destination, Integer deleteFlag);
 	
+	@Query("SELECT DISTINCT(bus.source) FROM Bus bus")
+	public List<String> findBySource();
 	
+	@Query("SELECT DISTINCT(bus.destination) FROM Bus bus")
+	public List<String> findByDestination();
 
 }
