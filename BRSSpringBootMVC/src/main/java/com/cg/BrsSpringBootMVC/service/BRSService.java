@@ -19,7 +19,7 @@ public interface BRSService {
 
 	public Bus viewBusById(Integer busId);
 
-	public List<Object[]> viewBusByRoutes(String source, String destination);
+	public List<Bus> viewBusByRoutes(String source, String destination);
 
 	public List<String> findSrc();
 
@@ -29,7 +29,7 @@ public interface BRSService {
 
 	public Booking cancelBooking(Integer bookingId);
 
-	public List<Booking> viewAllBookings();
+	public List<Booking> viewAllBookings(User user);
 
 	public Booking findBookingById(Integer bookingId);
 

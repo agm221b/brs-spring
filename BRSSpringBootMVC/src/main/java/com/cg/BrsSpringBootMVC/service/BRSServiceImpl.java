@@ -1,6 +1,7 @@
 package com.cg.BrsSpringBootMVC.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.BrsSpringBootMVC.dao.BookingRepository;
+import com.cg.BrsSpringBootMVC.dao.BusDao;
 import com.cg.BrsSpringBootMVC.dao.BusTransactionRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
@@ -24,6 +26,8 @@ public class BRSServiceImpl implements BRSService {
 	BookingRepository bookingRepository;
 	@Autowired
 	BusTransactionRepository busTransactionRepository;
+	@Autowired
+	BusDao busDao;
 
 	
 	  @Override public Bus addBusDetails(Bus bus) { // TODO Auto-generated method
@@ -36,21 +40,27 @@ public class BRSServiceImpl implements BRSService {
 	  @Override public List<Bus> viewAllBuses() { // TODO Auto-generated method
 	  stub return brsDao.findAllBuses(); }
 	  
-	  @Override public Bus viewBusById(Integer busId) { // TODO Auto-generated
-	  method stub return brsDao.findBusById(busId); }
+	  @Override 
+	  public Bus viewBusById(Integer busId) { 
+		  // TODO Auto-generated
+		  return busDao.findById(busId).get();
+	  }
 	  
-	  @Override public List<Object[]> viewBusByRoutes(String source, String
-	  destination) { // TODO Auto-generated method stub return
-	  brsDao.findBusByRoutes(source, destination);
-	  
+	  @Override 
+	  public List<Bus> viewBusByRoutes(String source, String destination) {
+		  return busDao.findBySourceAndDestination(source, destination);
 	  }
 	  
 	  
-	  @Override public List<String> findSrc() { // TODO Auto-generated method stub
-	  return brsDao.findSrc(); }
+	  @Override public List<String> findSrc() { 
+		  // TODO Auto-generated method stub
+	  return busDao.findBySource(); 
+	  }
 	  
-	  @Override public List<String> findDest() { // TODO Auto-generated method stub
-	  return brsDao.findDest(); }
+	  @Override public List<String> findDest() { 
+		  // TODO Auto-generated method stub
+	  return busDao.findByDestination(); 
+	  }
 	 
 
 	@Override
@@ -68,9 +78,9 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	@Override
-	public List<Booking> viewAllBookings() {
+	public List<Booking> viewAllBookings(User user) {
 		// TODO Auto-generated method stub
-		return bookingRepository.findAll();
+		return bookingRepository.findByUser(user);
 	}
 	
 	
@@ -121,9 +131,18 @@ public class BRSServiceImpl implements BRSService {
   @Override public List<User> viewAllUsers() { // TODO Auto-generated method
   stub return brsDao.viewAllUsers(); }
   
-  @Override public List<BusTransaction> searchBuses(String source, String
-  destination, LocalDate dateOfJourney) { // TODO Auto-generated method stub
-  return brsDao.searchBuses(source, destination, dateOfJourney); }
+  @Override 
+  public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
+	  List<BusTransaction> transactionsByRoutes=new ArrayList<BusTransaction>();
+		for(BusTransaction busTransaction:viewTransactionsByDate(dateOfJourney)) {
+			if(busTransaction.getDate().equals(dateOfJourney)) {
+				if(busTransaction.getBus().getSource().equalsIgnoreCase(source) && busTransaction.getBus().getDestination().equalsIgnoreCase(destination)) {
+					transactionsByRoutes.add(busTransaction);
+				}
+			}
+		}
+		return transactionsByRoutes;
+  }
   
   
   public Passenger addPassenger(Passenger passenger) { // TODO Auto-generated

@@ -2,20 +2,23 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"
 	prefix="search"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Booking</title>
+<link rel="stylesheet" href="css/customer.css">
 
 
 </head>
+<c:url value="/img/" var="images"></c:url>
 <body>
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="customerhome">WebSiteName</a>
+      <a class="navbar-brand" href="customerhome">BusNama</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="customerhome">Home</a></li>

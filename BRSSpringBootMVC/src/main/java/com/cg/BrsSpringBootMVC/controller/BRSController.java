@@ -339,7 +339,7 @@ public class BRSController {
 	@RequestMapping(value = "/viewallbookings", method = RequestMethod.GET)
 	public ModelAndView viewAllBookings() {
 		User user = (User) session.getAttribute("user");
-		List<Booking> bookingsList = user.getBookingsList();
+		List<Booking> bookingsList = brsService.viewAllBookings(user);
 		System.out.println(bookingsList);
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}

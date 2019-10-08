@@ -3,8 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Customer Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/customer.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -20,12 +25,12 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="addbooking">Book Ticket</a></li>
-          <li><a href="cancelbooking">Cancel Ticket</a></li>
           <li><a href="viewallbookings">Manage Bookings</a></li>
+          <li><a href="#">Manage Profile</a></li>
           <li><a href="logout">Logout</a></li>
         </ul>
       </li>

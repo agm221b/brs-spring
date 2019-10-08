@@ -10,4 +10,5 @@ import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 public interface BusTransactionRepository extends JpaRepository<BusTransaction, Integer> {
 	
 	public List<BusTransaction> findByDate(LocalDate date);
+
 }
