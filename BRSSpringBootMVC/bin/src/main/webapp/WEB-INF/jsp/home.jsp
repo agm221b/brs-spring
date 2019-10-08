@@ -89,6 +89,7 @@
 						<p></p>
 						<p>
 							<a class="btn btn-lg btn-primary" href="aboutUs" role="button">About Us</a>
+							<a class="btn btn-lg btn-primary" href="addbus" role="button">Add Bus</a>
 						</p>
 					</div>
 				</div>
@@ -140,6 +141,7 @@
 			</div>
 		</div>
 	</section> -->
+	
 <jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
 
 </body>
