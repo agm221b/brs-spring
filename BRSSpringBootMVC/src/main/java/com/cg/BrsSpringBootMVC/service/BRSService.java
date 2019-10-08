@@ -21,9 +21,9 @@ public interface BRSService {
 
 	public List<Bus> viewBusByRoutes(String source, String destination);
 
-	public List<String> findSrc();
+	public List<String> findSources();
 
-	public List<String> findDest();
+	public List<String> findDestinations();
 
 	public Booking createBooking(Booking booking);
 
@@ -53,6 +53,6 @@ public interface BRSService {
 
 	public User validateUser(String username, String password);
 
-	public Passenger addPassenger(Passenger passenger);
+	/* public Passenger addPassenger(Passenger passenger); */
 
 }
