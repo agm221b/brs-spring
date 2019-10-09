@@ -97,12 +97,9 @@ public class BRSServiceImpl implements BRSService {
 	 */
 	@Override
 	public List<String> findSources() { // TODO Auto-generated method stub
-		List<String> sources = new ArrayList<String>();
-		for (Bus bus : busRepository.findByDeleteFlag(0)) {
-			sources.add(bus.getSource());
-		}
+		
 
-		return sources;
+		return busRepository.findBySource();
 	}
 
 	/**
@@ -110,12 +107,8 @@ public class BRSServiceImpl implements BRSService {
 	 */
 	@Override
 	public List<String> findDestinations() { // TODO Auto-generated method stub
-		List<String> destinations = new ArrayList<String>();
-		for (Bus bus : busRepository.findByDeleteFlag(0)) {
-			destinations.add(bus.getDestination());
-		}
 
-		return destinations;
+		return busRepository.findByDestination();
 	}
 
 	/**
