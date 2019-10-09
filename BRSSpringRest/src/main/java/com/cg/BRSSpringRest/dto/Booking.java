@@ -20,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component("booking")
 @Entity
 @Table(name = "booking")
@@ -29,6 +31,7 @@ public class Booking {
 	@Column(name = "booking_id")
 	private Integer bookingId;
 	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
 	private LocalDate dateOfJourney;
