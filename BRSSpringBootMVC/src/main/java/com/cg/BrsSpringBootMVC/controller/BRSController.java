@@ -60,6 +60,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
+		logger.debug("In Admin Home now");
 		return "jsp/Admin/AdminHome";
 
 	}
