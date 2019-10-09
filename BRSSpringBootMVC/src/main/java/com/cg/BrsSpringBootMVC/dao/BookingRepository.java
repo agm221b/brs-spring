@@ -7,6 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.User;
 
+/**
+ * @author Tejaswini
+ *
+ */
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 	
 	/**
