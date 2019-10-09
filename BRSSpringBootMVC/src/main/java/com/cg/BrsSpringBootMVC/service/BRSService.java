@@ -8,6 +8,7 @@ import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BRSException;
 
 public interface BRSService {
 
@@ -47,11 +48,11 @@ public interface BRSService {
 
 	public User addUser(User user);
 
-	public Integer removeUser(Integer userId);
+	public Integer removeUser(Integer userId) throws BRSException;
 
 	public List<User> viewAllUsers();
 
-	public User validateUser(String username, String password);
+	public User validateUser(String username, String password) throws BRSException;
 
 	/* public Passenger addPassenger(Passenger passenger); */
 
