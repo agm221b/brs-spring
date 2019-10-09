@@ -19,6 +19,7 @@ import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.User;
 import com.cg.BrsSpringBootMVC.exception.BRSException;
+import com.cg.BrsSpringBootMVC.exception.BusNullException;
 
 
 /**
@@ -61,12 +62,13 @@ public class BRSServiceImpl implements BRSService {
 	 * Description: Removes the bus from the Repository
 	 * @param busId
 	 *	@return 0 if bus is already deleted or does not exist, 1 if it is removed 
+	 * @throws BusNullException 
 	 */
 	@Override
-	public Integer removeBus(Integer busId) { // TODO Auto-generated
+	public Integer removeBus(Integer busId) throws BusNullException { // TODO Auto-generated
 		Bus bus = busRepository.findByBusIdAndDeleteFlag(busId, 0);
 		if (bus == null)
-			return 0;
+			throw new BusNullException("Bus not found");
 		else
 			bus.setDeleteFlag(1);
 		busRepository.save(bus);
@@ -91,10 +93,15 @@ public class BRSServiceImpl implements BRSService {
 	 * Description: Views the bus with that particular busId from the Repository
 	 * @param busId
 	 *@return bus with that busId
+	 * @throws BusNullException 
 	 */
 	@Override
-	public Bus viewBusById(Integer busId) { // TODO Auto-generated
-		return busRepository.findByBusIdAndDeleteFlag(busId, 0);
+	public Bus viewBusById(Integer busId) throws BusNullException { // TODO Auto-generated
+		Bus bus =busRepository.findByBusIdAndDeleteFlag(busId, 0);
+		if(bus==null)
+			throw new BusNullException("Bus not found");
+		else
+			return bus;
 	}
 
 	/**

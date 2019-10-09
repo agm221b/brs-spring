@@ -9,16 +9,17 @@ import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
 import com.cg.BrsSpringBootMVC.exception.BRSException;
+import com.cg.BrsSpringBootMVC.exception.BusNullException;
 
 public interface BRSService {
 
 	public Bus addBusDetails(Bus bus);
 
-	public Integer removeBus(Integer busId);
+	public Integer removeBus(Integer busId) throws BusNullException;
 
 	public List<Bus> viewAllBuses();
 
-	public Bus viewBusById(Integer busId);
+	public Bus viewBusById(Integer busId) throws BusNullException;
 
 	public List<Bus> viewBusByRoutes(String source, String destination);
 
