@@ -47,7 +47,7 @@ public interface BRSService {
 
 	public User addUser(User user);
 
-	public Integer removeCustomer(Integer customerId);
+	public Integer removeUser(Integer userId);
 
 	public List<User> viewAllUsers();
 
