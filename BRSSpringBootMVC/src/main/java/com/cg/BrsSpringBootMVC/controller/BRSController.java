@@ -128,6 +128,13 @@ public class BRSController {
 		return "jsp/register";
 	}
 
+	/**
+	 * @author Mayank
+	 * Description: adds user and redirects to home.jsp page or redirects to register.jsp page
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return jsp/home
+	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
 
@@ -416,6 +423,14 @@ public class BRSController {
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 
+
+	/**
+	 * @author Mayank
+	 * Description: shows all the users
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return jsp/Admin/ShowAllUsers
+	 */
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();
