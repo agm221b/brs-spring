@@ -261,6 +261,7 @@ public class BRSServiceImpl implements BRSService {
 
 	/**
 	 * @author Mayank
+	 * Description: method to add user
 	 * Created: 9/10/2019
 	 * Last Modified: 9/10/2019
 	 * @param user
@@ -273,6 +274,7 @@ public class BRSServiceImpl implements BRSService {
 	}
 	/**
 	 * @author Mayank
+	 * Description: method to delete user, input is userId
 	 * Created: 9/10/2019
 	 * Last Modified: 9/10/2019
 	 * @param userId
@@ -292,9 +294,10 @@ public class BRSServiceImpl implements BRSService {
 	}
 	/**
 	 * @author Mayank
+	 * Description: method to view all the users
 	 * Created: 9/10/2019
 	 * Last Modified: 9/10/2019
-	 *@return lists all the users of all the buses
+	 * @return lists all the users of all the buses
 	 */
 	@Override
 	public List<User> viewAllUsers() {
@@ -304,11 +307,12 @@ public class BRSServiceImpl implements BRSService {
 
 	/**
 	 * @author Mayank
+	 * Description: method to validate user
 	 * Created: 9/10/2019
 	 * Last Modified: 9/10/2019
 	 * @param username
 	 * @param password
-	 *@return user after validating given username and password
+	 * @return user after validating given username and password
 	 */
 	@Override
 	public User validateUser(String username, String password) {
