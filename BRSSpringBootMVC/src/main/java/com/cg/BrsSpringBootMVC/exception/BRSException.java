@@ -1,9 +1,13 @@
 package com.cg.BrsSpringBootMVC.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 /**
  * @author Aditya
  *
  */
+@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Bus Not Found")
 public class BRSException extends Exception {
 
 	/**

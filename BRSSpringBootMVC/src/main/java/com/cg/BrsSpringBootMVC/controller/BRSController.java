@@ -249,7 +249,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/showrunningbuses", method = RequestMethod.POST)
 	public ModelAndView showRunningBuses(@ModelAttribute("bus") Bus bus,
-			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney,
+			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateOfJourney,
 			Map<String, Object> dropdown) {
 		List<String> src = brsService.findSources();
 		List<String> dest = brsService.findDestinations();
