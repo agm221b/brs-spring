@@ -16,6 +16,13 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Aditya
+ * Created: 8/10/19
+ * Last Modified: 9/10/19
+ * Description : Bus Entity
+ *
+ */
 @Component("bus")
 @Entity
 @Table(name = "bus")

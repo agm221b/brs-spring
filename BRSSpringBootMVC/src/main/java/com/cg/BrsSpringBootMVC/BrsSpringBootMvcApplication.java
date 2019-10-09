@@ -3,6 +3,10 @@ package com.cg.BrsSpringBootMVC;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author Tejaswini
+ *
+ */
 @SpringBootApplication
 public class BrsSpringBootMvcApplication {	
 

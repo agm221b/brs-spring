@@ -25,6 +25,7 @@ import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BusNullException;
 import com.cg.BrsSpringBootMVC.service.BRSService;
 import com.cg.BrsSpringBootMVC.util.ExcelReportView;
 
@@ -203,7 +204,14 @@ public class BRSController {
 
 		} else {
 			System.out.println(bus);
-			brsService.addBusDetails(bus);
+			try {
+				if(brsService.addBusDetails(bus)==null)
+			throw new BusNullException("Bus is found to be null");
+			}
+			catch (BusNullException e) {
+				// TODO: handle exception
+				//return new ModelAndView("jsp/error", "error", e.getMessage());
+			}
 
 			for (int i = 1; i < 15; i++) {
 				BusTransaction busTransaction = new BusTransaction();
