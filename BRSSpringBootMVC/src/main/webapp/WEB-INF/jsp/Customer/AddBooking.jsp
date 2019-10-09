@@ -74,9 +74,8 @@
 		
 		<script>
 		$(document).ready(function(){
-			$('#searchbusform').submit(function(event){
+			$('#searchbuses').submit(function(event){
 				event.preventDefault();
-				
 				var source=$('#source').val();
 				var destination=$('#destination').val();
 				
@@ -86,10 +85,19 @@
 					$('#source').after('<span class="route_error">Source and Destination cannot be same</span>');
 					$('#destination').after('<span class="route_error">Source and Destination cannot be same</span>');
 				}
+				
+				var dateOfJourney=$('#datepicker').val();
+				
+				var journeydate=new Date(dateOfJourney);
+				var today=new Date();
+				console.log(Date.parse(journeydate));
+				console.log(Date.parse(today));
+				if(Date.parse(journeydate)<Date.parse(today)){
+					$('#searchbuses').after('<span class="date_error">Date should be in the future</span>')
+				}
 			});
 		});
 		</script>
-		
 	</search:form>
 	<br />
 	<h4>List Of Running Buses</h4>
