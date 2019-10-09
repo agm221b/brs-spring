@@ -11,25 +11,20 @@
 <script type="text/javascript">
 function validate(){
 	var f= document.getElementById("addbusform");
-	validateBusName(f);
-	validateStartTime(f);
-	validateEndTime(f);
-	validateNoOfSeats(f);
-	validateCostOfSeats(f);
-}
+	return( validateBusName(f) & validateStartTime(f) &	validateEndTime(f) & validateNoOfSeats(f) &	validateCostOfSeats(f))}
 
 function validateBusName(busform){
 	
 	var error = document.getElementById("busNameerror");
 	var busName = busform["busName"].value;
 	error.innerHTML="";
-	var regex=/[\]+/g;
+	var regex=/[\w]+/g;
 	var validUsername = busName.match(regex)
 
 	   if( busName==null || busName==""){
 	      error.innerHTML="Bus Name cannot be empty";
 	    }
-	   else if(validUsername != null){
+	   else if(validUsername == null){
 	        alert("Your Bus Name is not valid");
 	        document.frm.firstName.focus();
 	   }
@@ -126,7 +121,7 @@ function validateCostOfSeats(busform){
 				<td><addbus:input path="busName" placeholder="Bus Name"
 						id="busName" type="text" class="validate" /></td>
 				<td><span id="busNameerror" style="color: red;"><addbus:errors
-							path="busName"></addbus:errors></span></td>
+							path="busName" id="busNameerror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Bus Type</td>
@@ -171,23 +166,27 @@ function validateCostOfSeats(busform){
 			</tr>
 			<tr>
 				<td>Start time</td>
-				<td><input type="time" id="startTime" name="startTime"></td>
+				<td><input type="time" id="startTime" name="startTime"><span
+					style="color: red;"><addbus:errors path="startTime"
+							id="startTimeerror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>End time</td>
-				<td><input type="time" name="endTime"></td>
+				<td><input type="time" name="endTime"><span
+					style="color: red;"><addbus:errors path="endTime"
+							id="endTimeerror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Number of Seats</td>
 				<td><addbus:input path="noOfSeats" id="noOfSeats" /></td>
 				<td><span style="color: red;"><addbus:errors
-							path="noOfSeats"></addbus:errors></span></td>
+							path="noOfSeats" id="seaterror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Cost per seat</td>
 				<td><addbus:input path="costPerSeat" id="costPerSeat" /></td>
 				<td><span style="color: red;"><addbus:errors
-							path="CostPerSeat"></addbus:errors></span></td>
+							path="costPerSeat" id="costerror"></addbus:errors></span></td>
 			</tr>
 		</table>
 		<input type="submit" value="Add" />
