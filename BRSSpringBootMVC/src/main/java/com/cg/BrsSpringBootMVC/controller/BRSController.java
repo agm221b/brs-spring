@@ -60,6 +60,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
+		logger.debug("In Admin Home now");
 		return "jsp/Admin/AdminHome";
 
 	}
@@ -249,7 +250,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/showrunningbuses", method = RequestMethod.POST)
 	public ModelAndView showRunningBuses(@ModelAttribute("bus") Bus bus,
-			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney,
+			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateOfJourney,
 			Map<String, Object> dropdown) {
 		List<String> src = brsService.findSources();
 		List<String> dest = brsService.findDestinations();
