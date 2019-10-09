@@ -252,6 +252,10 @@ public class BRSController {
 		return "jsp/Customer/AddBooking";
 	}
 
+	/**
+	 * @param passenger
+	 * @return AddPassenger.jsp
+	 */
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.GET)
 	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) {
 		return "jsp/Customer/AddPassenger";

@@ -17,6 +17,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 */
 	public User findByUserIdAndDeleteFlag(Integer userId, Integer deleteFlag);
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return user with given username and password
+	 */
 	public User findByUsernameAndPass(String username, String password);
 	
 	
