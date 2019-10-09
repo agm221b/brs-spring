@@ -1,6 +1,7 @@
 package com.cg.BrsSpringBootMVC.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,152 +9,257 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.BrsSpringBootMVC.dao.BRSDao;
+import com.cg.BrsSpringBootMVC.dao.BookingRepository;
+import com.cg.BrsSpringBootMVC.dao.BusRepository;
+
+import com.cg.BrsSpringBootMVC.dao.BusTransactionRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
-import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
 
+/**
+ * @author Aditya, Tejaswini
+ *
+ */
+/**
+ * @author HARIBABU
+ *
+ */
+/**
+ * @author HARIBABU
+ *
+ */
 @Service("brsService")
 @Transactional
 public class BRSServiceImpl implements BRSService {
 
 	@Autowired
-	BRSDao brsDao;
+	BookingRepository bookingRepository;
+	@Autowired
+	BusTransactionRepository busTransactionRepository;
+	@Autowired
+	BusRepository busRepository;
+
+	/**
+	 * @param bus
+	 * @return bus that is added
+	 */
 	@Override
-	public Bus addBusDetails(Bus bus) {
-		// TODO Auto-generated method stub
-		return brsDao.saveBus(bus);
+	public Bus addBusDetails(Bus bus) { // TODO Auto-generated method
+		return busRepository.save(bus);
 	}
 
+	/**
+	 * @param busId
+	 *	@return 0 if bus is already deleted or does not exist, 1 if it is removed 
+	 */
 	@Override
-	public Integer removeBus(Integer busId) {
-		// TODO Auto-generated method stub
-		return brsDao.removeBus(busId);
+	public Integer removeBus(Integer busId) { // TODO Auto-generated
+		Bus bus = busRepository.findByBusIdAndDeleteFlag(busId, 0);
+		if (bus == null)
+			return 0;
+		else
+			bus.setDeleteFlag(1);
+		busRepository.save(bus);
+		return 1;
+	}
+	/**
+	 *@return List of all buses with deleteFlag as 0.
+	 */
+	@Override
+	public List<Bus> viewAllBuses() { // TODO Auto-generated method
+		return busRepository.findByDeleteFlag(0);
 	}
 
+	/**
+	 * @param busId
+	 *@return bus with that busId
+	 */
 	@Override
-	public List<Bus> viewAllBuses() {
-		// TODO Auto-generated method stub
-		return brsDao.findAllBuses();
+	public Bus viewBusById(Integer busId) { // TODO Auto-generated
+		return busRepository.findByBusIdAndDeleteFlag(busId, 0);
 	}
 
+	/**
+	 * @param source
+	 * @param destination
+	 *@return List of buses with particular sources and destinations
+	 */
 	@Override
-	public Bus viewBusById(Integer busId) {
-		// TODO Auto-generated method stub
-		return brsDao.findBusById(busId);
+	public List<Bus> viewBusByRoutes(String source, String destination) { // TODO Auto-generated method stub return
+		return (List<Bus>) busRepository.findBySourceAndDestinationAndDeleteFlag(source, destination, 0);
+
 	}
 
+	/**
+	 *@return list of sources of all the buses in the database
+	 */
 	@Override
-	public List<Object[]> viewBusByRoutes(String source, String destination) {
-		// TODO Auto-generated method stub
-		return brsDao.findBusByRoutes(source, destination);
-		
-	}
-	
+	public List<String> findSources() { // TODO Auto-generated method stub
+		List<String> sources = new ArrayList<String>();
+		for (Bus bus : busRepository.findByDeleteFlag(0)) {
+			sources.add(bus.getSource());
+		}
 
-	@Override
-	public List<String> findSrc() {
-		// TODO Auto-generated method stub
-		return brsDao.findSrc();
-	}
-
-	@Override
-	public List<String> findDest() {
-		// TODO Auto-generated method stub
-		return brsDao.findDest();
+		return sources;
 	}
 
+	/**
+	 *@return list of destinations of all the buses in the database
+	 */
+	@Override
+	public List<String> findDestinations() { // TODO Auto-generated method stub
+		List<String> destinations = new ArrayList<String>();
+		for (Bus bus : busRepository.findByDeleteFlag(0)) {
+			destinations.add(bus.getDestination());
+		}
+
+		return destinations;
+	}
+
+	/**
+	 * save the current booking data
+	 *@param booking
+	 *@return booking
+	 */
 	@Override
 	public Booking createBooking(Booking booking) {
 		// TODO Auto-generated method stub
-		return brsDao.saveBooking(booking);
+		return bookingRepository.save(booking);
 	}
 
+	/**
+	 * sets the booking status to CANCELLED of the selected booking object
+	 *@param bookingId
+	 *@return booking
+	 */
 	@Override
-	public Integer cancelBooking (Integer bookingId) {
+	public Booking cancelBooking(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return brsDao.removeBooking(bookingId);
+		Booking booking = bookingRepository.findById(bookingId).get();
+		booking.setBookingStatus("CANCELLED");
+		return booking;
 	}
 
+	/**
+	 * gets the list of the bookings made by a particular user
+	 *@param user
+	 *@return List<Booking>
+	 */
 	@Override
-	public List<Booking> viewAllBookings() {
+	public List<Booking> viewAllBookings(User user) {
 		// TODO Auto-generated method stub
-		return brsDao.findAllBookings();
+		return bookingRepository.findByUser(user);
 	}
 	
 	
-
+	/**
+	 *finds the booking on the selected booking id
+	 *@param bookingId
+	 *@return booking
+	 */
 	@Override
 	public Booking findBookingById(Integer bookingId) {
 		// TODO Auto-generated method stub
-		return brsDao.findBookingById(bookingId);
+		return bookingRepository.findById(bookingId).get();
 	}
 
+	/**
+	 * save the transaction of the bus
+	 *@param busTransaction
+	 *@return busTransaction
+	 */
 	@Override
 	public BusTransaction addTransaction(BusTransaction transaction) {
-		// TODO Auto-generated method stub
-		return brsDao.saveTransaction(transaction);
+		return busTransactionRepository.save(transaction);
+	}
+
+  
+  /**
+ *lists all the transactions of all the buses
+ */
+@Override 
+  public List<BusTransaction> viewAllTransactions() { 
+	  return busTransactionRepository.findAll();
+  }
+  
+  /**
+   * lists the transactions of the buses based on the selected date
+ *@param dateOfJourney
+ *@return List<BusTransaction>
+ */
+@Override 
+  public List<BusTransaction> viewTransactionsByDate(LocalDate date){
+	  // TODO Auto-generated method stub return
+	  return busTransactionRepository.findByDate(date);
+  
+  }
+  
+  /**
+   * fetches the details of the transaction based on the id
+ *@param busTransactionId
+ *@return busTransaction
+ */
+@Override 
+  public BusTransaction viewTransactionById(Integer busTransactionId){
+	  // TODO Auto-generated method stub return
+	  return busTransactionRepository.findById(busTransactionId).get();
+  }
+  
+  
+  /**
+   * returns the list of buses along with their available seats on the selected date of journey
+ *@param source,destination,dateOfJourney
+ *@return List<BusTransaction>
+ */
+@Override 
+  public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
+	  List<BusTransaction> transactionsByRoutes=new ArrayList<BusTransaction>();
+		for(BusTransaction busTransaction:viewTransactionsByDate(dateOfJourney)) {
+			if(busTransaction.getDate().equals(dateOfJourney)) {
+				if(busTransaction.getBus().getSource().equalsIgnoreCase(source) && busTransaction.getBus().getDestination().equalsIgnoreCase(destination)) {
+					transactionsByRoutes.add(busTransaction);
+				}
+			}
+		}
+		return transactionsByRoutes;
+  }
+  
+  
+	/**
+	 * updates the count of the available seats in the bus
+	 * @param busTransactionId,passengersCount
+	 * @return busTransaction
+	 */
+	@Override
+	public BusTransaction updateAvailableSeats(Integer busTransactionId, Integer passengersCount) {
+		BusTransaction busTransaction = viewTransactionById(busTransactionId);
+		busTransaction.setAvailableSeats(busTransaction.getAvailableSeats() - passengersCount);
+		return busTransaction;
 	}
 
 	@Override
-	public List<BusTransaction> viewAllTransactions() {
-		// TODO Auto-generated method stub
-		return brsDao.findAllTransactions();
-	}
-
-	@Override
-	public List<BusTransaction> viewTransactionsByDate(LocalDate date) {
-		// TODO Auto-generated method stub
-		return brsDao.findTransactionsByDate(date);
-	}
-
-	@Override
-	public BusTransaction viewTransactionById(Integer busTransactionId) {
-		// TODO Auto-generated method stub
-		return brsDao.findTransactionById(busTransactionId);
-	}
-
-	@Override
-	public BusTransaction updateAvailableSeats(Integer busTransactionId,Integer passengersCount) {
-		// TODO Auto-generated method stub
-		return brsDao.updateAvailableSeats(busTransactionId, passengersCount);
-	}
-
-	@Override
-	public User addUser(User user) {
-		// TODO Auto-generated method stub
+	public User addUser(User user) { // TODO Auto-generated method stub
 		return brsDao.saveUser(user);
 	}
 
 	@Override
 	public Integer removeCustomer(Integer userId) {
-		// TODO Auto-generated method stub
-		return brsDao.removeUser(userId);
+		// TODO Auto-generated method stub return
+		brsDao.removeUser(userId);
 	}
 
 	@Override
 	public List<User> viewAllUsers() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method
 		return brsDao.viewAllUsers();
 	}
 
-	@Override
-	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
-		// TODO Auto-generated method stub
-		return brsDao.searchBuses(source, destination, dateOfJourney);
-	}
 
-	
-	public Passenger addPassenger(Passenger passenger) {
-		// TODO Auto-generated method stub
-		return brsDao.savePassenger(passenger);
-	}
 	public User validateUser(String username, String password) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated
 		return brsDao.validateUser(username, password);
 	}
 
-	
 }

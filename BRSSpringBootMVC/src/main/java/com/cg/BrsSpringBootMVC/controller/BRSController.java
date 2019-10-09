@@ -24,9 +24,10 @@ import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
 import com.cg.BrsSpringBootMVC.service.BRSService;
+import com.cg.BrsSpringBootMVC.util.ExcelReportView;
 
 /**
- * @author OSIS11
+ * @author Aditya, Tejaswini
  *
  */
 @Controller
@@ -148,11 +149,20 @@ public class BRSController {
 		return "jsp/test";
 	}
 
+	/**
+	 * @param bus
+	 * @return AddBus.jsp
+	 */
 	@RequestMapping(value = "/addbus", method = RequestMethod.GET)
 	public String addBus(@ModelAttribute("bus") Bus bus) {
 		return "jsp/Admin/AddBus";
 	}
 
+	/**
+	 * @param bus
+	 * @param result 
+	 * @return AdminHome.jsp 
+	 */
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
 	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
 		if (result.hasErrors()) {
@@ -174,24 +184,36 @@ public class BRSController {
 		}
 	}
 
+	/**
+	 * @return searchBus.jsp
+	 */
 	@RequestMapping(value = "/searchbuses", method = RequestMethod.GET)
 	public String searchBuses() {
 		return "jsp/Customer/SearchBus";
 
 	}
 
+	/**
+	 * @return showbuses.jsp with List of Buses
+	 */
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
 	public ModelAndView getAllData() { // admin
 		List<Bus> busList = brsService.viewAllBuses();
 		return new ModelAndView("jsp/Admin/ShowBuses", "busList", busList);
 	}
 
+	/**
+	 * @param bus
+	 * @param dateOfJourney
+	 * @param dropdown
+	 * @return SearchBus.jsp with List of Buses running
+	 */
 	@RequestMapping(value = "/showrunningbuses", method = RequestMethod.POST)
 	public ModelAndView showRunningBuses(@ModelAttribute("bus") Bus bus,
 			@RequestParam("date_of_journey") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOfJourney,
 			Map<String, Object> dropdown) {
-		List<String> src = brsService.findSrc();
-		List<String> dest = brsService.findDest();
+		List<String> src = brsService.findSources();
+		List<String> dest = brsService.findDestinations();
 		System.out.println(src);
 		dropdown.put("src", src);
 		dropdown.put("dest", dest);
@@ -204,6 +226,10 @@ public class BRSController {
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
 
+	/**
+	 * @param busId
+	 * @return DeleteBuses.jsp
+	 */
 	@RequestMapping(value = "/deletebus", method = RequestMethod.GET)
 	public String deleteBus(@RequestParam("busId") Integer busId) {
 		brsService.removeBus(busId);
@@ -214,13 +240,13 @@ public class BRSController {
 	/**
 	 * @param bus
 	 * @param dropdown
-	 * @return
+	 * @return AddBooking.jsp
 	 */
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
-		List<String> src = brsService.findSrc();
-		List<String> dest = brsService.findDest();
-		System.out.println(src);
+		List<String> src = brsService.findSources();
+		List<String> dest = brsService.findDestinations();
+		//System.out.println(src);
 		dropdown.put("src", src);
 		dropdown.put("dest", dest);
 		return "jsp/Customer/AddBooking";
@@ -338,7 +364,7 @@ public class BRSController {
 	@RequestMapping(value = "/viewallbookings", method = RequestMethod.GET)
 	public ModelAndView viewAllBookings() {
 		User user = (User) session.getAttribute("user");
-		List<Booking> bookingsList = user.getBookingsList();
+		List<Booking> bookingsList = brsService.viewAllBookings(user);
 		System.out.println(bookingsList);
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
