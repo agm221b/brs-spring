@@ -11,6 +11,12 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Tejaswini
+ * Description: Passenger entity required for Booking
+ * Created On: 05/09/2019
+ *
+ */
 @Component("passenger")
 @Entity
 @Table(name = "passenger")

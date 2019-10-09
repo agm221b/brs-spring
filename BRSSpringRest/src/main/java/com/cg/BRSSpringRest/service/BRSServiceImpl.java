@@ -114,6 +114,8 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public Booking createBooking(Booking booking) {
 		// TODO Auto-generated method stub
+		booking.setBus(booking.getBus());
+		booking.setPassengers(booking.getPassengers());
 		return bookingRepository.save(booking);
 	}
 

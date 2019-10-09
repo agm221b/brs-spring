@@ -20,6 +20,12 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Tejaswini
+ * Description: Booking entity for Customer
+ * Created On: 05/09/2019
+ *
+ */
 @Component("booking")
 @Entity
 @Table(name = "booking")
@@ -28,7 +34,7 @@ public class Booking {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "booking_id")
 	private Integer bookingId;
-	
+
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
 	private LocalDate dateOfJourney;
@@ -49,7 +55,7 @@ public class Booking {
 	private String bookingStatus;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
-	
+
 	@ManyToOne
 	@JoinColumn(name="user_fk")
 	private User user;
@@ -133,8 +139,8 @@ public class Booking {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-	
-	
+
+
 
 	public User getUser() {
 		return user;
@@ -150,5 +156,5 @@ public class Booking {
 				+ bookingStatus + ", deleteFlag=" + deleteFlag + "]";
 	}
 
-	
+
 }

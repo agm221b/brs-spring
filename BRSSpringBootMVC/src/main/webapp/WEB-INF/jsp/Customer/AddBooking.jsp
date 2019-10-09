@@ -8,6 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Booking</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/customer.css">
 
 
@@ -26,7 +28,7 @@
   </div>
 </nav>
 	<br>
-	<search:form method="post" action="showrunningbuses" modelAttribute="bus">
+	<search:form method="post" action="showrunningbuses" modelAttribute="bus" id="searchbusform">
 	
 				 <span style="color: red;"></span>
 			<br>
@@ -42,13 +44,12 @@
 			</tr>
 			
 			<tr>
-			<td><search:select cssClass="form-control" path="source" items="${src }" />
+			<td><search:select cssClass="form-control" path="source" items="${src }" id="source"/>
 			</td>
 			</tr>
 			
 			<tr>
-			<td><label for="destination">Destination</label>  <search:select cssClass="form-control" path="destination" items="${dest }" /> <span
-					style="color: red;"></span>
+			<td><label for="destination">Destination</label>  <search:select cssClass="form-control" path="destination" items="${dest }" id="destination"/>
 			</td>
 			</tr>
 			
@@ -57,26 +58,37 @@
 			<br>
 			<div class="input-field col s6">
 				<!-- to work on datepicker  -->
-				<label for="datepicker">Enter date:</label> <input type="date"
-					name="date_of_journey" class="datepicker" id="datepicker" /> <span
+				<label for="datepicker">Enter date:</label> <input type="text"
+					name="date_of_journey" id="datepicker" /> <span
 					style="color: red;"></span>
 			</div>
-			<br>
-		
-		
-
-		<div class="section">
-
-
+			<div id="section">
 			<script>
-			$('.datepicker').datepicker({
-			    format: 'mm/dd/yyyy',
-			    startDate: '-3d'
+			$('#datepicker').datepicker({
+				dateFormat: 'dd-mm-yy'
 			});
 			</script>
-
-		</div>
-		<input type="submit" value="Search Buses">
+			</div>
+			<br>
+		<input type="submit" value="Search Buses" id="searchbuses">
+		
+		<script>
+		$(document).ready(function(){
+			$('#searchbusform').submit(function(event){
+				event.preventDefault();
+				
+				var source=$('#source').val();
+				var destination=$('#destination').val();
+				
+				$('.route_error').remove();
+				
+				if(source===destination){
+					$('#source').after('<span class="route_error">Source and Destination cannot be same</span>');
+					$('#destination').after('<span class="route_error">Source and Destination cannot be same</span>');
+				}
+			});
+		});
+		</script>
 		
 	</search:form>
 	<br />

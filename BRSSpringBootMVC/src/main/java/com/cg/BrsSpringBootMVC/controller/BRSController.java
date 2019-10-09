@@ -238,9 +238,13 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Tejaswini
+	 * Description: Displays the AddBooking JSP file with the source and destination and a date picker
+	 * and allows the customer to select the source, destination and date of journey
 	 * @param bus
 	 * @param dropdown
 	 * @return AddBooking.jsp
+	 * Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
@@ -252,11 +256,24 @@ public class BRSController {
 		return "jsp/Customer/AddBooking";
 	}
 
+	/**@author Tejaswini
+	 * Description: Redirects to AddPassenger.jsp where the customer will add the details of the passengers 
+	 * @param passenger
+	 * @return AddPassenger.jsp
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.GET)
 	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) {
 		return "jsp/Customer/AddPassenger";
 	}
 
+	/**@author Tejaswini
+	 * Description: Adds the list of passengers to the particular booking of the user session
+	 * @param passenger
+	 * @param result
+	 * @return ModelAndView
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/addpassengerdetails", method = RequestMethod.POST)
 	public ModelAndView addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger,
 			BindingResult result) {
@@ -275,6 +292,13 @@ public class BRSController {
 		}
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: Creates the booking for the selected date for the customer
+	 * @param busTransactionId
+	 * @return Booking
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
@@ -295,6 +319,12 @@ public class BRSController {
 
 	}
 
+	/**@author Tejaswini
+	 * Description: Cancels the booking selected by the user
+	 * @param bookingId
+	 * @return Booking
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/cancelbooking", method = RequestMethod.GET)
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
 		System.out.println(bookingId);
@@ -312,12 +342,26 @@ public class BRSController {
 		System.out.println("bookings");
 		return new ModelAndView("jsp/Customer/UpdatedBookings", "bookings", bookings);
 	}
-
+	
+	
+	/**@author Tejaswini
+	 * Description: Redirects to the payment page
+	 * @return payment.jsp
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
 	public String confirmPayment() {
 		return "jsp/Customer/payment";
 	}
-
+	
+	
+	/**
+	 * @author Tejaswini
+	 * Description: Gets the payment mode selected by the user
+	 * @param paymentMode
+	 * @return confirmation.jsp
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/paymentdetails", method = RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
 		Booking booking = (Booking) session.getAttribute("booking");
@@ -327,10 +371,18 @@ public class BRSController {
 
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: Views the current booking made by the customer
+	 * @param model
+	 * @return ModelAndView
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/viewcurrentbooking", method = RequestMethod.GET)
 	public ModelAndView viewCurrentBooking(Map<String, Object> model) {
 
 		Booking booking = (Booking) session.getAttribute("booking");
+		
 		List<Passenger> passengerList = (List<Passenger>) session.getAttribute("passengerList");
 		System.out.println(passengerList);
 		int passengersCount = passengerList.size();
@@ -361,6 +413,12 @@ public class BRSController {
 		return "jsp/Customer/CancelBooking";
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: List all the bookings made till date by the customer
+	 * @return ModelAndView
+	 * Created On: 05/09/2019
+	 */
 	@RequestMapping(value = "/viewallbookings", method = RequestMethod.GET)
 	public ModelAndView viewAllBookings() {
 		User user = (User) session.getAttribute("user");
