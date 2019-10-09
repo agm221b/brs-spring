@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -38,17 +40,22 @@ public class BRSController {
 	@Autowired
 	BRSService brsService;
 
+	private static final Logger logger = LogManager.getLogger(BRSController.class);
+
 	/**
 	 * directs to the home page of the web site
+	 * 
 	 * @return jsp/home
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
+		logger.debug("In Home now");
 		return "jsp/home";
 	}
 
 	/**
 	 * directs to the home page of the admin
+	 * 
 	 * @return jsp/Admin/AdminHome
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
@@ -59,6 +66,7 @@ public class BRSController {
 
 	/**
 	 * directs to the home page of the customer
+	 * 
 	 * @return jsp/Customer/CustomerHome
 	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
@@ -69,6 +77,7 @@ public class BRSController {
 
 	/**
 	 * directs to the login page. Common for both admin and customer
+	 * 
 	 * @return jsp/login
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -78,11 +87,12 @@ public class BRSController {
 
 	/**
 	 * validates the login credentials
+	 * 
 	 * @param username
 	 * @param password
 	 * @param model
 	 * @param session
-	 * @return 
+	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
@@ -112,10 +122,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: redirects to the aboutUs.jsp page
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
+	 *         to the aboutUs.jsp page
 	 * @return
 	 */
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
@@ -141,10 +149,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: Downloads the excel file containing all the bookings of that user
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: Downloads
+	 *         the excel file containing all the bookings of that user
 	 * @return
 	 */
 	@RequestMapping(value = "/report", method = RequestMethod.GET)
@@ -155,10 +161,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: redirects to the help.jsp page
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
+	 *         to the help.jsp page
 	 * @return
 	 */
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
@@ -166,12 +170,9 @@ public class BRSController {
 		return "jsp/help";
 	}
 
-
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: redirects to the AddBus.jsp page
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
+	 *         to the AddBus.jsp page
 	 * @param bus
 	 * @return AddBus.jsp
 	 */
@@ -181,13 +182,11 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: sends the bus data form and creates busTransaction
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: sends the
+	 *         bus data form and creates busTransaction
 	 * @param bus
-	 * @param result 
-	 * @return AdminHome.jsp 
+	 * @param result
+	 * @return AdminHome.jsp
 	 */
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
 	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
@@ -211,10 +210,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: redirects to searchBuses.jsp
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
+	 *         to searchBuses.jsp
 	 * @return searchBus.jsp
 	 */
 	@RequestMapping(value = "/searchbuses", method = RequestMethod.GET)
@@ -224,10 +221,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: Displays the list of all buses as ModelAndView on ShowBuses.jsp
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: Displays
+	 *         the list of all buses as ModelAndView on ShowBuses.jsp
 	 * @return showbuses.jsp with List of Buses
 	 */
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
@@ -237,10 +232,9 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: displays the busTransactions according to the particular date , source and destination
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: displays
+	 *         the busTransactions according to the particular date , source and
+	 *         destination
 	 * @param bus
 	 * @param dateOfJourney
 	 * @param dropdown
@@ -265,10 +259,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Created: 8/10/19
-	 * Last Modified: 9/10/19
-	 * Description: Removes the bus from the database
+	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: Removes
+	 *         the bus from the database
 	 * @param busId
 	 * @return DeleteBuses.jsp
 	 */
@@ -289,7 +281,7 @@ public class BRSController {
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
 		List<String> src = brsService.findSources();
 		List<String> dest = brsService.findDestinations();
-		//System.out.println(src);
+		// System.out.println(src);
 		dropdown.put("src", src);
 		dropdown.put("dest", dest);
 		return "jsp/Customer/AddBooking";
@@ -386,7 +378,7 @@ public class BRSController {
 		booking.setUser(user);
 		booking.setDeleteFlag(0);
 		user.getBookingsList().add(booking);
-		Integer busTransactionId=(Integer)session.getAttribute("transactionId");
+		Integer busTransactionId = (Integer) session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings.add(booking);
