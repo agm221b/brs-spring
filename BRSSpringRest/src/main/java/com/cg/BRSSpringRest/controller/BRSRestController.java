@@ -1,6 +1,7 @@
 package com.cg.BRSSpringRest.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.BRSSpringRest.dto.Booking;
 import com.cg.BRSSpringRest.dto.Bus;
+import com.cg.BRSSpringRest.dto.BusTransaction;
+import com.cg.BRSSpringRest.dto.Passenger;
 import com.cg.BRSSpringRest.dto.User;
 import com.cg.BRSSpringRest.service.BRSService;
 
@@ -48,12 +51,28 @@ public class BRSRestController {
 	 * Created On: 09/10/2019
 	 * Last Modified: 09/10/2019 10:53 AM
 	 */
+	
 	@PostMapping(value = "/createbooking")
-	public Booking addBooking(@RequestParam(value = "busId")Integer busId,@RequestBody Booking booking) {
-		Bus bus=brsService.viewBusById(busId);
-		booking.setBus(bus);
+	public Booking addBooking(@RequestParam(value = "busTransactionId")Integer busTransactionId,@RequestBody Booking booking) {
+		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
+		booking.setBus(busTransaction.getBus());
+		booking.setDateOfJourney(busTransaction.getDate());
 		booking.setUser(null);
-		booking.setPassengers(null);
+		List<Passenger> passengers=new ArrayList<Passenger>();
+		
+		Passenger passenger1=new Passenger();
+		passenger1.setPassengerName("tejaswini");
+		passenger1.setPassengerAge(20);
+		passenger1.setPassengerGender('F');
+		passengers.add(passenger1);
+		
+		Passenger passenger2=new Passenger();
+		passenger2.setPassengerName("tejaswini");
+		passenger2.setPassengerAge(20);
+		passenger2.setPassengerGender('F');
+		passengers.add(passenger2);
+		
+		booking.setPassengers(passengers);
 		return brsService.createBooking(booking);
 	}
 	
