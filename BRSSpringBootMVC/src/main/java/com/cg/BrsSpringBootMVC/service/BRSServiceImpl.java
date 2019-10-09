@@ -259,8 +259,10 @@ public class BRSServiceImpl implements BRSService {
 		return busTransaction;
 	}
 
-
 	/**
+	 * @author Mayank
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param user
 	 * @return user that is added
 	 */
@@ -269,10 +271,12 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return userRepository.save(user);
 	}
-
 	/**
+	 * @author Mayank
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param userId
-	 *	@return 0 if user is already deleted or does not exist, 1 if it is removed 
+	 * @return 0 if user is already deleted or does not exist, 1 if it is removed 
 	 */
 	@Override
 	public Integer removeUser(Integer userId) {
@@ -286,9 +290,11 @@ public class BRSServiceImpl implements BRSService {
 		return 1;
 
 	}
-
 	/**
-	 *lists all the users of all the buses
+	 * @author Mayank
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 *@return lists all the users of all the buses
 	 */
 	@Override
 	public List<User> viewAllUsers() {
@@ -297,6 +303,9 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Mayank
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param username
 	 * @param password
 	 *@return user after validating given username and password
