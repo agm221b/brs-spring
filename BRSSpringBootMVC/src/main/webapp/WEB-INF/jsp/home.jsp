@@ -65,7 +65,7 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active" style="padding: 40px;">
-				<img class="first-slide" src="webjar/img/bus1.jpg"
+				<img class="first-slide" src="img/bus1.jpg"
 					style="width: 100%; height: 600px;" alt="First slide">
 
 				<div class="container">
@@ -80,7 +80,7 @@
 			</div>
 
 			<div class="item" style="padding: 40px;">
-				<img class="second-slide" src='<c:out value="webjar/img/bus2.jpg"/>' style="width: 100%; height: 600px;"	
+				<img class="second-slide" src='<c:out value="img/bus2.jpg"/>' style="width: 100%; height: 600px;"	
 
 					alt="Second slide">
 				<div class="container">
@@ -95,7 +95,7 @@
 			</div>
 
 			<div class="item" style="padding: 40px;">
-				<img class="third-slide" src="webjar/img/bus3.jpg" style="width: 100%; height: 600px;" alt="Third slide">
+				<img class="third-slide" src="img/bus3.jpg" style="width: 100%; height: 600px;" alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>One stop for all your favorite buses.</h1>

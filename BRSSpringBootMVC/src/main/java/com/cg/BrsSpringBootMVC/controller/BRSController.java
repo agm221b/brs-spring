@@ -27,7 +27,7 @@ import com.cg.BrsSpringBootMVC.service.BRSService;
 import com.cg.BrsSpringBootMVC.util.ExcelReportView;
 
 /**
- * @author Aditya, Tejaswini
+ * @author Aditya, Tejaswini, Mayank
  *
  */
 @Controller
@@ -111,6 +111,13 @@ public class BRSController {
 		return "jsp/logout";
 	}
 
+	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: redirects to the aboutUs.jsp page
+	 * @return
+	 */
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
 	public String showAboutUsPage() {
 		return "jsp/aboutUs";
@@ -121,6 +128,13 @@ public class BRSController {
 		return "jsp/register";
 	}
 
+	/**
+	 * @author Mayank
+	 * Description: adds user and redirects to home.jsp page or redirects to register.jsp page
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return jsp/home
+	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
 
@@ -133,6 +147,13 @@ public class BRSController {
 		}
 	}
 
+	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Downloads the excel file containing all the bookings of that user
+	 * @return
+	 */
 	@RequestMapping(value = "/report", method = RequestMethod.GET)
 	public ModelAndView getExcel() {
 		User user = (User) session.getAttribute("user");
@@ -140,16 +161,24 @@ public class BRSController {
 		return new ModelAndView(new ExcelReportView(), "bookingList", bookingList);
 	}
 
+	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: redirects to the help.jsp page
+	 * @return
+	 */
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
 	public String showHelpPage() {
 		return "jsp/help";
 	}
 
-	public String showBusDetails() {
-		return "jsp/test";
-	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: redirects to the AddBus.jsp page
 	 * @param bus
 	 * @return AddBus.jsp
 	 */
@@ -159,6 +188,10 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: sends the bus data form and creates busTransaction
 	 * @param bus
 	 * @param result 
 	 * @return AdminHome.jsp 
@@ -185,6 +218,10 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: redirects to searchBuses.jsp
 	 * @return searchBus.jsp
 	 */
 	@RequestMapping(value = "/searchbuses", method = RequestMethod.GET)
@@ -194,6 +231,10 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Displays the list of all buses as ModelAndView on ShowBuses.jsp
 	 * @return showbuses.jsp with List of Buses
 	 */
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
@@ -203,6 +244,10 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: displays the busTransactions according to the particular date , source and destination
 	 * @param bus
 	 * @param dateOfJourney
 	 * @param dropdown
@@ -227,6 +272,10 @@ public class BRSController {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Removes the bus from the database
 	 * @param busId
 	 * @return DeleteBuses.jsp
 	 */
@@ -238,9 +287,13 @@ public class BRSController {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @author Tejaswini
 	 * Description: Displays the AddBooking JSP file with the source and destination and a date picker
 	 * and allows the customer to select the source, destination and date of journey
+=======
+	 * 
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 	 * @param bus
 	 * @param dropdown
 	 * @return AddBooking.jsp
@@ -427,6 +480,14 @@ public class BRSController {
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 
+
+	/**
+	 * @author Mayank
+	 * Description: shows all the users
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return jsp/Admin/ShowAllUsers
+	 */
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();

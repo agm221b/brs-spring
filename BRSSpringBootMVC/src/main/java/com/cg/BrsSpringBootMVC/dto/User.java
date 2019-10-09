@@ -25,12 +25,12 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private Integer userId;
-	@Column(name = "username")
 	
+	@Column(name = "username")
 	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String username;
-	@Column(name="pass")
 	
+	@Column(name="pass")
 	private String pass;
 	@Column(name = "user_type")
 	@NotNull(message=" user type required")

@@ -13,21 +13,18 @@ import com.cg.BrsSpringBootMVC.dao.BookingRepository;
 import com.cg.BrsSpringBootMVC.dao.BusRepository;
 
 import com.cg.BrsSpringBootMVC.dao.BusTransactionRepository;
+import com.cg.BrsSpringBootMVC.dao.UserRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.User;
 
+
 /**
- * @author Aditya, Tejaswini
- *
- */
-/**
- * @author HARIBABU
- *
- */
-/**
- * @author HARIBABU
+ * @author Aditya, Tejaswini, Mayank
+ * Created: 8/10/19
+ * Last Modified: 9/10/19
+ * Description: This is the BRS Service that calls the various Repositories and performs various service operations
  *
  */
 @Service("brsService")
@@ -40,8 +37,14 @@ public class BRSServiceImpl implements BRSService {
 	BusTransactionRepository busTransactionRepository;
 	@Autowired
 	BusRepository busRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Adds the bus into the Repository
 	 * @param bus
 	 * @return bus that is added
 	 */
@@ -51,6 +54,10 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Removes the bus from the Repository
 	 * @param busId
 	 *	@return 0 if bus is already deleted or does not exist, 1 if it is removed 
 	 */
@@ -65,6 +72,10 @@ public class BRSServiceImpl implements BRSService {
 		return 1;
 	}
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Views all the buses from the Repository
 	 *@return List of all buses with deleteFlag as 0.
 	 */
 	@Override
@@ -73,6 +84,10 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Views the bus with that particular busId from the Repository
 	 * @param busId
 	 *@return bus with that busId
 	 */
@@ -82,6 +97,10 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Views the Bus with those particular sources and destinations
 	 * @param source
 	 * @param destination
 	 *@return List of buses with particular sources and destinations
@@ -93,16 +112,24 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Find the list of all the sources in database
 	 *@return list of sources of all the buses in the database
 	 */
 	@Override
 	public List<String> findSources() { // TODO Auto-generated method stub
-		
+
 
 		return busRepository.findBySource();
 	}
 
 	/**
+	 * @author Aditya
+	 * Created: 8/10/19
+	 * Last Modified: 9/10/19
+	 * Description: Find the list of all destinations in the database
 	 *@return list of destinations of all the buses in the database
 	 */
 	@Override
@@ -154,8 +181,8 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return bookingRepository.findByUser(user);
 	}
-	
-	
+
+
 	/**
 	 * @author Tejaswini
 	 * Description: finds the booking on the selected booking id
@@ -179,47 +206,47 @@ public class BRSServiceImpl implements BRSService {
 		return busTransactionRepository.save(transaction);
 	}
 
-  
-  /**
- *lists all the transactions of all the buses
- */
-@Override 
-  public List<BusTransaction> viewAllTransactions() { 
-	  return busTransactionRepository.findAll();
-  }
-  
-  /**
-   * lists the transactions of the buses based on the selected date
- *@param dateOfJourney
- *@return List<BusTransaction>
- */
-@Override 
-  public List<BusTransaction> viewTransactionsByDate(LocalDate date){
-	  // TODO Auto-generated method stub return
-	  return busTransactionRepository.findByDate(date);
-  
-  }
-  
-  /**
-   * fetches the details of the transaction based on the id
- *@param busTransactionId
- *@return busTransaction
- */
-@Override 
-  public BusTransaction viewTransactionById(Integer busTransactionId){
-	  // TODO Auto-generated method stub return
-	  return busTransactionRepository.findById(busTransactionId).get();
-  }
-  
-  
-  /**
-   * returns the list of buses along with their available seats on the selected date of journey
- *@param source,destination,dateOfJourney
- *@return List<BusTransaction>
- */
-@Override 
-  public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
-	  List<BusTransaction> transactionsByRoutes=new ArrayList<BusTransaction>();
+
+	/**
+	 *lists all the transactions of all the buses
+	 */
+	@Override 
+	public List<BusTransaction> viewAllTransactions() { 
+		return busTransactionRepository.findAll();
+	}
+
+	/**
+	 * lists the transactions of the buses based on the selected date
+	 *@param dateOfJourney
+	 *@return List<BusTransaction>
+	 */
+	@Override 
+	public List<BusTransaction> viewTransactionsByDate(LocalDate date){
+		// TODO Auto-generated method stub return
+		return busTransactionRepository.findByDate(date);
+
+	}
+
+	/**
+	 * fetches the details of the transaction based on the id
+	 *@param busTransactionId
+	 *@return busTransaction
+	 */
+	@Override 
+	public BusTransaction viewTransactionById(Integer busTransactionId){
+		// TODO Auto-generated method stub return
+		return busTransactionRepository.findById(busTransactionId).get();
+	}
+
+
+	/**
+	 * returns the list of buses along with their available seats on the selected date of journey
+	 *@param source,destination,dateOfJourney
+	 *@return List<BusTransaction>
+	 */
+	@Override 
+	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney) {
+		List<BusTransaction> transactionsByRoutes=new ArrayList<BusTransaction>();
 		for(BusTransaction busTransaction:viewTransactionsByDate(dateOfJourney)) {
 			if(busTransaction.getDate().equals(dateOfJourney)) {
 				if(busTransaction.getBus().getSource().equalsIgnoreCase(source) && busTransaction.getBus().getDestination().equalsIgnoreCase(destination)) {
@@ -228,9 +255,9 @@ public class BRSServiceImpl implements BRSService {
 			}
 		}
 		return transactionsByRoutes;
-  }
-  
-  
+	}
+
+
 	/**
 	 * updates the count of the available seats in the bus
 	 * @param busTransactionId,passengersCount
@@ -243,27 +270,74 @@ public class BRSServiceImpl implements BRSService {
 		return busTransaction;
 	}
 
+	/**
+	 * @author Mayank
+	 * Description: method to add user
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @param user
+	 * @return user that is added
+	 */
 	@Override
-	public User addUser(User user) { // TODO Auto-generated method stub
-		return brsDao.saveUser(user);
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
 	}
-
+	/**
+	 * @author Mayank
+	 * Description: method to delete user, input is userId
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @param userId
+	 * @return 0 if user is already deleted or does not exist, 1 if it is removed 
+	 */
 	@Override
-	public Integer removeCustomer(Integer userId) {
+	public Integer removeUser(Integer userId) {
 		// TODO Auto-generated method stub return
-		brsDao.removeUser(userId);
-	}
+		User user = userRepository.findByUserIdAndDeleteFlag(userId, 0);
+		if (user == null)
+			return 0;
+		else
+			user.setDeleteFlag(1);
+		userRepository.save(user);
+		return 1;
 
+	}
+	/**
+	 * @author Mayank
+	 * Description: method to view all the users
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return lists all the users of all the buses
+	 */
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method
-		return brsDao.viewAllUsers();
+		return userRepository.findAll();
 	}
 
-
+	/**
+	 * @author Mayank
+	 * Description: method to validate user
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @param username
+	 * @param password
+	 * @return user after validating given username and password
+	 */
+	@Override
 	public User validateUser(String username, String password) {
 		// TODO Auto-generated
-		return brsDao.validateUser(username, password);
+		/*
+		 * List<User> userList=userRepository.findAll(); for (User user: userList) { if
+		 * (user.getUsername().equals(username) && user.getPass().equals(password)) {
+		 * return user; } else { return null; } } return ;
+		 */
+		User user = userRepository.findByUsernameAndPass(username, password);
+		if (user == null)
+			return null;
+		else
+			return user;
 	}
 
 }
