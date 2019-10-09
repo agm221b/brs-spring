@@ -139,20 +139,27 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
-	 * save the current booking data
-	 *@param booking
-	 *@return booking
+	 * @author Tejaswini
+	 * Description: save the current booking data
+	 * @param booking
+	 * @return booking
+	 * Created On : 06/10/2019
 	 */
 	@Override
 	public Booking createBooking(Booking booking) {
 		// TODO Auto-generated method stub
+		booking.setBus(booking.getBus());
+		booking.setPassengers(booking.getPassengers());
+		booking.setUser(booking.getUser());
 		return bookingRepository.save(booking);
 	}
 
 	/**
-	 * sets the booking status to CANCELLED of the selected booking object
-	 *@param bookingId
-	 *@return booking
+	 * @author Tejaswini
+	 * Description: sets the booking status to CANCELLED of the selected booking object
+	 * @param bookingId
+	 * @return booking
+	 * Created On : 06/10/2019
 	 */
 	@Override
 	public Booking cancelBooking(Integer bookingId) {
@@ -163,9 +170,11 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
-	 * gets the list of the bookings made by a particular user
-	 *@param user
-	 *@return List<Booking>
+	 * @author Tejaswini
+	 * Description: gets the list of the bookings made by a particular user
+	 * @param user
+	 * @return List<Booking>
+	 * Created On : 06/10/2019
 	 */
 	@Override
 	public List<Booking> viewAllBookings(User user) {
@@ -175,9 +184,11 @@ public class BRSServiceImpl implements BRSService {
 
 
 	/**
-	 *finds the booking on the selected booking id
-	 *@param bookingId
-	 *@return booking
+	 * @author Tejaswini
+	 * Description: finds the booking on the selected booking id
+	 * @param bookingId
+	 * @return booking
+	 * Created On : 06/10/2019
 	 */
 	@Override
 	public Booking findBookingById(Integer bookingId) {
@@ -259,8 +270,11 @@ public class BRSServiceImpl implements BRSService {
 		return busTransaction;
 	}
 
-
 	/**
+	 * @author Mayank
+	 * Description: method to add user
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param user
 	 * @return user that is added
 	 */
@@ -269,10 +283,13 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return userRepository.save(user);
 	}
-
 	/**
+	 * @author Mayank
+	 * Description: method to delete user, input is userId
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param userId
-	 *	@return 0 if user is already deleted or does not exist, 1 if it is removed 
+	 * @return 0 if user is already deleted or does not exist, 1 if it is removed 
 	 */
 	@Override
 	public Integer removeUser(Integer userId) {
@@ -286,9 +303,12 @@ public class BRSServiceImpl implements BRSService {
 		return 1;
 
 	}
-
 	/**
-	 *lists all the users of all the buses
+	 * @author Mayank
+	 * Description: method to view all the users
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
+	 * @return lists all the users of all the buses
 	 */
 	@Override
 	public List<User> viewAllUsers() {
@@ -297,9 +317,13 @@ public class BRSServiceImpl implements BRSService {
 	}
 
 	/**
+	 * @author Mayank
+	 * Description: method to validate user
+	 * Created: 9/10/2019
+	 * Last Modified: 9/10/2019
 	 * @param username
 	 * @param password
-	 *@return user after validating given username and password
+	 * @return user after validating given username and password
 	 */
 	@Override
 	public User validateUser(String username, String password) {

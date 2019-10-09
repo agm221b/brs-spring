@@ -31,7 +31,7 @@ public class Booking {
 	@Column(name = "booking_id")
 	private Integer bookingId;
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "date_of_journey")
 	private LocalDate dateOfJourney;
