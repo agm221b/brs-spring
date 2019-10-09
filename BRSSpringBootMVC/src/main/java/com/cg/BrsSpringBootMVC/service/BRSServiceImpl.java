@@ -13,6 +13,7 @@ import com.cg.BrsSpringBootMVC.dao.BookingRepository;
 import com.cg.BrsSpringBootMVC.dao.BusRepository;
 
 import com.cg.BrsSpringBootMVC.dao.BusTransactionRepository;
+import com.cg.BrsSpringBootMVC.dao.UserRepository;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
@@ -40,6 +41,8 @@ public class BRSServiceImpl implements BRSService {
 	BusTransactionRepository busTransactionRepository;
 	@Autowired
 	BusRepository busRepository;
+	@Autowired
+	UserRepository userRepository;
 
 	/**
 	 * @param bus
@@ -232,27 +235,61 @@ public class BRSServiceImpl implements BRSService {
 		return busTransaction;
 	}
 
+
+	/**
+	 * @param user
+	 * @return user that is added
+	 */
 	@Override
-	public User addUser(User user) { // TODO Auto-generated method stub
-		return brsDao.saveUser(user);
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
 	}
 
+	/**
+	 * @param userId
+	 *	@return 0 if user is already deleted or does not exist, 1 if it is removed 
+	 */
 	@Override
-	public Integer removeCustomer(Integer userId) {
+	public Integer removeUser(Integer userId) {
 		// TODO Auto-generated method stub return
-		brsDao.removeUser(userId);
+		User user = userRepository.findByUserIdAndDeleteFlag(userId, 0);
+		if (user == null)
+			return 0;
+		else
+			user.setDeleteFlag(1);
+		userRepository.save(user);
+		return 1;
+		
 	}
 
+	 /**
+	 *lists all the users of all the buses
+	 */
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method
-		return brsDao.viewAllUsers();
+		return userRepository.findAll();
 	}
 
-
+	/**
+	 * @param username
+	 * @param password
+	 *@return user after validating given username and password
+	 */
+	@Override
 	public User validateUser(String username, String password) {
 		// TODO Auto-generated
-		return brsDao.validateUser(username, password);
+		/*
+		 * List<User> userList=userRepository.findAll(); for (User user: userList) { if
+		 * (user.getUsername().equals(username) && user.getPass().equals(password)) {
+		 * return user; } else { return null; } } return ;
+		 */
+		User user = userRepository.findByUsernameAndPass(username, password);
+		if (user == null)
+			return null;
+		else
+			return user;
 	}
 
 }
