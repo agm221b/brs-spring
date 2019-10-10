@@ -8,9 +8,13 @@
 </head>
 <body>
 
-<h1>
-{$errorName }
+<h1 style="color: red; align-content: center;">
+${exception }
 </h1>
+
+<h3 style="color: red; align-content: center;">
+${url }
+</h3>
 
 </body>
 </html>

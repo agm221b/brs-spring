@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -226,8 +228,27 @@ public class BRSController {
 		}
 	}
 	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String handleError() {
+		return "jsp/error";
+	}
+	
 	/*@ExceptionHandler
 	 public ModelAndView handleException() */
+	
+	@ExceptionHandler(BusNullException.class)
+	public ModelAndView handleEmployeeNotFoundException(HttpServletRequest request, Exception ex){
+		logger.error("Requested URL="+request.getRequestURL());
+		logger.error("Exception Raised="+ex);
+		
+		/* request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE); */
+		ModelAndView modelAndView = new ModelAndView();
+	    modelAndView.addObject("exception", ex);
+	    modelAndView.addObject("url", request.getRequestURL());
+	    
+	    modelAndView.setViewName("jsp/error");
+	    return modelAndView;
+	}	
 
 	/**
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
