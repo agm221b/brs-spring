@@ -377,10 +377,12 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini Description: Creates the booking for the selected date for
+	 * @author Tejaswini 
+	 * Description: Creates the booking for the selected date for
 	 *         the customer
 	 * @param busTransactionId
-	 * @return Booking Created On: 05/09/2019
+	 * @return Booking 
+	 * Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
