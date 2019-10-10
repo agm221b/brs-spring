@@ -40,12 +40,12 @@
 				<td>Passenger Gender</td>
 				<td>
 					<p>
-						<label> <form:radiobutton path="passengerGender" value="M" id="male"/>
+						<label> <form:radiobutton path="passengerGender" value="M" id="passenger_gender"/>
 							<span>Male</span>
 						</label>
 					</p>
 					<p>
-						<label> <form:radiobutton path="passengerGender" value="F" id="female"/>
+						<label> <form:radiobutton path="passengerGender" value="F" id="passenger_gender"/>
 							<span>Female</span>
 						</label>
 					</p>
@@ -70,6 +70,17 @@
 	<script>
 	$(document).ready(function(){
 		function validateForm(){
+			
+			var passengerName=$('#passenger_name').val();
+			var passengerAge=$('passenger_age').val();
+			var passengerGender=$('#passenger_gender').val();
+			
+			if(passengerName===''||passengerName==null){
+				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Empty</span>")
+			}
+			else if(passengerAge.isNaN()){
+				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>")
+			}
 			
 		}
 	});
