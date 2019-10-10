@@ -84,14 +84,17 @@
 				if(source===destination){
 					$('#source').after('<span class="route_error">Source and Destination cannot be same</span>');
 					$('#destination').after('<span class="route_error">Source and Destination cannot be same</span>');
+					return false;
 				}
 				
 				var dateOfJourney=$('#datepicker').val();
 				
 				var journeydate=new Date(dateOfJourney);
 				var today=new Date();
+				
 				console.log(Date.parse(journeydate));
 				console.log(Date.parse(today));
+				
 				if(Date.parse(journeydate)<Date.parse(today)){
 					$('#datepicker').after('<span class="date_error">Date should be in the future</span>')
 				}

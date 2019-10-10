@@ -25,6 +25,7 @@ import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BRSException;
 import com.cg.BrsSpringBootMVC.exception.BusNullException;
 import com.cg.BrsSpringBootMVC.service.BRSService;
 import com.cg.BrsSpringBootMVC.util.ExcelReportView;
@@ -95,10 +96,11 @@ public class BRSController {
 	 * @param model
 	 * @param session
 	 * @return
+	 * @throws BRSException 
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) {
+			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) throws BRSException {
 		User user = brsService.validateUser(username, password);
 		model.put("errormessage", "Invalid credentials");
 		if (user != null) {
