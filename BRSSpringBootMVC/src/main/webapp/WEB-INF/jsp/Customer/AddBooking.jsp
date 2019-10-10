@@ -93,7 +93,7 @@
 				console.log(Date.parse(journeydate));
 				console.log(Date.parse(today));
 				if(Date.parse(journeydate)<Date.parse(today)){
-					$('#searchbuses').after('<span class="date_error">Date should be in the future</span>')
+					$('#datepicker').after('<span class="date_error">Date should be in the future</span>')
 				}
 			});
 		});
