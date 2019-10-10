@@ -49,10 +49,15 @@ public class BRSServiceImpl implements BRSService {
 	 * Description: Adds the bus into the Repository
 	 * @param bus
 	 * @return bus that is added
+	 * @throws BusNullException 
 	 */
 	@Override
-	public Bus addBusDetails(Bus bus) { // TODO Auto-generated method
-		return busRepository.save(bus);
+	public Bus addBusDetails(Bus bus) throws BusNullException { // TODO Auto-generated method
+		Bus saveBus =busRepository.save(bus);
+		if(saveBus==null) {
+			throw new BusNullException("Bus is not saved and found to be null");
+		}
+		return saveBus;
 	}
 
 	/**

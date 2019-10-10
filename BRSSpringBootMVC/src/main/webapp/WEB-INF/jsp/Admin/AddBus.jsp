@@ -11,7 +11,7 @@
 <script type="text/javascript">
 function validate(){
 	var f= document.getElementById("addbusform");
-	return( validateBusName(f) & validateStartTime(f) &	validateEndTime(f) & validateNoOfSeats(f) &	validateCostOfSeats(f))}
+	return( validateBusName(f) & validateStartTime(f) &	validateSource(f) & validateDestination(f) & validateEndTime(f) & validateNoOfSeats(f) &	validateCostOfSeats(f))}
 
 function validateBusName(busform){
 	
@@ -19,7 +19,7 @@ function validateBusName(busform){
 	var busName = busform["busName"].value;
 	error.innerHTML="";
 	var regex=/[\w]+/g;
-	var validUsername = busName.match(regex)
+	var validUsername = busName.match(regex);
 
 	   if( busName==null || busName==""){
 	      error.innerHTML="Bus Name cannot be empty";
@@ -53,6 +53,28 @@ function validateEndTime(busform){
 	
 	if( endTime==null || endTime==""){
 	      error.innerHTML="End Time cannot be empty";
+	    }
+	
+}
+
+function validateSource(busform){
+	var error = document.getElementById("sourceError");
+	var source = busform["source"].value;
+	error.innerHTML="";
+	
+	if( source==null || source=="" || source.length<1){
+	      error.innerHTML="Source cannot be empty";
+	    }
+	
+}
+
+function validateDestination(busform){
+	var error = document.getElementById("destinationError");
+	var destination = busform["destination"].value;
+	error.innerHTML="";
+	
+	if( destination==null || destination=="" || destination.length<1){
+	      error.innerHTML="Destination cannot be empty";
 	    }
 	
 }
@@ -154,15 +176,15 @@ function validateCostOfSeats(busform){
 			</tr>
 			<tr>
 				<td>Bus Source</td>
-				<td><addbus:input path="source" /></td>
+				<td><addbus:input path="source" id="source" /></td>
 				<td><span style="color: red;"><addbus:errors
-							path="source"></addbus:errors></span></td>
+							path="source" id="sourceError"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Bus Destination</td>
-				<td><addbus:input path="destination" /></td>
+				<td><addbus:input path="destination" id="destination"/></td>
 				<td><span style="color: red;"><addbus:errors
-							path="destination"></addbus:errors></span></td>
+							path="destination" id="destinationError"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Start time</td>
