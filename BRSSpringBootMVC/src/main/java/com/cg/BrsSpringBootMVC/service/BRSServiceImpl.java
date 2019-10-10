@@ -18,6 +18,8 @@ import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BRSException;
+import com.cg.BrsSpringBootMVC.exception.BusNullException;
 
 
 /**
@@ -60,12 +62,13 @@ public class BRSServiceImpl implements BRSService {
 	 * Description: Removes the bus from the Repository
 	 * @param busId
 	 *	@return 0 if bus is already deleted or does not exist, 1 if it is removed 
+	 * @throws BusNullException 
 	 */
 	@Override
-	public Integer removeBus(Integer busId) { // TODO Auto-generated
+	public Integer removeBus(Integer busId) throws BusNullException { // TODO Auto-generated
 		Bus bus = busRepository.findByBusIdAndDeleteFlag(busId, 0);
 		if (bus == null)
-			return 0;
+			throw new BusNullException("Bus not found");
 		else
 			bus.setDeleteFlag(1);
 		busRepository.save(bus);
@@ -90,10 +93,15 @@ public class BRSServiceImpl implements BRSService {
 	 * Description: Views the bus with that particular busId from the Repository
 	 * @param busId
 	 *@return bus with that busId
+	 * @throws BusNullException 
 	 */
 	@Override
-	public Bus viewBusById(Integer busId) { // TODO Auto-generated
-		return busRepository.findByBusIdAndDeleteFlag(busId, 0);
+	public Bus viewBusById(Integer busId) throws BusNullException { // TODO Auto-generated
+		Bus bus =busRepository.findByBusIdAndDeleteFlag(busId, 0);
+		if(bus==null)
+			throw new BusNullException("Bus not found");
+		else
+			return bus;
 	}
 
 	/**
@@ -290,17 +298,18 @@ public class BRSServiceImpl implements BRSService {
 	 * Last Modified: 9/10/2019
 	 * @param userId
 	 * @return 0 if user is already deleted or does not exist, 1 if it is removed 
+	 * @throws BRSException 
 	 */
 	@Override
-	public Integer removeUser(Integer userId) {
+	public Integer removeUser(Integer userId) throws BRSException {
 		// TODO Auto-generated method stub return
 		User user = userRepository.findByUserIdAndDeleteFlag(userId, 0);
 		if (user == null)
-			return 0;
+			throw new BRSException(" user not found for deletion");
 		else
 			user.setDeleteFlag(1);
-		userRepository.save(user);
-		return 1;
+			userRepository.save(user);
+			return 1;
 
 	}
 	/**
@@ -324,9 +333,10 @@ public class BRSServiceImpl implements BRSService {
 	 * @param username
 	 * @param password
 	 * @return user after validating given username and password
+	 * @throws BRSException 
 	 */
 	@Override
-	public User validateUser(String username, String password) {
+	public User validateUser(String username, String password) throws BRSException {
 		// TODO Auto-generated
 		/*
 		 * List<User> userList=userRepository.findAll(); for (User user: userList) { if
@@ -335,8 +345,8 @@ public class BRSServiceImpl implements BRSService {
 		 */
 		User user = userRepository.findByUsernameAndPass(username, password);
 		if (user == null)
-			return null;
-		else
+			throw new BRSException("User not found");
+		
 			return user;
 	}
 

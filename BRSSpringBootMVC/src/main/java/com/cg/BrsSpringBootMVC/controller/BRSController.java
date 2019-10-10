@@ -25,6 +25,7 @@ import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BusNullException;
 import com.cg.BrsSpringBootMVC.service.BRSService;
 import com.cg.BrsSpringBootMVC.util.ExcelReportView;
 
@@ -60,6 +61,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
+		logger.debug("In Admin Home now");
 		return "jsp/Admin/AdminHome";
 
 	}
@@ -137,10 +139,9 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Mayank
-	 * Description: adds user and redirects to home.jsp page or redirects to register.jsp page
-	 * Created: 9/10/2019
-	 * Last Modified: 9/10/2019
+	 * @author Mayank Description: adds user and redirects to home.jsp page or
+	 *         redirects to register.jsp page Created: 9/10/2019 Last Modified:
+	 *         9/10/2019
 	 * @return jsp/home
 	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
@@ -201,7 +202,8 @@ public class BRSController {
 			return "jsp/Admin/AddBus";
 
 		} else {
-			System.out.println(bus);
+			logger.debug(bus);
+
 			brsService.addBusDetails(bus);
 
 			for (int i = 1; i < 15; i++) {
@@ -242,6 +244,7 @@ public class BRSController {
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: displays
 	 *         the busTransactions according to the particular date , source and
 	 *         destination
+	 * 
 	 * @param bus
 	 * @param dateOfJourney
 	 * @param dropdown
@@ -273,23 +276,27 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/deletebus", method = RequestMethod.GET)
 	public String deleteBus(@RequestParam("busId") Integer busId) {
-		brsService.removeBus(busId);
+		try {
+			brsService.removeBus(busId);
+		} catch (BusNullException e) {
+			// TODO Auto-generated catch block
+			logger.debug(e.getMessage());
+		}
 
 		return "jsp/Admin/DeleteBuses";
 	}
 
 	/**
-<<<<<<< HEAD
-	 * @author Tejaswini
-	 * Description: Displays the AddBooking JSP file with the source and destination and a date picker
-	 * and allows the customer to select the source, destination and date of journey
-=======
+	 * <<<<<<< HEAD
 	 * 
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
+	 * @author Tejaswini Description: Displays the AddBooking JSP file with the
+	 *         source and destination and a date picker and allows the customer to
+	 *         select the source, destination and date of journey =======
+	 * 
+	 *         >>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 	 * @param bus
 	 * @param dropdown
-	 * @return AddBooking.jsp
-	 * Created On: 05/09/2019
+	 * @return AddBooking.jsp Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
@@ -301,23 +308,23 @@ public class BRSController {
 		return "jsp/Customer/AddBooking";
 	}
 
-	/**@author Tejaswini
-	 * Description: Redirects to AddPassenger.jsp where the customer will add the details of the passengers 
+	/**
+	 * @author Tejaswini Description: Redirects to AddPassenger.jsp where the
+	 *         customer will add the details of the passengers
 	 * @param passenger
-	 * @return AddPassenger.jsp
-	 * Created On: 05/09/2019
+	 * @return AddPassenger.jsp Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.GET)
 	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) {
 		return "jsp/Customer/AddPassenger";
 	}
 
-	/**@author Tejaswini
-	 * Description: Adds the list of passengers to the particular booking of the user session
+	/**
+	 * @author Tejaswini Description: Adds the list of passengers to the particular
+	 *         booking of the user session
 	 * @param passenger
 	 * @param result
-	 * @return ModelAndView
-	 * Created On: 05/09/2019
+	 * @return ModelAndView Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/addpassengerdetails", method = RequestMethod.POST)
 	public ModelAndView addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger,
@@ -338,11 +345,10 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini
-	 * Description: Creates the booking for the selected date for the customer
+	 * @author Tejaswini Description: Creates the booking for the selected date for
+	 *         the customer
 	 * @param busTransactionId
-	 * @return Booking
-	 * Created On: 05/09/2019
+	 * @return Booking Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
@@ -364,11 +370,10 @@ public class BRSController {
 
 	}
 
-	/**@author Tejaswini
-	 * Description: Cancels the booking selected by the user
+	/**
+	 * @author Tejaswini Description: Cancels the booking selected by the user
 	 * @param bookingId
-	 * @return Booking
-	 * Created On: 05/09/2019
+	 * @return Booking Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/cancelbooking", method = RequestMethod.GET)
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
@@ -387,25 +392,20 @@ public class BRSController {
 		System.out.println("bookings");
 		return new ModelAndView("jsp/Customer/UpdatedBookings", "bookings", bookings);
 	}
-	
-	
-	/**@author Tejaswini
-	 * Description: Redirects to the payment page
-	 * @return payment.jsp
-	 * Created On: 05/09/2019
+
+	/**
+	 * @author Tejaswini Description: Redirects to the payment page
+	 * @return payment.jsp Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
 	public String confirmPayment() {
 		return "jsp/Customer/payment";
 	}
-	
-	
+
 	/**
-	 * @author Tejaswini
-	 * Description: Gets the payment mode selected by the user
+	 * @author Tejaswini Description: Gets the payment mode selected by the user
 	 * @param paymentMode
-	 * @return confirmation.jsp
-	 * Created On: 05/09/2019
+	 * @return confirmation.jsp Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/paymentdetails", method = RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
@@ -417,22 +417,26 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini
-	 * Description: Views the current booking made by the customer
+	 * @author Tejaswini Description: Views the current booking made by the customer
 	 * @param model
-	 * @return ModelAndView
-	 * Created On: 05/09/2019
+	 * @return ModelAndView Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/viewcurrentbooking", method = RequestMethod.GET)
 	public ModelAndView viewCurrentBooking(Map<String, Object> model) {
 
 		Booking booking = (Booking) session.getAttribute("booking");
-		
+
 		List<Passenger> passengerList = (List<Passenger>) session.getAttribute("passengerList");
 		System.out.println(passengerList);
 		int passengersCount = passengerList.size();
 		Integer busId = (Integer) session.getAttribute("busId");
-		Bus bus = brsService.viewBusById(busId);
+		Bus bus = null;
+		try {
+			bus = brsService.viewBusById(busId);
+		} catch (BusNullException e) {
+			// TODO Auto-generated catch block
+			logger.debug(e.getMessage()); // error page
+		}
 		booking.setBookingId(booking.getBookingId());
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
 		booking.setBookingStatus("BOOKED");
@@ -459,10 +463,9 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini
-	 * Description: List all the bookings made till date by the customer
-	 * @return ModelAndView
-	 * Created On: 05/09/2019
+	 * @author Tejaswini Description: List all the bookings made till date by the
+	 *         customer
+	 * @return ModelAndView Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/viewallbookings", method = RequestMethod.GET)
 	public ModelAndView viewAllBookings() {
@@ -472,12 +475,9 @@ public class BRSController {
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 
-
 	/**
-	 * @author Mayank
-	 * Description: shows all the users
-	 * Created: 9/10/2019
-	 * Last Modified: 9/10/2019
+	 * @author Mayank Description: shows all the users Created: 9/10/2019 Last
+	 *         Modified: 9/10/2019
 	 * @return jsp/Admin/ShowAllUsers
 	 */
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
