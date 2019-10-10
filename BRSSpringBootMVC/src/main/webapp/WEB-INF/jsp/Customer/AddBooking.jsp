@@ -65,7 +65,9 @@
 			<div id="section">
 			<script>
 			$('#datepicker').datepicker({
-				dateFormat: 'dd-mm-yy'
+				dateFormat: 'dd-mm-yy',
+				minDate: -1,
+				maxDate: +15
 			});
 			</script>
 			</div>
@@ -74,9 +76,11 @@
 		
 		<script>
 		$(document).ready(function(){
-			$('#searchbuses').submit(function(event){
-				event.preventDefault();
+			
+			function checkSearchBusForm(){
+				//gets the source value from dropdown
 				var source=$('#source').val();
+				//gets the destination value from dropdown
 				var destination=$('#destination').val();
 				
 				$('.route_error').remove();
@@ -86,19 +90,17 @@
 					$('#destination').after('<span class="route_error">Source and Destination cannot be same</span>');
 					return false;
 				}
-				
-				var dateOfJourney=$('#datepicker').val();
-				
-				var journeydate=new Date(dateOfJourney);
-				var today=new Date();
-				
-				console.log(Date.parse(journeydate));
-				console.log(Date.parse(today));
-				
-				if(Date.parse(journeydate)<Date.parse(today)){
-					$('#datepicker').after('<span class="date_error">Date should be in the future</span>')
+				return true;
+			}
+			
+			$('#searchbuses').click(function(event){
+				if(checkSearchBusForm()==true){
+					$('#searchbusform').submit();
+				}else{
+					event.preventDefault();
 				}
 			});
+			
 		});
 		</script>
 	</search:form>
