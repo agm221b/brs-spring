@@ -13,7 +13,7 @@ import com.cg.BrsSpringBootMVC.exception.BusNullException;
 
 public interface BRSService {
 
-	public Bus addBusDetails(Bus bus);
+	public Bus addBusDetails(Bus bus) throws BusNullException;
 
 	public Integer removeBus(Integer busId) throws BusNullException;
 

@@ -22,7 +22,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 	@Override
 	public Optional<String> getCurrentAuditor() {
 		// TODO Auto-generated method stub
-		return getCurrentAuditor();
+		return Optional.of("Aditya");
 	}
 
 }

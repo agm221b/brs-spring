@@ -1,18 +1,28 @@
 package com.cg.BrsSpringBootMVC.dto;
 
 import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +33,9 @@ import org.springframework.stereotype.Component;
  * Description : Bus Entity
  *
  */
+
+
+@EntityListeners(AuditingEntityListener.class)
 @Component("bus")
 @Entity
 @Table(name = "bus")
@@ -46,9 +59,11 @@ public class Bus {
 	@NotNull
 	private BusClass busClass;
 
+	@NotNull(message = "source cannot be empty")
 	@Column(name = "bus_source")
 	private String source;
 
+	@NotNull(message = "destination cannot be empty")
 	@Column(name = "bus_destination")
 	private String destination;
 
@@ -72,6 +87,19 @@ public class Bus {
 	@Column(name = "cost_per_seat")
 	@NotNull(message=" cost per seat required")
 	private Double costPerSeat;
+
+
+	@CreatedBy
+	protected String createdBy;
+	@CreatedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date creationDate;
+	@LastModifiedBy
+	protected String lastModifiedBy;
+	@LastModifiedDate
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date lastModifiedDate;
+
 
 	public Bus() {
 
@@ -188,5 +216,5 @@ public class Bus {
 				+ "]";
 	}
 
-	
+
 }

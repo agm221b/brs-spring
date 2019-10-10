@@ -8,12 +8,13 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,7 @@ public class BRSController {
 	@Autowired
 	BRSService brsService;
 
-	private static final Logger logger = LogManager.getLogger(BRSController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BRSController.class);
 
 	/**
 	 * directs to the home page of the web site
@@ -204,9 +205,14 @@ public class BRSController {
 			return "jsp/Admin/AddBus";
 
 		} else {
-			logger.debug(bus);
+			logger.debug(bus.toString());
 
-			brsService.addBusDetails(bus);
+			try {
+				brsService.addBusDetails(bus);
+			} catch (BusNullException e) {
+				// TODO Auto-generated catch block
+				logger.error(e.getMessage());
+			}
 
 			for (int i = 1; i < 15; i++) {
 				BusTransaction busTransaction = new BusTransaction();
@@ -219,6 +225,9 @@ public class BRSController {
 			return "jsp/Admin/AdminHome";
 		}
 	}
+	
+	/*@ExceptionHandler
+	 public ModelAndView handleException() */
 
 	/**
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
@@ -282,7 +291,7 @@ public class BRSController {
 			brsService.removeBus(busId);
 		} catch (BusNullException e) {
 			// TODO Auto-generated catch block
-			logger.debug(e.getMessage());
+			logger.error(e.getMessage());
 		}
 
 		return "jsp/Admin/DeleteBuses";
@@ -439,7 +448,7 @@ public class BRSController {
 			bus = brsService.viewBusById(busId);
 		} catch (BusNullException e) {
 			// TODO Auto-generated catch block
-			logger.debug(e.getMessage()); // error page
+			logger.error(e.getMessage()); // error page
 		}
 		booking.setBookingId(booking.getBookingId());
 		booking.setTotalCost(passengersCount * bus.getCostPerSeat());
