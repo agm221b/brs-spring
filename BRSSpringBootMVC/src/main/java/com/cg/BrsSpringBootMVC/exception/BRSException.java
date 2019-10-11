@@ -5,10 +5,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @author Aditya
- *
+ * Created: 8/10/19
+ * Last Modified: 9/10/19
+ * Description : Responds with error when Bus is not found
  */
-@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Bus Not Found")
-public class BRSException extends Exception {
+
+public class BRSException extends RuntimeException {
+	
+	
+	private static final long serialVersionUID = 1786214146473340560L;
 
 	/**
 	 * @author Aditya
@@ -33,4 +38,6 @@ public class BRSException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
 }
