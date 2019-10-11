@@ -368,8 +368,7 @@ public class BRSController {
 			System.out.println(passenger);
 			List<Passenger> passengerList = (List<Passenger>) session.getAttribute("passengerList");
 			Booking booking = (Booking) session.getAttribute("booking");
-			passengerList.add(passenger);
-			booking.setPassengers(passengerList);
+			booking.getPassengers().add(passenger);
 
 			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
 
@@ -396,6 +395,7 @@ public class BRSController {
 		booking.setDateOfJourney((LocalDate) session.getAttribute("dateOfJourney"));
 		booking.setBus(busTransaction.getBus());
 		List<Passenger> passengerList = new ArrayList<Passenger>();
+		booking.setPassengers(passengerList);
 		session.setAttribute("passengerList", passengerList);
 		session.setAttribute("booking", booking);
 		System.out.println((Booking) session.getAttribute("booking"));

@@ -17,7 +17,6 @@ Payment Details:
 <input type="radio" name="paymentMode" value="Debit Card">Debit Card
 <input type="radio" name="paymentMode" value="Credit Card">Credit Card
 <input type="radio" name="paymentMode" value="Net Banking">Net Banking
-<input type="radio" name="paymentMode" value="e-Wallets">e-Wallets
 <input type="submit" value="Proceed">
 </form>
 </body>

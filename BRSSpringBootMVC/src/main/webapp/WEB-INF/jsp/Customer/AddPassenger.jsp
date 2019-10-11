@@ -55,7 +55,7 @@
 			</tr>
 
 			<tr>
-				<td><input type="submit" value="Add"><%session.getAttribute("transactionId"); %></td>
+				<td><input type="submit" value="Add" id="addpassenger"><%session.getAttribute("transactionId"); %></td>
 
 				<td><input type="reset" value="Clear"></td>
 				<td>
@@ -75,14 +75,24 @@
 			var passengerAge=$('passenger_age').val();
 			var passengerGender=$('#passenger_gender').val();
 			
-			if(passengerName===''||passengerName==null){
-				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Empty</span>")
+			if((passengerName===''||passengerName==null) && isNaN(passengerAge) && (passengerGender!='M'||passengerGender!='F')){
+				alert("Passenger details are incomplete!");
+				return false;
 			}
-			else if(passengerAge.isNaN()){
-				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>")
+			else{
+				return true;
 			}
 			
 		}
+		$('#addpassenger').click(function(event){
+			if(validateForm()==true){
+				$('#passenger_form').submit();
+			}else{
+				event.preventDefault();
+			}
+		});
+		
+		
 	});
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
