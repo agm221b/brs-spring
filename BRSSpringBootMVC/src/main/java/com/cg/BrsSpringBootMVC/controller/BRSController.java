@@ -1,5 +1,6 @@
 package com.cg.BrsSpringBootMVC.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,11 +102,12 @@ public class BRSController {
 	 * @param model
 	 * @param session
 	 * @return
-	 * @throws BRSException 
+	 * @throws BRSException
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) throws BRSException {
+			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session)
+			throws BRSException {
 		User user = brsService.validateUser(username, password);
 		model.put("errormessage", "Invalid credentials");
 		if (user != null) {
@@ -133,9 +136,11 @@ public class BRSController {
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
 	 *         to the aboutUs.jsp page
 	 * @return
+	 * @throws BusNullException
 	 */
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
-	public String showAboutUsPage() {
+	public String showAboutUsPage() throws BusNullException {
+		
 		return "jsp/aboutUs";
 	}
 
@@ -181,7 +186,8 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
 	public String showHelpPage() {
-		return "jsp/help";
+		throw new BusNullException("HELP PAGE ERROR");
+		//return "jsp/help";
 	}
 
 	/**
@@ -201,9 +207,10 @@ public class BRSController {
 	 * @param bus
 	 * @param result
 	 * @return AdminHome.jsp
+	 * @throws BusNullException
 	 */
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
-	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) {
+	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BusNullException {
 		if (result.hasErrors()) {
 			return "jsp/Admin/AddBus";
 
@@ -215,6 +222,7 @@ public class BRSController {
 			} catch (BusNullException e) {
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage());
+				throw e;
 			}
 
 			for (int i = 1; i < 15; i++) {
@@ -228,28 +236,68 @@ public class BRSController {
 			return "jsp/Admin/AdminHome";
 		}
 	}
+
+	@RequestMapping(value = "/{type:.+}", method = RequestMethod.GET)
+	public ModelAndView getPages(@PathVariable("type") String type) throws Exception {
+
+		if ("error".equals(type)) { // go handleCustomException
+			throw new BusNullException("This is Random Error");
+		} else if ("io-error".equals(type)) { // go handleAllException
+			throw new IOException();
+		} else {
+			return new ModelAndView("jsp/error").addObject("msg", type);
+		}
+
+	}
+
 	
+	  @ExceptionHandler(BusNullException.class) public ModelAndView
+	  handleCustomException(BusNullException ex) {
+	  
+	  ModelAndView model = new ModelAndView("jsp/error");
+	  model.addObject("ErrorMsg", ex.getMessage());
+	  
+	  return model;
+	  
+	  }
+	 
+
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleAllException(Exception ex) {
+
+		ModelAndView model = new ModelAndView("jsp/error");
+		model.addObject("ErrorMsg", "this is Exception.class");
+
+		return model;
+
+	}
+
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
 	public String handleError() {
+		logger.error("Error has occured");
 		return "jsp/error";
 	}
-	
-	/*@ExceptionHandler
-	 public ModelAndView handleException() */
-	
-	@ExceptionHandler(BusNullException.class)
-	public ModelAndView handleEmployeeNotFoundException(HttpServletRequest request, Exception ex){
-		logger.error("Requested URL="+request.getRequestURL());
-		logger.error("Exception Raised="+ex);
-		
-		/* request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE); */
-		ModelAndView modelAndView = new ModelAndView();
-	    modelAndView.addObject("exception", ex);
-	    modelAndView.addObject("url", request.getRequestURL());
-	    
-	    modelAndView.setViewName("jsp/error");
-	    return modelAndView;
-	}	
+
+	/**
+	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
+	 *         exceptions inside the BRSController of type Bus Not Found
+	 * @param request
+	 * @param ex
+	 * @return to error page
+	 */
+
+	/*
+	 * @ExceptionHandler(BusNullException.class) public ModelAndView
+	 * handleBusNotFoundException(HttpServletRequest request, Exception ex) {
+	 * logger.error("Requested URL=" + request.getRequestURL());
+	 * logger.error("Exception Raised=" + ex);
+	 * 
+	 * request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE); ModelAndView
+	 * modelAndView = new ModelAndView(); modelAndView.addObject("exception", ex);
+	 * modelAndView.addObject("url", request.getRequestURL());
+	 * 
+	 * modelAndView.setViewName("redirect:/jsp/error"); return modelAndView; }
+	 */
 
 	/**
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
@@ -338,7 +386,7 @@ public class BRSController {
 		// System.out.println(src);
 		dropdown.put("src", src);
 		dropdown.put("dest", dest);
-		logger.info("Viewing the running buses for date: "+(LocalDate)session.getAttribute("dateOfJourney"));
+		logger.info("Viewing the running buses for date: " + (LocalDate) session.getAttribute("dateOfJourney"));
 		return "jsp/Customer/AddBooking";
 	}
 
@@ -372,7 +420,7 @@ public class BRSController {
 			List<Passenger> passengerList = (List<Passenger>) session.getAttribute("passengerList");
 			Booking booking = (Booking) session.getAttribute("booking");
 			booking.getPassengers().add(passenger);
-			
+
 			logger.info("Passengers for a particular booking added.");
 
 			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
@@ -381,12 +429,10 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini 
-	 * Description: Creates the booking for the selected date for
+	 * @author Tejaswini Description: Creates the booking for the selected date for
 	 *         the customer
 	 * @param busTransactionId
-	 * @return Booking 
-	 * Created On: 05/09/2019
+	 * @return Booking Created On: 05/09/2019
 	 */
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
@@ -396,9 +442,9 @@ public class BRSController {
 		session.setAttribute("availableSeats", busTransaction.getAvailableSeats());
 		List<BusTransaction> currentBusTransaction = new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
-		
+
 		logger.info("Booking initialized.....");
-		
+
 		Booking booking = new Booking();
 		booking.setDateOfJourney((LocalDate) session.getAttribute("dateOfJourney"));
 		booking.setBus(busTransaction.getBus());
@@ -421,7 +467,7 @@ public class BRSController {
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
 		System.out.println(bookingId);
 		brsService.cancelBooking(bookingId);
-		logger.info("Booking with booking id "+bookingId+" has been cancelled");
+		logger.info("Booking with booking id " + bookingId + " has been cancelled");
 		Booking booking = brsService.findBookingById(bookingId);
 		System.out.println(booking);
 		session.setAttribute("booking", booking); // failed to initialize
@@ -454,7 +500,7 @@ public class BRSController {
 	@RequestMapping(value = "/paymentdetails", method = RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
 		Booking booking = (Booking) session.getAttribute("booking");
-		
+
 		logger.info("Confirming the payment....");
 		booking.setModeOfPayment(paymentMode);
 		System.out.println(booking);
@@ -496,8 +542,8 @@ public class BRSController {
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);
-		
-		logger.info("Booking for user "+user.getUsername()+" has been made successfully");
+
+		logger.info("Booking for user " + user.getUsername() + " has been made successfully");
 
 		model.put("passengers", passengerList);
 		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
@@ -521,8 +567,8 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		List<Booking> bookingsList = brsService.viewAllBookings(user);
 		System.out.println(bookingsList);
-		
-		logger.info("Listing the list of all bookings of user "+user.getUsername());
+
+		logger.info("Listing the list of all bookings of user " + user.getUsername());
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 

@@ -7,16 +7,18 @@ import com.cg.BRSSpringRest.dto.Booking;
 import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.User;
+import com.cg.BRSSpringRest.exception.BRSException;
+import com.cg.BRSSpringRest.exception.BusNullException;
 
 public interface BRSService {
 
-	public Bus addBusDetails(Bus bus);
+	public Bus addBusDetails(Bus bus) throws BusNullException;
 
-	public Integer removeBus(Integer busId);
+	public Integer removeBus(Integer busId) throws BusNullException;
 
 	public List<Bus> viewAllBuses();
 
-	public Bus viewBusById(Integer busId);
+	public Bus viewBusById(Integer busId) throws BusNullException;
 
 	public List<Bus> viewBusByRoutes(String source, String destination);
 
@@ -46,11 +48,11 @@ public interface BRSService {
 
 	public User addUser(User user);
 
-	public Integer removeCustomer(Integer customerId);
+	public Integer removeUser(Integer userId) throws BRSException;
 
 	public List<User> viewAllUsers();
 
-	public User validateUser(String username, String password);
+	public User validateUser(String username, String password) throws BRSException;
 
 	/* public Passenger addPassenger(Passenger passenger); */
 
