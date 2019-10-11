@@ -73,15 +73,23 @@
 			
 			var passengerName=$('#passenger_name').val();
 			var passengerAge=$('passenger_age').val();
-			var passengerGender=$('#passenger_gender').val();
+			var passengerGender=$('#passenger_gender:checked').val();
 			
-			if((passengerName===''||passengerName==null) && isNaN(passengerAge) && (passengerGender!='M'||passengerGender!='F')){
+			var nameRegExp=/^\w+\s?$/;
+			var numberRegExp=/^\d{1,2}$/;
+			
+			var validName=nameRegExp.test(passengerName);
+			var validAge=numberRegExp.test(passengerAge);
+			
+			console.log(passengerName);
+			console.log(passengeAge);
+			console.log(passengerGender);
+			
+			if((!validName) && (!validAge) && (passengerGender!='M'||passengerGender!='F')){
 				alert("Passenger details are incomplete!");
 				return false;
 			}
-			else{
-				return true;
-			}
+				return true;	
 			
 		}
 		$('#addpassenger').click(function(event){

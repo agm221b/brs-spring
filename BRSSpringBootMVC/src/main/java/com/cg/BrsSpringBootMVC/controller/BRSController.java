@@ -337,6 +337,7 @@ public class BRSController {
 		// System.out.println(src);
 		dropdown.put("src", src);
 		dropdown.put("dest", dest);
+		logger.info("Viewing the running buses for date: "+(LocalDate)session.getAttribute("dateOfJourney"));
 		return "jsp/Customer/AddBooking";
 	}
 
@@ -348,6 +349,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.GET)
 	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) {
+		logger.info("Adding passengers.....");
 		return "jsp/Customer/AddPassenger";
 	}
 
@@ -369,6 +371,8 @@ public class BRSController {
 			List<Passenger> passengerList = (List<Passenger>) session.getAttribute("passengerList");
 			Booking booking = (Booking) session.getAttribute("booking");
 			booking.getPassengers().add(passenger);
+			
+			logger.info("Passengers for a particular booking added.");
 
 			return new ModelAndView("jsp/Customer/AddPassenger", "passengers", passengerList);
 
@@ -391,6 +395,9 @@ public class BRSController {
 		session.setAttribute("availableSeats", busTransaction.getAvailableSeats());
 		List<BusTransaction> currentBusTransaction = new ArrayList<BusTransaction>();
 		currentBusTransaction.add(busTransaction);
+		
+		logger.info("Booking initialized.....");
+		
 		Booking booking = new Booking();
 		booking.setDateOfJourney((LocalDate) session.getAttribute("dateOfJourney"));
 		booking.setBus(busTransaction.getBus());
@@ -413,6 +420,7 @@ public class BRSController {
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
 		System.out.println(bookingId);
 		brsService.cancelBooking(bookingId);
+		logger.info("Booking with booking id "+bookingId+" has been cancelled");
 		Booking booking = brsService.findBookingById(bookingId);
 		System.out.println(booking);
 		session.setAttribute("booking", booking); // failed to initialize
@@ -433,6 +441,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
 	public String confirmPayment() {
+		logger.info("Redirecting to payment mode selection");
 		return "jsp/Customer/payment";
 	}
 
@@ -444,6 +453,8 @@ public class BRSController {
 	@RequestMapping(value = "/paymentdetails", method = RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
 		Booking booking = (Booking) session.getAttribute("booking");
+		
+		logger.info("Confirming the payment....");
 		booking.setModeOfPayment(paymentMode);
 		System.out.println(booking);
 		return "jsp/Customer/confirmation";
@@ -483,6 +494,8 @@ public class BRSController {
 		List<Booking> bookings = new ArrayList<Booking>();
 		bookings.add(booking);
 		brsService.createBooking(booking);
+		
+		logger.info("Booking for user "+user.getUsername()+" has been made successfully");
 
 		model.put("passengers", passengerList);
 		return new ModelAndView("jsp/Customer/currentBooking", "bookings", bookings);
@@ -506,6 +519,8 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		List<Booking> bookingsList = brsService.viewAllBookings(user);
 		System.out.println(bookingsList);
+		
+		logger.info("Listing the list of all bookings of user "+user.getUsername());
 		return new ModelAndView("jsp/test", "bookings", bookingsList);
 	}
 
