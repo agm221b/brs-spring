@@ -335,7 +335,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method
-		return userRepository.findAll();
+		return userRepository.findAllByDeleteFlag(0);
 	}
 
 	/**
