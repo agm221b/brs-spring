@@ -3312,3 +3312,543 @@ java.lang.IllegalStateException: null
 2019-10-11 14:34:44 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-10-11 14:34:44 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
 >>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
+2019-10-11 17:16:35 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 9604 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:16:35 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:16:35 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:16:36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:16:36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61ms. Found 4 repository interfaces.
+2019-10-11 17:16:37 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e967f329] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:16:37 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:16:37 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:16:37 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:16:37 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:16:37 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:16:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:16:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:16:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:16:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:16:37 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:16:38 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:16:38 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:16:39 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:16:40 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:16:40 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62cd562d, org.springframework.security.web.context.SecurityContextPersistenceFilter@4cfcac13, org.springframework.security.web.header.HeaderWriterFilter@598657cd, org.springframework.security.web.csrf.CsrfFilter@60a01cb, org.springframework.security.web.authentication.logout.LogoutFilter@2342f1ff, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@43deba42, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22c8ee48, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d717f19, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d1c52f5, org.springframework.security.web.session.SessionManagementFilter@69e2fe3b, org.springframework.security.web.access.ExceptionTranslationFilter@bd4ee01, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77c23d90]
+2019-10-11 17:16:40 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:16:40 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:16:40 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:16:40 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 5.448 seconds (JVM running for 6.037)
+2019-10-11 17:16:40 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:16:47 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:16:47 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:16:48 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:16:55 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:16:57 [http-nio-9081-exec-3] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:17:03 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:17:04 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:17:09 [http-nio-9081-exec-6] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:17:11 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:18:03 [http-nio-9081-exec-5] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:19:25 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:19:25 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:19:25 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:19:25 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:19:25 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:30:25 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 5908 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:30:25 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:30:25 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:30:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:30:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57ms. Found 4 repository interfaces.
+2019-10-11 17:30:26 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e1371cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:30:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:30:26 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:30:26 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:30:27 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:30:27 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:30:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:30:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:30:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:30:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:30:27 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:30:27 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:30:27 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:30:28 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:30:29 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:30:29 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b1e1f02, org.springframework.security.web.context.SecurityContextPersistenceFilter@3212d853, org.springframework.security.web.header.HeaderWriterFilter@e154848, org.springframework.security.web.csrf.CsrfFilter@300bb303, org.springframework.security.web.authentication.logout.LogoutFilter@4e7bc939, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6ad6ae45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77c23d90, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1cc41b77, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1da75dde, org.springframework.security.web.session.SessionManagementFilter@60fc7f43, org.springframework.security.web.access.ExceptionTranslationFilter@79f1e22e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1231a1be]
+2019-10-11 17:30:29 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:30:29 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:30:29 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:30:29 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.728 seconds (JVM running for 5.323)
+2019-10-11 17:30:29 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:30:53 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:30:54 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:30:54 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:31:02 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:31:05 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:31:13 [http-nio-9081-exec-6] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:31:14 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:31:18 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:31:20 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:33:40 [http-nio-9081-exec-3] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:33:50 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:33:58 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:33:58 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:33:58 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:33:58 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:33:58 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:34:01 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 6180 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:34:01 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:34:01 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:34:02 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:34:02 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60ms. Found 4 repository interfaces.
+2019-10-11 17:34:02 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$abb2981b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:34:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:34:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:34:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:34:03 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:34:03 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:34:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:34:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:34:03 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:34:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:34:03 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:34:03 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:34:03 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:34:04 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:34:05 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:34:05 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d944fc0, org.springframework.security.web.context.SecurityContextPersistenceFilter@2b7774d5, org.springframework.security.web.header.HeaderWriterFilter@49190ed6, org.springframework.security.web.csrf.CsrfFilter@bd4ee01, org.springframework.security.web.authentication.logout.LogoutFilter@59b447a4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@273dec10, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44bbb7c6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27896d3b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c3c453b, org.springframework.security.web.session.SessionManagementFilter@18715bb, org.springframework.security.web.access.ExceptionTranslationFilter@5fb07347, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5e24592e]
+2019-10-11 17:34:05 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:34:05 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:34:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:34:05 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.689 seconds (JVM running for 5.286)
+2019-10-11 17:34:05 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:34:11 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:34:11 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:34:12 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:34:18 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:34:20 [http-nio-9081-exec-5] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:34:28 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:34:29 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:34:33 [http-nio-9081-exec-6] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:34:34 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:38:24 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:38:24 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:38:24 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:38:24 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:38:24 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:38:26 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 9552 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:38:26 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:38:26 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:38:27 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:38:27 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56ms. Found 4 repository interfaces.
+2019-10-11 17:38:27 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1fc2107e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:38:28 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:38:28 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:38:28 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:38:28 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:38:28 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:38:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:38:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:38:28 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:38:28 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:38:28 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:38:28 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:38:29 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:38:30 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:38:30 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:38:30 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7db791df, org.springframework.security.web.context.SecurityContextPersistenceFilter@60fc7f43, org.springframework.security.web.header.HeaderWriterFilter@79f1e22e, org.springframework.security.web.csrf.CsrfFilter@7996d0d4, org.springframework.security.web.authentication.logout.LogoutFilter@62cd562d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6eed46e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3212d853, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e795a1d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bfa5a13, org.springframework.security.web.session.SessionManagementFilter@e154848, org.springframework.security.web.access.ExceptionTranslationFilter@67c21bf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6bd7439d]
+2019-10-11 17:38:31 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:38:31 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:38:31 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:38:31 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.731 seconds (JVM running for 5.319)
+2019-10-11 17:38:31 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:39:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:39:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:39:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:39:17 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:39:17 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:39:20 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 10224 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:39:20 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:39:20 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:39:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:39:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55ms. Found 4 repository interfaces.
+2019-10-11 17:39:21 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9c3766ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:39:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:39:21 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:39:21 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:39:21 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:39:21 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:39:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:39:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:39:22 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:39:22 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:39:22 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:39:22 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:39:22 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:39:23 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:39:24 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:39:24 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@790654d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@612af486, org.springframework.security.web.header.HeaderWriterFilter@49631cfb, org.springframework.security.web.csrf.CsrfFilter@3b021664, org.springframework.security.web.authentication.logout.LogoutFilter@b94703b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1da75dde, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43deba42, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fc1a8f6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f935d49, org.springframework.security.web.session.SessionManagementFilter@6133e20b, org.springframework.security.web.access.ExceptionTranslationFilter@77c23d90, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6ad6ae45]
+2019-10-11 17:39:24 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:39:24 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:39:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:39:24 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.765 seconds (JVM running for 5.363)
+2019-10-11 17:39:24 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:39:35 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:39:35 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:39:36 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:39:42 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 17:39:52 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:39:56 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:40:06 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:40:07 [http-nio-9081-exec-10] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:40:15 [http-nio-9081-exec-1] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:40:16 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:40:27 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:40:27 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:40:27 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:40:27 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:40:27 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:40:30 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 7160 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:40:30 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:40:30 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:40:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:40:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65ms. Found 4 repository interfaces.
+2019-10-11 17:40:31 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d3876000] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:40:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:40:32 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:40:32 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:40:32 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:40:32 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:40:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:40:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:40:32 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:40:33 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:40:33 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:40:33 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:40:33 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:40:34 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:40:35 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:40:35 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f0c45f4, org.springframework.security.web.context.SecurityContextPersistenceFilter@27896d3b, org.springframework.security.web.header.HeaderWriterFilter@63a84bb6, org.springframework.security.web.csrf.CsrfFilter@13fe5bb7, org.springframework.security.web.authentication.logout.LogoutFilter@721fc2e3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@34f23816, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f3b13d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45d7495e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45571cfc, org.springframework.security.web.session.SessionManagementFilter@1999149e, org.springframework.security.web.access.ExceptionTranslationFilter@21090c88, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29090809]
+2019-10-11 17:40:35 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:40:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:40:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:40:35 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 5.051 seconds (JVM running for 5.694)
+2019-10-11 17:40:35 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:40:51 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:40:51 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:40:52 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:40:58 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:41:00 [http-nio-9081-exec-5] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:41:06 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:41:07 [http-nio-9081-exec-6] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:41:11 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:41:12 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 17:53:33 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 17:53:33 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:53:33 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:53:33 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 17:53:33 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 17:57:49 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 2568 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 17:57:49 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 17:57:49 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 17:57:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 17:57:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56ms. Found 4 repository interfaces.
+2019-10-11 17:57:50 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7aaf375c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 17:57:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 17:57:50 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 17:57:50 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 17:57:50 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 17:57:50 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 17:57:50 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 17:57:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 17:57:51 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 17:57:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 17:57:51 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 17:57:51 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 17:57:51 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 17:57:52 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 17:57:53 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 17:57:53 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d1c52f5, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bb4ed71, org.springframework.security.web.header.HeaderWriterFilter@11148dc2, org.springframework.security.web.csrf.CsrfFilter@57c6feea, org.springframework.security.web.authentication.logout.LogoutFilter@27afbf14, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@e795a1d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56835f2f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1930a804, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e7bc939, org.springframework.security.web.session.SessionManagementFilter@60a01cb, org.springframework.security.web.access.ExceptionTranslationFilter@c262f2f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d17914a]
+2019-10-11 17:57:53 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 17:57:53 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 17:57:53 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 17:57:53 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.679 seconds (JVM running for 5.287)
+2019-10-11 17:57:53 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 17:58:03 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 17:58:03 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:58:06 [http-nio-9081-exec-5] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 17:58:19 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 17:59:00 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 17:59:15 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 17:59:17 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 17:59:22 [http-nio-9081-exec-10] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 17:59:24 [http-nio-9081-exec-1] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 18:01:40 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 18:02:51 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:02:51 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:02:51 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:02:51 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:02:51 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:03:00 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 11832 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:03:00 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:03:00 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:03:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:03:00 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55ms. Found 4 repository interfaces.
+2019-10-11 18:03:01 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7817c310] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:03:01 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:03:01 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:03:01 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:03:01 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:03:01 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:03:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:03:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:03:01 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:03:01 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:03:01 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:03:02 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:03:02 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:03:03 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:03:03 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:03:03 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@153cfd86, org.springframework.security.web.context.SecurityContextPersistenceFilter@6d17914a, org.springframework.security.web.header.HeaderWriterFilter@16e195cf, org.springframework.security.web.csrf.CsrfFilter@7e0986c9, org.springframework.security.web.authentication.logout.LogoutFilter@3095d401, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36f6d25c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77b71c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5eeee124, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7e31062c, org.springframework.security.web.session.SessionManagementFilter@74c7522c, org.springframework.security.web.access.ExceptionTranslationFilter@16ea0f22, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@734a149a]
+2019-10-11 18:03:04 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:03:04 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:03:04 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:03:04 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.618 seconds (JVM running for 5.204)
+2019-10-11 18:03:04 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:03:11 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:03:31 [http-nio-9081-exec-6] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:03:32 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 18:03:38 [http-nio-9081-exec-1] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 18:03:39 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 18:03:46 [http-nio-9081-exec-4] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 18:05:23 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 18:05:41 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:05:41 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:05:41 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:05:41 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:05:41 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:09:23 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 12328 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:09:23 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:09:23 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:09:23 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:09:23 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56ms. Found 4 repository interfaces.
+2019-10-11 18:09:24 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e8e90b0d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:09:24 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:09:24 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:09:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:09:24 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:09:24 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:09:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:09:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:09:24 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:09:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:09:25 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:09:25 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:09:25 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:09:26 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:09:26 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:09:27 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40f9f60d, org.springframework.security.web.context.SecurityContextPersistenceFilter@3b021664, org.springframework.security.web.header.HeaderWriterFilter@1377b1a0, org.springframework.security.web.csrf.CsrfFilter@79ad1774, org.springframework.security.web.authentication.logout.LogoutFilter@77b71c9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@27d73d22, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@752973de, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16e195cf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6bd7439d, org.springframework.security.web.session.SessionManagementFilter@27dbaa33, org.springframework.security.web.access.ExceptionTranslationFilter@d1c5cf2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2969a9a6]
+2019-10-11 18:09:27 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:09:27 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:09:27 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:09:27 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.76 seconds (JVM running for 5.355)
+2019-10-11 18:09:27 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:09:40 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:09:40 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:09:41 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:09:48 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:11:19 [http-nio-9081-exec-9] DEBUG c.c.B.controller.BRSController - Bus [busId=null, busName=platinum, busType=SLEEPER, busClass=AC, source=pune, destination=mumbai, noOfSeats=30, deleteFlag=0, startTime=09:00, endTime=13:00, costPerSeat=900.0]
+2019-10-11 18:11:56 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:12:03 [http-nio-9081-exec-9] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:12:11 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:12:12 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Listing the list of all users
+2019-10-11 18:12:17 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:12:20 [http-nio-9081-exec-8] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:12:24 [http-nio-9081-exec-6] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:12:30 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:12:32 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Viewing the running buses for date: null
+2019-10-11 18:12:43 [http-nio-9081-exec-7] INFO  c.c.B.controller.BRSController - Booking initialized.....
+2019-10-11 18:12:44 [http-nio-9081-exec-10] INFO  c.c.B.controller.BRSController - Adding passengers.....
+2019-10-11 18:12:49 [http-nio-9081-exec-9] INFO  c.c.B.controller.BRSController - Passengers for a particular booking added.
+2019-10-11 18:12:50 [http-nio-9081-exec-1] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 18:13:28 [http-nio-9081-exec-8] INFO  c.c.B.controller.BRSController - Redirecting to payment mode selection
+2019-10-11 18:13:39 [http-nio-9081-exec-9] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:13:56 [http-nio-9081-exec-4] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:14:02 [http-nio-9081-exec-6] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:14:07 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:16:30 [http-nio-9081-exec-6] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:16:35 [http-nio-9081-exec-10] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:16:38 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:16:39 [http-nio-9081-exec-2] INFO  c.c.B.controller.BRSController - Listing the list of all users
+2019-10-11 18:16:44 [http-nio-9081-exec-5] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:16:45 [http-nio-9081-exec-4] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:18:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:18:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:18:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:18:37 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:18:37 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:18:39 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 12840 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:18:39 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:18:39 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:18:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:18:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65ms. Found 4 repository interfaces.
+2019-10-11 18:18:40 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6be85344] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:18:41 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:18:41 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:18:41 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:18:41 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:18:41 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:18:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:18:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:18:41 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:18:41 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:18:41 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:18:41 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:18:42 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:18:43 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:18:43 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:18:43 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6eed46e9, org.springframework.security.web.context.SecurityContextPersistenceFilter@6903ed0e, org.springframework.security.web.header.HeaderWriterFilter@38f502fc, org.springframework.security.web.csrf.CsrfFilter@44864536, org.springframework.security.web.authentication.logout.LogoutFilter@2a7ebe07, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@628ba266, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16ea0f22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@612af486, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d20616a, org.springframework.security.web.session.SessionManagementFilter@67afe909, org.springframework.security.web.access.ExceptionTranslationFilter@52a67293, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7fd751de]
+2019-10-11 18:18:44 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:18:44 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:18:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:18:44 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.9 seconds (JVM running for 5.519)
+2019-10-11 18:18:44 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:18:53 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:18:53 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:18:54 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:19:00 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:19:03 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:19:04 [http-nio-9081-exec-5] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:19:32 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:19:32 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:19:32 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:19:32 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:19:32 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:19:37 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 11700 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:19:37 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:19:37 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:19:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:19:37 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71ms. Found 4 repository interfaces.
+2019-10-11 18:19:38 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a93af6ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:19:38 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:19:38 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:19:38 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:19:38 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:19:38 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:19:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:19:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:19:39 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:19:39 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:19:39 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:19:39 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:19:39 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:19:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:19:41 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:19:41 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1231a1be, org.springframework.security.web.context.SecurityContextPersistenceFilter@52a67293, org.springframework.security.web.header.HeaderWriterFilter@15d65fcf, org.springframework.security.web.csrf.CsrfFilter@721fc2e3, org.springframework.security.web.authentication.logout.LogoutFilter@612af486, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1124910c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@38f502fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77c23d90, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d77746b, org.springframework.security.web.session.SessionManagementFilter@f59da34, org.springframework.security.web.access.ExceptionTranslationFilter@48cf8414, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@49e479da]
+2019-10-11 18:19:41 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:19:41 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:19:42 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:19:42 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 5.234 seconds (JVM running for 5.927)
+2019-10-11 18:19:42 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:19:49 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:19:49 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:19:50 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:19:57 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:20:01 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:20:03 [http-nio-9081-exec-5] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:28:11 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:28:11 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:28:11 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:28:11 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:28:11 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:28:13 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 1132 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:28:13 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:28:13 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:28:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:28:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66ms. Found 4 repository interfaces.
+2019-10-11 18:28:14 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9347d38] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:28:15 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:28:15 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:28:15 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:28:15 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:28:15 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:28:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:28:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:28:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:28:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:28:15 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:28:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:28:16 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:28:17 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:28:17 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:28:17 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7548e1fb, org.springframework.security.web.context.SecurityContextPersistenceFilter@27896d3b, org.springframework.security.web.header.HeaderWriterFilter@63a84bb6, org.springframework.security.web.csrf.CsrfFilter@13fe5bb7, org.springframework.security.web.authentication.logout.LogoutFilter@721fc2e3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7c3c453b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f3b13d0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45d7495e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@505f45cc, org.springframework.security.web.session.SessionManagementFilter@1999149e, org.springframework.security.web.access.ExceptionTranslationFilter@21090c88, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@273dec10]
+2019-10-11 18:28:18 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:28:18 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:28:18 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:28:18 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.853 seconds (JVM running for 5.472)
+2019-10-11 18:28:18 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:28:29 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:28:29 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:28:30 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:28:55 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-10-11 18:28:55 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:28:55 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:28:55 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-10-11 18:28:55 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-10-11 18:28:57 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Starting BrsSpringBootMvcApplication on DESKTOP-GBQMNQR with PID 5104 (C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC\target\classes started by OSIS11 in C:\Users\OSIS11\git\brs-spring\BRSSpringBootMVC)
+2019-10-11 18:28:57 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-10-11 18:28:57 [main] INFO  c.c.B.BrsSpringBootMvcApplication - No active profile set, falling back to default profiles: default
+2019-10-11 18:28:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-11 18:28:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54ms. Found 4 repository interfaces.
+2019-10-11 18:28:58 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$aadbaf45] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-11 18:28:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9081 (http)
+2019-10-11 18:28:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-10-11 18:28:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-11 18:28:59 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-10-11 18:28:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-10-11 18:28:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-10-11 18:28:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-10-11 18:28:59 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-11 18:28:59 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-11 18:28:59 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-10-11 18:28:59 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-11 18:28:59 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-11 18:29:01 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-11 18:29:01 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-10-11 18:29:01 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@349312d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@273dec10, org.springframework.security.web.header.HeaderWriterFilter@26ffd2c0, org.springframework.security.web.csrf.CsrfFilter@14b5752f, org.springframework.security.web.authentication.logout.LogoutFilter@6f0c45f4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e321d9d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7cca31fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6736f40f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5885e231, org.springframework.security.web.session.SessionManagementFilter@2fc7fa6e, org.springframework.security.web.access.ExceptionTranslationFilter@67a8bcbb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3a5b7d7e]
+2019-10-11 18:29:01 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-11 18:29:01 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-11 18:29:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9081 (http) with context path ''
+2019-10-11 18:29:02 [main] INFO  c.c.B.BrsSpringBootMvcApplication - Started BrsSpringBootMvcApplication in 4.615 seconds (JVM running for 5.209)
+2019-10-11 18:29:02 [main] DEBUG c.c.B.BrsSpringBootMvcApplication - Hello SpringBoot
+2019-10-11 18:29:08 [http-nio-9081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-11 18:29:08 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:29:09 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Home now
+2019-10-11 18:29:16 [http-nio-9081-exec-1] DEBUG c.c.B.controller.BRSController - In Admin Home now
+2019-10-11 18:29:19 [http-nio-9081-exec-2] DEBUG c.c.B.controller.BRSController - In Customer Home Now
+2019-10-11 18:29:20 [http-nio-9081-exec-3] DEBUG c.c.B.controller.BRSController - In Customer Home Now

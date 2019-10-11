@@ -464,8 +464,9 @@ public class BRSController {
 	 * @param paymentMode
 	 * @return confirmation.jsp Created On: 05/09/2019
 	 */
-	@RequestMapping(value = "/paymentdetails", method = RequestMethod.POST)
+	@RequestMapping(value = "/pdetail", method =RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
+		System.out.println("hhhhh");
 		Booking booking = (Booking) session.getAttribute("booking");
 
 		logger.info("Confirming the payment....");
@@ -536,7 +537,7 @@ public class BRSController {
 		System.out.println(bookingsList);
 
 		logger.info("Listing the list of all bookings of user " + user.getUsername());
-		return new ModelAndView("jsp/test", "bookings", bookingsList);
+		return new ModelAndView("jsp/Customer/ViewBookings", "bookings", bookingsList);
 	}
 
 	/**

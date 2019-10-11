@@ -9,10 +9,9 @@
 </head>
 <body>
 
-
-<form method="post" action="paymentdetails">
 Payment Details:
 <br/>
+<form method="post" action="pdetail">
 <input type="radio" name="paymentMode" value="UPI">UPI
 <input type="radio" name="paymentMode" value="Debit Card">Debit Card
 <input type="radio" name="paymentMode" value="Credit Card">Credit Card
