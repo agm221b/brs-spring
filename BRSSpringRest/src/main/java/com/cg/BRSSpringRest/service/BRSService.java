@@ -8,17 +8,17 @@ import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.User;
 import com.cg.BRSSpringRest.exception.BRSException;
-import com.cg.BRSSpringRest.exception.BusNullException;
+import com.cg.BRSSpringRest.exception.BRSException;
 
 public interface BRSService {
 
-	public Bus addBusDetails(Bus bus) throws BusNullException;
+	public Bus addBusDetails(Bus bus) throws BRSException;
 
-	public Integer removeBus(Integer busId) throws BusNullException;
+	public Integer removeBus(Integer busId) throws BRSException;
 
 	public List<Bus> viewAllBuses();
 
-	public Bus viewBusById(Integer busId) throws BusNullException;
+	public Bus viewBusById(Integer busId) throws BRSException;
 
 	public List<Bus> viewBusByRoutes(String source, String destination);
 
