@@ -1,4 +1,4 @@
-package com.cg.BrsSpringBootMVC.exception;
+package com.cg.BRSSpringRest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Last Modified: 9/10/19
  * Description : Responds with error when Bus is not found
  */
-
-public class BRSException extends RuntimeException {
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Bus object is Null")
+public class BusNullException extends Exception {
 	
 	
 	private static final long serialVersionUID = 1786214146473340560L;
@@ -21,7 +21,7 @@ public class BRSException extends RuntimeException {
 	 * Last Modified: 9/10/19
 	 * Description: Nonparameterized constructor for custom exception BRSException
 	 */
-	public BRSException() {
+	public BusNullException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,11 +33,9 @@ public class BRSException extends RuntimeException {
 	 * Description: Parameterized constructor with custom message for custom exception BRSException
 	 * @param message
 	 */
-	public BRSException(String message) {
+	public BusNullException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 }

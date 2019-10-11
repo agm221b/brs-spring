@@ -1,11 +1,8 @@
-package com.cg.BrsSpringBootMVC.dao;
-
-import java.util.List;
-import java.util.Optional;
+package com.cg.BRSSpringRest.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BRSSpringRest.dto.User;
 
 /**
  * @author Mayank
@@ -26,11 +23,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 * @return user with given username and password
 	 */
 	public User findByUsernameAndPass(String username, String password);
-	
-	
-	public Optional<User> findByUsername(String username);
-
-	public List<User> findAllByDeleteFlag(Integer deleteFlag);
 	
 	
 	

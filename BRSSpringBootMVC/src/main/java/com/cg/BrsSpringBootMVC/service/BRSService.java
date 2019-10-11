@@ -6,20 +6,18 @@ import java.util.List;
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
 import com.cg.BrsSpringBootMVC.dto.BusTransaction;
-import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
 import com.cg.BrsSpringBootMVC.exception.BRSException;
-import com.cg.BrsSpringBootMVC.exception.BusNullException;
 
 public interface BRSService {
 
-	public Bus addBusDetails(Bus bus) throws BusNullException;
+	public Bus addBusDetails(Bus bus) throws BRSException;
 
-	public Integer removeBus(Integer busId) throws BusNullException;
+	public Integer removeBus(Integer busId) throws BRSException;
 
 	public List<Bus> viewAllBuses();
 
-	public Bus viewBusById(Integer busId) throws BusNullException;
+	public Bus viewBusById(Integer busId) throws BRSException;
 
 	public List<Bus> viewBusByRoutes(String source, String destination);
 
