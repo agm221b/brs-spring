@@ -273,11 +273,12 @@ public class BRSController {
 	 *         to searchBuses.jsp
 	 * @return searchBus.jsp
 	 */
-	@RequestMapping(value = "/searchbuses", method = RequestMethod.GET)
-	public String searchBuses() {
-		return "jsp/Customer/SearchBus";
-
-	}
+	/*
+	 * @RequestMapping(value = "/searchbuses", method = RequestMethod.GET) public
+	 * String searchBuses() { return "jsp/Customer/SearchBus";
+	 * 
+	 * }
+	 */
 
 	/**
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: Displays
@@ -335,6 +336,23 @@ public class BRSController {
 
 		return "jsp/Admin/DeleteBuses";
 	}
+	
+	
+	
+	/**
+	 * @author Mayank Description: shows all the users Created: 9/10/2019 Last
+	 *         Modified: 9/10/2019
+	 * @return jsp/Admin/ShowAllUsers
+	 */
+	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
+	public ModelAndView showAllUsers() {
+		List<User> userList = brsService.viewAllUsers();
+
+		logger.info("Listing the list of all users");
+		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
+	}
+
+	
 
 	/**
 	 * 
@@ -518,12 +536,13 @@ public class BRSController {
 
 	}
 
-	@RequestMapping(value = "/cancelcurrentbooking", method = RequestMethod.GET)
-	public String cancelCurrentBooking() {
-		Booking booking = (Booking) session.getAttribute("booking");
-		brsService.cancelBooking(booking.getBookingId());
-		return "jsp/Customer/CancelBooking";
-	}
+	/*
+	 * @RequestMapping(value = "/cancelcurrentbooking", method = RequestMethod.GET)
+	 * public String cancelCurrentBooking() { Booking booking = (Booking)
+	 * session.getAttribute("booking");
+	 * brsService.cancelBooking(booking.getBookingId()); return
+	 * "jsp/Customer/CancelBooking"; }
+	 */
 
 	/**
 	 * @author Tejaswini Description: List all the bookings made till date by the
@@ -540,17 +559,5 @@ public class BRSController {
 		return new ModelAndView("jsp/Customer/ViewBookings", "bookings", bookingsList);
 	}
 
-	/**
-	 * @author Mayank Description: shows all the users Created: 9/10/2019 Last
-	 *         Modified: 9/10/2019
-	 * @return jsp/Admin/ShowAllUsers
-	 */
-	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
-	public ModelAndView showAllUsers() {
-		List<User> userList = brsService.viewAllUsers();
-
-		logger.info("Listing the list of all users");
-		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
-	}
-
+	
 }
