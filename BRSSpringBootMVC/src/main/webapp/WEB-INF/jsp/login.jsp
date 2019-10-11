@@ -34,6 +34,8 @@
 				<div class="input-field col s6">
 					<input type="submit" class="waves-effect waves-light btn"
 						value="LOGIN"><br>
+							  <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 				</div>
 			</div>
 		</form>

@@ -5,9 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +25,7 @@ import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.Passenger;
 import com.cg.BRSSpringRest.dto.User;
+import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.service.BRSService;
 
 /**
@@ -37,12 +43,12 @@ import com.cg.BRSSpringRest.service.BRSService;
 @RequestMapping(value = "/brs")
 public class BRSRestController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(BRSRestController.class);
+	
 	@Autowired
 	BRSService brsService;
 	
 	HttpSession session;
-	
-	
 	
 	/**@author Tejaswini
 	 * Description: Adds the current booking to the booking table
@@ -88,7 +94,28 @@ public class BRSRestController {
 	}
 	
 	
-	
+	public Bus addBusDetails(@RequestBody Bus bus) throws BRSException {
+		
+		Bus busAdd = null;
+
+			try {
+				busAdd = brsService.addBusDetails(bus);
+			} catch (BRSException e) {
+				// TODO Auto-generated catch block
+				logger.error(e.getMessage());
+			}
+
+			for (int i = 1; i < 15; i++) {
+				BusTransaction busTransaction = new BusTransaction();
+				busTransaction.setDate(LocalDate.now().plusDays(i));
+				busTransaction.setBus(bus);
+				busTransaction.setAvailableSeats(bus.getNoOfSeats());
+				busTransaction.setDeleteFlag(0);
+				brsService.addTransaction(busTransaction);
+			}
+			
+		return busAdd;
+	}
 	
 	
 	

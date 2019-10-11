@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -31,7 +29,6 @@ import com.cg.BrsSpringBootMVC.dto.BusTransaction;
 import com.cg.BrsSpringBootMVC.dto.Passenger;
 import com.cg.BrsSpringBootMVC.dto.User;
 import com.cg.BrsSpringBootMVC.exception.BRSException;
-import com.cg.BrsSpringBootMVC.exception.BusNullException;
 import com.cg.BrsSpringBootMVC.service.BRSService;
 import com.cg.BrsSpringBootMVC.util.ExcelReportView;
 
@@ -93,34 +90,6 @@ public class BRSController {
 	public String showLoginPage() {
 		return "jsp/login";
 	}
-
-	/**
-	 * validates the login credentials
-	 * 
-	 * @param username
-	 * @param password
-	 * @param model
-	 * @param session
-	 * @return
-	 * @throws BRSException
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session)
-			throws BRSException {
-		User user = brsService.validateUser(username, password);
-		model.put("errormessage", "Invalid credentials");
-		if (user != null) {
-			session.setAttribute("user", user);
-			if (user.getUserType() == 'C')
-				return "jsp/Customer/CustomerHome";
-			else if (user.getUserType() == 'A')
-				return "jsp/Admin/AdminHome";
-		}
-
-		return "jsp/login";
-	}
-
 	/**
 	 * @param session
 	 * @return
@@ -136,11 +105,11 @@ public class BRSController {
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects
 	 *         to the aboutUs.jsp page
 	 * @return
-	 * @throws BusNullException
+	 * @throws BRSException
 	 */
 	@RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
-	public String showAboutUsPage() throws BusNullException {
-		
+	public String showAboutUsPage() throws BRSException {
+
 		return "jsp/aboutUs";
 	}
 
@@ -186,8 +155,8 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
 	public String showHelpPage() {
-		throw new BusNullException("HELP PAGE ERROR");
-		//return "jsp/help";
+		throw new BRSException("HELP PAGE ERROR");
+		// return "jsp/help";
 	}
 
 	/**
@@ -207,10 +176,10 @@ public class BRSController {
 	 * @param bus
 	 * @param result
 	 * @return AdminHome.jsp
-	 * @throws BusNullException
+	 * @throws BRSException
 	 */
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
-	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BusNullException {
+	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BRSException {
 		if (result.hasErrors()) {
 			return "jsp/Admin/AddBus";
 
@@ -219,7 +188,7 @@ public class BRSController {
 
 			try {
 				brsService.addBusDetails(bus);
-			} catch (BusNullException e) {
+			} catch (BRSException e) {
 				// TODO Auto-generated catch block
 				logger.error(e.getMessage());
 				throw e;
@@ -237,31 +206,50 @@ public class BRSController {
 		}
 	}
 
+	/**
+	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
+	 *         arbitrary url by directing them to error page
+	 * @param type
+	 * @return error.jsp when wrong url is entered
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/{type:.+}", method = RequestMethod.GET)
 	public ModelAndView getPages(@PathVariable("type") String type) throws Exception {
 
 		if ("error".equals(type)) { // go handleCustomException
-			throw new BusNullException("This is Random Error");
+			throw new BRSException("Incorrect Url Entered");
 		} else if ("io-error".equals(type)) { // go handleAllException
 			throw new IOException();
 		} else {
-			return new ModelAndView("jsp/error").addObject("msg", type);
+			return new ModelAndView("jsp/error").addObject("ErrorMsg", type);
 		}
 
 	}
 
-	
-	  @ExceptionHandler(BusNullException.class) public ModelAndView
-	  handleCustomException(BusNullException ex) {
-	  
-	  ModelAndView model = new ModelAndView("jsp/error");
-	  model.addObject("ErrorMsg", ex.getMessage());
-	  
-	  return model;
-	  
-	  }
-	 
+	/**
+	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
+	 *         Bus not found exception
+	 * @param ex
+	 * @return ModelAndView to error.jsp
+	 */
+	@ExceptionHandler(BRSException.class)
+	public ModelAndView handleCustomException(BRSException ex) {
 
+		ModelAndView model = new ModelAndView("jsp/error");
+		model.addObject("ErrorMsg", ex.getMessage());
+
+		return model;
+
+	}
+
+	/**
+	 * /**
+	 * 
+	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
+	 *         any kinf of exception
+	 * @param ex
+	 * @return ModelAndView to error.jsp
+	 */
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleAllException(Exception ex) {
 
@@ -272,31 +260,12 @@ public class BRSController {
 
 	}
 
-	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public String handleError() {
-		logger.error("Error has occured");
-		return "jsp/error";
-	}
-
 	/**
 	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
 	 *         exceptions inside the BRSController of type Bus Not Found
 	 * @param request
 	 * @param ex
 	 * @return to error page
-	 */
-
-	/*
-	 * @ExceptionHandler(BusNullException.class) public ModelAndView
-	 * handleBusNotFoundException(HttpServletRequest request, Exception ex) {
-	 * logger.error("Requested URL=" + request.getRequestURL());
-	 * logger.error("Exception Raised=" + ex);
-	 * 
-	 * request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE); ModelAndView
-	 * modelAndView = new ModelAndView(); modelAndView.addObject("exception", ex);
-	 * modelAndView.addObject("url", request.getRequestURL());
-	 * 
-	 * modelAndView.setViewName("redirect:/jsp/error"); return modelAndView; }
 	 */
 
 	/**
@@ -359,7 +328,7 @@ public class BRSController {
 	public String deleteBus(@RequestParam("busId") Integer busId) {
 		try {
 			brsService.removeBus(busId);
-		} catch (BusNullException e) {
+		} catch (BRSException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
 		}
@@ -368,13 +337,11 @@ public class BRSController {
 	}
 
 	/**
-	 * <<<<<<< HEAD
+	 * 
 	 * 
 	 * @author Tejaswini Description: Displays the AddBooking JSP file with the
 	 *         source and destination and a date picker and allows the customer to
-	 *         select the source, destination and date of journey =======
-	 * 
-	 *         >>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
+	 *         select the source, destination and date of journey
 	 * @param bus
 	 * @param dropdown
 	 * @return AddBooking.jsp Created On: 05/09/2019
@@ -525,7 +492,7 @@ public class BRSController {
 		Bus bus = null;
 		try {
 			bus = brsService.viewBusById(busId);
-		} catch (BusNullException e) {
+		} catch (BRSException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage()); // error page
 		}
@@ -580,7 +547,7 @@ public class BRSController {
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();
-		
+
 		logger.info("Listing the list of all users");
 		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
