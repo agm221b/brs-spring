@@ -44,7 +44,10 @@
 <br>
 <a class="waves-effect waves-light btn" href="cancelbooking">Cancel Booking</a><br>
 <br>
-<a class="waves-effect waves-light btn" href="logout">Logout</a><br>
+<form action="<%=request.getContextPath()%>/logout" method="POST">
+        <input type="submit" value="Logout"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+      </form> 
 
 <div class="container"></div>
 

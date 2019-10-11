@@ -294,6 +294,14 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
+		if(user.getUserType()=='C') {
+			user.setRoles("ROLE_CUSTOMER");
+		}
+		else {
+			user.setRoles("ROLE_ADMIN");
+		}
+		user.setActive(true);
+		user.setDeleteFlag(0);
 		return userRepository.save(user);
 	}
 	/**
@@ -327,7 +335,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public List<User> viewAllUsers() {
 		// TODO Auto-generated method
-		return userRepository.findAll();
+		return userRepository.findAllByDeleteFlag(0);
 	}
 
 	/**

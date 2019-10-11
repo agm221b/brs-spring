@@ -79,6 +79,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
+		logger.debug("In Customer Home Now");
 		return "jsp/Customer/CustomerHome";
 
 	}
@@ -156,7 +157,7 @@ public class BRSController {
 	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
-
+		logger.info("In add user page");
 		if (result.hasErrors()) {
 			System.out.println("Hi");
 			return "jsp/register";
@@ -534,6 +535,7 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		booking.setUser(user);
 		booking.setDeleteFlag(0);
+		booking.setPassengers(passengerList);
 		user.getBookingsList().add(booking);
 		Integer busTransactionId = (Integer) session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
@@ -578,6 +580,8 @@ public class BRSController {
 	@RequestMapping(value = "/showusers", method = RequestMethod.GET)
 	public ModelAndView showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();
+		
+		logger.info("Listing the list of all users");
 		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
 

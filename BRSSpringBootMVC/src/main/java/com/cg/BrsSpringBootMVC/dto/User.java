@@ -32,26 +32,40 @@ public class User {
 	
 	@Column(name="pass")
 	private String pass;
+	
 	@Column(name = "user_type")
 	@NotNull(message=" user type required")
 	private Character userType;
-	@Column(name = "email")
 	
+	@Column(name = "email")	
 	private String email;
+	
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
 	private Integer phoneNumber;
+	
 	@OneToMany(cascade = CascadeType.MERGE,mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Booking> bookingsList;
+	
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
-
+	
+	@Column(name="active_status")
+	private boolean active;
+	
+	@Column(name="roles")
+	private String roles;
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	
 
-	public User(Integer userId, String username, String pass, Character userType, String email, Integer phoneNumber,
-			List<Booking> bookingsList, Integer deleteFlag) {
+	public User(Integer userId,
+			@Size(min = 3, max = 20, message = "Name should be between 3-20 characters") String username, String pass,
+			@NotNull(message = " user type required") Character userType, String email,
+			@NotNull(message = "phone number required") Integer phoneNumber, List<Booking> bookingsList,
+			Integer deleteFlag, boolean active, String roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -61,14 +75,11 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.bookingsList = bookingsList;
 		this.deleteFlag = deleteFlag;
+		this.active = active;
+		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
-				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
-				+ ", deleteFlag=" + deleteFlag + "]";
-	}
+
 
 	public Integer getUserId() {
 		return userId;
@@ -134,72 +145,21 @@ public class User {
 		this.deleteFlag = deleteFlag;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bookingsList == null) ? 0 : bookingsList.hashCode());
-		result = prime * result + ((deleteFlag == null) ? 0 : deleteFlag.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
+	public boolean isActive() {
+		return active;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (bookingsList == null) {
-			if (other.bookingsList != null)
-				return false;
-		} else if (!bookingsList.equals(other.bookingsList))
-			return false;
-		if (deleteFlag == null) {
-			if (other.deleteFlag != null)
-				return false;
-		} else if (!deleteFlag.equals(other.deleteFlag))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (pass == null) {
-			if (other.pass != null)
-				return false;
-		} else if (!pass.equals(other.pass))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		if (userType == null) {
-			if (other.userType != null)
-				return false;
-		} else if (!userType.equals(other.userType))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+	
 	
 }
