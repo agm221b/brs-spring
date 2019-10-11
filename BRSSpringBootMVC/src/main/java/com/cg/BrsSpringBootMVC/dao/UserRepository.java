@@ -1,5 +1,7 @@
 package com.cg.BrsSpringBootMVC.dao;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.BrsSpringBootMVC.dto.User;
@@ -23,6 +25,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 * @return user with given username and password
 	 */
 	public User findByUsernameAndPass(String username, String password);
+	
+	
+	public Optional<User> findByUsername(String username);
 	
 	
 	

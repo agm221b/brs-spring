@@ -26,13 +26,13 @@
 		<form:form action="addpassengerdetails" method="POST" modelAttribute="passenger" id="passenger_form">
 			<tr>
 				<td>Passenger Name</td>
-				<td><form:input path="passengerName" id="passenger_name"/></td>
+				<td><form:input path="passengerName" id="passenger_name" name="passenger_name"/></td>
 				<td><span style="color:red;"><form:errors path="passengerName"></form:errors></span></td>
 			</tr>
 
 			<tr>
 				<td>Passenger Age</td>
-				<td><form:input path="passengerAge" id="passenger_age"/></td>
+				<td><form:input path="passengerAge" id="passenger_age" name="passenger_age"/></td>
 				<td><span style="color:red;"><form:errors path="passengerAge"></form:errors></span></td>
 			</tr>
 
@@ -40,12 +40,12 @@
 				<td>Passenger Gender</td>
 				<td>
 					<p>
-						<label> <form:radiobutton path="passengerGender" value="M" id="passenger_gender"/>
+						<label> <form:radiobutton path="passengerGender" value="M" name="passenger_gender" />
 							<span>Male</span>
 						</label>
 					</p>
 					<p>
-						<label> <form:radiobutton path="passengerGender" value="F" id="passenger_gender"/>
+						<label> <form:radiobutton path="passengerGender" value="F" name="passenger_gender"/>
 							<span>Female</span>
 						</label>
 					</p>
@@ -69,39 +69,42 @@
 	</table>
 	<script>
 	$(document).ready(function(){
-		function validateForm(){
+// 		$('#passenger_form').submit(function(event){
+// 			event.preventDefault();
 			
-			var passengerName=$('#passenger_name').val();
-			var passengerAge=$('passenger_age').val();
-			var passengerGender=$('#passenger_gender:checked').val();
+// 			$('.passenger_error').remove();
 			
-			var nameRegExp=/^\w+\s?$/;
-			var numberRegExp=/^\d{1,2}$/;
+// 			var passengerName=$('#passenger_name').val();
+// 			var passengerAge=$('#passenger_age').val();
+// 			var passengerGender=$('radiobutton[name="passenger_gender"]:checked').val();
 			
-			var validName=nameRegExp.test(passengerName);
-			var validAge=numberRegExp.test(passengerAge);
+// 			var nameRegEx=/^\w+\s?$/;
+// 			var ageRegEx=/^\d[1,2]$/;
 			
-			console.log(passengerName);
-			console.log(passengeAge);
-			console.log(passengerGender);
+// 			var validName=nameRegEx.test(passengerName);
+// 			var validAge=ageRegEx.test(passengerAge);
 			
-			if((!validName) && (!validAge) && (passengerGender!='M'||passengerGender!='F')){
-				alert("Passenger details are incomplete!");
-				return false;
-			}
-				return true;	
+// 			console.log(passengerName);
+// 			console.log(passengerAge);
+// 			console.log(passengerGender);
 			
-		}
-		$('#addpassenger').click(function(event){
-			if(validateForm()==true){
-				$('#passenger_form').submit();
-			}else{
-				event.preventDefault();
-			}
-		});
-		
-		
-	});
+// 			if(passengerName.length<1){
+// 				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Empty</span><br>")
+// 			}
+// 			if(passengerAge<0){
+// 				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>");
+// 			}
+// 			if(passengerGender!='M'||passengerGender!='F'){
+// 				$('radiobutton[name="passenger_gender"]').after("<span class='passenger_error'>Select Gender</span>")
+// 			}
+// 			if(!validName){
+// 				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Invalid</span>")
+// 			}
+// 			if(!validAge){
+// 				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>")
+// 			}
+// 		});
+// 	});
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
 	<jsp:include page="../linklib.jsp" />

@@ -56,7 +56,7 @@ public class Booking {
 	private Bus bus;
 
 
-	@OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "passenger_fk")
 	private List<Passenger> passengers;
 	@Column(name = "mode_of_payment")

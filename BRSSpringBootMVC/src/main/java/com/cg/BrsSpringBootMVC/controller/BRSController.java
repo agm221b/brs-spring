@@ -488,6 +488,7 @@ public class BRSController {
 		User user = (User) session.getAttribute("user");
 		booking.setUser(user);
 		booking.setDeleteFlag(0);
+		booking.setPassengers(passengerList);
 		user.getBookingsList().add(booking);
 		Integer busTransactionId = (Integer) session.getAttribute("transactionId");
 		brsService.updateAvailableSeats(busTransactionId, passengersCount);
