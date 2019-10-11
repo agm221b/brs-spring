@@ -46,7 +46,7 @@
 					<li><a href="aboutUs" class="smoothScroll">About us</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="customerhome" class="smoothScroll">Login</a></li>
+					<li><a href="login" class="smoothScroll">Login</a></li>
 					<li><a href="register" class="smoothScroll">Register</a></li>
 				</ul>
 

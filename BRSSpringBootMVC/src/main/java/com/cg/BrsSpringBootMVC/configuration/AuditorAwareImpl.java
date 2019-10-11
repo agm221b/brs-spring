@@ -3,6 +3,10 @@ package com.cg.BrsSpringBootMVC.configuration;
 import java.util.Optional;
 
 import org.springframework.data.domain.AuditorAware;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.cg.BrsSpringBootMVC.dto.User;
 
 /**
  *@author Aditya
@@ -22,7 +26,14 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 	@Override
 	public Optional<String> getCurrentAuditor() {
 		// TODO Auto-generated method stub
-		return Optional.of("Aditya");
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		 
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return null;
+        }
+        return Optional.of(((User) authentication.getPrincipal()).getUsername());
+		
 	}
 
 }

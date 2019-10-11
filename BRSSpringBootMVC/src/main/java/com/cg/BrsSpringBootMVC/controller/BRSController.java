@@ -101,26 +101,8 @@ public class BRSController {
 	 * @return
 	 * @throws BRSException 
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password, Map<String, Object> model, HttpSession session) throws BRSException {
-		User user = brsService.validateUser(username, password);
-		model.put("errormessage", "Invalid credentials");
-		if (user != null) {
-			session.setAttribute("user", user);
-			if (user.getUserType() == 'C')
-				return "jsp/Customer/CustomerHome";
-			else if (user.getUserType() == 'A')
-				return "jsp/Admin/AdminHome";
-		}
-
-		return "jsp/login";
-	}
-
-	/**
-	 * @param session
-	 * @return
-	 */
+	
+	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
