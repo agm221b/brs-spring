@@ -25,6 +25,14 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Mayank
+ * Created: 8/10/19
+ * Last Modified: 9/10/19
+ * Description : User Entity
+ *
+ */
+
 @Component("user")
 @Entity
 @Table(name = "user_details")
