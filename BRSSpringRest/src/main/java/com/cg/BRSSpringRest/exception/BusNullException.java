@@ -1,4 +1,4 @@
-package com.cg.BrsSpringBootMVC.exception;
+package com.cg.BRSSpringRest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Last Modified: 9/10/19
  * Description : Responds with error when Bus is not found
  */
-
-public class BusNullException extends RuntimeException {
+@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Bus object is Null")
+public class BusNullException extends Exception {
 	
 	
 	private static final long serialVersionUID = 1786214146473340560L;
@@ -37,7 +37,5 @@ public class BusNullException extends RuntimeException {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 }
