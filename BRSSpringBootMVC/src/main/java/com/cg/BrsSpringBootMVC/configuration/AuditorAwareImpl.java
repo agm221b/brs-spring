@@ -34,8 +34,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
             return null;
         }
  
-        return Optional.of(		((BRSUserDetails) authentication.getPrincipal())
-        		.getUsername());
+        return Optional.of(((BRSUserDetails)authentication.getPrincipal()).getUsername());
 		
 	}
 

@@ -15,6 +15,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.cg.BrsSpringBootMVC.dto.BRSUrlAuthenticationSuccessHandler;
 import com.cg.BrsSpringBootMVC.service.BRSUserDetailsService;
 
+/**
+ * @author Tejaswini
+ * Description: 
+ *
+ */
 @EnableWebSecurity
 public class BRSWebSecurity extends WebSecurityConfigurerAdapter{
 	
@@ -52,21 +57,21 @@ public class BRSWebSecurity extends WebSecurityConfigurerAdapter{
 		.antMatchers("/adduser").permitAll()
 		.antMatchers("/report").permitAll()
 		.antMatchers("/help").permitAll()
-		.antMatchers("/addbus").permitAll()
-		.antMatchers("/addbusdetails").permitAll()
-		.antMatchers("/showbuses").permitAll()
-		.antMatchers("/deletebus").permitAll()
-		.antMatchers("/showusers").permitAll()
-		.antMatchers("/customerhome").permitAll()
-		.antMatchers("/showrunningbuses").permitAll()
-		.antMatchers("/addbooking").permitAll()
-		.antMatchers("/addpassenger").permitAll()
-		.antMatchers("/addpassengerdetails").permitAll()
-		.antMatchers("/createbooking").permitAll()
-		.antMatchers("/cancelbooking").permitAll()
-		.antMatchers("/confirmation").permitAll()
-		.antMatchers("/pdetail").permitAll()
-		.antMatchers("/viewcurrentbooking").permitAll()
+		.antMatchers("/addbus").hasRole("ADMIN")
+		.antMatchers("/addbusdetails").hasRole("ADMIN")
+		.antMatchers("/showbuses").hasRole("ADMIN")
+		.antMatchers("/deletebus").hasRole("ADMIN")
+		.antMatchers("/showusers").hasRole("ADMIN")
+		.antMatchers("/customerhome").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/showrunningbuses").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/addbooking").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/addpassenger").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/addpassengerdetails").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/createbooking").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/cancelbooking").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/confirmation").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/pdetail").hasAnyRole("ADMIN","CUSTOMER")
+		.antMatchers("/viewcurrentbooking").hasAnyRole("ADMIN","CUSTOMER")
 		.antMatchers("/viewallbookings").permitAll()
 		.and().formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
 		.successHandler(brsAuthenticationSuccessHandler())

@@ -37,7 +37,8 @@
 						Booking Status: ${booking.bookingStatus }<br>
 						Mode Of Payment: ${booking.modeOfPayment }<br>
 						Total Cost: ${booking.totalCost }<br>
-						
+						<br><br>
+						<a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a>
 					</p>
 				</div>
 				<div class="card-reveal">

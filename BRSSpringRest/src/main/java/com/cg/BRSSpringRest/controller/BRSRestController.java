@@ -42,89 +42,85 @@ import com.cg.BRSSpringRest.service.BRSService;
 @RestController
 @RequestMapping(value = "/brs")
 public class BRSRestController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BRSRestController.class);
-	
+
 	@Autowired
 	BRSService brsService;
-	
+
 	HttpSession session;
-	
-	/**@author Tejaswini
-	 * Description: Adds the current booking to the booking table
+
+	/**
+	 * @author Tejaswini Description: Adds the current booking to the booking table
 	 * @param Booking
-	 * @return Booking
-	 * Created On: 09/10/2019
-	 * Last Modified: 09/10/2019 10:53 AM
+	 * @return Booking Created On: 09/10/2019 Last Modified: 09/10/2019 10:53 AM
 	 */
-	
+
 	@PostMapping(value = "/createbooking")
-	public Booking addBooking(@RequestParam(value = "busTransactionId")Integer busTransactionId,@RequestBody Booking booking) {
-		BusTransaction busTransaction=brsService.viewTransactionById(busTransactionId);
+	public Booking addBooking(@RequestParam(value = "busTransactionId") Integer busTransactionId,
+			@RequestBody Booking booking) {
+		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
 		booking.setUser(null);
-		List<Passenger> passengers=new ArrayList<Passenger>();
-		
-		Passenger passenger1=new Passenger();
+		List<Passenger> passengers = new ArrayList<Passenger>();
+
+		Passenger passenger1 = new Passenger();
 		passenger1.setPassengerName("tejaswini");
 		passenger1.setPassengerAge(20);
 		passenger1.setPassengerGender('F');
 		passengers.add(passenger1);
-		
-		Passenger passenger2=new Passenger();
+
+		Passenger passenger2 = new Passenger();
 		passenger2.setPassengerName("tejaswini");
 		passenger2.setPassengerAge(20);
 		passenger2.setPassengerGender('F');
 		passengers.add(passenger2);
-		
-		booking.setPassengers(passengers);
+
+		booking.getPassengers().add(passenger1);
+		booking.getPassengers().add(passenger2);
 		return brsService.createBooking(booking);
 	}
-	
-	@GetMapping(value="/viewallbookings")
+
+	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user=(User)session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		return brsService.viewAllBookings(user);
 	}
-	
-	@PutMapping(value="/cancelbooking")
+
+	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(Integer bookingId) {
 		return brsService.cancelBooking(bookingId);
 	}
-	
+
 	@PostMapping(value = "/addbusdetails")
 	public Bus addBusDetails(@RequestBody Bus bus) throws BRSException {
-		System.out.println("bus "+bus);
+		System.out.println("bus " + bus);
 		Bus busAdd = null;
 
-			try {
-				busAdd = brsService.addBusDetails(bus);
-			} catch (BRSException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage());
-			}
+		try {
+			busAdd = brsService.addBusDetails(bus);
+		} catch (BRSException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage());
+		}
 
-			for (int i = 1; i < 15; i++) {
-				BusTransaction busTransaction = new BusTransaction();
-				busTransaction.setDate(LocalDate.now().plusDays(i));
-				busTransaction.setBus(bus);
-				busTransaction.setAvailableSeats(bus.getNoOfSeats());
-				busTransaction.setDeleteFlag(0);
-				brsService.addTransaction(busTransaction);
-			}
-			
+		for (int i = 1; i < 15; i++) {
+			BusTransaction busTransaction = new BusTransaction();
+			busTransaction.setDate(LocalDate.now().plusDays(i));
+			busTransaction.setBus(bus);
+			busTransaction.setAvailableSeats(bus.getNoOfSeats());
+			busTransaction.setDeleteFlag(0);
+			brsService.addTransaction(busTransaction);
+		}
+
 		return busAdd;
+
 	}
-	
+
 	@GetMapping(value = "/home")
 	public String homePage() {
 		return "Home";
 	}
-	
-	
-	
-	
-	
 
 }

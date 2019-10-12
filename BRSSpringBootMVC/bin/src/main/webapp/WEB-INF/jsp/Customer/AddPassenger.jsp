@@ -6,8 +6,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Passenger</title>
+<<<<<<< HEAD
+<link rel="stylesheet" href="css/customer.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+=======
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 </head>
 <body>
 
@@ -69,6 +75,32 @@
 	</table>
 	<script>
 	$(document).ready(function(){
+<<<<<<< HEAD
+		function validatePassengerName(){
+			var passengerName=$('#passenger_name').val();
+			var nameRegExp=/^\w+\s*$/;
+			
+			if(passengerName.length < 1){
+				$('#passenger_name').after("<span class='passenger_error'>Passenger name is empty</span>");
+				return false;
+			}
+			
+			if(!(nameRegExp.test(passengerName))){
+				$('#passenger_name').after("<span class='passenger_error'>Passenger name should contain only alphabetical characters</span>");
+				return false;
+			}
+			
+		}
+		$('#addpassenger').click(function(event){
+			if(validatePassengerName()==true){
+				$('passenger_form').submit();
+			}
+			else{
+				event.preventDefault();
+			}
+		});
+	});
+=======
 // 		$('#passenger_form').submit(function(event){
 // 			event.preventDefault();
 			
@@ -105,9 +137,9 @@
 // 			}
 // 		});
 // 	});
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
 	<jsp:include page="../linklib.jsp" />
-
 </body>
 </html>

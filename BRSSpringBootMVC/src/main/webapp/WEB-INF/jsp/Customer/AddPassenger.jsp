@@ -68,43 +68,29 @@
 	
 	</table>
 	<script>
-	$(document).ready(function(){
-// 		$('#passenger_form').submit(function(event){
-// 			event.preventDefault();
+ 	$(document).ready(function(){
+ 		$('#passenger_form').submit(function(event){
+ 			event.preventDefault();
+ 			$('.passenger_error').remove();
 			
-// 			$('.passenger_error').remove();
+ 			var passengerName=$('#passenger_name').val();
+ 			var passengerAge=$('#passenger_age').val();
+ 			var passengerGender=$('radiobutton[name="passenger_gender"]:checked').val();
 			
-// 			var passengerName=$('#passenger_name').val();
-// 			var passengerAge=$('#passenger_age').val();
-// 			var passengerGender=$('radiobutton[name="passenger_gender"]:checked').val();
 			
-// 			var nameRegEx=/^\w+\s?$/;
-// 			var ageRegEx=/^\d[1,2]$/;
-			
-// 			var validName=nameRegEx.test(passengerName);
-// 			var validAge=ageRegEx.test(passengerAge);
-			
-// 			console.log(passengerName);
-// 			console.log(passengerAge);
-// 			console.log(passengerGender);
-			
-// 			if(passengerName.length<1){
-// 				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Empty</span><br>")
-// 			}
-// 			if(passengerAge<0){
-// 				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>");
-// 			}
-// 			if(passengerGender!='M'||passengerGender!='F'){
-// 				$('radiobutton[name="passenger_gender"]').after("<span class='passenger_error'>Select Gender</span>")
-// 			}
-// 			if(!validName){
-// 				$('#passenger_name').after("<span class='passenger_error'>Passenger Name Is Invalid</span>")
-// 			}
-// 			if(!validAge){
-// 				$('#passenger_age').after("<span class='passenger_error'>Passenger Age Is Invalid</span>")
-// 			}
-// 		});
-// 	});
+ 			if(passengerName.length < 1){
+ 				$('#passenger_name').after("<span class='passenger_error'>Passenger name is empty</span><br>");
+ 			}else{
+ 				var nameRegExp=/^[A-Z]*[a-z]+$/;
+ 				var validPassengerName=nameRegExp.test(passengerName);
+ 				if(!validPassengerName){
+ 					$('#passenger_name').after("<span class='passenger_error'>Passenger name should contain only alphabetical characters</span><br>");
+ 				}
+ 			}
+ 			
+ 			
+ 		});
+});
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
 	<jsp:include page="../linklib.jsp" />
