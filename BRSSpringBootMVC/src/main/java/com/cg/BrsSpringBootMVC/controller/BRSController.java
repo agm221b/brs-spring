@@ -77,6 +77,10 @@ public class BRSController {
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
 		logger.debug("In Customer Home Now");
+		String username=(String) session.getAttribute("username");
+		
+		User user=brsService.viewUserByUsername(username);
+		session.setAttribute("user", user);
 		return "jsp/Customer/CustomerHome";
 
 	}
@@ -131,7 +135,10 @@ public class BRSController {
 			System.out.println("Hi");
 			return "jsp/register";
 		} else {
+			List<Booking> bookingsList=new ArrayList<Booking>();
+			user.setBookingsList(bookingsList);
 			brsService.addUser(user);
+
 			return "jsp/home";
 		}
 	}
@@ -232,16 +239,17 @@ public class BRSController {
 	 * @param ex
 	 * @return ModelAndView to error.jsp
 	 */
-	@ExceptionHandler(BRSException.class)
-	public ModelAndView handleCustomException(BRSException ex) {
-
-		ModelAndView model = new ModelAndView("jsp/error");
-		model.addObject("ErrorMsg", ex.getMessage());
-
-		return model;
-
-	}
-
+	/*
+	 * @ExceptionHandler(BRSException.class) public ModelAndView
+	 * handleCustomException(BRSException ex) {
+	 * 
+	 * ModelAndView model = new ModelAndView("jsp/error");
+	 * model.addObject("ErrorMsg", ex.getMessage());
+	 * 
+	 * return model;
+	 * 
+	 * }
+	 */
 	/**
 	 * /**
 	 * 
@@ -250,15 +258,17 @@ public class BRSController {
 	 * @param ex
 	 * @return ModelAndView to error.jsp
 	 */
-	@ExceptionHandler(Exception.class)
-	public ModelAndView handleAllException(Exception ex) {
-
-		ModelAndView model = new ModelAndView("jsp/error");
-		model.addObject("ErrorMsg", "this is Exception.class");
-
-		return model;
-
-	}
+	/*
+	 * @ExceptionHandler(Exception.class) public ModelAndView
+	 * handleAllException(Exception ex) {
+	 * 
+	 * ModelAndView model = new ModelAndView("jsp/error");
+	 * model.addObject("ErrorMsg", "this is Exception.class");
+	 * 
+	 * return model;
+	 * 
+	 * }
+	 */
 
 	/**
 	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles

@@ -46,6 +46,8 @@ public interface BRSService {
 	public List<BusTransaction> searchBuses(String source, String destination, LocalDate dateOfJourney);
 
 	public User addUser(User user);
+	
+	public User viewUserByUsername(String username);
 
 	public Integer removeUser(Integer userId) throws BRSException;
 

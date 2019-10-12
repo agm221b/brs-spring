@@ -53,7 +53,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<form:input placeholder="Phone Number" id="phoneNumber" type="text"
-						class="validate" path="phoneNumber" required="required" pattern="\\d{10}" title="phone number should be of 10 digits"/> <label for="username">Phone Number</label>
+						class="validate" path="phoneNumber" required="required" title="phone number should be of 10 digits"/> <label for="username">Phone Number</label>
 						<span style="color:red;"><form:errors path="phoneNumber"></form:errors></span>
 				</div>
 			</div>

@@ -3,6 +3,7 @@ package com.cg.BrsSpringBootMVC.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -319,11 +320,12 @@ public class BRSServiceImpl implements BRSService {
 		User user = userRepository.findByUserIdAndDeleteFlag(userId, 0);
 		if (user == null)
 			throw new BRSException(" user not found for deletion");
-		else
+		else {
 			user.setDeleteFlag(1);
+			user.setBookingsList(user.getBookingsList());
 			userRepository.save(user);
 			return 1;
-
+		}
 	}
 	/**
 	 * @author Mayank
@@ -361,6 +363,12 @@ public class BRSServiceImpl implements BRSService {
 			throw new BRSException("User not found");
 		
 			return user;
+	}
+
+	@Override
+	public User viewUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUsername(username).get();
 	}
 
 }

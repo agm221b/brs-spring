@@ -6,6 +6,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.cg.BrsSpringBootMVC.dto.BRSUserDetails;
 import com.cg.BrsSpringBootMVC.dto.User;
 
 /**
@@ -32,7 +33,8 @@ public class AuditorAwareImpl implements AuditorAware<String> {
         if (authentication == null || !authentication.isAuthenticated()) {
             return null;
         }
-        return Optional.of(((User) authentication.getPrincipal()).getUsername());
+ 
+        return Optional.of(((BRSUserDetails) authentication.getPrincipal()).getUsername());
 		
 	}
 

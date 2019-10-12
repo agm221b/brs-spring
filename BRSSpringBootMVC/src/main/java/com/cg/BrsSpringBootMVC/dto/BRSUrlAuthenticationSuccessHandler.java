@@ -1,6 +1,7 @@
 package com.cg.BrsSpringBootMVC.dto;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -17,8 +19,16 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.cg.BrsSpringBootMVC.dao.UserRepository;
+
 
 public class BRSUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+	
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BRSUrlAuthenticationSuccessHandler.class);
 
@@ -27,6 +37,18 @@ public class BRSUrlAuthenticationSuccessHandler implements AuthenticationSuccess
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		
+		String username="";
+		
+		if(authentication.getPrincipal() instanceof Principal) {
+			username=((Principal)authentication.getPrincipal()).getName();
+		}else {
+			username=((BRSUserDetails)authentication.getPrincipal()).getUsername();
+		}
+		
+		System.out.println("username: "+username);
+		
+		session.setAttribute("username", username);
 		
 		 handle(request, response, authentication);
 	        clearAuthenticationAttributes(request);
