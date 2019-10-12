@@ -78,7 +78,8 @@ public class BRSRestController {
 		passenger2.setPassengerGender('F');
 		passengers.add(passenger2);
 		
-		booking.setPassengers(passengers);
+		booking.getPassengers().add(passenger1);
+		booking.getPassengers().add(passenger2);
 		return brsService.createBooking(booking);
 	}
 	
@@ -93,28 +94,10 @@ public class BRSRestController {
 		return brsService.cancelBooking(bookingId);
 	}
 	
-	
-	public Bus addBusDetails(@RequestBody Bus bus) throws BRSException {
+	@PostMapping(value = "/addbus")
+	public Bus addBusDetails(@ModelAttribute Bus bus) throws BRSException{
 		
-		Bus busAdd = null;
-
-			try {
-				busAdd = brsService.addBusDetails(bus);
-			} catch (BRSException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage());
-			}
-
-			for (int i = 1; i < 15; i++) {
-				BusTransaction busTransaction = new BusTransaction();
-				busTransaction.setDate(LocalDate.now().plusDays(i));
-				busTransaction.setBus(bus);
-				busTransaction.setAvailableSeats(bus.getNoOfSeats());
-				busTransaction.setDeleteFlag(0);
-				brsService.addTransaction(busTransaction);
-			}
-			
-		return busAdd;
+		return brsService.addBusDetails(bus);
 	}
 	
 	
