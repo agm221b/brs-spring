@@ -3,120 +3,20 @@
 
 <%@ taglib uri="http://www.springframework.org/tags/form"
 	prefix="addbus"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Bus</title>
-<script type="text/javascript">
-function validate(){
-	var f= document.getElementById("addbusform");
-	return( validateBusName(f) & validateStartTime(f) &	validateSource(f) & validateDestination(f) & validateEndTime(f) & validateNoOfSeats(f) &	validateCostOfSeats(f))}
 
-function validateBusName(busform){
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
-	var error = document.getElementById("busNameerror");
-	var busName = busform["busName"].value;
-	error.innerHTML="";
-	var regex=/[\w]+/g;
-	var validUsername = busName.match(regex);
-
-	   if( busName==null || busName==""){
-	      error.innerHTML="Bus Name cannot be empty";
-	    }
-	   else if(validUsername == null){
-	        alert("Your Bus Name is not valid");
-	        document.frm.firstName.focus();
-	   }
-	   else if(busName.length<5 || busName.length>15){
-	        error.innerHTML="Bus Name has to be 5 to 15 chars"
-	    }
-}
-
-function validateStartTime(busform){
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 	
-	var error = document.getElementById("startTimeerror");
-	var startTime = busform["startTime"].value;
-	error.innerHTML="";
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 	
-	if( startTime==null || startTime==""){
-	      error.innerHTML="Start Time cannot be empty";
-	    }
-	
-}
-
-function validateEndTime(busform){
-	
-	var error = document.getElementById("endTimeerror");
-	var endTime = busform["endTime"].value;
-	error.innerHTML="";
-	
-	if( endTime==null || endTime==""){
-	      error.innerHTML="End Time cannot be empty";
-	    }
-	
-}
-
-function validateSource(busform){
-	var error = document.getElementById("sourceError");
-	var source = busform["source"].value;
-	error.innerHTML="";
-	
-	if( source==null || source=="" || source.length<1){
-	      error.innerHTML="Source cannot be empty";
-	    }
-	
-}
-
-function validateDestination(busform){
-	var error = document.getElementById("destinationError");
-	var destination = busform["destination"].value;
-	error.innerHTML="";
-	
-	if( destination==null || destination=="" || destination.length<1){
-	      error.innerHTML="Destination cannot be empty";
-	    }
-	
-}
-
-function validateNoOfSeats(busform){
-	
-	var error = document.getElementById("seaterror");
-	var noOfSeats = busform["noOfSeats"].value;
-	error.innerHTML="";
-	
-
-		if(noOfSeats<=0){
-		   error.innerHTML = "seats cannot be less than or equal to zero";
-	   	}
-		else if(noOfSeats>=99){
-		   error.innerHTML = "cost exceeds max value";
-	   	}
-	  	 else if(isNan(noOfSeats)){
-		   error.innerHTML="Seats is not a number, enter a number";
-	   	}
-	
-}
-
-function validateCostOfSeats(busform){
-	
-	var error = document.getElementById("costerror");
-	var costPerSeat = busform["costPerSeat"].value;
-	error.innerHTML="";
-	
-
-	   if(costPerSeat<=0){
-		   error.innerHTML = "cost cannot be less than or equal to zero";
-	   }
-	   else if(costPerSeat>=9999){
-		   error.innerHTML = "cost exceeds max value";
-	   }
-	   else if(isNan(costPerSeat)){
-		   error.innerHTML="Cost is not a number, enter a number";
-	   }
-}
-
-</script>
 
 </head>
 <body>
@@ -176,13 +76,13 @@ function validateCostOfSeats(busform){
 			</tr>
 			<tr>
 				<td>Bus Source</td>
-				<td><addbus:input path="source" id="source" /></td>
+				<td><addbus:input path="source" id="source" name="source" /></td>
 				<td><span style="color: red;"><addbus:errors
 							path="source" id="sourceError"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Bus Destination</td>
-				<td><addbus:input path="destination" id="destination"/></td>
+				<td><addbus:input path="destination" id="destination"  /></td>
 				<td><span style="color: red;"><addbus:errors
 							path="destination" id="destinationError"></addbus:errors></span></td>
 			</tr>
@@ -194,7 +94,7 @@ function validateCostOfSeats(busform){
 			</tr>
 			<tr>
 				<td>End time</td>
-				<td><input type="time" name="endTime"><span
+				<td><input type="time" name="endTime" id="endTime"><span
 					style="color: red;"><addbus:errors path="endTime"
 							id="endTimeerror"></addbus:errors></span></td>
 			</tr>
@@ -211,8 +111,99 @@ function validateCostOfSeats(busform){
 							path="costPerSeat" id="costerror"></addbus:errors></span></td>
 			</tr>
 		</table>
+		<p style="color: red;" id="error">
+			<c:out value="${modelError}" />
+		</p>
 		<input type="submit" value="Add" />
+
 	</addbus:form>
+	
+	<script type="text/javascript">
+
+
+	$(document).ready(function() {  // <-- enclose your code in a DOM ready handler
+
+	    $("#addbusform").validate({
+	        rules: {
+	            "busName": { // <-- assign by field name and use quotes
+	                required: true,
+	                minlength: 6,
+	                maxlength: 40
+	            },
+	            "busType": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "busClass": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "source": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "destination": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "startTime": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "endTime": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "noOfSeats": { // <-- assign by field name and use quotes
+	                required: true,
+	            },
+	            "costPerSeat": {
+	                required: true,
+	            }
+	        },
+	        messages: {
+	            "busName": {
+	                required: "Bus Name is required!",
+	                minlength: "Bus Name must be at least 6 characters long"
+	            },
+	            "busType": {
+	                required: "Bus Type is required!",
+	                
+	            },
+	            "busClass": {
+	                required: "Bus Class is required!",
+	                
+	            },
+	            "source": {
+	                required: "Source is required!",
+	                
+	            },
+	            "destination": {
+	                required: "Destination is required!",
+	                
+	            },
+	            "startTime": {
+	                required: "Start Time is required!",
+	                
+	            },
+	            "endTime": {
+	                required: "End Time is required!",
+	                
+	            },
+	            "noOfSeats": {
+	                required: "No of Seats is required!",
+	                
+	            },
+	            "costPerSeat": {
+	                required: "Cost Per Seat is required!",
+	                
+	            },
+	            
+	        }
+	        /*, // submitHandler is not needed for this case
+	        submitHandler: function (form) {
+	            form.submit();  // <-- this is the default
+	        }
+	        */
+	    });
+
+	});
+
+	</script>
 
 	<jsp:include page="../linklib.jsp"></jsp:include>
 </body>

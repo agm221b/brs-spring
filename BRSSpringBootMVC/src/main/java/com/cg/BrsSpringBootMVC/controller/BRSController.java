@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
@@ -186,14 +187,24 @@ public class BRSController {
 	 * @throws BRSException
 	 */
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
-	public String addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BRSException {
+	public ModelAndView addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BRSException {
+		String modelError = null;
+		
 		if (result.hasErrors()) {
-			return "jsp/Admin/AddBus";
+			return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
 
 		} else {
 			logger.debug(bus.toString());
 
 			try {
+				for(Bus busExisting : brsService.viewAllBuses())
+				{
+					if(busExisting.equals(bus))
+					{
+						modelError = "Bus Already Exists in Database";
+						return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
+					}
+				}
 				brsService.addBusDetails(bus);
 			} catch (BRSException e) {
 				// TODO Auto-generated catch block
@@ -209,7 +220,8 @@ public class BRSController {
 				busTransaction.setDeleteFlag(0);
 				brsService.addTransaction(busTransaction);
 			}
-			return "jsp/Admin/AdminHome";
+			modelError = "Added Successfully";
+			return new ModelAndView("jsp/Admin/AdminHome", "modelError", modelError);
 		}
 	}
 

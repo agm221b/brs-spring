@@ -11,7 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,13 +26,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Aditya
- * Created: 8/10/19
- * Last Modified: 9/10/19
- * Description : Bus Entity
+ * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description : Bus
+ *         Entity
  *
  */
-
 
 @EntityListeners(AuditingEntityListener.class)
 @Component("bus")
@@ -46,7 +42,7 @@ public class Bus {
 	private Integer busId;
 
 	@Column(name = "bus_name")
-	@Size(min=3,max=20,message="Name should be between 3-20 characters")
+	@Size(min = 3, max = 20, message = "Name should be between 3-20 characters")
 	private String busName;
 
 	@Column(name = "bus_type")
@@ -68,7 +64,7 @@ public class Bus {
 	private String destination;
 
 	@Column(name = "no_of_seats")
-	@NotNull(message="number of seats required")
+	@NotNull(message = "number of seats required")
 	private Integer noOfSeats;
 
 	@Column(name = "delete_flag")
@@ -76,18 +72,15 @@ public class Bus {
 
 	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "start_time")
-	@NotNull(message="time validation to be done")
 	private LocalTime startTime;
 
 	@DateTimeFormat(pattern = "HH:mm")
 	@Column(name = "end_time")
-	@NotNull // end time validation to be done here
 	private LocalTime endTime;
 
 	@Column(name = "cost_per_seat")
-	@NotNull(message=" cost per seat required")
+	@NotNull(message = " cost per seat required")
 	private Double costPerSeat;
-
 
 	@CreatedBy
 	protected String createdBy;
@@ -99,7 +92,6 @@ public class Bus {
 	@LastModifiedDate
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date lastModifiedDate;
-
 
 	public Bus() {
 
@@ -216,5 +208,29 @@ public class Bus {
 				+ "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((busClass == null) ? 0 : busClass.hashCode());
+		result = prime * result + ((busName == null) ? 0 : busName.hashCode());
+		result = prime * result + ((busType == null) ? 0 : busType.hashCode());
+		result = prime * result + ((costPerSeat == null) ? 0 : costPerSeat.hashCode());
+		result = prime * result + ((deleteFlag == null) ? 0 : deleteFlag.hashCode());
+		result = prime * result + ((destination == null) ? 0 : destination.hashCode());
+		result = prime * result + ((endTime == null) ? 0 : endTime.hashCode());
+		result = prime * result + ((noOfSeats == null) ? 0 : noOfSeats.hashCode());
+		result = prime * result + ((source == null) ? 0 : source.hashCode());
+		result = prime * result + ((startTime == null) ? 0 : startTime.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this.hashCode() == obj.hashCode())
+			return true;
+		else
+			return false;
+	}
 
 }
