@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Component("bus")
 @Entity
 @Table(name = "bus")
@@ -53,11 +55,13 @@ public class Bus {
 	private Integer deleteFlag = 0;
 
 	@DateTimeFormat(pattern = "HH:mm")
+
 	@Column(name = "start_time")
 	@NotNull(message="time validation to be done")
 	private LocalTime startTime;
 
 	@DateTimeFormat(pattern = "HH:mm")
+
 	@Column(name = "end_time")
 	@NotNull // end time validation to be done here
 	private LocalTime endTime;

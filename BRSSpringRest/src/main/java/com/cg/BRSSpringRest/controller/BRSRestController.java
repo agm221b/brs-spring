@@ -93,9 +93,9 @@ public class BRSRestController {
 		return brsService.cancelBooking(bookingId);
 	}
 	
-	
+	@PostMapping(value = "/addbusdetails")
 	public Bus addBusDetails(@RequestBody Bus bus) throws BRSException {
-		
+		System.out.println("bus "+bus);
 		Bus busAdd = null;
 
 			try {
@@ -115,6 +115,11 @@ public class BRSRestController {
 			}
 			
 		return busAdd;
+	}
+	
+	@GetMapping(value = "/home")
+	public String homePage() {
+		return "Home";
 	}
 	
 	

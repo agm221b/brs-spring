@@ -189,6 +189,7 @@ public class BRSController {
 	@RequestMapping(value = "/addbusdetails", method = RequestMethod.POST)
 	public ModelAndView addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BRSException {
 		String modelError = null;
+		logger.info("Adding Bus into Database");
 		
 		if (result.hasErrors()) {
 			return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
@@ -202,6 +203,7 @@ public class BRSController {
 					if(busExisting.equals(bus))
 					{
 						modelError = "Bus Already Exists in Database";
+						logger.error("Bus Already Exists in Database");
 						return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
 					}
 				}
@@ -219,6 +221,7 @@ public class BRSController {
 				busTransaction.setAvailableSeats(bus.getNoOfSeats());
 				busTransaction.setDeleteFlag(0);
 				brsService.addTransaction(busTransaction);
+				logger.info("Bus transactions created");
 			}
 			modelError = "Added Successfully";
 			return new ModelAndView("jsp/Admin/AdminHome", "modelError", modelError);
@@ -310,6 +313,7 @@ public class BRSController {
 	@RequestMapping(value = "/showbuses", method = RequestMethod.GET)
 	public ModelAndView getAllData() { // admin
 		List<Bus> busList = brsService.viewAllBuses();
+		logger.info("Viewing the List of Buses");
 		return new ModelAndView("jsp/Admin/ShowBuses", "busList", busList);
 	}
 
@@ -338,6 +342,7 @@ public class BRSController {
 		List<BusTransaction> transactionList = brsService.searchBuses(bus.getSource(), bus.getDestination(),
 				dateOfJourney);
 		System.out.println(transactionList);
+		logger.debug("Displaying transaction list");
 		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
 	}
 
@@ -351,6 +356,7 @@ public class BRSController {
 	public String deleteBus(@RequestParam("busId") Integer busId) {
 		try {
 			brsService.removeBus(busId);
+			logger.info("Deleting bus");
 		} catch (BRSException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
