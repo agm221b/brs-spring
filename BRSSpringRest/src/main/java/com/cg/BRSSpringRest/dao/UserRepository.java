@@ -23,6 +23,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 * @return user with given username and password
 	 */
 	public User findByUsernameAndPass(String username, String password);
+
+
+	/**
+	 * @param username
+	 * @return user with given username
+	 */
+	public User findByUsername(String username);
+
 	
 	
 	
