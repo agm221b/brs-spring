@@ -13,24 +13,29 @@
 
 
 	<div class="container">
-		<form class="col s6" action="login" method="post">
-			
+		<form id="userform" class="col s6" action="login" method="post">
+
 
 			<div class="row">
 				<div class="input-field col s6">
-					<input placeholder="Username" type="text" name="username" required="required">
-					<label for="username">Username</label> <span style="color: red;"></span>
+					<input placeholder="Username" type="text" name="username"
+						required="required"> <label for="username">Username</label>
+					<span style="color: red;"></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input placeholder="Password" type="password" name="password" required="required">
-					<label for="password">Password</label> <span style="color: red;"></span>
+					<input placeholder="Password" type="password" name="password"
+						required="required"> <label for="password">Password</label>
+					<span style="color: red;"></span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input type="submit" class="waves-effect waves-light btn" value="LOGIN"><br>
+					<input type="submit" class="waves-effect waves-light btn"
+						value="LOGIN"><br>
+							  <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 				</div>
 			</div>
 		</form>

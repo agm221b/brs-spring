@@ -14,7 +14,10 @@
 <a class="waves-effect waves-light btn" href="addbus">Add Bus</a><br>
 <a class="waves-effect waves-light btn" href="showbuses">Show All Buses</a><br>
 <a class="waves-effect waves-light btn" href="showusers">Show All Users</a><br>
-<a class="waves-effect waves-light btn" href="logout">Logout</a><br>
+<form action="<%=request.getContextPath()%>/logout" method="POST">
+        <input type="submit" value="Logout"/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+      </form> 
 
 <jsp:include page="../linklib.jsp"></jsp:include>
 </body>
