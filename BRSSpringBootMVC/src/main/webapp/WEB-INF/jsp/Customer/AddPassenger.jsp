@@ -88,7 +88,17 @@
  				}
  			}
  			
+ 			if(passengerAge.length <1){
+ 				$('#passenger_age').after("<span class='passenger_error'>Passenger age is empty</span><br>");
+ 			}else{
+ 				if(passengerAge<0 && passenger>70){
+ 					$('#passenger_age').after("<span class='passenger_error'>Passenger age is invalid</span><br>");
+ 				}
+ 			}
  			
+ 			if(passengerGender===""){
+ 				$('radiobutton[name="passenger_gender"]').after("<span class='passenger_error'>Passenger gender is not selected</span><br>");
+ 			} 			
  		});
 });
 	</script>

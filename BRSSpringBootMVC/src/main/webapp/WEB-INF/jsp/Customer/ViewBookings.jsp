@@ -34,10 +34,10 @@
 							class="glyphicon glyphicon-option-vertical right"></i>
 						</span>
 						<p>
-							Date Of Journey: ${booking.dateOfJourney }<br> Booking
-							Status: ${booking.bookingStatus }<br> Mode Of Payment:
-							${booking.modeOfPayment }<br> Total Cost:
-							${booking.totalCost }<br>
+							Date Of Journey: ${booking.dateOfJourney }<br> 
+							Booking Status: ${booking.bookingStatus }<br> 
+							Mode Of Payment: ${booking.modeOfPayment }<br> 
+							Total Cost: ${booking.totalCost }<br>
 							
 							<a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a>
 						</p>
