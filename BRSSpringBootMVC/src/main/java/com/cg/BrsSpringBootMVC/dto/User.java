@@ -32,11 +32,10 @@ import org.springframework.stereotype.Component;
  * Description : User Entity
  *
  */
-
+//@EntityListeners(AuditingEntityListener.class)
 @Component("user")
 @Entity
 @Table(name = "user_details")
-@EntityListeners(AuditingEntityListener.class)
 public class User {
 
 	@Id
@@ -73,17 +72,20 @@ public class User {
 	
 	@Column(name="roles")
 	private String roles;
-	
-	@CreatedBy
-	protected String createdBy;
-	@CreatedDate
-	@Temporal(TemporalType.TIMESTAMP)
-	protected Date creationDate;
-	@LastModifiedBy
-	protected String lastModifiedBy;
-	@LastModifiedDate
-	@Temporal(TemporalType.TIMESTAMP)
-	protected Date lastModifiedDate;
+
+	/*
+	 * @CreatedBy protected String createdBy;
+	 * 
+	 * @CreatedDate
+	 * 
+	 * @Temporal(TemporalType.TIMESTAMP) protected Date creationDate;
+	 * 
+	 * @LastModifiedBy protected String lastModifiedBy;
+	 * 
+	 * @LastModifiedDate
+	 * 
+	 * @Temporal(TemporalType.TIMESTAMP) protected Date lastModifiedDate;
+	 */
 	
 	public User() {
 		// TODO Auto-generated constructor stub
