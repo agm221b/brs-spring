@@ -54,6 +54,8 @@ public interface BRSService {
 
 	public User validateUser(String username, String password) throws BRSException;
 
+	public User findName(String username);
+
 	/* public Passenger addPassenger(Passenger passenger); */
 
 }

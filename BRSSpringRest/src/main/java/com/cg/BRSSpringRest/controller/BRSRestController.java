@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -122,5 +125,41 @@ public class BRSRestController {
 	public String homePage() {
 		return "Home";
 	}
+	
+	/**
+	 * @author Mayank Description: adds user and redirects to home.jsp page or
+	 *         redirects to register.jsp page Created: 12/10/2019 Last Modified:
+	 *         12/10/2019
+	 * @return jsp/home
+	 */
+	@PostMapping(value="/adduser")
+	public ResponseEntity<User> addData(@ModelAttribute User user){
+		User userS=brsService.addUser(user);
+		System.out.println(brsService.findName("rest"));
+		if (userS==null) {
+			return new ResponseEntity(" User Data not added",HttpStatus.INTERNAL_SERVER_ERROR);
+		}else {
+		return new ResponseEntity<User>(user,HttpStatus.OK);
+		}}
+	
+		
+	
+	
+	/**
+	 * @author Mayank Description: shows all the users Created: 12/10/2019 Last
+	 *         Modified: 12/10/2019
+	 * @return List of Users
+	 */
+	@GetMapping(value="/showusers")
+	public ResponseEntity<List<User>> showAllUsers(){
+		List<User> userList = brsService.viewAllUsers();
+		if (userList.isEmpty()) {
+			return new ResponseEntity("No User Present", HttpStatus.INTERNAL_SERVER_ERROR);
+		} else {
+			return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+		}
+	}
+	
+
 
 }
