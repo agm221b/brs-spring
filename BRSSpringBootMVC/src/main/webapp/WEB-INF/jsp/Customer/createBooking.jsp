@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Bus details: </title>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 Bus details:
 <table border=1 style="table-hover">
 <tr>

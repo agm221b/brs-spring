@@ -14,7 +14,7 @@
 <title>Current Booking Details</title>
 <link rel="stylesheet" href="css/customer.css">
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 <h4>Current Booking Details</h4>
 <br>
 <table border=1 class="table-hover">
@@ -64,7 +64,7 @@
 <th>Passenger Age</th>
 <th>Passenger Gender</th>
 </tr>
-<viewbooking:forEach var="passenger" items="${passengers}"></viewbooking:forEach>
+<viewbooking:forEach var="passenger" items="${passengers }"></viewbooking:forEach>
 <tr>
 <td>${passenger.getPassengerId() }</td>
 <td>${passenger.getPassengerName() }</td>

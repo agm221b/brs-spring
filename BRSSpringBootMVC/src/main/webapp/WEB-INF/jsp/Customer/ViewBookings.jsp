@@ -8,23 +8,12 @@
 <meta charset="ISO-8859-1">
 <title>Test</title>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">BusNama</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="customerhome">Home</a></li>
-
-			</ul>
-		</div>
-	</nav>
 	<div class="container">
 		<show:forEach var="booking" items="${bookings }">
 			<div class="row" style="width: auto;">
-				<div class="card medium">
+				<div class="card">
 					<div class="card-image waves-effect waves-block waves-light">
 						<!-- <img class="activator" src="images/office.jpg"> -->
 					</div>
@@ -34,12 +23,12 @@
 							class="glyphicon glyphicon-option-vertical right"></i>
 						</span>
 						<p>
-							Date Of Journey: ${booking.dateOfJourney }<br> 
-							Booking Status: ${booking.bookingStatus }<br> 
-							Mode Of Payment: ${booking.modeOfPayment }<br> 
-							Total Cost: ${booking.totalCost }<br>
-							
-							<a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a>
+							Date Of Journey: ${booking.dateOfJourney }<br> Booking
+							Status: ${booking.bookingStatus }<br> Mode Of Payment:
+							${booking.modeOfPayment }<br> Total Cost:
+							${booking.totalCost }<br> 
+							<a
+								href="cancelbooking?bookingId=${booking.bookingId }"><input type="button" value="CANCEL TICKET" ${ booking.bookingStatus=="CANCELLED" ? 'disabled="disabled"' : ''}/></a>
 						</p>
 					</div>
 					<div class="card-reveal">
@@ -54,19 +43,18 @@
 								<th>Passenger Age</th>
 								<th>Passenger Gender</th>
 							</tr>
+							<show:forEach var="passenger" items="${booking.passengers }">
+								<tr>
+									<td>${passenger.getPassengerId() }</td>
+									<td>${passenger.getPassengerName() }</td>
+									<td>${passenger.getPassengerAge() }</td>
+									<td>${passenger.getPassengerGender() }</td>
+								</tr>
+							</show:forEach>
 						</table>
-						<show:forEach var="passenger" items="${booking.passengers }">
-					      Passenger Id: ${passenger.getPassengerId() }
-					      <br>
-					      Passenger Name: ${passenger.getPassengerName() }
-					      <br>
-					      Passenger Age: ${passenger.getPassengerAge() }
-					      <br>
-					      Passenger Gender: ${passenger.getPassengerGender() }
-      						<br>
-							<br>
-						</show:forEach>
-						
+
+
+
 					</div>
 				</div>
 			</div>
