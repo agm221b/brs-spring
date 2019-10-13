@@ -5,21 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -163,7 +160,15 @@ public class BRSRestController {
 			return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
-		}
+		}}
+	
+	@DeleteMapping(value="/removeuser")
+	public boolean removeUser(@RequestParam Integer userId) throws Exception {
+		User user= brsService.findUserById(userId);
+		if(user==null)
+			throw new Exception("User not found with Id: "+userId);
+		brsService.removeUser(userId);
+		return true;
 	}
 	
 

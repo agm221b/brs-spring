@@ -360,6 +360,12 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsername(username);
 	}
+
+	@Override
+	public User findUserById(Integer userId) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUserId(userId);
+	}
 	
 
 }
