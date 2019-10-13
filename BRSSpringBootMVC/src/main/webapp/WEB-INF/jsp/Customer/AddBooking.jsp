@@ -25,17 +25,14 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="customerhome">Home</a></li>
     </ul>
+    
+    
   </div>
 </nav>
-	<br>
 	<search:form method="post" action="showrunningbuses" modelAttribute="bus" id="searchbusform">
 	
 				 <span style="color: red;"></span>
-			<br>
-				
-			
-				 
-			
+			<br>		
 			<table class="striped" style="padding: 20px;">
 			
 			<tr>

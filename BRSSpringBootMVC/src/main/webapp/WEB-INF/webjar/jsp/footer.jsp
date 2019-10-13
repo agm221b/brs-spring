@@ -7,8 +7,7 @@
 <title>Footer</title>
 <style type="text/css">
 #footer {
-	position: fixed;
-	left: 0;
+	position: absolute;
 	height: auto;
 	bottom: 0px;
 	width: 100%;
