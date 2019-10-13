@@ -65,7 +65,7 @@ public class BRSRestController {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(null);
+		booking.setUser(brsService.findName("teja"));
 		List<Passenger> passengers = new ArrayList<Passenger>();
 
 		Passenger passenger1 = new Passenger();
@@ -79,20 +79,23 @@ public class BRSRestController {
 		passenger2.setPassengerAge(20);
 		passenger2.setPassengerGender('F');
 		passengers.add(passenger2);
-
-		booking.getPassengers().add(passenger1);
-		booking.getPassengers().add(passenger2);
+		
+		booking.setPassengers(passengers);
+		booking.setTotalCost(passengers.size()*busTransaction.getBus().getCostPerSeat());
+		booking.setDeleteFlag(0);
+		
+		brsService.updateAvailableSeats(busTransactionId, passengers.size());
 		return brsService.createBooking(booking);
 	}
 
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = (User) session.getAttribute("user");
+		User user = brsService.findName("teja");
 		return brsService.viewAllBookings(user);
 	}
 
 	@PutMapping(value = "/cancelbooking")
-	public Booking cancelBooking(Integer bookingId) {
+	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
 		return brsService.cancelBooking(bookingId);
 	}
 
@@ -108,14 +111,13 @@ public class BRSRestController {
 			logger.error(e.getMessage());
 		}
 
-		for (int i = 1; i < 15; i++) {
-			BusTransaction busTransaction = new BusTransaction();
-			busTransaction.setDate(LocalDate.now().plusDays(i));
-			busTransaction.setBus(bus);
-			busTransaction.setAvailableSeats(bus.getNoOfSeats());
-			busTransaction.setDeleteFlag(0);
-			brsService.addTransaction(busTransaction);
-		}
+		/*
+		 * for (int i = 1; i < 15; i++) { BusTransaction busTransaction = new
+		 * BusTransaction(); busTransaction.setDate(LocalDate.now().plusDays(i));
+		 * busTransaction.setBus(bus);
+		 * busTransaction.setAvailableSeats(bus.getNoOfSeats());
+		 * busTransaction.setDeleteFlag(0); brsService.addTransaction(busTransaction); }
+		 */
 
 		return busAdd;
 
@@ -134,10 +136,11 @@ public class BRSRestController {
 	 */
 	@PostMapping(value="/adduser")
 	public ResponseEntity<User> addData(@ModelAttribute User user){
-		User userS=brsService.addUser(user);
-		System.out.println(brsService.findName("rest"));
-		if (userS==null) {
-			return new ResponseEntity(" User Data not added",HttpStatus.INTERNAL_SERVER_ERROR);
+		List<Booking> bookingsList=new ArrayList<Booking>();
+		user.setBookingsList(bookingsList);
+		user=brsService.addUser(user);
+		if (user==null) {
+			return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}else {
 		return new ResponseEntity<User>(user,HttpStatus.OK);
 		}}
@@ -154,7 +157,7 @@ public class BRSRestController {
 	public ResponseEntity<List<User>> showAllUsers(){
 		List<User> userList = brsService.viewAllUsers();
 		if (userList.isEmpty()) {
-			return new ResponseEntity("No User Present", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
 		}
