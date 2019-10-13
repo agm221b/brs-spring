@@ -100,7 +100,7 @@ public class BRSRestController {
 	}
 
 	@PostMapping(value = "/addbusdetails")
-	public Bus addBusDetails(@RequestBody Bus bus) throws BRSException {
+	public Bus addBusDetails(@ModelAttribute Bus bus) throws BRSException {
 		System.out.println("bus " + bus);
 		Bus busAdd = null;
 
@@ -111,13 +111,16 @@ public class BRSRestController {
 			logger.error(e.getMessage());
 		}
 
-		/*
-		 * for (int i = 1; i < 15; i++) { BusTransaction busTransaction = new
-		 * BusTransaction(); busTransaction.setDate(LocalDate.now().plusDays(i));
-		 * busTransaction.setBus(bus);
-		 * busTransaction.setAvailableSeats(bus.getNoOfSeats());
-		 * busTransaction.setDeleteFlag(0); brsService.addTransaction(busTransaction); }
-		 */
+		
+		  for (int i = 1; i < 15; i++) { 
+			  BusTransaction busTransaction = new BusTransaction(); 
+			  busTransaction.setDate(LocalDate.now().plusDays(i));
+			  busTransaction.setBus(bus);
+			  busTransaction.setAvailableSeats(bus.getNoOfSeats());
+			  busTransaction.setDeleteFlag(0); 
+			  brsService.addTransaction(busTransaction); 
+			  }
+		 
 
 		return busAdd;
 
