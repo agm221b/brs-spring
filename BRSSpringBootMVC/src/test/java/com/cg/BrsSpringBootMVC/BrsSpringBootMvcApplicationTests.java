@@ -170,7 +170,7 @@ public class BrsSpringBootMvcApplicationTests {
 
 	@Test
 	public void testviewAllBuses() {
-		assertEquals(3, brsService.viewAllBuses().size());
+		assertEquals(4, brsService.viewAllBuses().size());
 	}
 	
 	@Test
@@ -196,16 +196,19 @@ public class BrsSpringBootMvcApplicationTests {
 		assertEquals(3, brsService.findDestinations().size());
 	
 	}
-	/*
-	 * @Test public void testviewAllBookings() { assertEquals(6,
-	 * brsService.viewAllBookings().size()); }
-	 */
+
+	  @Test 
+	  public void testviewAllBookings() {
+		  User user = new User();
+	  assertEquals(0, brsService.viewAllBookings(user).size()); 
+	  
+	  }
+	 
 	
 
 	@Test
 	public void testfindBookingById()  {
-		Booking booking = brsService.findBookingById(76);
-		assertEquals("BOOKED", booking.getBookingStatus());
+		assertEquals("UPI", brsService.findBookingById(76).getModeOfPayment());
 	}
 	
 	/*
@@ -241,12 +244,12 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	@Test
 	public void testremoveUser() throws BRSException {
-		assertEquals(true, brsService.removeUser(73));
+		assertEquals(true, brsService.removeUser(86));
 	}
 	
 	@Test
 	public void testviewAllUsers() {
-		assertEquals(2, brsService.viewAllUsers().size());
+		assertEquals(1, brsService.viewAllUsers().size());
 	}
 	
 	
