@@ -170,7 +170,7 @@ public class BrsSpringBootMvcApplicationTests {
 
 	@Test
 	public void testviewAllBuses() {
-		assertEquals(4, brsService.viewAllBuses().size());
+		assertEquals(3, brsService.viewAllBuses().size());
 	}
 	
 	@Test
@@ -216,7 +216,7 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	@Test
 	public void testviewAllTransactions() {
-		assertEquals(62, brsService.viewAllTransactions().size());
+		assertEquals(56, brsService.viewAllTransactions().size());
 	}
 	
 
@@ -246,7 +246,7 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	@Test
 	public void testviewAllUsers() {
-		assertEquals(6, brsService.viewAllUsers().size());
+		assertEquals(2, brsService.viewAllUsers().size());
 	}
 	
 	
