@@ -129,6 +129,7 @@ public class BRSRestController {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * 
 	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 
 	 * Description: Displays the list of all buses as List
@@ -171,10 +172,10 @@ public class BRSRestController {
 	}
 	
 	/**
-	 * @author Mayank Description: adds user and redirects to home.jsp page or
-	 *         redirects to register.jsp page Created: 12/10/2019 Last Modified:
-	 *         12/10/2019
-	 * @return jsp/home
+	 * @author Mayank Description: adds user
+	 *  Created: 12/10/2019 
+	 *  Last Modified:12/10/2019
+	 * @return User response entity
 	 */
 	@PostMapping(value="/adduser")
 	public ResponseEntity<User> addData(@ModelAttribute User user){
@@ -204,6 +205,13 @@ public class BRSRestController {
 			return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
 		}}
 	
+
+	/**
+	 * @author Mayank Description: removes user
+	 *  Created: 13/10/2019 
+	 *  Last Modified:13/10/2019
+	 * @return true if user gets removed
+	 */
 	@DeleteMapping(value="/removeuser")
 	public boolean removeUser(@RequestParam Integer userId) throws Exception {
 		User user= brsService.findUserById(userId);
