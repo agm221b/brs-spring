@@ -16,12 +16,42 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+#main{
+background-color: white;
+height: 100%;
+width: 600px;
+}
 
+#registrationform{
+padding-left: 170px;
+}
+
+#submitbtn{
+text-align: center;
+}
+
+h3{
+text-align:center;
+}
+
+</style>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">BusNama</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				</ul>
+		</div>
+	</nav>
 
-	<div class="row">
-		<form:form class="col s6" action="adduser" method="post" modelAttribute="user">
+<div class="container" id="main">
+<h3>Registration Form</h3>
+		<form:form class="col s6" action="adduser" method="post" modelAttribute="user" id="registrationform">
 			<div class="row">
 				<div class="input-field col s6">
 					<form:hidden path="userId"/>
@@ -78,9 +108,10 @@
 				</div>
 			</div>
 		</form:form>
-	</div>
+</div>
+	
 	<jsp:include page="linklib.jsp"></jsp:include>
-	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 	
 </body>
 </html>

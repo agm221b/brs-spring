@@ -49,10 +49,6 @@ import com.cg.BRSSpringRest.util.ExcelReportView;
  * Last Modified: 09/10/2019 10:37 AM
  *
  */
-/**
- * @author OSIS11
- *
- */
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/brs")
@@ -68,7 +64,8 @@ public class BRSRestController {
 	
 
 	/**
-	 * @author Tejaswini Description: Adds the current booking to the booking table
+	 * @author Tejaswini 
+	 * Description: Adds the current booking to the booking table
 	 * @param Booking
 	 * @return Booking Created On: 09/10/2019 Last Modified: 09/10/2019 10:53 AM
 	 */
@@ -102,6 +99,14 @@ public class BRSRestController {
 		return brsService.createBooking(booking);
 	}
 
+	
+	
+	/**
+	 * @author Tejaswini
+	 * Description: Gets the list of all bookings
+	 * @return List<Booking>
+	 * Created On: 09/10/2019
+	 */
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
 		User user = brsService.findName("tejaswini");
@@ -117,11 +122,25 @@ public class BRSRestController {
 		return "Downloaded Bookings list";
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: modifies the booking status to CANCELLED based on the selected bookingId
+	 * @param bookingId
+	 * @return Booking
+	 * Created On: 09/10/2019
+	 */
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
 		return brsService.cancelBooking(bookingId);
 	}
-
+	
+	/**
+	 * @author Aditya 
+	 * Created: 13/10/19 
+	 * Last Modified: 13/10/19 
+	 * Description: Displays the list of all buses as List
+	 * @return List of Buses which have deleteFlag as 0
+	 */
 	@PostMapping(value = "/addbusdetails")
 	public Bus addBusDetails(@ModelAttribute Bus bus) throws BRSException {
 		System.out.println("bus " + bus);
@@ -150,6 +169,7 @@ public class BRSRestController {
 	}
 
 	
+
 	
 	/*** 
 	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 

@@ -16,18 +16,27 @@
 </head>
 <c:url value="/img/" var="images"></c:url>
 <body>
-	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
 	<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="customerhome">BusNama</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="customerhome">Home</a></li>
-    </ul>
-    
-    
-  </div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="customerhome">BusNama</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="customerhome">Home</a></li>
+				<li><a href="help">FAQs</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="viewallbookings">View All Bookings</a></li>
+						<li><a href="#">Manage Profile</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav right">
+			<li><a href="<%=request.getContextPath()%>/logout"><input type="button" value="Logout"><input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" /></a></li>
+			</ul>
+		</div>
+	</nav>
 </nav>
 	<search:form method="post" action="showrunningbuses" modelAttribute="bus" id="searchbusform">
 	
@@ -41,12 +50,12 @@
 			</tr>
 			
 			<tr>
-			<td><search:select cssClass="form-control" path="source" items="${src }" id="source"/>
+			<td><search:select cssClass="form-control" path="source" items="${src }" id="source" required="required"/>
 			</td>
 			</tr>
 			
 			<tr>
-			<td><label for="destination">Destination</label>  <search:select cssClass="form-control" path="destination" items="${dest }" id="destination"/>
+			<td><label for="destination">Destination</label>  <search:select cssClass="form-control" path="destination" items="${dest }" id="destination" required="required"/>
 			</td>
 			</tr>
 			
@@ -56,7 +65,7 @@
 			<div class="input-field col s6">
 				<!-- to work on datepicker  -->
 				<label for="datepicker">Enter date:</label> <input type="text"
-					name="date_of_journey" id="datepicker" /> <span
+					name="date_of_journey" id="datepicker" required/> <span
 					style="color: red;"></span>
 			</div>
 			<div id="section">
@@ -105,5 +114,6 @@
 	<h4>List Of Running Buses</h4>
 	<jsp:include page="showRunningBuses.jsp"></jsp:include>
 	<jsp:include page="../linklib.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
