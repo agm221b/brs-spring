@@ -73,6 +73,7 @@ public class BRSRestController {
 	@PostMapping(value = "/createbooking")
 	public Booking addBooking(@RequestParam(value = "busTransactionId") Integer busTransactionId,
 			@RequestBody Booking booking) {
+		logger.info("Getting the bus information");
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
@@ -95,6 +96,7 @@ public class BRSRestController {
 		booking.setTotalCost(passengers.size()*busTransaction.getBus().getCostPerSeat());
 		booking.setDeleteFlag(0);
 		
+		logger.info("Updating the available seats of the selected bus");
 		brsService.updateAvailableSeats(busTransactionId, passengers.size());
 		return brsService.createBooking(booking);
 	}
@@ -110,12 +112,17 @@ public class BRSRestController {
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
 		User user = brsService.findUserByName("tejaswini");
+		
+		logger.info("Listing all the bookings made by the user "+user.getUsername());
+
 		return brsService.viewAllBookings(user);
 	}
 	
 	@GetMapping(value = "/report")
 	public String getExcel() {
+		
 		User user = (User) session.getAttribute("user");
+		logger.info("Downloading the bookings of the user "+user.getUsername());
 		List<Booking> bookingList = user.getBookingsList();
 		ExcelReportView excel =new ExcelReportView();
 		//excel.
@@ -131,6 +138,7 @@ public class BRSRestController {
 	 */
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
+		logger.info("Cancelling the selected booking with booking id "+bookingId);
 		return brsService.cancelBooking(bookingId);
 	}
 	
@@ -153,10 +161,11 @@ public class BRSRestController {
 			logger.error(e.getMessage());
 		}
 
-		
+		logger.info("Adding the bus");
 		  for (int i = 1; i < 15; i++) { 
 			  BusTransaction busTransaction = new BusTransaction(); 
 			  busTransaction.setDate(LocalDate.now().plusDays(i));
+			  logger.info("Adding the bus transaction for date: "+LocalDate.now().plusDays(i));
 			  busTransaction.setBus(bus);
 			  busTransaction.setAvailableSeats(bus.getNoOfSeats());
 			  busTransaction.setDeleteFlag(0); 
@@ -255,6 +264,7 @@ public class BRSRestController {
 	 */
 	@GetMapping(value="/showusers")
 	public ResponseEntity<List<User>> showAllUsers(){
+		logger.info("Listing all the users");
 		List<User> userList = brsService.viewAllUsers();
 		if (userList.isEmpty()) {
 			return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -274,6 +284,7 @@ public class BRSRestController {
 		User user= brsService.findUserById(userId);
 		if(user==null)
 			throw new Exception("User not found with Id: "+userId);
+		logger.info("Deleting the user");
 		brsService.removeUser(userId);
 		return true;
 	}

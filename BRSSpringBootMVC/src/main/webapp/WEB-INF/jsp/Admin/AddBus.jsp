@@ -17,20 +17,38 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
 	
+<style type="text/css">
+#busform{
+background-color:white;
+height: 90%;
+}
 
+#addbtn{
+text-align:center;
+}
+
+h3{
+text-align:center;
+}
+</style>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">BusNama</a>
+				<a class="navbar-brand" href="adminhome">BusNama</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="adminhome">Home</a></li>
 			</ul>
+			<ul class="nav navbar-nav right">
+			<li><a href="<%=request.getContextPath()%>/logout"><input type="button" value="Logout" class="btn btn-danger"><input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" /></a></li>
+			</ul>
 		</div>
 	</nav>
-	Enter bus details
+	<div class="container" id="busform">
+	<h3>Enter bus details</h3>
 	<addbus:form id="addbusform" class="col s6" action="addbusdetails"
 		method="post" modelAttribute="bus">
 		<table>
@@ -41,7 +59,8 @@
 			<tr>
 				<td>Bus Name</td>
 				<td><addbus:input path="busName" placeholder="Bus Name"
-						id="busName" type="text" class="validate" /></td>
+						id="busName" type="text" class="validate" required="required" pattern="^[A-Za-z\s]+$" title="Bus name should contain
+						alphabetical characters"/></td>
 				<td><span id="busNameerror" style="color: red;"><addbus:errors
 							path="busName" id="busNameerror"></addbus:errors></span></td>
 			</tr>
@@ -63,7 +82,7 @@
 					<%-- <addbus:radiobutton path="busClass" value="AC"/>AC
 <addbus:radiobutton path="busClass" value="NON_AC"/>Non-AC --%>
 					<p>
-						<label> <addbus:radiobutton path="busClass" value="AC" />
+						<label> <addbus:radiobutton path="busClass" value="AC" checked="checked"/>
 							<span>AC</span>
 						</label>
 					</p>
@@ -76,37 +95,39 @@
 			</tr>
 			<tr>
 				<td>Bus Source</td>
-				<td><addbus:input path="source" id="source" name="source" /></td>
+				<td><addbus:input path="source" id="source" name="source" required="required" pattern="^[A-Za-z]+" title="Source should contain
+				alphabetical characters"/></td>
 				<td><span style="color: red;"><addbus:errors
 							path="source" id="sourceError"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Bus Destination</td>
-				<td><addbus:input path="destination" id="destination"  /></td>
+				<td><addbus:input path="destination" id="destination" required="required" pattern="^[A-Za-z]+" title="Destination should contain
+				alphabetical characters"/></td>
 				<td><span style="color: red;"><addbus:errors
 							path="destination" id="destinationError"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Start time</td>
-				<td><input type="time" id="startTime" name="startTime"><span
+				<td><input type="time" id="startTime" name="startTime" required="required"><span
 					style="color: red;"><addbus:errors path="startTime"
 							id="startTimeerror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>End time</td>
-				<td><input type="time" name="endTime" id="endTime"><span
+				<td><input type="time" name="endTime" id="endTime" required="required"><span
 					style="color: red;"><addbus:errors path="endTime"
 							id="endTimeerror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Number of Seats</td>
-				<td><addbus:input path="noOfSeats" id="noOfSeats" /></td>
+				<td><addbus:input path="noOfSeats" id="noOfSeats" required="required" pattern="^[1-4]{1}[0-9]{1}$"/></td>
 				<td><span style="color: red;"><addbus:errors
 							path="noOfSeats" id="seaterror"></addbus:errors></span></td>
 			</tr>
 			<tr>
 				<td>Cost per seat</td>
-				<td><addbus:input path="costPerSeat" id="costPerSeat" /></td>
+				<td><addbus:input path="costPerSeat" id="costPerSeat" required="required"/></td>
 				<td><span style="color: red;"><addbus:errors
 							path="costPerSeat" id="costerror"></addbus:errors></span></td>
 			</tr>
@@ -114,97 +135,11 @@
 		<p style="color: red;" id="error">
 			<c:out value="${modelError}" />
 		</p>
-		<input type="submit" value="Add" />
+		<div id="addbtn"><input type="submit" value="Add" class="btn btn-info" /></div>
 
 	</addbus:form>
-	
-	<script type="text/javascript">
-
-
-	$(document).ready(function() {  // <-- enclose your code in a DOM ready handler
-
-	    $("#addbusform").validate({
-	        rules: {
-	            "busName": { // <-- assign by field name and use quotes
-	                required: true,
-	                minlength: 6,
-	                maxlength: 40
-	            },
-	            "busType": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "busClass": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "source": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "destination": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "startTime": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "endTime": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "noOfSeats": { // <-- assign by field name and use quotes
-	                required: true,
-	            },
-	            "costPerSeat": {
-	                required: true,
-	            }
-	        },
-	        messages: {
-	            "busName": {
-	                required: "Bus Name is required!",
-	                minlength: "Bus Name must be at least 6 characters long"
-	            },
-	            "busType": {
-	                required: "Bus Type is required!",
-	                
-	            },
-	            "busClass": {
-	                required: "Bus Class is required!",
-	                
-	            },
-	            "source": {
-	                required: "Source is required!",
-	                
-	            },
-	            "destination": {
-	                required: "Destination is required!",
-	                
-	            },
-	            "startTime": {
-	                required: "Start Time is required!",
-	                
-	            },
-	            "endTime": {
-	                required: "End Time is required!",
-	                
-	            },
-	            "noOfSeats": {
-	                required: "No of Seats is required!",
-	                
-	            },
-	            "costPerSeat": {
-	                required: "Cost Per Seat is required!",
-	                
-	            },
-	            
-	        }
-	        /*, // submitHandler is not needed for this case
-	        submitHandler: function (form) {
-	            form.submit();  // <-- this is the default
-	        }
-	        */
-	    });
-
-	});
-
-	</script>
-
+	</div>
 	<jsp:include page="../linklib.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

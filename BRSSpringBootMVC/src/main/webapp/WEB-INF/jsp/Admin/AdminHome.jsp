@@ -15,16 +15,23 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 #main{
-padding: 50px;
-color: white
+color: black;
+height: 500px;
 }
 .col-sm-4{
-width:600px;
-height:300px;
-padding:30px;
-background-color: black;
+width:800px;
+height:400px;
+padding:10px;
+background-color: white;
 color:white;
 text-align:center
+}
+
+img{
+height:300px;
+width:300px;
+padding-top:20px;
+padding-bottom: 10px;
 }
 </style>
 </head>
@@ -53,9 +60,9 @@ text-align:center
 <marquee><h2><i>Welcome to BusNama </i><br></h2></marquee>
 <div class="container" id="main">
 <div class="row">
-<div class="col-sm-4"><a class="waves-effect waves-light btn" href="addbus">Add Bus</a><br></div>
-<div class="col-sm-4"><a class="waves-effect waves-light btn" href="showbuses">Show All Buses</a><br></div>
-<div class="col-sm-4"><a class="waves-effect waves-light btn" href="showusers">Show All Users</a><br></div>
+<div class="col-sm-4"><img src="img/addbus.jpg"><a class="waves-effect waves-light btn" href="addbus">Add Bus</a><br></div>
+<div class="col-sm-4"><img src="img/showallbuses.jpg"><a class="waves-effect waves-light btn" href="showbuses">Show All Buses</a><br></div>
+<div class="col-sm-4"><img src="img/showallusers.jpg"><a class="waves-effect waves-light btn" href="showusers">Show All Users</a><br></div>
 </div>
 </div>
 

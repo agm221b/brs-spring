@@ -155,17 +155,9 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	//--------------------------------------Service testing--------------------------------------//
 	
-	@Test
-	public void testaddBusDetails() throws BRSException {
-		Bus bus = new Bus();
-		bus.setBusName("Falcon");
-		assertEquals("Falcon", brsService.addBusDetails(bus).getBusName());
-	}
 	
-	@Test
-	public void testremoveBus() throws BRSException {
-		assertEquals(true, brsService.removeBus(55));
-	}
+	
+
 
 	@Test
 	public void testviewAllBuses() {
@@ -196,19 +188,11 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	}
 
-	  @Test 
-	  public void testviewAllBookings() {
-		  User user = new User();
-	  assertEquals(0, brsService.viewAllBookings(user).size()); 
-	  
-	  }
+	
 	 
 	
 
-	@Test
-	public void testfindBookingById()  {
-		assertEquals("UPI", brsService.findBookingById(76).getModeOfPayment());
-	}
+
 	
 	/*
 	 * @Test public void testaddTransaction() { BusTransaction transaction = new
@@ -227,39 +211,16 @@ public class BrsSpringBootMvcApplicationTests {
 		assertEquals(4, brsService.viewTransactionsByDate(LocalDate.of(2019, 10, 14)).size());
 	
 	}
+
 	
-	@Test
-	public void testviewTransactionById()  {
-		BusTransaction transaction = brsService.viewTransactionById(8);
-		assertEquals(0, transaction.getDeleteFlag().intValue());
-	}
-	
-	@Test
-	public void testaddUser() {
-		User user = new User();
-		user.setUsername("saurabh");
-		assertEquals("saurabh", brsService.addUser(user).getUsername());
-	}
-	
-	@Test
-	public void testremoveUser() throws BRSException {
-		assertEquals(true, brsService.removeUser(86));
-	}
+
 	
 	@Test
 	public void testviewAllUsers() {
 		assertEquals(1, brsService.viewAllUsers().size());
 	}
 	
+
 	
-	@Test
-	public void testvalidateUser() {
-	assertEquals(true, brsService.validateUser("abcd", "abcd"));
-	}
-	
-	@Test
-	public void testviewUserByUsername() {
-		assertEquals(75, brsService.viewUserByUsername("stark").getUserId().intValue());
-	}
 }
 

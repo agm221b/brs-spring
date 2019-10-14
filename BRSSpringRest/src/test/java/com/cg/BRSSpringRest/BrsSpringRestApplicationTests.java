@@ -2,6 +2,8 @@ package com.cg.BRSSpringRest;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +21,12 @@ public class BrsSpringRestApplicationTests {
 	@Autowired
 	BRSService brsService;
 	
-	@Test
-	public void testaddBusDetails() throws BRSException {
-		Bus bus = new Bus();
-		bus.setBusName("Falcon");
-		assertEquals("Falcon", brsService.addBusDetails(bus).getBusName());
-	}
+
+	//--------------------------------------Service testing--------------------------------------//
 	
-	@Test
-	public void testremoveBus() throws BRSException {
-		assertEquals(true, brsService.removeBus(55));
-	}
+	
+	
+
 
 	@Test
 	public void testviewAllBuses() {
@@ -60,4 +57,41 @@ public class BrsSpringRestApplicationTests {
 	
 	}
 
+	
+	 
+	
+
+
+	
+	/*
+	 * @Test public void testaddTransaction() { BusTransaction transaction = new
+	 * BusTransaction(); transaction.setTransactionId(101); assertEquals(101,
+	 * brsService.addTransaction(transaction).getTransactionId()); }
+	 */
+	
+	@Test
+	public void testviewAllTransactions() {
+		assertEquals(56, brsService.viewAllTransactions().size());
+	}
+	
+
+	@Test
+	public void testviewTransactionsByDate()  {
+		assertEquals(4, brsService.viewTransactionsByDate(LocalDate.of(2019, 10, 14)).size());
+	
+	}
+
+	
+
+	
+	@Test
+	public void testviewAllUsers() {
+		assertEquals(1, brsService.viewAllUsers().size());
+	}
+	
+
+	
 }
+
+
+	
