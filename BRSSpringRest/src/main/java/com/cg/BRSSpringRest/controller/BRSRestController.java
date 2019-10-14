@@ -112,7 +112,8 @@ public class BRSRestController {
 	public String getExcel() {
 		User user = (User) session.getAttribute("user");
 		List<Booking> bookingList = user.getBookingsList();
-		new ExcelReportView();
+		ExcelReportView excel =new ExcelReportView();
+		//excel.
 		return "Downloaded Bookings list";
 	}
 
