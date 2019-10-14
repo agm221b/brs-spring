@@ -32,7 +32,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 * @return user with given username
 	 */
 	public Optional<User> findByUsername(String username);
-
+	
+	/**
+	 * @param userId
+	 * @return user with given userId
+	 */
 	public User findByUserId(Integer userId);
 	
 	
