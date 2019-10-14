@@ -54,7 +54,7 @@ public interface BRSService {
 
 	public User validateUser(String username, String password) throws BRSException;
 
-	public User findName(String username);
+	public User findUserByName(String username);
 
 	public User findUserById(Integer userId);
 

@@ -356,7 +356,7 @@ public class BRSServiceImpl implements BRSService {
 	}
 	
 	@Override
-	public User findName(String username) {
+	public User findUserByName(String username) {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsername(username).get();
 	}

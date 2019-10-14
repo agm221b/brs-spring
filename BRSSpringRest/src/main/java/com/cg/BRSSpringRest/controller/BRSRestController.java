@@ -76,7 +76,7 @@ public class BRSRestController {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName("teja"));
+		booking.setUser(brsService.findUserByName("teja"));
 		List<Passenger> passengers = new ArrayList<Passenger>();
 
 		Passenger passenger1 = new Passenger();
@@ -109,7 +109,7 @@ public class BRSRestController {
 	 */
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = brsService.findName("tejaswini");
+		User user = brsService.findUserByName("tejaswini");
 		return brsService.viewAllBookings(user);
 	}
 	
@@ -210,6 +210,28 @@ public class BRSRestController {
 		}
 
 		return status;
+	}
+	
+	/**
+	 * Aditya Created: 13/10/19 Last Modified: 14/10/19 
+	 * Description: Returns to customer page
+	 * @return
+	 */
+	@GetMapping(value = "/customerHome")
+	public String customerHome() {
+		logger.info("Returning customer home page..");
+		return "Customer Page..";
+	}
+	
+	/**
+	 * Aditya Created: 13/10/19 Last Modified: 14/10/19 
+	 * Description: Returns to admin page
+	 * @return
+	 */
+	@GetMapping(value = "/adminHome")
+	public String adminHome() {
+		logger.info("Returning admin home page..");
+		return "Admin Page..";
 	}
 	
 	/**
