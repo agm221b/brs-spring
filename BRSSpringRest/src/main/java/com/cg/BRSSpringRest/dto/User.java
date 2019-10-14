@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component("user")
 @Entity
 @Table(name = "user_details")
@@ -30,7 +32,7 @@ public class User {
 	@Size(min=3,max=20,message="Name should be between 3-20 characters")
 	private String username;
 	@Column(name="pass")
-	
+	@JsonIgnore
 	private String pass;
 	@Column(name = "user_type")
 	@NotNull(message=" user type required")
@@ -45,6 +47,12 @@ public class User {
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
+	
+	@Column(name="active_status")
+	private boolean active;
+	
+	@Column(name="roles")
+	private String roles;
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -132,6 +140,24 @@ public class User {
 
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+	
+	
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	@Override

@@ -5,11 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,16 +24,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.BRSSpringRest.config.JwtTokenUtil;
 import com.cg.BRSSpringRest.dto.Booking;
 import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
+import com.cg.BRSSpringRest.dto.JwtRequest;
+import com.cg.BRSSpringRest.dto.JwtResponse;
 import com.cg.BRSSpringRest.dto.Passenger;
 import com.cg.BRSSpringRest.dto.User;
+import com.cg.BRSSpringRest.dto.UserDetailsImpl;
 import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.service.BRSService;
+import com.cg.BRSSpringRest.service.JwtUserDetailsService;
+import com.cg.BRSSpringRest.util.ExcelReportView;
 
 /**
  * @author Aditya, Mayank, Tejaswini
@@ -40,15 +54,18 @@ import com.cg.BRSSpringRest.service.BRSService;
  *
  */
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/brs")
 public class BRSRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BRSRestController.class);
-
+	
 	@Autowired
 	BRSService brsService;
 
 	HttpSession session;
+	
+	
 
 	/**
 	 * @author Tejaswini Description: Adds the current booking to the booking table
@@ -90,6 +107,14 @@ public class BRSRestController {
 		User user = brsService.findName("tejaswini");
 		return brsService.viewAllBookings(user);
 	}
+	
+	@GetMapping(value = "/report")
+	public String getExcel() {
+		User user = (User) session.getAttribute("user");
+		List<Booking> bookingList = user.getBookingsList();
+		new ExcelReportView();
+		return "Downloaded Bookings list";
+	}
 
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
@@ -123,14 +148,9 @@ public class BRSRestController {
 
 	}
 
-	@GetMapping(value = "/home")
-	public String homePage() {
-		return "Home";
-	}
 	
-	/**
-<<<<<<< HEAD
-	 * 
+	
+	/*** 
 	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 
 	 * Description: Displays the list of all buses as List
 	 * @return List of Buses which have deleteFlag as 0
@@ -177,20 +197,14 @@ public class BRSRestController {
 	 *  Last Modified:12/10/2019
 	 * @return User response entity
 	 */
-	@PostMapping(value="/adduser")
-	public ResponseEntity<User> addData(@ModelAttribute User user){
-		List<Booking> bookingsList=new ArrayList<Booking>();
-		user.setBookingsList(bookingsList);
-		user=brsService.addUser(user);
-		if (user==null) {
-			return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}else {
-		return new ResponseEntity<User>(user,HttpStatus.OK);
-		}}
-	
-		
-	
-	
+	/*
+	 * @PostMapping(value = "/adduser") public ResponseEntity<User>
+	 * addData(@ModelAttribute User user) { List<Booking> bookingsList = new
+	 * ArrayList<Booking>(); user.setBookingsList(bookingsList); user =
+	 * brsService.addUser(user); if (user == null) { return new
+	 * ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR); } else { return new
+	 * ResponseEntity<User>(user, HttpStatus.OK); } }
+	 */
 	/**
 	 * @author Mayank Description: shows all the users Created: 12/10/2019 Last
 	 *         Modified: 12/10/2019
