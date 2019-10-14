@@ -1,6 +1,9 @@
 package com.cg.BrsSpringBootMVC;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.cg.BrsSpringBootMVC.dto.Bus;
+import com.cg.BrsSpringBootMVC.dto.BusTransaction;
+import com.cg.BrsSpringBootMVC.dto.User;
+import com.cg.BrsSpringBootMVC.exception.BRSException;
 import com.cg.BrsSpringBootMVC.service.BRSService;
 
 /**
@@ -28,7 +35,7 @@ public class BrsSpringBootMvcApplicationTests {
 	
 	@Autowired
 	BRSService brsService;
-	
+//---------------------------------Controller testing----------------------------------------//	
 	@Test
 	public void checkshowHomePage() {
 		String str= restTemplate.getForObject("/", String.class);
@@ -145,4 +152,114 @@ public class BrsSpringBootMvcApplicationTests {
 		String str= restTemplate.getForObject("/viewallbookings", String.class);
 		assertThat(str.equals("jsp/Customer/ViewBookings"));
 	}
+	
+	//--------------------------------------Service testing--------------------------------------//
+	
+	@Test
+	public void testaddBusDetails() throws BRSException {
+		Bus bus = new Bus();
+		bus.setBusName("Falcon");
+		assertEquals("Falcon", brsService.addBusDetails(bus).getBusName());
+	}
+	
+	@Test
+	public void testremoveBus() throws BRSException {
+		assertEquals(true, brsService.removeBus(55));
+	}
+
+	@Test
+	public void testviewAllBuses() {
+		assertEquals(4, brsService.viewAllBuses().size());
+	}
+	
+	@Test
+	public void testviewBusById() throws BRSException {
+		Bus bus = brsService.viewBusById(37);
+		assertEquals("superfast", bus.getBusName());
+	}
+
+	@Test
+	public void testviewBusByRoutes()  {
+		assertEquals(1, brsService.viewBusByRoutes("mumbai","goa").size());
+	
+	}
+	
+	@Test
+	public void testfindSources() {
+		assertEquals(1, brsService.findSources().size());
+	
+	}
+	
+	@Test
+	public void testfindDestinations() {
+		assertEquals(3, brsService.findDestinations().size());
+	
+	}
+
+	  @Test 
+	  public void testviewAllBookings() {
+		  User user = new User();
+	  assertEquals(0, brsService.viewAllBookings(user).size()); 
+	  
+	  }
+	 
+	
+
+	@Test
+	public void testfindBookingById()  {
+		assertEquals("UPI", brsService.findBookingById(76).getModeOfPayment());
+	}
+	
+	/*
+	 * @Test public void testaddTransaction() { BusTransaction transaction = new
+	 * BusTransaction(); transaction.setTransactionId(101); assertEquals(101,
+	 * brsService.addTransaction(transaction).getTransactionId()); }
+	 */
+	
+	@Test
+	public void testviewAllTransactions() {
+		assertEquals(56, brsService.viewAllTransactions().size());
+	}
+	
+
+	@Test
+	public void testviewTransactionsByDate()  {
+		assertEquals(4, brsService.viewTransactionsByDate(LocalDate.of(2019, 10, 14)).size());
+	
+	}
+	
+	@Test
+	public void testviewTransactionById()  {
+		BusTransaction transaction = brsService.viewTransactionById(8);
+		assertEquals(0, transaction.getDeleteFlag().intValue());
+	}
+	
+	@Test
+	public void testaddUser() {
+		User user = new User();
+		user.setUsername("saurabh");
+		assertEquals("saurabh", brsService.addUser(user).getUsername());
+	}
+	
+	@Test
+	public void testremoveUser() throws BRSException {
+		assertEquals(true, brsService.removeUser(86));
+	}
+	
+	@Test
+	public void testviewAllUsers() {
+		assertEquals(1, brsService.viewAllUsers().size());
+	}
+	
+	
+	@Test
+	public void testvalidateUser() {
+	assertEquals(true, brsService.validateUser("abcd", "abcd"));
+	}
+	
+	@Test
+	public void testviewUserByUsername() {
+		assertEquals(75, brsService.viewUserByUsername("stark").getUserId().intValue());
+	}
 }
+

@@ -27,7 +27,7 @@ public class BusTransaction {
 	private Integer transactionId;
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	@Column(name = "journey_date")
-	@NotNull // more date validation
+	@NotNull 
 	private LocalDate date;
 	@Column(name = "available_seats")
 	@NotNull(message= "seats required")
