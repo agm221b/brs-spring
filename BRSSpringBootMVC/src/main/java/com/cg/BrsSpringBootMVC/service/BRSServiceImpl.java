@@ -322,6 +322,7 @@ public class BRSServiceImpl implements BRSService {
 			throw new BRSException(" user not found for deletion");
 		else {
 			user.setDeleteFlag(1);
+	
 			user.setBookingsList(user.getBookingsList());
 			userRepository.save(user);
 			return 1;

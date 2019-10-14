@@ -6,18 +6,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Show All Users</title>
+
+<style type="text/css">
+
+#userList{
+background-color: white;
+}
+</style>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
+<jsp:include page="../linklib.jsp"></jsp:include>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">BusNama</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="adminhome">Home</a></li>
-    </ul>
-  </div>
-</nav>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="adminhome">BusNama</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="adminhome">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav right">
+			<li><a href="<%=request.getContextPath()%>/logout"><input type="button" value="Logout" class="btn btn-danger"><input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" /></a></li>
+			</ul>
+		</div>
+	</nav>
+<div class="container" id="userList">
 <h1>Here are the list of users:-</h1>
 	<table border="1">
 		<tr>
@@ -26,7 +39,6 @@
 			<th>User Type</th>
 			<th>Email</th>
 			<th>Phone Number</th>
-			<th>Edit</th>
 		</tr>
 
 		<tab:forEach var="user" items="${userList}">
@@ -36,13 +48,14 @@
 				<td>${user.userType}</td>
 				<td>${user.email}</td>
 				<td>${user.phoneNumber}</td>
-				<td><a  type="submit" class="waves-effect waves-light btn-small" href="edituser">Edit</a></td>
 			</tr>
 		</tab:forEach>
 
 	</table>
-<jsp:include page="../linklib.jsp"></jsp:include>
+</div>
 
+
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
