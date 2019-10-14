@@ -358,7 +358,7 @@ public class BRSController {
 				dateOfJourney);
 		System.out.println(transactionList);
 		logger.debug("Displaying transaction list");
-		return new ModelAndView("jsp/Customer/SearchBus", "transactionList", transactionList);
+		return new ModelAndView("jsp/Customer/AddBooking", "transactionList", transactionList);
 	}
 
 	/**

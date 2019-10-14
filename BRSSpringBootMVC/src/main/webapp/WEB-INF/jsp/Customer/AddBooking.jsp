@@ -114,5 +114,6 @@
 	<h4>List Of Running Buses</h4>
 	<jsp:include page="showRunningBuses.jsp"></jsp:include>
 	<jsp:include page="../linklib.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

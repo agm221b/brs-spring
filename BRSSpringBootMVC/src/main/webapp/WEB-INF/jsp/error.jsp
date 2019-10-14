@@ -20,6 +20,16 @@ padding-right: 20%;
 
 </head>
 <body style="background-color: #fff8e1;">
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">BusNama</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				</ul>
+		</div>
+	</nav>
 	<section class="center">
 
 <h1 style="color: red;" >Error Page </h1>
@@ -38,7 +48,7 @@ padding-right: 20%;
 	</section>
 	
 	<jsp:include page="linklib.jsp"></jsp:include>
-	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

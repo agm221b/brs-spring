@@ -36,7 +36,7 @@
 </style>
 
 </head>
-<body style="background-color: #fff9c4">
+<body style="background-color: #fff9c4;">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -58,7 +58,7 @@
 			</ul>
 		</div>
 	</nav>
-	
+	<marquee><h2><i>Welcome to BusNama </i><br></h2></marquee>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -120,6 +120,7 @@
 		</a>
 	</div>
 	<jsp:include page="../linklib.jsp" />
+	<jsp:include page="../footer.jsp"></jsp:include>
 	
 	
 </body>

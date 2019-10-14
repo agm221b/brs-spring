@@ -80,6 +80,7 @@ public class BRSWebSecurity extends WebSecurityConfigurerAdapter{
 		.antMatchers("/adduser").permitAll()
 		.antMatchers("/report").permitAll()
 		.antMatchers("/help").permitAll()
+		.antMatchers("/adminhome").hasRole("ADMIN")
 		.antMatchers("/addbus").hasRole("ADMIN")
 		.antMatchers("/addbusdetails").hasRole("ADMIN")
 		.antMatchers("/showbuses").hasRole("ADMIN")

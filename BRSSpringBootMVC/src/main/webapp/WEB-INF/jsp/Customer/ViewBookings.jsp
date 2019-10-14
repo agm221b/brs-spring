@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Test</title>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -84,6 +84,7 @@
 		value="Download booking report"></a>
 
 	<jsp:include page="../linklib.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

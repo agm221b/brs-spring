@@ -6,16 +6,42 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<style>
+#main{
+background-color: white;
+height: 400px;
+width: 600px;
+}
 
+#userform{
+padding-left: 175px;
+}
 
+#submitbtn{
+text-align: center;
+}
+
+h3{
+text-align:center;
+}
+
+</style>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">BusNama</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				</ul>
+		</div>
+	</nav>
 
-
-	<div class="container">
+	<div class="container" id="main">
+	<h3>Login Form</h3>
 		<form id="userform" class="col s6" action="login" method="post">
-
-
 			<div class="row">
 				<div class="input-field col s6">
 					<input placeholder="Username" type="text" name="username"
@@ -31,11 +57,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col s6" id="submitbtn">
 					<input type="submit" class="waves-effect waves-light btn"
-						value="LOGIN"><br>
-							  <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+						value="LOGIN" ><br> <input type="hidden"
+						name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</div>
 			</div>
 		</form>
@@ -43,6 +68,7 @@
 	</div>
 
 	<jsp:include page="linklib.jsp"></jsp:include>
-	<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
 </html>

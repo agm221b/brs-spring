@@ -84,6 +84,7 @@
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
 	<jsp:include page="../linklib.jsp" />
+	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
