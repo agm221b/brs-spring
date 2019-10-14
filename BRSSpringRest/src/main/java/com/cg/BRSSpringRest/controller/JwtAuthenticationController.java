@@ -52,22 +52,22 @@ public class JwtAuthenticationController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@ModelAttribute UserDetailsImpl user) throws Exception {
+	public ResponseEntity<?> saveUser(@ModelAttribute UserDetailsImpl userImpl) throws Exception {
 		
-		if(user.getUserType()=='C') {
+		if(userImpl.getUserType()=='C') {
 			System.out.println("Customer");
-			user.setRoles("ROLE_CUSTOMER");
+			userImpl.setRoles("ROLE_CUSTOMER");
 		}
 		else {
 			System.out.println("admin");
-			user.setRoles("ROLE_ADMIN");
+			userImpl.setRoles("ROLE_ADMIN");
 		}
 		
 		//user.setAuthorities(Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
-		user.setActive(true);
-		user.setDeleteFlag(0);
-		System.out.println(user);
-		return ResponseEntity.ok(userDetailsService.save(user));
+		userImpl.setActive(true);
+		userImpl.setDeleteFlag(0);
+		System.out.println(userImpl);
+		return ResponseEntity.ok(userDetailsService.save(userImpl));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
