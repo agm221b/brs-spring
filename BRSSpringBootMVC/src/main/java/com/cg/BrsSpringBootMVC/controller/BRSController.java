@@ -48,9 +48,10 @@ public class BRSController {
 	private static final Logger logger = LoggerFactory.getLogger(BRSController.class);
 
 	/**
-	 * directs to the home page of the web site
-	 * 
+	 * @author Aditya
+	 * Description: directs to the home page of the web site
 	 * @return jsp/home
+	 * Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
@@ -59,9 +60,11 @@ public class BRSController {
 	}
 
 	/**
-	 * directs to the home page of the admin
-	 * 
+	 * @author Aditya
+	 * Description: directs to the home page of the admin
 	 * @return jsp/Admin/AdminHome
+	 * Created On: 07-10-2019
+	 * 
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String viewAdminHome() {
@@ -71,9 +74,10 @@ public class BRSController {
 	}
 
 	/**
-	 * directs to the home page of the customer
-	 * 
+	 * @author Tejaswini
+	 * Description: directs to the home page of the customer
 	 * @return jsp/Customer/CustomerHome
+	 * Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
@@ -87,17 +91,20 @@ public class BRSController {
 	}
 
 	/**
-	 * directs to the login page. Common for both admin and customer
-	 * 
+	 * @author Tejaswini
+	 * Description: directs to the login page. Common for both admin and customer
 	 * @return jsp/login
+	 * Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String showLoginPage() {
 		return "jsp/login";
 	}
 	/**
+	 * @author Tejaswini
+	 * Description: logs out and redirects to the homepage of the website
 	 * @param session
-	 * @return
+	 * @return jsp/logout
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
@@ -117,7 +124,15 @@ public class BRSController {
 
 		return "jsp/aboutUs";
 	}
-
+	
+	
+	/**
+	 * @author Aditya
+	 * Description: Redirects user to the registration page
+	 * @param user
+	 * @return
+	 * Created On : 08-10-2019
+	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterPage(@ModelAttribute("user") User user) {
 		return "jsp/register";
@@ -390,7 +405,7 @@ public class BRSController {
 	 *         select the source, destination and date of journey
 	 * @param bus
 	 * @param dropdown
-	 * @return AddBooking.jsp Created On: 05/09/2019
+	 * @return AddBooking.jsp Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/addbooking", method = RequestMethod.GET)
 	public String addBooking(@ModelAttribute("bus") Bus bus, Map<String, Object> dropdown) {
@@ -407,7 +422,7 @@ public class BRSController {
 	 * @author Tejaswini Description: Redirects to AddPassenger.jsp where the
 	 *         customer will add the details of the passengers
 	 * @param passenger
-	 * @return AddPassenger.jsp Created On: 05/09/2019
+	 * @return AddPassenger.jsp Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/addpassenger", method = RequestMethod.GET)
 	public String addPassenger(@ModelAttribute("passenger") Passenger passenger) {
@@ -420,7 +435,7 @@ public class BRSController {
 	 *         booking of the user session
 	 * @param passenger
 	 * @param result
-	 * @return ModelAndView Created On: 05/09/2019
+	 * @return ModelAndView Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/addpassengerdetails", method = RequestMethod.POST)
 	public ModelAndView addPassengerDetails(@Valid @ModelAttribute("passenger") Passenger passenger,
@@ -445,7 +460,7 @@ public class BRSController {
 	 * @author Tejaswini Description: Creates the booking for the selected date for
 	 *         the customer
 	 * @param busTransactionId
-	 * @return Booking Created On: 05/09/2019
+	 * @return Booking Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/createbooking", method = RequestMethod.GET)
 	public ModelAndView createBooking(@RequestParam("transactionId") Integer busTransactionId) {
@@ -474,7 +489,7 @@ public class BRSController {
 	/**
 	 * @author Tejaswini Description: Cancels the booking selected by the user
 	 * @param bookingId
-	 * @return Booking Created On: 05/09/2019
+	 * @return Booking Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/cancelbooking", method = RequestMethod.GET)
 	public String cancelBooking(@RequestParam("bookingId") Integer bookingId) {
@@ -497,7 +512,7 @@ public class BRSController {
 
 	/**
 	 * @author Tejaswini Description: Redirects to the payment page
-	 * @return payment.jsp Created On: 05/09/2019
+	 * @return payment.jsp Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/confirmation", method = RequestMethod.GET)
 	public String confirmPayment() {
@@ -508,7 +523,7 @@ public class BRSController {
 	/**
 	 * @author Tejaswini Description: Gets the payment mode selected by the user
 	 * @param paymentMode
-	 * @return confirmation.jsp Created On: 05/09/2019
+	 * @return confirmation.jsp Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/pdetail", method =RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
@@ -525,7 +540,7 @@ public class BRSController {
 	/**
 	 * @author Tejaswini Description: Views the current booking made by the customer
 	 * @param model
-	 * @return ModelAndView Created On: 05/09/2019
+	 * @return ModelAndView Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/viewcurrentbooking", method = RequestMethod.GET)
 	public ModelAndView viewCurrentBooking(Map<String, Object> model) {
@@ -575,7 +590,7 @@ public class BRSController {
 	/**
 	 * @author Tejaswini Description: List all the bookings made till date by the
 	 *         customer
-	 * @return ModelAndView Created On: 05/09/2019
+	 * @return ModelAndView Created On: 05/10/2019
 	 */
 	@RequestMapping(value = "/viewallbookings", method = RequestMethod.GET)
 	public ModelAndView viewAllBookings() {

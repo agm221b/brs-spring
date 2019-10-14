@@ -36,7 +36,7 @@
 </style>
 
 </head>
-<body style="background: url(img/bus4.jpg); background-size: cover;">
+<body style="background-color: #fff9c4">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -51,11 +51,10 @@
 						<li><a href="viewallbookings">View All Bookings</a></li>
 						<li><a href="#">Manage Profile</a></li>
 					</ul></li>
-				<li><form action="<%=request.getContextPath()%>/logout"
-						method="POST">
-						<input type="submit" value="Logout" /> <input type="hidden"
-							name="${_csrf.parameterName}" value="${_csrf.token}" />
-					</form></li>
+			</ul>
+			<ul class="nav navbar-nav right">
+			<li><a href="<%=request.getContextPath()%>/logout"><input type="button" value="Logout"><input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" /></a></li>
 			</ul>
 		</div>
 	</nav>
