@@ -87,7 +87,7 @@ public class BRSRestController {
 
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = brsService.findName("teja");
+		User user = brsService.findName("tejaswini");
 		return brsService.viewAllBookings(user);
 	}
 
@@ -126,6 +126,49 @@ public class BRSRestController {
 	@GetMapping(value = "/home")
 	public String homePage() {
 		return "Home";
+	}
+	
+	/**
+<<<<<<< HEAD
+	 * 
+	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 
+	 * Description: Displays the list of all buses as List
+	 * @return List of Buses which have deleteFlag as 0
+	 */
+	@GetMapping(value = "/showbuses")
+	public List<Bus> getAllData() { // admin
+		List<Bus> busList = brsService.viewAllBuses();
+		logger.info("Viewing the List of Buses");
+		return busList;
+	}
+
+
+	/**
+	 * Aditya Created: 13/10/19 Last Modified: 13/10/19 
+	 * Description: Deletes the bus with the particular busId
+	 * @param busId
+	 * @return String of the status of the bus,whether deleted or not.
+	 */
+	@GetMapping(value = "/deletebus")
+	public String deleteBus(@RequestParam("busId") Integer busId) {
+		String status = null;
+		try {
+			if (brsService.removeBus(busId) == 1) {
+
+				logger.info("Deleted bus");
+				status= "Deleted Bus";
+			}
+			else
+			{
+				logger.info("Could not delete bus");
+				status= "Could not delete bus";
+			}
+		} catch (BRSException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage());
+		}
+
+		return status;
 	}
 	
 	/**
