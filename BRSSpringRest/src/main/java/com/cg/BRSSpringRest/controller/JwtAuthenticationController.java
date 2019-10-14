@@ -63,7 +63,7 @@ public class JwtAuthenticationController {
 			userImpl.setRoles("ROLE_ADMIN");
 		}
 		
-		//user.setAuthorities(Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+		userImpl.setAuthorities(Arrays.stream(userImpl.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 		userImpl.setActive(true);
 		userImpl.setDeleteFlag(0);
 		System.out.println(userImpl);

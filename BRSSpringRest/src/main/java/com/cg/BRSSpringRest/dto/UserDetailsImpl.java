@@ -16,6 +16,24 @@ public class UserDetailsImpl implements UserDetails{
 
 
 
+	private String username;
+	private String password;
+	private Character userType;
+	private String email;
+	private Integer phoneNumber;
+	private List<Booking> bookingsList;
+	private Integer deleteFlag;
+	private boolean active;
+	private List<GrantedAuthority> authorities;
+	private String roles;
+	
+
+
+
+	public UserDetailsImpl() {
+		
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -40,19 +58,6 @@ public class UserDetailsImpl implements UserDetails{
 		// TODO Auto-generated method stub
 		return active;
 	}
-
-	private String username;
-	private String password;
-	private Character userType;
-	private String email;
-	private Integer phoneNumber;
-	private List<Booking> bookingsList;
-	private Integer deleteFlag;
-	private boolean active;
-	private List<GrantedAuthority> authorities;
-	private String roles;
-	
-	
 	
 
 	public String getRoles() {
