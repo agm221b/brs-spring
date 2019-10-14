@@ -6,7 +6,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.cg.BrsSpringBootMVC.dto.BRSUserDetails;
+import com.cg.BRSSpringRest.dto.UserDetailsImpl;
 
 /**
  *@author Tejaswini
@@ -33,7 +33,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
             return null;
         }
  
-        return Optional.of(((BRSUserDetails)authentication.getPrincipal()).getUsername());
+        return Optional.of(((UserDetailsImpl)authentication.getPrincipal()).getUsername());
 		
 	}
 
