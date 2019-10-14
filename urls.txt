@@ -1,0 +1,5 @@
+http://localhost:9082/register
+
+http://localhost:9082/authenticate
+
+http://localhost:9082/brs/showusers
