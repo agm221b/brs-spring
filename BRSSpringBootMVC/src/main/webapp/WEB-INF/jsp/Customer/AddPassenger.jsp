@@ -8,6 +8,7 @@
 <title>Add Passenger</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 </head>
 <body>
 
@@ -69,37 +70,6 @@
 	</table>
 	<script>
  	$(document).ready(function(){
- 		$('#passenger_form').submit(function(event){
- 			event.preventDefault();
- 			$('.passenger_error').remove();
-			
- 			var passengerName=$('#passenger_name').val();
- 			var passengerAge=$('#passenger_age').val();
- 			var passengerGender=$('radiobutton[name="passenger_gender"]:checked').val();
-			
-			
- 			if(passengerName.length < 1){
- 				$('#passenger_name').after("<span class='passenger_error'>Passenger name is empty</span><br>");
- 			}else{
- 				var nameRegExp=/^[A-Z]*[a-z]+$/;
- 				var validPassengerName=nameRegExp.test(passengerName);
- 				if(!validPassengerName){
- 					$('#passenger_name').after("<span class='passenger_error'>Passenger name should contain only alphabetical characters</span><br>");
- 				}
- 			}
- 			
- 			if(passengerAge.length <1){
- 				$('#passenger_age').after("<span class='passenger_error'>Passenger age is empty</span><br>");
- 			}else{
- 				if(passengerAge<0 && passenger>70){
- 					$('#passenger_age').after("<span class='passenger_error'>Passenger age is invalid</span><br>");
- 				}
- 			}
- 			
- 			if(passengerGender===""){
- 				$('radiobutton[name="passenger_gender"]').after("<span class='passenger_error'>Passenger gender is not selected</span><br>");
- 			} 			
- 		});
 });
 	</script>
 	<jsp:include page="ShowPassengerList.jsp" />
