@@ -1,5 +1,7 @@
 package com.cg.BRSSpringRest.dao;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.BRSSpringRest.dto.User;
@@ -29,7 +31,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 * @param username
 	 * @return user with given username
 	 */
-	public User findByUsername(String username);
+	public Optional<User> findByUsername(String username);
 
 	
 	
