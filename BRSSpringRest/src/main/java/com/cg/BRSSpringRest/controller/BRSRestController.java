@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,11 +76,11 @@ public class BRSRestController {
 		passenger2.setPassengerAge(20);
 		passenger2.setPassengerGender('F');
 		passengers.add(passenger2);
-
+		
 		booking.setPassengers(passengers);
-		booking.setTotalCost(passengers.size() * busTransaction.getBus().getCostPerSeat());
+		booking.setTotalCost(passengers.size()*busTransaction.getBus().getCostPerSeat());
 		booking.setDeleteFlag(0);
-
+		
 		brsService.updateAvailableSeats(busTransactionId, passengers.size());
 		return brsService.createBooking(booking);
 	}
@@ -92,7 +92,7 @@ public class BRSRestController {
 	}
 
 	@PutMapping(value = "/cancelbooking")
-	public Booking cancelBooking(@RequestParam(value = "bookingId") Integer bookingId) {
+	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
 		return brsService.cancelBooking(bookingId);
 	}
 
@@ -102,101 +102,75 @@ public class BRSRestController {
 		Bus busAdd = null;
 
 		try {
-			logger.info("Inserting the Bus into Database");
 			busAdd = brsService.addBusDetails(bus);
 		} catch (BRSException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
 		}
 
-		for (int i = 1; i < 15; i++) {
-			BusTransaction busTransaction = new BusTransaction();
-			busTransaction.setDate(LocalDate.now().plusDays(i));
-			busTransaction.setBus(bus);
-			busTransaction.setAvailableSeats(bus.getNoOfSeats());
-			busTransaction.setDeleteFlag(0);
-			brsService.addTransaction(busTransaction);
-		}
+		
+		  for (int i = 1; i < 15; i++) { 
+			  BusTransaction busTransaction = new BusTransaction(); 
+			  busTransaction.setDate(LocalDate.now().plusDays(i));
+			  busTransaction.setBus(bus);
+			  busTransaction.setAvailableSeats(bus.getNoOfSeats());
+			  busTransaction.setDeleteFlag(0); 
+			  brsService.addTransaction(busTransaction); 
+			  }
+		 
 
 		return busAdd;
 
 	}
 
-	
-	/**
-	 * 
-	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 
-	 * Description: Displays the list of all buses as List
-	 * @return List of Buses which have deleteFlag as 0
-	 */
-	@GetMapping(value = "/showbuses")
-	public List<Bus> getAllData() { // admin
-		List<Bus> busList = brsService.viewAllBuses();
-		logger.info("Viewing the List of Buses");
-		return busList;
+	@GetMapping(value = "/home")
+	public String homePage() {
+		return "Home";
 	}
-
 	
-	/**
-	 * Aditya Created: 13/10/19 Last Modified: 13/10/19 
-	 * Description: Deletes the bus with the particular busId
-	 * @param busId
-	 * @return String of the status of the bus,whether deleted or not.
-	 */
-	@GetMapping(value = "/deletebus")
-	public String deleteBus(@RequestParam("busId") Integer busId) {
-		String status = null;
-		try {
-			if (brsService.removeBus(busId) == 1) {
-
-				logger.info("Deleted bus");
-				status= "Deleted Bus";
-			}
-			else
-			{
-				logger.info("Could not delete bus");
-				status= "Could not delete bus";
-			}
-		} catch (BRSException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
-		}
-		
-		return status;
-	}
-
-
 	/**
 	 * @author Mayank Description: adds user and redirects to home.jsp page or
 	 *         redirects to register.jsp page Created: 12/10/2019 Last Modified:
 	 *         12/10/2019
 	 * @return jsp/home
 	 */
-	@PostMapping(value = "/adduser")
-	public ResponseEntity<User> addData(@ModelAttribute User user) {
-		List<Booking> bookingsList = new ArrayList<Booking>();
+	@PostMapping(value="/adduser")
+	public ResponseEntity<User> addData(@ModelAttribute User user){
+		List<Booking> bookingsList=new ArrayList<Booking>();
 		user.setBookingsList(bookingsList);
-		user = brsService.addUser(user);
-		if (user == null) {
+		user=brsService.addUser(user);
+		if (user==null) {
 			return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
-		} else {
-			return new ResponseEntity<User>(user, HttpStatus.OK);
-		}
-	}
-
+		}else {
+		return new ResponseEntity<User>(user,HttpStatus.OK);
+		}}
+	
+		
+	
+	
 	/**
 	 * @author Mayank Description: shows all the users Created: 12/10/2019 Last
 	 *         Modified: 12/10/2019
 	 * @return List of Users
 	 */
-	@GetMapping(value = "/showusers")
-	public ResponseEntity<List<User>> showAllUsers() {
+	@GetMapping(value="/showusers")
+	public ResponseEntity<List<User>> showAllUsers(){
 		List<User> userList = brsService.viewAllUsers();
 		if (userList.isEmpty()) {
 			return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
-		}
+		}}
+	
+	@DeleteMapping(value="/removeuser")
+	public boolean removeUser(@RequestParam Integer userId) throws Exception {
+		User user= brsService.findUserById(userId);
+		if(user==null)
+			throw new Exception("User not found with Id: "+userId);
+		brsService.removeUser(userId);
+		return true;
 	}
+	
+
 
 }

@@ -18,30 +18,26 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
-#myCarousel {
+#myCarousel{
 	height: 700px;
 	width: 100%;
 }
 
-#footer {
-	position: fixed;
-	padding: 10px 10px 0px 10px;
-	bottom: 0;
-	width: 100%;
-	/* Height of the footer*/
-	height: 40px;
-	background: orange;
-}
+#footer { 
+            position: fixed; 
+            padding: 10px 10px 0px 10px; 
+            bottom: 0; 
+            width: 100%; 
+            /* Height of the footer*/  
+            height: 40px; 
+            background: orange; 
+        } 
 
-#logo {
-	font-family: cursive;
-	text-align: center;
-}
 </style>
 
 </head>
-<body style="background-color: #fff9c4;">
-	<nav class="navbar navbar-inverse" style="height: auto;">
+<body style="background: url(img/bus4.jpg); background-size: cover;">
+	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="customerhome">BusNama</a>
@@ -55,17 +51,15 @@
 						<li><a href="viewallbookings">View All Bookings</a></li>
 						<li><a href="#">Manage Profile</a></li>
 					</ul></li>
+				<li><form action="<%=request.getContextPath()%>/logout"
+						method="POST">
+						<input type="submit" value="Logout" /> <input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</form></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=request.getContextPath()%>/logout"><input
-						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<button style="color: white; background-color:">Logout</button></a></li>
-			</ul>
-
 		</div>
 	</nav>
-	<h1 id="logo">BusNama</h1>
-
+	
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -83,36 +77,36 @@
 						<h1 style="color: orange;">Book Your Ticket In One Go</h1>
 						<p></p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="addbooking" role="button">Book
-								Your Ticket</a>
+							<a class="btn btn-lg btn-primary" href="addbooking" role="button">Book Your Ticket</a>
 						</p>
 					</div>
 				</div>
 			</div>
 
 			<div class="item" style="padding: 40px;">
-				<img class="second-slide" src="img/manage_user.jpg"
-					style="width: 100%; height: 600px;" alt="Second slide">
+				<img class="second-slide" src="img/manage_user.jpg" style="width: 100%; height: 600px;"	
+
+					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1 style="color: orange;">Manage Your Tickets</h1>
 						<p></p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="viewallbookings"
-								role="button">Manage Your Tickets</a>
+							<a class="btn btn-lg btn-primary" href="viewallbookings" role="button">Manage Your Tickets</a>
 						</p>
 					</div>
 				</div>
 			</div>
 
 			<div class="item" style="padding: 40px;">
-				<img class="third-slide" src="img/bus3.jpg"
-					style="width: 100%; height: 600px;" alt="Third slide">
+				<img class="third-slide" src="img/bus3.jpg" style="width: 100%; height: 600px;" alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>One stop for all your favorite buses.</h1>
 						<p></p>
-						<p></p>
+						<p>
+							
+						</p>
 					</div>
 				</div>
 			</div>
@@ -127,7 +121,7 @@
 		</a>
 	</div>
 	<jsp:include page="../linklib.jsp" />
-
-
+	
+	
 </body>
 </html>

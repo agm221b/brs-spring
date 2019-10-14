@@ -9,25 +9,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
-<body style="background-color: #fff9c4;">
+<body>
 
-<nav class="navbar navbar-inverse" style="height: auto;">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="customerhome">BusNama</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="customerhome">Home</a></li>
-				<li><a href="help">FAQs</a></li>
-				
-			</ul>
-			 <ul class="nav navbar-nav navbar-right">
-			 <li><a href="<%=request.getContextPath()%>/logout"><input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" /><button style="color:white;background-color:#e57373;">Logout</button></a></li>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BusNama</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="customerhome">Home</a></li>
     </ul>
-			
-		</div>
-	</nav>
+  </div>
+</nav>
 	
 	<table>
 		<form:form action="addpassengerdetails" method="POST" modelAttribute="passenger" id="passenger_form">

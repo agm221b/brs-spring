@@ -56,6 +56,8 @@ public interface BRSService {
 
 	public User findName(String username);
 
+	public User findUserById(Integer userId);
+
 	/* public Passenger addPassenger(Passenger passenger); */
 
 }

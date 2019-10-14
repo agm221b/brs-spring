@@ -269,7 +269,7 @@ public class BRSController {
 	 * /**
 	 * 
 	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
-	 *         any kind of exception
+	 *         any kinf of exception
 	 * @param ex
 	 * @return ModelAndView to error.jsp
 	 */
@@ -285,7 +285,13 @@ public class BRSController {
 	 * }
 	 */
 
-	
+	/**
+	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
+	 *         exceptions inside the BRSController of type Bus Not Found
+	 * @param request
+	 * @param ex
+	 * @return to error page
+	 */
 
 	/**
 	 * @author Aditya Created: 8/10/19 Last Modified: 9/10/19 Description: redirects

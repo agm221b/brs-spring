@@ -15,31 +15,20 @@
 
 </head>
 <c:url value="/img/" var="images"></c:url>
-<body style="background-color: #fff9c4;">
+<body>
 	<!-- /** NavBar -Source -Destination -Date(Calendar) */ -->
-	<nav class="navbar navbar-inverse" style="height: auto;">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="customerhome">BusNama</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="customerhome">Home</a></li>
-				<li><a href="help">FAQs</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="viewallbookings">View All Bookings</a></li>
-						<li><a href="#">Manage Profile</a></li>
-					</ul></li>
-			</ul>
-			 <ul class="nav navbar-nav navbar-right">
-			 <li><a href="<%=request.getContextPath()%>/logout"><input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" /><button style="color:white;background-color:#e57373">Logout</button></a></li>
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="customerhome">BusNama</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="customerhome">Home</a></li>
     </ul>
-			
-		</div>
-	</nav>
-	<br>
+    
+    
+  </div>
+</nav>
 	<search:form method="post" action="showrunningbuses" modelAttribute="bus" id="searchbusform">
 	
 				 <span style="color: red;"></span>
