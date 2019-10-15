@@ -1,5 +1,11 @@
 http://localhost:9082/register
 
 http://localhost:9082/authenticate
+~aditya:  1234 -ADMIN
+~tejaswini - 5678 - CUSTOMER
+
+
+http://localhost:9082/brs/createbooking?busTransactionId=33
+
 
 http://localhost:9082/brs/showusers
