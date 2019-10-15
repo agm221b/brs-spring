@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import com.cg.BrsSpringBootMVC.dto.Booking;
 import com.cg.BrsSpringBootMVC.dto.Bus;
@@ -48,10 +48,8 @@ public class BRSController {
 	private static final Logger logger = LoggerFactory.getLogger(BRSController.class);
 
 	/**
-	 * @author Aditya
-	 * Description: directs to the home page of the web site
-	 * @return jsp/home
-	 * Created On: 07-10-2019
+	 * @author Aditya Description: directs to the home page of the web site
+	 * @return jsp/home Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showHomePage() {
@@ -60,10 +58,8 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Aditya
-	 * Description: directs to the home page of the admin
-	 * @return jsp/Admin/AdminHome
-	 * Created On: 07-10-2019
+	 * @author Aditya Description: directs to the home page of the admin
+	 * @return jsp/Admin/AdminHome Created On: 07-10-2019
 	 * 
 	 */
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
@@ -74,35 +70,40 @@ public class BRSController {
 	}
 
 	/**
-	 * @author Tejaswini
-	 * Description: directs to the home page of the customer
-	 * @return jsp/Customer/CustomerHome
-	 * Created On: 07-10-2019
+	 * @author Tejaswini Description: directs to the home page of the customer
+	 * @return jsp/Customer/CustomerHome Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/customerhome", method = RequestMethod.GET)
 	public String viewCustomerHome() {
 		logger.debug("In Customer Home Now");
-		String username=(String) session.getAttribute("username");
-		
-		User user=brsService.viewUserByUsername(username);
+		String username = (String) session.getAttribute("username");
+
+		User user = brsService.viewUserByUsername(username);
 		session.setAttribute("user", user);
 		return "jsp/Customer/CustomerHome";
 
 	}
 
 	/**
-	 * @author Tejaswini
-	 * Description: directs to the login page. Common for both admin and customer
-	 * @return jsp/login
-	 * Created On: 07-10-2019
+	 * @author Tejaswini Description: directs to the login page. Common for both
+	 *         admin and customer
+	 * @return jsp/login Created On: 07-10-2019
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showLoginPage() {
+	public String showLoginPage(@RequestParam(value = "error", required = false) String error,Model model) {
+		String errorMessage = null;
+		if (error != null) {
+			logger.error("Incorrect Credentials.");
+			errorMessage = "Username or Password is incorrect !!";
+		}
+		model.addAttribute("errorMessage", errorMessage);
+		logger.info("Viewing Log In Page.");
 		return "jsp/login";
 	}
+
 	/**
-	 * @author Tejaswini
-	 * Description: logs out and redirects to the homepage of the website
+	 * @author Tejaswini Description: logs out and redirects to the homepage of the
+	 *         website
 	 * @param session
 	 * @return jsp/logout
 	 */
@@ -124,14 +125,11 @@ public class BRSController {
 
 		return "jsp/aboutUs";
 	}
-	
-	
+
 	/**
-	 * @author Aditya
-	 * Description: Redirects user to the registration page
+	 * @author Aditya Description: Redirects user to the registration page
 	 * @param user
-	 * @return
-	 * Created On : 08-10-2019
+	 * @return Created On : 08-10-2019
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String showRegisterPage(@ModelAttribute("user") User user) {
@@ -145,18 +143,36 @@ public class BRSController {
 	 * @return jsp/home
 	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
+	public ModelAndView addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
+		
+		String modelError = null;
 		logger.info("In add user page");
 		if (result.hasErrors()) {
-			System.out.println("Hi");
-			return "jsp/register";
+			return new ModelAndView("jsp/register", "modelError", modelError);
 		} else {
 			List<Booking> bookingsList=new ArrayList<Booking>();
 			user.setBookingsList(bookingsList);
+			try {
+				for(User userExisting: brsService.viewAllUsers())
+				{
+					if(userExisting.getUsername().equals(user.getUsername()))
+					{
+						modelError = "User Already Exists in Database";
+						logger.error("User Already Exists in Database");
+						return new ModelAndView("jsp/register", "modelError", modelError);
+					}
+				}
+			}
+			 catch (BRSException e) {
+					// TODO Auto-generated catch block
+					logger.error(e.getMessage());
+					throw e;
+				}
 			brsService.addUser(user);
 
-			return "jsp/home";
+			return new ModelAndView("jsp/home", "modelError", modelError);
 		}
+			
 	}
 
 	/**
@@ -205,7 +221,7 @@ public class BRSController {
 	public ModelAndView addBusDetails(@Valid @ModelAttribute("bus") Bus bus, BindingResult result) throws BRSException {
 		String modelError = null;
 		logger.info("Adding Bus into Database");
-		
+
 		if (result.hasErrors()) {
 			return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
 
@@ -213,10 +229,8 @@ public class BRSController {
 			logger.debug(bus.toString());
 
 			try {
-				for(Bus busExisting : brsService.viewAllBuses())
-				{
-					if(busExisting.equals(bus))
-					{
+				for (Bus busExisting : brsService.viewAllBuses()) {
+					if (busExisting.equals(bus)) {
 						modelError = "Bus Already Exists in Database";
 						logger.error("Bus Already Exists in Database");
 						return new ModelAndView("jsp/Admin/AddBus", "modelError", modelError);
@@ -288,17 +302,16 @@ public class BRSController {
 	 * @param ex
 	 * @return ModelAndView to error.jsp
 	 */
-	/*
-	 * @ExceptionHandler(Exception.class) public ModelAndView
-	 * handleAllException(Exception ex) {
-	 * 
-	 * ModelAndView model = new ModelAndView("jsp/error");
-	 * model.addObject("ErrorMsg", "this is Exception.class");
-	 * 
-	 * return model;
-	 * 
-	 * }
-	 */
+
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleAllException(Exception ex) {
+
+		ModelAndView model = new ModelAndView("jsp/error");
+		model.addObject("ErrorMsg", "this is Exception.class");
+
+		return model;
+
+	}
 
 	/**
 	 * @author Aditya Created :8/10/19 Last Modified: 11/10/19 Description: Handles
@@ -379,9 +392,7 @@ public class BRSController {
 
 		return "jsp/Admin/DeleteBuses";
 	}
-	
-	
-	
+
 	/**
 	 * @author Mayank Description: shows all the users Created: 9/10/2019 Last
 	 *         Modified: 9/10/2019
@@ -394,8 +405,6 @@ public class BRSController {
 		logger.info("Listing the list of all users");
 		return new ModelAndView("jsp/Admin/ShowAllUsers", "userList", userList);
 	}
-
-	
 
 	/**
 	 * 
@@ -525,7 +534,7 @@ public class BRSController {
 	 * @param paymentMode
 	 * @return confirmation.jsp Created On: 05/10/2019
 	 */
-	@RequestMapping(value = "/pdetail", method =RequestMethod.POST)
+	@RequestMapping(value = "/pdetail", method = RequestMethod.POST)
 	public String confirmBooking(@RequestParam("paymentMode") String paymentMode) {
 		System.out.println("hhhhh");
 		Booking booking = (Booking) session.getAttribute("booking");
@@ -602,5 +611,4 @@ public class BRSController {
 		return new ModelAndView("jsp/Customer/ViewBookings", "bookings", bookingsList);
 	}
 
-	
 }

@@ -49,6 +49,9 @@ text-align:center;
 	</nav>
 	<div class="container" id="busform">
 	<h3>Enter bus details</h3>
+		<p style="color: red;" id="error">
+			<b><c:out value="${modelError}" /></b>
+		</p>
 	<addbus:form id="addbusform" class="col s6" action="addbusdetails"
 		method="post" modelAttribute="bus">
 		<table>
@@ -132,9 +135,7 @@ text-align:center;
 							path="costPerSeat" id="costerror"></addbus:errors></span></td>
 			</tr>
 		</table>
-		<p style="color: red;" id="error">
-			<c:out value="${modelError}" />
-		</p>
+	
 		<div id="addbtn"><input type="submit" value="Add" class="btn btn-info" /></div>
 
 	</addbus:form>

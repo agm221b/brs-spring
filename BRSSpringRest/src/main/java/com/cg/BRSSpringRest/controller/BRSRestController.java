@@ -77,25 +77,13 @@ public class BRSRestController {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findUserByName("teja"));
+		booking.setUser(brsService.findUserByName("padma"));
 		List<Passenger> passengers = new ArrayList<Passenger>();
-
-		Passenger passenger1 = new Passenger();
-		passenger1.setPassengerName("tejaswini");
-		passenger1.setPassengerAge(20);
-		passenger1.setPassengerGender('F');
-		passengers.add(passenger1);
-
-		Passenger passenger2 = new Passenger();
-		passenger2.setPassengerName("tejaswini");
-		passenger2.setPassengerAge(20);
-		passenger2.setPassengerGender('F');
-		passengers.add(passenger2);
 		
-		booking.setPassengers(passengers);
-		booking.setTotalCost(passengers.size()*busTransaction.getBus().getCostPerSeat());
+		booking.setPassengers(booking.getPassengers());
+		booking.setTotalCost(booking.getPassengers().size()*busTransaction.getBus().getCostPerSeat());
 		booking.setDeleteFlag(0);
-		
+
 		logger.info("Updating the available seats of the selected bus");
 		brsService.updateAvailableSeats(busTransactionId, passengers.size());
 		return brsService.createBooking(booking);
@@ -111,24 +99,21 @@ public class BRSRestController {
 	 */
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = brsService.findUserByName("tejaswini");
+		User user = brsService.findUserByName("padma");
 		
 		logger.info("Listing all the bookings made by the user "+user.getUsername());
 
 		return brsService.viewAllBookings(user);
 	}
 	
-	@GetMapping(value = "/report")
-	public String getExcel() {
-		
-		User user = (User) session.getAttribute("user");
-		logger.info("Downloading the bookings of the user "+user.getUsername());
-		List<Booking> bookingList = user.getBookingsList();
-		ExcelReportView excel =new ExcelReportView();
-		//excel.
-		return "Downloaded Bookings list";
-	}
-
+	/*
+	 * @GetMapping(value = "/report") public String getExcel() {
+	 * 
+	 * User user = (User) session.getAttribute("user");
+	 * logger.info("Downloading the bookings of the user "+user.getUsername());
+	 * List<Booking> bookingList = user.getBookingsList(); ExcelReportView excel
+	 * =new ExcelReportView(); //excel. return "Downloaded Bookings list"; }
+	 */
 	/**
 	 * @author Tejaswini
 	 * Description: modifies the booking status to CANCELLED based on the selected bookingId

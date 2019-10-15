@@ -51,6 +51,7 @@ text-align:center;
 
 <div class="container" id="main">
 <h3>Registration Form</h3>
+${modelError }
 		<form:form class="col s6" action="adduser" method="post" modelAttribute="user" id="registrationform">
 			<div class="row">
 				<div class="input-field col s6">
@@ -109,7 +110,8 @@ text-align:center;
 			</div>
 		</form:form>
 </div>
-	
+<script>
+</script>
 	<jsp:include page="linklib.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 	

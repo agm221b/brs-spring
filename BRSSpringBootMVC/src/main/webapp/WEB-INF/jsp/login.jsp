@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +43,9 @@ text-align:center;
 
 	<div class="container" id="main">
 	<h3>Login Form</h3>
+	<c:if test="${not empty errorMessage}">
+						<div style="color: red; font-weight: bold; margin: 30px 0px;">${errorMessage}</div>
+					</c:if>
 		<form id="userform" class="col s6" action="login" method="post">
 			<div class="row">
 				<div class="input-field col s6">

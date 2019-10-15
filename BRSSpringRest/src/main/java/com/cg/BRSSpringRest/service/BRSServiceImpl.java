@@ -29,6 +29,10 @@ import com.cg.BRSSpringRest.exception.BRSException;
  * Description: This is the BRS Service that calls the various Repositories and performs various service operations
  *
  */
+/**
+ * @author OSIS11
+ *
+ */
 @Service("brsService")
 @Transactional
 public class BRSServiceImpl implements BRSService {
