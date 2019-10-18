@@ -2,17 +2,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import {FormsModule} from '@angular/forms'
-import { ShowCarByImage } from './app.showcars';
+import {HttpClientModule} from '@angular/common/http';
+import {Routes, RouterModule} from '@angular/router';
+
+
+
+
+const productroute: Routes=[
+ 
+]
 
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,HttpClientModule,RouterModule.forRoot(productroute)
         
     ],
     declarations: [
-        AppComponent,
-        ShowCarByImage
+        AppComponent
 		],
     providers: [ ],
     bootstrap: [AppComponent]
