@@ -4,11 +4,11 @@ import { BookingService } from './_service/app.bookingservice';
 
 @Component({
     selector: 'viewbookings',
-    templateUrl:'app.viewbookings.html'
+    templateUrl:'../app/_html/app.viewbookings.html'
 })
 export class ViewBookingsComponent implements OnInit{
-    constructor(private bookingservice:BookingService){}
     bookings: Booking[];
+    constructor(private bookingservice:BookingService){}
     ngOnInit(){
         this.bookingservice.viewAllBookings().subscribe((data:Booking[])=>this.bookings=data);
     }

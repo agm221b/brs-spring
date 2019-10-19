@@ -27,7 +27,7 @@ const brsroute: Routes=[
         
     ],
     declarations: [
-        AppComponent,AddBookingComponent,ViewBookingsComponent
+        AppComponent,AddBookingComponent,ViewBookingsComponent,CancelBookingComponent
 		],
     providers: [ ],
     bootstrap: [AppComponent]
