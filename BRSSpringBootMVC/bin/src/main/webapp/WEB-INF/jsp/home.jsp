@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-
+	<jsp:include page="linklib.jsp"></jsp:include>
 	<section class="navbar custom-navbar navbar-fixed-top"
 		role="navigation">
 		<div class="container">
@@ -140,7 +140,8 @@
 			</div>
 		</div>
 	</section> -->
-<jsp:include page="../webjar/jsp/footer.jsp"></jsp:include>
+
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
