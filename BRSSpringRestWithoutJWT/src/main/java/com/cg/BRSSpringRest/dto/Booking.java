@@ -21,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component("booking")
 @Entity
@@ -36,10 +37,11 @@ public class Booking {
 	@Column(name = "date_of_journey")
 	private LocalDate dateOfJourney;
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.MERGE)
 	private Bus bus;
 
-
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "passenger_fk")
 	private List<Passenger> passengers;
@@ -53,6 +55,7 @@ public class Booking {
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_fk")
 	private User user;
