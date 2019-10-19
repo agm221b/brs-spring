@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,6 +42,7 @@ import com.cg.BRSSpringRest.service.BRSService;
  */
 @RestController
 @RequestMapping(value = "/brs")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BRSRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BRSRestController.class);
@@ -62,26 +64,13 @@ public class BRSRestController {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName("teja"));
-		List<Passenger> passengers = new ArrayList<Passenger>();
-
-		Passenger passenger1 = new Passenger();
-		passenger1.setPassengerName("tejaswini");
-		passenger1.setPassengerAge(20);
-		passenger1.setPassengerGender('F');
-		passengers.add(passenger1);
-
-		Passenger passenger2 = new Passenger();
-		passenger2.setPassengerName("tejaswini");
-		passenger2.setPassengerAge(20);
-		passenger2.setPassengerGender('F');
-		passengers.add(passenger2);
+		booking.setUser(brsService.findName("tejaswini"));
 		
-		booking.setPassengers(passengers);
-		booking.setTotalCost(passengers.size()*busTransaction.getBus().getCostPerSeat());
+		booking.setPassengers(booking.getPassengers());
+		booking.setTotalCost(booking.getPassengers().size()*busTransaction.getBus().getCostPerSeat());
 		booking.setDeleteFlag(0);
 		
-		brsService.updateAvailableSeats(busTransactionId, passengers.size());
+		brsService.updateAvailableSeats(busTransactionId, booking.getPassengers().size());
 		return brsService.createBooking(booking);
 	}
 
