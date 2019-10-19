@@ -8,71 +8,27 @@
 <meta charset="ISO-8859-1">
 <title>Test</title>
 </head>
-<body>
+<body style="background-color: #fff9c4;">
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">BusNama</a>
+				<a class="navbar-brand" href="customerhome">BusNama</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="customerhome">Home</a></li>
-
+				<li><a href="help">FAQs</a></li>
+			</ul>
+			<ul class="nav navbar-nav right">
+			<li><a href="<%=request.getContextPath()%>/logout"><input type="button" value="Logout"><input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" /></a></li>
 			</ul>
 		</div>
 	</nav>
 	<div class="container">
 		<show:forEach var="booking" items="${bookings }">
-
-		<div class="row" style="width:auto;">
-			<div class="card medium">
-				<div class="card-image waves-effect waves-block waves-light">
-					<!-- <img class="activator" src="images/office.jpg"> -->
-				</div>
-				<div class="card-content">
-					<span class="card-title activator grey-text text-darken-4">Booking
-						Id: ${booking.bookingId }<i class="glyphicon glyphicon-option-vertical right"></i>
-					</span>
-					<p>
-						Date Of Journey: ${booking.dateOfJourney }<br>
-						Booking Status: ${booking.bookingStatus }<br>
-						Mode Of Payment: ${booking.modeOfPayment }<br>
-						Total Cost: ${booking.totalCost }<br>
-						<br><br>
-						<a  href="cancelbooking?bookingId=${booking.bookingId }" class="waves-effect waves-light btn-small" >Cancel</a>
-					</p>
-				</div>
-				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4">Passenger
-						Details<i class="glyphicon glyphicon-remove right"></i>
-					</span>
-					<p>
-					<table>
-					<tr>
-					<th>Passenger Id</th>
-					<th>Passenger Name</th>
-					<th>Passenger Age</th>
-					<th>Passenger Gender</th>
-					</tr>
-					</table>
-						<show:forEach var="passenger" items="${booking.passengers }">
-					      Passenger Id: ${passenger.getPassengerId() }
-					      <br>
-					      Passenger Name: ${passenger.getPassengerName() }
-					      <br>
-					      Passenger Age: ${passenger.getPassengerAge() }
-					      <br>
-					      Passenger Gender: ${passenger.getPassengerGender() }
-      						<br>
-							<br>
-						</show:forEach>
-					</p>
-				</div>
-			</div>
-		</div>
-=======
 			<div class="row" style="width: auto;">
-				<div class="card medium">
+				<div class="card">
 					<div class="card-image waves-effect waves-block waves-light">
 						<!-- <img class="activator" src="images/office.jpg"> -->
 					</div>
@@ -85,8 +41,10 @@
 							Date Of Journey: ${booking.dateOfJourney }<br> Booking
 							Status: ${booking.bookingStatus }<br> Mode Of Payment:
 							${booking.modeOfPayment }<br> Total Cost:
-							${booking.totalCost }<br>
-
+							${booking.totalCost }<br> 
+							<a
+								href="cancelbooking?bookingId=${booking.bookingId }"
+								class="waves-effect waves-light btn-small"><input type="button" value="CANCEL TICKET" ${ booking.bookingStatus=="CANCELLED"? 'disabled="disabled"' : ''}></a>
 						</p>
 					</div>
 					<div class="card-reveal">
@@ -101,23 +59,18 @@
 								<th>Passenger Age</th>
 								<th>Passenger Gender</th>
 							</tr>
+							<show:forEach var="passenger" items="${booking.passengers }">
+								<tr>
+									<td>${passenger.getPassengerId() }</td>
+									<td>${passenger.getPassengerName() }</td>
+									<td>${passenger.getPassengerAge() }</td>
+									<td>${passenger.getPassengerGender() }</td>
+								</tr>
+							</show:forEach>
 						</table>
-						<show:forEach var="passenger" items="${booking.passengers }">
-					      Passenger Id: ${passenger.getPassengerId() }
-					      <br>
-					      Passenger Name: ${passenger.getPassengerName() }
-					      <br>
-					      Passenger Age: ${passenger.getPassengerAge() }
-					      <br>
-					      Passenger Gender: ${passenger.getPassengerGender() }
-      						<br>
-							<br>
-						</show:forEach>
-						
 					</div>
 				</div>
 			</div>
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring.git
 		</show:forEach>
 	</div>
 	<a href="customerhome"><input type="button" value="Go to home"></a>
@@ -125,6 +78,7 @@
 		value="Download booking report"></a>
 
 	<jsp:include page="../linklib.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
