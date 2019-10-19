@@ -40,7 +40,7 @@ public class User {
 	private String email;
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
-	private Integer phoneNumber;
+	private String phoneNumber;
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
@@ -50,7 +50,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer userId, String username, String pass, Character userType, String email, Integer phoneNumber,
+	public User(Integer userId, String username, String pass, Character userType, String email, String phoneNumber,
 			List<Booking> bookingsList, Integer deleteFlag) {
 		super();
 		this.userId = userId;
@@ -109,12 +109,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -132,21 +134,6 @@ public class User {
 
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bookingsList == null) ? 0 : bookingsList.hashCode());
-		result = prime * result + ((deleteFlag == null) ? 0 : deleteFlag.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
 	}
 
 	@Override

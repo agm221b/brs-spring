@@ -90,6 +90,12 @@ public class BRSRestController {
 		User user = brsService.findName("tejaswini");
 		return brsService.viewAllBookings(user);
 	}
+	
+	
+	@GetMapping(value="/viewbooking")
+	public Booking viewBookingById(@RequestParam(value = "bookingId")Integer bookingId) {
+		return brsService.findBookingById(bookingId);
+	}
 
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
