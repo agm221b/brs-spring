@@ -1,0 +1,40 @@
+<h1>Add Product</h1>
+<table>
+    <tr>
+        <td>Product id</td>
+        <td><input type="number" [(ngModel)]="model.prodId" required/></td>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td><input type="text" [(ngModel)]="model.prodName" required/></td>
+    </tr>
+    <tr>
+        <td>Product Price</td>
+        <td><input type="number" [(ngModel)]="model.prodCost" required/></td>
+    </tr>
+    <tr>
+        <td>Product Description</td>
+        <td><input type="text" [(ngModel)]="model.prodDescription" required/></td>
+    </tr>
+</table>
+
+<br>
+<input type="button" value="Add Product" (click)="addProduct()" />
+
+<div *ngIf="loadComponent">
+        <h3>Update Product</h3>
+        <table>
+            <tr>
+                <td>Product Id</td>
+                <td><input type="number" [(ngModel)]="prodId" readonly></td>
+            </tr>
+            <tr>
+                <td>Product Name</td>
+                <td><input type="text" [(ngModel)]="prodName"></td>
+            </tr>
+            <tr>
+                <td>Product Price</td>
+                <td><input type="number" [(ngModel)]="prodPrice"></td>
+            </tr>
+        </table>
+</div>

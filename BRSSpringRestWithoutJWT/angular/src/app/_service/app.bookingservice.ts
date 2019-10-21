@@ -23,4 +23,7 @@ export class BookingService{
         let booking=this.bookingHttp.get("http://localhost:9085/brs/viewbooking?bookingId="+bookingId);
         return this.bookingHttp.put("http://localhost:9085/brs/cancelbooking?bookingId="+bookingId,booking);
     }
+    showRunningBuses(source,destination,dateOfJourney){
+        return this.bookingHttp.get("http://localhost:9085/brs/searchbuses?source="+source+"&destination="+destination+"&date_of_journey="+dateOfJourney);
+    }
 }

@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component("bus_transaction")
 @Entity
 @Table(name="bus_transaction")
@@ -33,7 +35,7 @@ public class BusTransaction {
 	@NotNull(message= "seats required")
 	@Min(0)@Max(40)
 	private Integer availableSeats;
-
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
 	// private String transactionStatus;

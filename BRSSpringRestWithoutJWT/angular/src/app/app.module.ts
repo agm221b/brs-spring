@@ -8,26 +8,31 @@ import { AddBookingComponent } from './app.addbookingcomponent';
 import { ViewBookingsComponent } from './app.viewbookingscomponent';
 import { CancelBookingComponent } from './app.cancelbookingcomponent';
 import { CustomerHomeComponent } from './app.customerhomecomponent';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { ConfirmComponent } from './confirmdialog/app.confirmcomponent';
+import { ShowRunningBusesComponent } from './app.showrunningbusescomponent';
 
 
 
 const brsroute: Routes=[
-    {path:'addbooking:/id',component: AddBookingComponent},
+    {path:'addbooking',component: AddBookingComponent},
     {path:'viewbookings',component: ViewBookingsComponent},
     {path:'cancelbooking/:id',component: CancelBookingComponent},
-    {path:'customerhome',component: CustomerHomeComponent}
+    {path:'customerhome',component: CustomerHomeComponent},
+    {path:'searchrunningbuses',component: ShowRunningBusesComponent}
 
 ]
 
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule,HttpClientModule,RouterModule.forRoot(brsroute)
-        
+        FormsModule,HttpClientModule,RouterModule.forRoot(brsroute),NgbModule.forRoot(),
+        SimpleModalModule.forRoot({container: "modal-container"})
     ],
     declarations: [
         AppComponent,AddBookingComponent,ViewBookingsComponent,CancelBookingComponent,
-        CustomerHomeComponent
+        CustomerHomeComponent,ConfirmComponent,ShowRunningBusesComponent
 		],
     providers: [ ],
     bootstrap: [AppComponent]

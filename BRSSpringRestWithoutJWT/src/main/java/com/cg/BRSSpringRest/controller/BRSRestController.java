@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -214,6 +215,23 @@ public class BRSRestController {
 			throw new Exception("User not found with Id: "+userId);
 		brsService.removeUser(userId);
 		return true;
+	}
+	
+	
+	@GetMapping(value="/getsources")
+	public List<String> getSourceList(){
+		return brsService.findSources();
+	}
+	
+	@GetMapping(value="/getdestinations")
+	public List<String> getDestinationList(){
+		return brsService.findDestinations();
+	}
+	
+	@GetMapping(value="/showrunningbuses")
+	public List<BusTransaction> showRunningBuses(@RequestParam(value = "source") String source,
+			@RequestParam(value = "destination") String destination,@RequestParam("date_of_journey") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateOfJourney){
+		return brsService.searchBuses(source, destination, dateOfJourney);
 	}
 	
 
