@@ -144,7 +144,7 @@ public class BRSRestController {
 	 * @param busId
 	 * @return String of the status of the bus,whether deleted or not.
 	 */
-	@GetMapping(value = "/deletebus")
+	@PutMapping(value = "/deletebus")
 	public String deleteBus(@RequestParam("busId") Integer busId) {
 		String status = null;
 		try {
@@ -207,7 +207,7 @@ public class BRSRestController {
 	 *  Last Modified:13/10/2019
 	 * @return true if user gets removed
 	 */
-	@DeleteMapping(value="/removeuser")
+	@PutMapping(value="/removeuser")
 	public boolean removeUser(@RequestParam Integer userId) throws Exception {
 		User user= brsService.findUserById(userId);
 		if(user==null)
