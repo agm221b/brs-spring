@@ -33,12 +33,12 @@ public class Bus {
 
 	@Column(name = "bus_type")
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	//@NotNull
 	private BusType busType;
 
 	@Column(name = "bus_class")
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	//@NotNull
 	private BusClass busClass;
 
 	@Column(name = "bus_source")
@@ -48,7 +48,7 @@ public class Bus {
 	private String destination;
 
 	@Column(name = "no_of_seats")
-	@NotNull(message="number of seats required")
+	//@NotNull(message="number of seats required")
 	private Integer noOfSeats;
 
 	@Column(name = "delete_flag")
@@ -57,17 +57,17 @@ public class Bus {
 	@DateTimeFormat(pattern = "HH:mm")
 
 	@Column(name = "start_time")
-	@NotNull(message="time validation to be done")
+	//@NotNull(message="time validation to be done")
 	private LocalTime startTime;
 
 	@DateTimeFormat(pattern = "HH:mm")
 
 	@Column(name = "end_time")
-	@NotNull // end time validation to be done here
+	//@NotNull // end time validation to be done here
 	private LocalTime endTime;
 
 	@Column(name = "cost_per_seat")
-	@NotNull(message=" cost per seat required")
+	//@NotNull(message=" cost per seat required")
 	private Double costPerSeat;
 
 	public Bus() {
