@@ -1,13 +1,20 @@
 package com.cg.BRSSpringRest.service;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cg.BRSSpringRest.dao.BookingRepository;
 import com.cg.BRSSpringRest.dao.BusRepository;
@@ -17,7 +24,6 @@ import com.cg.BRSSpringRest.dto.Booking;
 import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.User;
-import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.exception.BRSException;
 
 
@@ -366,6 +372,6 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		return userRepository.findByUserId(userId);
 	}
+}
 	
 
-}
