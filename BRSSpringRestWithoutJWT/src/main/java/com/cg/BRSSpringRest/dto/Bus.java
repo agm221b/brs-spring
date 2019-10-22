@@ -33,18 +33,20 @@ public class Bus {
 
 	@Column(name = "bus_type")
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	@NotNull(message="Bus Type required")
 	private BusType busType;
 
 	@Column(name = "bus_class")
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	@NotNull(message="Bus class required")
 	private BusClass busClass;
 
 	@Column(name = "bus_source")
+	@NotNull(message="source required")
 	private String source;
 
 	@Column(name = "bus_destination")
+	@NotNull(message="destination required")
 	private String destination;
 
 	@Column(name = "no_of_seats")
