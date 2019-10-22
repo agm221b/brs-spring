@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.BRSSpringRest.dto.Booking;
 import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
-import com.cg.BRSSpringRest.dto.Passenger;
 import com.cg.BRSSpringRest.dto.User;
 import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.service.BRSService;
@@ -125,7 +125,6 @@ public class BRSRestController {
 	}
 	
 	/**
-<<<<<<< HEAD
 	 * 
 	 * @author Aditya Created: 13/10/19 Last Modified: 13/10/19 
 	 * Description: Displays the list of all buses as List
