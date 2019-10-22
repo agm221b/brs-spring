@@ -61,9 +61,13 @@ public class BRSRestController {
 
 	@PostMapping(value = "/createbooking")
 	public Booking addBooking(@RequestParam(value = "busTransactionId") Integer busTransactionId,
-			@RequestBody Booking booking) {
+			@ModelAttribute Booking booking) {
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
+		booking.setBookingStatus("BOOKED");
+		booking.setModeOfPayment(booking.getModeOfPayment());
+		booking.setUser(booking.getUser());
+		booking.setDeleteFlag(0);
 		booking.setDateOfJourney(busTransaction.getDate());
 		booking.setUser(brsService.findName("tejaswini"));
 		
@@ -89,6 +93,7 @@ public class BRSRestController {
 
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value="bookingId")Integer bookingId) {
+		System.out.println(bookingId);
 		return brsService.cancelBooking(bookingId);
 	}
 
@@ -230,7 +235,9 @@ public class BRSRestController {
 	
 	@GetMapping(value="/showrunningbuses")
 	public List<BusTransaction> showRunningBuses(@RequestParam(value = "source") String source,
-			@RequestParam(value = "destination") String destination,@RequestParam("date_of_journey") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateOfJourney){
+			@RequestParam(value = "destination") String destination,@RequestParam("journeydate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateOfJourney){
+		System.out.println(destination+" "+dateOfJourney+" "+source);
+		System.out.println(brsService.searchBuses(source, destination, dateOfJourney));
 		return brsService.searchBuses(source, destination, dateOfJourney);
 	}
 	
