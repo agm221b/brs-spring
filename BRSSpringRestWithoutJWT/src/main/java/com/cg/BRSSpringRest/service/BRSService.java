@@ -8,7 +8,6 @@ import com.cg.BRSSpringRest.dto.Bus;
 import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.User;
 import com.cg.BRSSpringRest.exception.BRSException;
-import com.cg.BRSSpringRest.exception.BRSException;
 
 public interface BRSService {
 
