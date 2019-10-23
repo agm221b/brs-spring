@@ -1,5 +1,7 @@
 package com.cg.BRSSpringRest.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +11,12 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +32,7 @@ import com.cg.BRSSpringRest.dto.BusTransaction;
 import com.cg.BRSSpringRest.dto.User;
 import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.service.BRSService;
+import com.cg.BRSSpringRest.util.ExcelGenerator;
 
 /**
  * @author Aditya, Mayank, Tejaswini
@@ -233,6 +237,16 @@ public class BRSRestController {
 		return brsService.searchBuses(source, destination, dateOfJourney);
 	}
 	
+	@GetMapping("/booking/download/bookingdetails.xlsx")
+	public ResponseEntity<InputStreamResource> downloadBooking(@RequestParam("bookingId")Integer bookingId) throws IOException {
+		Booking booking = brsService.findBookingById(bookingId);
+		
+		ByteArrayInputStream in = ExcelGenerator.bookingDetailsToExcel(booking);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "attachment); filename=bookingdetails.xlsx");
+		logger.info("Downloaded");
+		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));
+	}
 
 
 }
