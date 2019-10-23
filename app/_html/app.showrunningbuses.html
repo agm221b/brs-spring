@@ -1,0 +1,30 @@
+<div *ngIf='loadComponent'>
+    <div class="container main">
+            <h3>List of running buses</h3>
+            <table class="table">
+                <tr>
+                    <th>Bus Transaction Id</th>
+                    <th>Bus Name</th>
+                    <th>Bus Type</th>
+                    <th>Bus Class</th>
+                    <th>Cost Per Seat</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Available Seats</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let runningbus of runningBuses;">
+                    <td>{{runningbus.transactionId}}</td>
+                    <td>{{runningbus.bus.busName}}</td>
+                    <td>{{runningbus.bus.busType}}</td>
+                    <td>{{runningbus.bus.busClass}}</td>
+                    <td>{{runningbus.bus.costPerSeat}}</td>
+                    <td>{{runningbus.bus.source}}</td>
+                    <td>{{runningbus.bus.destination}}</td>
+                    <td>{{runningbus.availableSeats}}</td>
+                    <td><button class="btn btn-success" (click)="addPassengerDetails(runningbus.transactionId)">Book Ticket</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    

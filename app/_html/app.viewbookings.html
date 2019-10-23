@@ -1,0 +1,70 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+         
+<h1>List Of Bookings</h1>
+<div class="container">
+    <div *ngFor="let booking of bookings|paginate: { itemsPerPage: 2, currentPage: p }">
+        <div class="row" >
+            <div class="card" style="width:100%;">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <!-- <img class="activator" src="images/office.jpg"> -->
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Booking
+                        Id: {{booking.bookingId}}<i class="glyphicon glyphicon-option-vertical right"></i>
+                    </span>
+                    <p>
+                        Date Of Journey: {{booking.dateOfJourney }}<br> Booking
+                        Status: {{booking.bookingStatus }}<br> Mode Of Payment:
+                        {{booking.modeOfPayment }}<br> Total Cost:
+                        {{booking.totalCost}}<br>
+                        <button class="waves-effect waves-light btn-small red"
+                        mwlConfirmationPopover
+                        [popoverTitle]="popoverTitle"
+                        [popoverMessage]="popoverMessage"
+                        placement="left"
+                        (confirm)="cancelBooking(booking.bookingId)"
+                        (cancel)="cancelClicked = true">Cancel Ticket</button>
+                        <button class="waves-effect waves-light btn-small" (click)="downloadTicket(booking.bookingId)">Download eTicket</button>
+                    </p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Passenger
+                        Details<i class="glyphicon glyphicon-remove right"></i>
+                    </span>
+                    <p>
+                        <table>
+                            <tr>
+                                <th>Passenger Id</th>
+                                <th>Passenger Name</th>
+                                <th>Passenger Age</th>
+                                <th>Passenger Gender</th>
+                            </tr>
+                            <tr *ngFor="let passenger of booking.passengers">
+                                <td>{{passenger.passengerId}}</td>
+                                <td>{{passenger.passengerName}}</td>
+                                <td>{{passenger.passengerAge}}</td>
+                                <td>{{passenger.passengerGender}}</td>
+                            </tr>
+                        </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="container main">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    
+</div>

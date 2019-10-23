@@ -1,0 +1,20 @@
+<h1>Show All Products</h1>
+<table border="1">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Description</th>
+        <th colspan="2" style="text-align: center">Action</th>
+    </tr>
+    <tr *ngFor="let product of products;">
+        <td>{{product.prodId}}</td>
+        <td>{{product.prodName}}</td>
+        <td>{{product.prodCost}}</td>
+        <td>{{product.prodDescription}}</td>
+        <td><input type="button" value="Delete" (click)="deleteProduct(product.prodId)"></td>
+        <td><input type="button" value="Update" (click)="updateProduct(i)">
+        </td>
+    </tr>
+</table>
+
