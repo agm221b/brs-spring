@@ -99,7 +99,7 @@ public class BRSRestController {
 	 */
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = brsService.findUserByName("padma");
+		User user = brsService.findUserByName("tejaswini");
 		
 		logger.info("Listing all the bookings made by the user "+user.getUsername());
 

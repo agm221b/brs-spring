@@ -48,10 +48,6 @@ import com.itextpdf.text.DocumentException;
  * Last Modified: 09/10/2019 10:37 AM
  *
  */
-/**
- * @author OSIS11
- *
- */
 @RestController
 @RequestMapping(value = "/brs")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -75,6 +71,8 @@ public class BRSRestController {
 	@PostMapping(value = "/createbooking")
 	public Booking addBooking(@RequestParam(value = "busTransactionId") Integer busTransactionId,
 			@ModelAttribute Booking booking) {
+		
+		logger.info("Booking Ticket..");
 		BusTransaction busTransaction = brsService.viewTransactionById(busTransactionId);
 		booking.setBus(busTransaction.getBus());
 		booking.setBookingStatus("BOOKED");
@@ -82,39 +80,67 @@ public class BRSRestController {
 		booking.setUser(booking.getUser());
 		booking.setDeleteFlag(0);
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName("tejaswini"));
+		booking.setUser(brsService.findName("tatarao"));
 
 		booking.setPassengers(booking.getPassengers());
 		booking.setTotalCost(booking.getPassengers().size() * busTransaction.getBus().getCostPerSeat());
 		booking.setDeleteFlag(0);
-
+		
+		logger.info("Updating the available seats...");
 		brsService.updateAvailableSeats(busTransactionId, booking.getPassengers().size());
 		return brsService.createBooking(booking);
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: Display all bookings for a particular user
+	 * @return List<Booking>
+	 */
 	@GetMapping(value = "/viewallbookings")
 	public List<Booking> viewAllBookings() {
-		User user = brsService.findName("tejaswini");
+		User user = brsService.findName("tatarao");
+		logger.info("Listing the bookings of users...");
 		return brsService.viewAllBookings(user);
 	}
 
+	/**
+	 * @author Tejaswini
+	 * Description: View Booking By bookingId
+	 * @param bookingId
+	 * @return Booking
+	 */
 	@GetMapping(value = "/viewbooking")
 	public Booking viewBookingById(@RequestParam(value = "bookingId") Integer bookingId) {
+		logger.info("Viewing the details of your booking....");
 		return brsService.findBookingById(bookingId);
 	}
-
+	
+	/**
+	 * @author Tejaswini
+	 * @param bookingId
+	 * @return Booking
+	 */
 	@PutMapping(value = "/cancelbooking")
 	public Booking cancelBooking(@RequestParam(value = "bookingId") Integer bookingId) {
+		logger.info("Cancelling the tickets...,");
 		System.out.println(bookingId);
 		return brsService.cancelBooking(bookingId);
 	}
 
+	/**
+	 * @author Aditya
+	 * Description: Add bus details
+	 * @param bus
+	 * @return Bus
+	 * @throws BRSException
+	 */
 	@PostMapping(value = "/addbusdetails")
 	public Bus addBusDetails(@ModelAttribute Bus bus) throws BRSException {
 		System.out.println("bus " + bus);
 		Bus busAdd = null;
 
 		try {
+			logger.info("Adding the bus details");
 			busAdd = brsService.addBusDetails(bus);
 		} catch (BRSException e) {
 			// TODO Auto-generated catch block

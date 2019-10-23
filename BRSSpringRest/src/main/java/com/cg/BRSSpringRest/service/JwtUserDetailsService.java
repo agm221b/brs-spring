@@ -42,7 +42,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 		newUser.setDeleteFlag(user.getDeleteFlag());
 		newUser.setEmail(user.getEmail());
 		newUser.setRoles(user.getRoles());
-        newUser.setActive(user.isActive());
+        newUser.setActive(true);
 		return userRepository.save(newUser);
 	}
 }

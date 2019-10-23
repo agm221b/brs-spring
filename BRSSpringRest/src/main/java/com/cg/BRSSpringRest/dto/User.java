@@ -42,7 +42,7 @@ public class User {
 	private String email;
 	@Column(name = "phone_number")
 	@NotNull(message="phone number required")
-	private Integer phoneNumber;
+	private String phoneNumber;
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
@@ -58,7 +58,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer userId, String username, String pass, Character userType, String email, Integer phoneNumber,
+	public User(Integer userId, String username, String pass, Character userType, String email, String phoneNumber,
 			List<Booking> bookingsList, Integer deleteFlag) {
 		super();
 		this.userId = userId;
@@ -118,11 +118,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -142,8 +142,6 @@ public class User {
 		this.deleteFlag = deleteFlag;
 	}
 	
-	
-
 	public boolean isActive() {
 		return active;
 	}

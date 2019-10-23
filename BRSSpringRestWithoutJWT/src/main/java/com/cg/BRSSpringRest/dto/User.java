@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component("user")
 @Entity
 @Table(name = "user_details")
@@ -30,6 +32,7 @@ public class User {
 	private String username;
 	@Column(name="pass")
 	
+	@JsonIgnore
 	private String pass;
 	@Column(name = "user_type")
 	private Character userType;
@@ -44,7 +47,7 @@ public class User {
 	private Integer deleteFlag;
 	
 	@Column(name="active")
-	private boolean active;
+	private Boolean active;
 	
 	@Column(name="roles")
 	private String roles;
@@ -54,7 +57,7 @@ public class User {
 	}
 
 	public User(Integer userId, String username, String pass, Character userType, String email, String phoneNumber,
-			List<Booking> bookingsList, Integer deleteFlag) {
+			List<Booking> bookingsList, Integer deleteFlag,Boolean active,String roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -64,15 +67,9 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.bookingsList = bookingsList;
 		this.deleteFlag = deleteFlag;
+		this.active=active;
+		this.roles=roles;
 	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
-				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
-				+ ", deleteFlag=" + deleteFlag + "]";
-	}
-
 	public Integer getUserId() {
 		return userId;
 	}
@@ -138,59 +135,7 @@ public class User {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (bookingsList == null) {
-			if (other.bookingsList != null)
-				return false;
-		} else if (!bookingsList.equals(other.bookingsList))
-			return false;
-		if (deleteFlag == null) {
-			if (other.deleteFlag != null)
-				return false;
-		} else if (!deleteFlag.equals(other.deleteFlag))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (pass == null) {
-			if (other.pass != null)
-				return false;
-		} else if (!pass.equals(other.pass))
-			return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null)
-				return false;
-		} else if (!phoneNumber.equals(other.phoneNumber))
-			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		if (userType == null) {
-			if (other.userType != null)
-				return false;
-		} else if (!userType.equals(other.userType))
-			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
-		return true;
-	}
-
+	
 	public boolean isActive() {
 		return active;
 	}
@@ -206,8 +151,15 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
+				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
+				+ ", deleteFlag=" + deleteFlag + ", active=" + active + ", roles=" + roles + "]";
+	}
+	
+	
+	
 	
 }

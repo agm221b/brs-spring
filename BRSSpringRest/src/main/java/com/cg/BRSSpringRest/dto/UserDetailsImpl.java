@@ -20,7 +20,7 @@ public class UserDetailsImpl implements UserDetails{
 	private String password;
 	private Character userType;
 	private String email;
-	private Integer phoneNumber;
+	private String phoneNumber;
 	private List<Booking> bookingsList;
 	private Integer deleteFlag;
 	private boolean active;
@@ -68,7 +68,7 @@ public class UserDetailsImpl implements UserDetails{
 		this.roles = roles;
 	}
 
-	public UserDetailsImpl(String username, String password, Character userType, String email, Integer phoneNumber,
+	public UserDetailsImpl(String username, String password, Character userType, String email, String phoneNumber,
 			List<Booking> bookingsList, Integer deleteFlag, boolean active, List<GrantedAuthority> authorities, String roles) {
 		
 		this.username = username;
@@ -131,11 +131,11 @@ public class UserDetailsImpl implements UserDetails{
 		this.email = email;
 	}
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

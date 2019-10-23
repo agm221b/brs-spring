@@ -64,8 +64,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/authenticate", "/register").permitAll()
 				// all other requests need to be authenticated
-				.antMatchers("/addbusdetails","/deletebus","/showusers","/showbuses","/adminhome").hasRole("ADMIN")
-				.antMatchers("/createbooking","/cancelbooking","/viewallbookings","/customerhome").hasRole("CUSTOMER")
+				.antMatchers("/addbusdetails","/deletebus","/showusers","/showbuses","/adminhome").permitAll()
+				.antMatchers("/createbooking","/cancelbooking","/viewallbookings","/customerhome").permitAll()
 				.anyRequest().authenticated().and()
 				// make sure we use stateless session; session won't be used to
 				// store user's state.
