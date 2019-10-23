@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
@@ -33,18 +32,22 @@ public class User {
 	
 	private String pass;
 	@Column(name = "user_type")
-	@NotNull(message=" user type required")
 	private Character userType;
 	@Column(name = "email")
 	
 	private String email;
 	@Column(name = "phone_number")
-	@NotNull(message="phone number required")
 	private String phoneNumber;
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user",fetch = FetchType.EAGER)
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
+	
+	@Column(name="active")
+	private boolean active;
+	
+	@Column(name="roles")
+	private String roles;
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -187,6 +190,24 @@ public class User {
 			return false;
 		return true;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+	
+	
 
 	
 }
