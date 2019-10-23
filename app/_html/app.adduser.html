@@ -1,0 +1,48 @@
+<h1> Welcome to the User Registration Page</h1>
+
+<table>
+  <tr>
+      <td>User Name:</td>
+      <td>
+          <input type="text" [(ngModel)]="model.username" id="username" class="validate" title="User name should contain alphabetical characters" />
+      </td>
+  </tr>
+  <tr>
+      <td>Password:</td>
+      <td>
+          <input type="password" [(ngModel)]="model.pass" class="validate" title="Password required" />
+      </td>
+  </tr>
+  <tr>
+      <td>Email:</td>
+      <td>
+          <input type="email" [(ngModel)]="model.email" class="validate" title="Email required" />
+      </td>
+  </tr>
+  <tr>
+    <td>Phone Number:</td>
+    <td>
+        <input type="text" [(ngModel)]="model.phoneNumber" class="validate" title="Phone Number required"/>
+    </td>
+  </tr>
+  <tr>
+    <td>User Type:</td>
+    <td>
+      <input type="radio" name="userType" ng-control="userType"  value='A'  [(ngModel)]="model.userType"  [checked]="model.userType==A" required
+      #userType="ngModel" >Admin<br/>
+
+    </td>
+    <td>
+      <input type="radio" name="userType"  value='C'  [(ngModel)]="model.userType"  [checked]="model.userType==C" required >Customer <br/>
+
+  </td>
+  <td> <div *ngIf="userType.errors?.required">userType is required</div></td>
+  </tr>
+  <tr>
+      <td>
+          <input type="button" class="btn btn-success" id="addbutton" [disabled]="validate()" value="Add User" (click)="addUser()" />
+      </td>
+  </tr>
+
+  
+</table>
