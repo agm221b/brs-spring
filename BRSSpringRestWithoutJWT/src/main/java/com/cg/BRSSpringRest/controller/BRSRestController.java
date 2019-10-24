@@ -82,7 +82,7 @@ public class BRSRestController {
 		booking.setUser(booking.getUser());
 		booking.setDeleteFlag(0);
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName("tejaswini"));
+		booking.setUser(brsService.findName(booking.getUser().getUsername()));
 
 		booking.setPassengers(booking.getPassengers());
 		booking.setTotalCost(booking.getPassengers().size() * busTransaction.getBus().getCostPerSeat());
@@ -93,8 +93,8 @@ public class BRSRestController {
 	}
 
 	@GetMapping(value = "/viewallbookings")
-	public List<Booking> viewAllBookings() {
-		User user = brsService.findName("tejaswini");
+	public List<Booking> viewAllBookings(@RequestParam(value = "username")String username) {
+		User user = brsService.findName(username);
 		return brsService.viewAllBookings(user);
 	}
 
@@ -223,6 +223,12 @@ public class BRSRestController {
 			throw new Exception("User not found with Id: " + userId);
 		brsService.removeUser(userId);
 		return true;
+	}
+	
+	@GetMapping(value = "/getuser")
+	public User getUserByName(@RequestParam(value = "username") String username) {
+		User user = brsService.findName(username);
+		return user;
 	}
 
 	@GetMapping(value = "/getsources")

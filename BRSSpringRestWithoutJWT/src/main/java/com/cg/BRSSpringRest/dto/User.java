@@ -42,12 +42,6 @@ public class User {
 	private List<Booking> bookingsList;
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
-	
-	@Column(name="active")
-	private boolean active;
-	
-	@Column(name="roles")
-	private String roles;
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -190,24 +184,7 @@ public class User {
 			return false;
 		return true;
 	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public String getRoles() {
-		return roles;
-	}
-
-	public void setRoles(String roles) {
-		this.roles = roles;
-	}
-	
 	
 
-	
+
 }
