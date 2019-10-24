@@ -82,7 +82,7 @@ public class BRSRestController {
 		booking.setUser(booking.getUser());
 		booking.setDeleteFlag(0);
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName(booking.getUser().getUsername()));
+		booking.setUser(brsService.findName("tejaswini"));
 
 		booking.setPassengers(booking.getPassengers());
 		booking.setTotalCost(booking.getPassengers().size() * busTransaction.getBus().getCostPerSeat());
@@ -121,7 +121,7 @@ public class BRSRestController {
 			logger.error(e.getMessage());
 		}
 
-		for (int i = 1; i < 15; i++) {
+		for (int i = 1; i < 30; i++) {
 			BusTransaction busTransaction = new BusTransaction();
 			busTransaction.setDate(LocalDate.now().plusDays(i));
 			busTransaction.setBus(bus);
