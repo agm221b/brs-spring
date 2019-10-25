@@ -6,9 +6,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.BRSSpringRest.controller.BRSRestController;
 import com.cg.BRSSpringRest.dao.BookingRepository;
 import com.cg.BRSSpringRest.dao.BusRepository;
 import com.cg.BRSSpringRest.dao.BusTransactionRepository;
@@ -40,6 +43,8 @@ public class BRSServiceImpl implements BRSService {
 	BusRepository busRepository;
 	@Autowired
 	UserRepository userRepository;
+	
+	private static final Logger logger = LoggerFactory.getLogger(BRSServiceImpl.class);
 
 	/**
 	 * @author Aditya
@@ -56,6 +61,8 @@ public class BRSServiceImpl implements BRSService {
 		if(saveBus==null) {
 			throw new BRSException("Bus is not saved and found to be null");
 		}
+		logger.info("Bus saved:"+saveBus);
+		logger.info("Created by: "+saveBus.getCreatedBy()+", created on: "+saveBus.getCreationDate()+", modified by: "+saveBus.getLastModifiedBy()+", modified on: "+saveBus.getLastModifiedDate());
 		return saveBus;
 	}
 
@@ -75,6 +82,8 @@ public class BRSServiceImpl implements BRSService {
 			throw new BRSException("Bus not found");
 		else
 			bus.setDeleteFlag(1);
+		logger.info("Bus deleted:"+bus);
+		logger.info("Created by: "+bus.getCreatedBy()+", created on: "+bus.getCreationDate()+", modified by: "+bus.getLastModifiedBy()+", modified on: "+bus.getLastModifiedDate());
 		busRepository.save(bus);
 		return 1;
 	}
@@ -163,6 +172,8 @@ public class BRSServiceImpl implements BRSService {
 		booking.setBus(booking.getBus());
 		booking.setPassengers(booking.getPassengers());
 		booking.setUser(booking.getUser());
+		logger.info("Booking saved:"+booking);
+		logger.info("Created by: "+booking.getCreatedBy()+", created on: "+booking.getCreationDate()+", modified by: "+booking.getLastModifiedBy()+", modified on: "+booking.getLastModifiedDate());
 		return bookingRepository.save(booking);
 	}
 
@@ -178,6 +189,8 @@ public class BRSServiceImpl implements BRSService {
 		// TODO Auto-generated method stub
 		Booking booking = bookingRepository.findById(bookingId).get();
 		booking.setBookingStatus("CANCELLED");
+		logger.info("Booking cancelled:"+booking);
+		logger.info("Created by: "+booking.getCreatedBy()+", created on: "+booking.getCreationDate()+", modified by: "+booking.getLastModifiedBy()+", modified on: "+booking.getLastModifiedDate());
 		return booking;
 	}
 
@@ -215,7 +228,10 @@ public class BRSServiceImpl implements BRSService {
 	 */
 	@Override
 	public BusTransaction addTransaction(BusTransaction transaction) {
-		return busTransactionRepository.save(transaction);
+		busTransactionRepository.save(transaction);
+		logger.info("Transaction saved:"+transaction);
+		logger.info("Created by: "+transaction.getCreatedBy()+", created on: "+transaction.getCreationDate()+", modified by: "+transaction.getLastModifiedBy()+", modified on: "+transaction.getLastModifiedDate());
+		return transaction;
 	}
 
 
@@ -279,6 +295,8 @@ public class BRSServiceImpl implements BRSService {
 	public BusTransaction updateAvailableSeats(Integer busTransactionId, Integer passengersCount) {
 		BusTransaction busTransaction = viewTransactionById(busTransactionId);
 		busTransaction.setAvailableSeats(busTransaction.getAvailableSeats() - passengersCount);
+		logger.info("Transaction updated:"+busTransaction);
+		logger.info("Created by: "+busTransaction.getCreatedBy()+", created on: "+busTransaction.getCreationDate()+", modified by: "+busTransaction.getLastModifiedBy()+", modified on: "+busTransaction.getLastModifiedDate());
 		return busTransaction;
 	}
 
@@ -293,6 +311,7 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		if(user.getUserType()=='C') {
 			user.setRoles("ROLE_CUSTOMER");
 		}
@@ -302,6 +321,12 @@ public class BRSServiceImpl implements BRSService {
 		user.setActive(true);
 		user.setDeleteFlag(0);
 		return userRepository.save(user);
+=======
+		userRepository.save(user);
+		logger.info("User Saved:"+user);
+		logger.info("Created by: "+user.getCreatedBy()+", created on: "+user.getCreationDate()+", modified by: "+user.getLastModifiedBy()+", modified on: "+user.getLastModifiedDate());
+		return user;
+>>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 	}
 	/**
 	 * @author Mayank
@@ -320,7 +345,10 @@ public class BRSServiceImpl implements BRSService {
 			throw new BRSException(" user not found for deletion");
 		else
 			user.setDeleteFlag(1);
+		
 			userRepository.save(user);
+			logger.info("User deleted:"+user);
+			logger.info("Created by: "+user.getCreatedBy()+", created on: "+user.getCreationDate()+", modified by: "+user.getLastModifiedBy()+", modified on: "+user.getLastModifiedDate());
 			return 1;
 
 	}

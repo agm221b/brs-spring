@@ -1,11 +1,13 @@
 package com.cg.BRSSpringRest.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,14 +17,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@EntityListeners(AuditingEntityListener.class)
 @Component("booking")
 @Entity
 @Table(name = "booking")
@@ -59,6 +69,49 @@ public class Booking {
 	@ManyToOne
 	@JoinColumn(name="user_fk")
 	private User user;
+	
+	@CreatedBy
+    protected String createdBy;
+    @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    protected Date creationDate;
+    @LastModifiedBy
+    protected String lastModifiedBy;
+    @LastModifiedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    protected Date lastModifiedDate;
+    
+    public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
+
+	public Date getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	public void setLastModifiedDate(Date lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
+	}
 
 	public Booking() {
 

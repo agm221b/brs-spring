@@ -21,6 +21,7 @@ import com.cg.BRSSpringRest.dto.Passenger;
 public class ExcelGenerator {
 
 	public static ByteArrayInputStream bookingDetailsToExcel(Booking booking) throws IOException {
+		String[] bookingColumns= {"Booking Id","Booking Status", "Date Of Journey","Mode Of Payment","Total Cost","Source","Destination","Bus Name","BusType"};
 		String[] COLUMNs = { "Passenger ID", "Passenger Name", "Passenger Age" };
 		try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream();) {
 			CreationHelper createHelper = workbook.getCreationHelper();
