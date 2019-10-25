@@ -1,17 +1,11 @@
 package com.cg.BRSSpringRest.controller;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,6 +15,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +35,7 @@ import com.cg.BRSSpringRest.exception.BRSException;
 import com.cg.BRSSpringRest.service.BRSService;
 import com.cg.BRSSpringRest.service.TicketGeneratorService;
 import com.cg.BRSSpringRest.util.ExcelGenerator;
-import com.itextpdf.text.DocumentException;
+import com.cg.BRSSpringRest.util.GeneratePdfReport;
 
 /**
  * @author Aditya, Mayank, Tejaswini
@@ -262,40 +258,21 @@ public class BRSRestController {
 		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));
 	}
 
-	@GetMapping("/downloadticketpdf")
-	public ResponseEntity<String> downloadETicket(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam("bookingId") Integer bookingId) throws DocumentException {
-		logger.info("Downloading Ticket");
-		String filePath;
-		try {
-			logger.info("Generating eTicket for id: " + bookingId);
-			filePath = ticketGeneratorService.generate(bookingId);
-			ServletContext context = request.getServletContext();
-			File downloadFile = new File(filePath);
-			FileInputStream inputStream = new FileInputStream(downloadFile);
-			String mimeType = context.getMimeType(filePath);
-			if (mimeType == null) {
-				mimeType = "application/octet-stream";
-			}
-			logger.info("MIME type: " + mimeType);
-			response.setContentType(mimeType);
-			response.setContentLength((int) downloadFile.length());
-			String headerKey = "Content-Disposition";
-			String headerValue = String.format("attachment; filename=\"%s\"", downloadFile.getName());
-			response.setHeader(headerKey, headerValue);
-			OutputStream outStream = response.getOutputStream();
-			byte[] buffer = new byte[4096];
-			int bytesRead = -1;
-			while ((bytesRead = inputStream.read(buffer)) != -1) {
-				outStream.write(buffer, 0, bytesRead);
-			}
-			inputStream.close();
-			outStream.close();
-		} catch (IOException e) {
-			logger.error("Error Generating Ticket");
-			return new ResponseEntity<String>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		logger.info("Returning show booking view.");
-		return new ResponseEntity<String>("Error", HttpStatus.OK);
-	}
+	@RequestMapping(value = "/downloadticketpdf", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> citiesReport(@RequestParam(value="bookingId")Integer bookingId) {
+
+        Booking booking=brsService.findBookingById(bookingId);
+
+        ByteArrayInputStream bis = GeneratePdfReport.bookingReport(booking);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=booking"+bookingId+".pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
 }
