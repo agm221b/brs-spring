@@ -311,7 +311,6 @@ public class BRSServiceImpl implements BRSService {
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
 		if(user.getUserType()=='C') {
 			user.setRoles("ROLE_CUSTOMER");
 		}
@@ -320,13 +319,10 @@ public class BRSServiceImpl implements BRSService {
 		}
 		user.setActive(true);
 		user.setDeleteFlag(0);
-		return userRepository.save(user);
-=======
 		userRepository.save(user);
 		logger.info("User Saved:"+user);
 		logger.info("Created by: "+user.getCreatedBy()+", created on: "+user.getCreationDate()+", modified by: "+user.getLastModifiedBy()+", modified on: "+user.getLastModifiedDate());
 		return user;
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 	}
 	/**
 	 * @author Mayank

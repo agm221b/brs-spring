@@ -24,12 +24,10 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-=======
+
 @EntityListeners(AuditingEntityListener.class)
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 @Component("user")
 @Entity
 @Table(name = "user_details")
@@ -59,13 +57,11 @@ public class User {
 	@Column(name = "delete_flag")
 	private Integer deleteFlag;
 	
-<<<<<<< HEAD
 	@Column(name="active")
 	private Boolean active;
 	
 	@Column(name="roles")
 	private String roles;
-=======
 	@CreatedBy
     protected String createdBy;
     @CreatedDate
@@ -110,7 +106,6 @@ public class User {
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -195,7 +190,6 @@ public class User {
 	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-<<<<<<< HEAD
 	
 	public boolean isActive() {
 		return active;
@@ -212,7 +206,7 @@ public class User {
 	public void setRoles(String roles) {
 		this.roles = roles;
 	}
-=======
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -266,20 +260,12 @@ public class User {
 		return true;
 	}
 	
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 
-<<<<<<< HEAD
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username + ", pass=" + pass + ", userType=" + userType
 				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", bookingsList=" + bookingsList
 				+ ", deleteFlag=" + deleteFlag + ", active=" + active + ", roles=" + roles + "]";
 	}
-	
-	
-	
-	
-=======
 
->>>>>>> branch 'master' of https://github.com/agm221b/brs-spring
 }
