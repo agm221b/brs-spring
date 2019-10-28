@@ -39,7 +39,7 @@ public class User {
 	private Integer userId;
 	@Column(name = "username")
 	
-	@Size(min=3,max=20,message="Name should be between 3-20 characters")
+	@Size(min=3,max=60,message="Name should be between 3-60 characters")
 	private String username;
 	@Column(name="pass")
 	
@@ -58,6 +58,7 @@ public class User {
 	private Integer deleteFlag;
 	
 	@Column(name="active")
+	@JsonIgnore
 	private Boolean active;
 	
 	@Column(name="roles")
@@ -74,6 +75,21 @@ public class User {
     protected Date lastModifiedDate;
     
     
+    
+
+	public User(@Size(min = 3, max = 60, message = "Name should be between 3-60 characters") String username,
+			String pass, Character userType, String email, String phoneNumber, List<Booking> bookingsList,
+			Integer deleteFlag, Boolean active, String roles) {
+		this.username = username;
+		this.pass = pass;
+		this.userType = userType;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.bookingsList = bookingsList;
+		this.deleteFlag = deleteFlag;
+		this.active = active;
+		this.roles = roles;
+	}
 
 	public String getCreatedBy() {
 		return createdBy;
