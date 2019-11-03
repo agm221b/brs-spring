@@ -1,5 +1,6 @@
 package com.cg.BRSSpringRest.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,9 @@ public class JwtAuthController {
 	@Autowired
 	JwtProvider jwtProvider;
 	
+	@Autowired
+	HttpSession session;
+	
 	@PostMapping("/login")
 	  public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
 	 
@@ -52,7 +56,9 @@ public class JwtAuthController {
 	 
 	    String jwt = jwtProvider.generateJwtToken(authentication);
 	    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-	 
+	    System.out.println(userDetails);
+	    session.setAttribute("username", userDetails.getUsername());
+	    System.out.println((String)session.getAttribute("username"));
 	    return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
 	  }
 	

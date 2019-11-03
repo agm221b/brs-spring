@@ -56,7 +56,8 @@ public class BRSRestController {
 	BRSService brsService;
 	@Autowired
 	TicketGeneratorService ticketGeneratorService;
-
+	
+	@Autowired
 	HttpSession session;
 
 	/**
@@ -64,9 +65,22 @@ public class BRSRestController {
 	 * @param Booking
 	 * @return Booking Created On: 09/10/2019 Last Modified: 09/10/2019 10:53 AM
 	 */
-
+	
+	@GetMapping(value = "/adminhome")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
+	public String adminHome() { 
+		return "AdminHome";
+	}
+	
+	@GetMapping(value = "/customerhome")
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
+	public String customerHome() { 
+		return "CustomerHome";
+	}
+	
+	
 	@PostMapping(value = "/createbooking")
-	@PreAuthorize(value = "hasRole('CUSTOMER')")
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
 	public Booking addBooking(@RequestParam(value = "busTransactionId") Integer busTransactionId,
 			@ModelAttribute Booking booking) {
 		
@@ -75,10 +89,12 @@ public class BRSRestController {
 		booking.setBus(busTransaction.getBus());
 		booking.setBookingStatus("BOOKED");
 		booking.setModeOfPayment(booking.getModeOfPayment());
-		booking.setUser(booking.getUser());
+		//booking.setUser(booking.getUser());
 		booking.setDeleteFlag(0);
 		booking.setDateOfJourney(busTransaction.getDate());
-		booking.setUser(brsService.findName("tatarao"));
+		  User user =brsService.findName("tejaswini"); 
+		  booking.setUser(user);
+		 
 
 		booking.setPassengers(booking.getPassengers());
 		booking.setTotalCost(booking.getPassengers().size() * busTransaction.getBus().getCostPerSeat());
@@ -95,9 +111,10 @@ public class BRSRestController {
 	 * @return List<Booking>
 	 */
 	@GetMapping(value = "/viewallbookings")
-	@PreAuthorize(value = "hasRole('CUSTOMER')")
-	public List<Booking> viewAllBookings(@RequestParam(value = "username")String username) {
-		User user = brsService.findName(username);
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
+	public List<Booking> viewAllBookings(@RequestParam(value = "username") String username) {
+		System.out.println(username);
+		User user = brsService.findName("tejaswini");
 		return brsService.viewAllBookings(user);
 	}
 
@@ -108,7 +125,7 @@ public class BRSRestController {
 	 * @return Booking
 	 */
 	@GetMapping(value = "/viewbooking")
-	@PreAuthorize(value = "hasRole('CUSTOMER')")
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
 	public Booking viewBookingById(@RequestParam(value = "bookingId") Integer bookingId) {
 		logger.info("Viewing the details of your booking....");
 		return brsService.findBookingById(bookingId);
@@ -120,7 +137,7 @@ public class BRSRestController {
 	 * @return Booking
 	 */
 	@PutMapping(value = "/cancelbooking")
-	@PreAuthorize(value = "hasRole('CUSTOMER')")
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
 	public Booking cancelBooking(@RequestParam(value = "bookingId") Integer bookingId) {
 		logger.info("Cancelling the tickets...,");
 		System.out.println(bookingId);
@@ -135,7 +152,7 @@ public class BRSRestController {
 	 * @throws BRSException
 	 */
 	@PostMapping(value = "/addbusdetails")
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
 	public Bus addBusDetails(@ModelAttribute Bus bus) throws BRSException {
 		System.out.println("bus " + bus);
 		Bus busAdd = null;
@@ -173,7 +190,7 @@ public class BRSRestController {
 	 * @return List of Buses which have deleteFlag as 0
 	 */
 	@GetMapping(value = "/showbuses")
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
 	public List<Bus> getAllData() { // admin
 		List<Bus> busList = brsService.viewAllBuses();
 		logger.info("Viewing the List of Buses");
@@ -188,7 +205,7 @@ public class BRSRestController {
 	 * @return String of the status of the bus,whether deleted or not.
 	 */
 	@PutMapping(value = "/deletebus")
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
 	public String deleteBus(@RequestParam("busId") Integer busId) {
 		String status = null;
 		try {
@@ -231,7 +248,7 @@ public class BRSRestController {
 	 * @return List of Users
 	 */
 	@GetMapping(value = "/showusers")
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
 	public ResponseEntity<List<User>> showAllUsers() {
 		List<User> userList = brsService.viewAllUsers();
 		if (userList.isEmpty()) {
@@ -247,7 +264,7 @@ public class BRSRestController {
 	 * @return true if user gets removed
 	 */
 	@PutMapping(value = "/removeuser")
-	@PreAuthorize(value = "hasRole('ADMIN')")
+	@PreAuthorize(value = "hasRole('ROLE_ADMIN')")
 	public boolean removeUser(@RequestParam Integer userId) throws Exception {
 		User user = brsService.findUserById(userId);
 		if (user == null)
@@ -292,9 +309,9 @@ public class BRSRestController {
 		logger.info("Downloaded");
 		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));
 	}
-
 	@RequestMapping(value = "/downloadticketpdf", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_PDF_VALUE)
+	@PreAuthorize(value = "hasRole('ROLE_CUSTOMER')")
     public ResponseEntity<InputStreamResource> citiesReport(@RequestParam(value="bookingId")Integer bookingId) {
 
         Booking booking=brsService.findBookingById(bookingId);
