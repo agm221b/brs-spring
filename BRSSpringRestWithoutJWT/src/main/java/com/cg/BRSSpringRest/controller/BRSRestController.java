@@ -47,7 +47,7 @@ import com.cg.BRSSpringRest.util.GeneratePdfReport;
  */
 @RestController
 @RequestMapping(value = "/brs")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class BRSRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BRSRestController.class);
