@@ -1,0 +1,59 @@
+<style type="text/css">
+    #busform{
+    background-color:white;
+    height: 90%;
+    }
+    
+    #addbtn{
+    text-align:center;
+    }
+    
+    h3{
+    text-align:center;
+    }
+    
+    </style>
+    <h2>Showing Buses</h2>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="adminhome">BusNama</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="adminhome">Home</a></li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <table border="2px">
+        <tr>
+            <th>Bus Id</th>
+            <th>Bus Name</th>
+            <th>Bus Class</th>
+            <th>Bus Type</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>No Of Seats</th>
+            <th>Cost Per Seat</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let bus of busList;">
+            <td>{{bus.busId}}</td>
+            <td>{{bus.busName}}</td>
+            <td>{{bus.busClass}}</td>
+            <td>{{bus.busType}}</td>
+            <td>{{bus.source}}</td>
+            <td>{{bus.destination}}</td>
+            <td>{{bus.startTime}}</td>
+            <td>{{bus.endTime}}</td>
+            <td>{{bus.noOfSeats}}</td>
+            <td>{{bus.costPerSeat}}</td>
+            <td>
+                <!-- <button type="button" (click)="updateProduct(pro.prodId)" >Update</button> -->
+                <button type="button" (click)="deleteBus(bus.busId)" >Delete</button>
+            </td>
+        </tr>
+    </table>

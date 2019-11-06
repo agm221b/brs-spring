@@ -1,0 +1,91 @@
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        .main {
+            background: white;
+        }
+
+        body {
+            padding:200px;
+            font-size: 20px;
+            background-image: url(./assets/img/busbg2.jpg);
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            padding: 10px;
+            text-align:center;
+        }
+
+        .button-align {
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<nav class="nav nav-pills nav-fill navbar-dark bg-dark">
+    <a class="nav-item nav-link" href="/customerhome"
+        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px; color: blue;">Customer
+        Home</a>
+    <a class="nav-item nav-link" href="/addbooking"
+        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px; color: blue;">Book
+        Ticket
+    </a>
+    <a class="nav-item nav-link" href="/viewbookings"
+        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px; color: blue;">View
+        Tickets</a>
+    <a class="nav-item nav-link" href="/logout"
+        style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px; color: blue;">Logout</a>
+</nav>
+
+
+<div *ngIf='loadComponent'>
+    <div class="container main">
+        <h1>List of running buses</h1>
+        <table class="table" style="font-size: 20px;">
+            <tr>
+                <th>Bus Transaction Id</th>
+                <th>Bus Name</th>
+                <th>Bus Type</th>
+                <th>Bus Class</th>
+                <th>Cost Per Seat</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Available Seats</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let runningbus of runningBuses;">
+                <td>{{runningbus.transactionId}}</td>
+                <td>{{runningbus.bus.busName}}</td>
+                <td>{{runningbus.bus.busType}}</td>
+                <td>{{runningbus.bus.busClass}}</td>
+                <td>{{runningbus.bus.costPerSeat}}</td>
+                <td>{{runningbus.bus.source}}</td>
+                <td>{{runningbus.bus.destination}}</td>
+                <td>{{runningbus.availableSeats}}</td>
+                <td><button class="btn btn-success btn-lg" mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="addPassengerDetails(runningbus.transactionId)"
+                    (cancel)="cancelClicked = true">Book
+                        Ticket</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
