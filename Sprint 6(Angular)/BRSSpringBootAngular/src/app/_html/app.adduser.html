@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="assets/img/fav.png">
+  <!-- Author Meta -->
+  <meta name="author" content="colorlib">
+  <!-- Meta Description -->
+  <meta name="description" content="">
+  <!-- Meta Keyword -->
+  <meta name="keywords" content="">
+  <!-- meta character set -->
+  <meta charset="UTF-8">
+  <!-- Site Title -->
+  <title>Register</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+  <!--
+			CSS
+			============================================= -->
+  <link rel="stylesheet" href="assets/css/linearicons.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.css">
+  <!-- <link rel="stylesheet" href="assets/css/jquery-ui.css">			 -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style type="text/css">
+    body {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+    }
+
+    footer {
+      width: 100%;
+      align-self: baseline;
+      position: fixed;
+      padding: 8px;
+      bottom: 0px;
+    }
+
+    .center {
+      position: absolute;
+      right: 50%;
+    }
+  </style>
+  <style>
+      .main{
+        background:white;
+      }
+      body{
+        padding:200px;
+        font-size: 20px;
+        background-image: url(./assets/img/busbg2.jpg);
+        background-size: cover;
+    }
+    h1{
+      text-align:center;
+    }
+    .container{
+      padding:10px;
+      font-size: 20px;
+    }
+    .button-align{
+      text-align: center;
+    }
+    table{
+        font-size: 20px;;
+    }
+    </style>
+</head>
+
+<body>
+
+  <header id="header">
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-between d-flex">
+        <div id="logo">
+          <a href="app.home.html"><img src="assets/img/buslogo2.jpg" alt="" title="" /></a>
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li><a href="/adminhome">Home</a></li>
+            <!-- <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li> -->
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/addbus">Add Bus</a></li>
+            <li><a href="/showbuses">Show Buses</a></li>
+            <li><a href="/showusers">Show Users</a></li>
+            <li><a href="/logout">Logout</a></li>
+
+            <li><a href="/gallery">Gallery</a></li>
+
+            
+          </ul>
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </div>
+  </header><!-- #header -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+
+
+    <nav class="nav nav-pills nav-fill navbar-dark bg-dark" style="height: 50px; width: 100%;">
+            <a class="nav-item nav-link" href="/home"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Home</a>
+            <a class="nav-item nav-link" href="/login"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;">Sign
+                In</a>
+    
+            <a class="nav-item nav-link" href="/"
+                style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 25px;"></a>
+        </nav>
+<h1> Welcome to the User Registration Page</h1>
+
+<table>
+  <tr>
+      <td>User Name:</td>
+      <td>
+          <input type="text" [(ngModel)]="model.username" id="username" class="validate" title="User name should contain alphabetical characters" />
+      </td>
+  </tr>
+  <tr>
+      <td>Password:</td>
+      <td>
+          <input type="password" [(ngModel)]="model.pass" class="validate" title="Password required" />
+      </td>
+  </tr>
+  <tr>
+      <td>Email:</td>
+      <td>
+          <input type="email" [(ngModel)]="model.email" class="validate" title="Email required" />
+      </td>
+  </tr>
+  <tr>
+    <td>Phone Number:</td>
+    <td>
+        <input type="text" [(ngModel)]="model.phoneNumber" class="validate" title="Phone Number required"/>
+    </td>
+  </tr>
+  <tr>
+    <td>User Type:</td>
+    <td>
+      <input type="radio" name="userType" ng-control="userType"  value='A'  [(ngModel)]="model.userType"  [checked]="model.userType==A" required
+      #userType="ngModel" >Admin<br/>
+
+    </td>
+    <td>
+      <input type="radio" name="userType"  value='C'  [(ngModel)]="model.userType"  [checked]="model.userType==C" required >Customer <br/>
+
+  </td>
+  <td> &nbsp;&nbsp;<div *ngIf="userType.errors?.required" style="color:red;">userType is required</div></td>
+  </tr>
+  <tr>
+      <td>
+          <input type="button" class="btn btn-success btn-lg" id="addbutton" [disabled]="validate()" value="Add User" (click)="addUser()" />
+      </td>
+  </tr>
+
+  
+</table>

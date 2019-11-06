@@ -1,0 +1,43 @@
+2019-11-05 09:29:58 [main] INFO  c.c.B.BrsSpringRestApplicationTests - Starting BrsSpringRestApplicationTests on DESKTOP-PSL6KOM with PID 11444 (started by Admin in C:\Users\Admin\git\brs-spring\BRSSpringRestWithoutJWT)
+2019-11-05 09:29:58 [main] DEBUG c.c.B.BrsSpringRestApplicationTests - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2019-11-05 09:29:58 [main] INFO  c.c.B.BrsSpringRestApplicationTests - No active profile set, falling back to default profiles: default
+2019-11-05 09:30:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-05 09:30:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 162ms. Found 4 repository interfaces.
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$98141af8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$30c1e332] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@616b241a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$559685e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-05 09:30:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-11-05 09:30:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-11-05 09:30:05 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-05 09:30:05 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.3.12.Final}
+2019-11-05 09:30:05 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2019-11-05 09:30:06 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-05 09:30:06 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-11-05 09:30:08 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-05 09:30:10 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+2019-11-05 09:30:11 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-11-05 09:30:11 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7bbd76b8, org.springframework.security.web.context.SecurityContextPersistenceFilter@79295932, org.springframework.security.web.header.HeaderWriterFilter@538e74fc, org.springframework.web.filter.CorsFilter@2248d140, org.springframework.security.web.authentication.logout.LogoutFilter@5d32c1c7, com.cg.BRSSpringRest.config.JwtAuthTokenFilter@aedc426, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76e00bdb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@31533eb1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37b238da, org.springframework.security.web.session.SessionManagementFilter@51508029, org.springframework.security.web.access.ExceptionTranslationFilter@2a075e70, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d2db15b]
+2019-11-05 09:30:12 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-05 09:30:13 [main] INFO  c.c.B.BrsSpringRestApplicationTests - Started BrsSpringRestApplicationTests in 16.249 seconds (JVM running for 18.271)
+2019-11-05 09:30:14 [main] INFO  c.c.B.service.BRSServiceImpl - Bus saved:Bus [busId=1, busName=Falcon, busType=null, busClass=null, source=null, destination=null, noOfSeats=null, deleteFlag=0, startTime=null, endTime=null, costPerSeat=null]
+2019-11-05 09:30:14 [main] INFO  c.c.B.service.BRSServiceImpl - Created by: tejaswini, created on: Tue Nov 05 09:30:14 IST 2019, modified by: tejaswini, modified on: Tue Nov 05 09:30:14 IST 2019
+2019-11-05 09:30:14 [main] ERROR o.h.i.ExceptionMapperStandardImpl - HHH000346: Error during managed flush [Validation failed for classes [com.cg.BRSSpringRest.dto.Bus] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='Bus class required', propertyPath=busClass, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='Bus class required'}
+	ConstraintViolationImpl{interpolatedMessage='Bus Type required', propertyPath=busType, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='Bus Type required'}
+	ConstraintViolationImpl{interpolatedMessage='destination required', propertyPath=destination, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='destination required'}
+	ConstraintViolationImpl{interpolatedMessage='number of seats required', propertyPath=noOfSeats, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='number of seats required'}
+	ConstraintViolationImpl{interpolatedMessage='source required', propertyPath=source, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='source required'}
+	ConstraintViolationImpl{interpolatedMessage='must not be null', propertyPath=endTime, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='{javax.validation.constraints.NotNull.message}'}
+	ConstraintViolationImpl{interpolatedMessage=' cost per seat required', propertyPath=costPerSeat, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate=' cost per seat required'}
+	ConstraintViolationImpl{interpolatedMessage='time validation to be done', propertyPath=startTime, rootBeanClass=class com.cg.BRSSpringRest.dto.Bus, messageTemplate='time validation to be done'}
+]]
+2019-11-05 09:30:14 [Thread-3] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-11-05 09:30:14 [Thread-3] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-11-05 09:30:14 [Thread-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-11-05 09:30:14 [Thread-3] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

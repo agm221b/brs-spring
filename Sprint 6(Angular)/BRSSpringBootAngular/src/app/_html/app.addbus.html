@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="assets/img/fav.png">
+  <!-- Author Meta -->
+  <meta name="author" content="colorlib">
+  <!-- Meta Description -->
+  <meta name="description" content="">
+  <!-- Meta Keyword -->
+  <meta name="keywords" content="">
+  <!-- meta character set -->
+  <meta charset="UTF-8">
+  <!-- Site Title -->
+  <title>Login</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+  <!--
+			CSS
+			============================================= -->
+  <link rel="stylesheet" href="assets/css/linearicons.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.css">
+  <!-- <link rel="stylesheet" href="assets/css/jquery-ui.css">			 -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style type="text/css">
+
+
+    footer {
+      width: 100%;
+      align-self: baseline;
+      position: fixed;
+      padding: 8px;
+      bottom: 0px;
+    }
+
+    .center {
+      position: absolute;
+      right: 50%;
+    }
+  </style>
+
+<style type="text/css">
+    #addbutton {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    body {
+        background-color: #fff9c4;
+        height: auto;
+        width: auto;
+        
+    }
+
+    .container {
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+  <header id="header">
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-between d-flex">
+        <div id="logo">
+          <a href="app.home.html"><img src="assets/img/buslogo2.jpg" alt="" title="" /></a>
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li><a href="/adminhome">Home</a></li>
+            <!-- <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li> -->
+            <!-- <li><a href="/about">About</a></li> -->
+            <li><a href="/addbus">Add Bus</a></li>
+            <li><a href="/showbuses">Show Buses</a></li>
+            <li><a href="/showusers">Show Users</a></li>
+            <li><a href="/logout">Logout</a></li>
+
+            <li><a href="/contactus">Contact Us</a></li>
+
+            
+          </ul>
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </div>
+  </header><!-- #header -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ 
+
+
+  
+
+    <!-- <h2>Adding Buses</h2> -->
+    <div class="container" style="padding: 8px;">
+        <div class="form-group"
+            style=" width: 1000px; opacity: 0.97; text-align: center; background-color: khaki; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger;">
+            <table style="color: maroon; border-collapse: separate; " class="table table-hover">
+                <tr>
+                    <td><b>Bus Name</b></td>
+                    <div class="form-row">
+                      <div class="form-group">
+			
+                        <div class="col-xs-12"><input  #n [ngClass]="{'form-control':'true' }" placeholder="BusName" type="text" [(ngModel)]="model.busName" /></div>
+                        <div   *ngIf="n.value.length>=4 && n.value.match('[a-zA-Z\\s]');else name"></div>
+                        <ng-template #name ><p *ngIf="n.value.length!=0 " [ngStyle]="{'background-color':'red','color':'white'}">BusName should have atleast 4 characters </p></ng-template>	        
+                     
+                      </div>
+                      <!--  <div class="form-group col-md-6">
+                            <td><input class="form-control" [(ngModel)]="model.busName" id="busName" type="text"
+                                    title="Bus name should contain alphabetical characters. Min 4 letters" /></td>
+                        </div> -->
+                    </div>
+                </tr>
+
+                <tr>
+                    <td><b>Bus Type</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-sm-6">
+                    <td><select class="form-control" style="height: 40px;" [(ngModel)]="model.busType" required>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="SLEEPER">SLEEPER</option>
+                            <option value="SEMI_SLEEPER">SEMI-SLEEPER</option>
+                        </select></td></div></div>
+
+                </tr>
+
+                <tr>
+                    <td><b>Bus Class</b></td>
+                    
+                    <td style="text-align: left;"><input class="form-control" style="height: 15px; width: 15px; " type="radio" value="AC" [(ngModel)]="model.busClass"  /> AC
+                    </td>
+                
+                
+                    <td style="text-align: left;"><input class="form-control" style="height: 15px; width: 15px; " type="radio" value="NON_AC" [(ngModel)]="model.busClass"  />Non-AC
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td><b>Source</b></td>
+                    <div class="form-row">
+                       <div class="form-group">
+			
+                        <div class="col-xs-12"><input  #s [ngClass]="{'form-control':'true' }" placeholder="Source" type="text" [(ngModel)]="model.source" /></div>
+                        <div  *ngIf="s.value.length>=1 && s.value.match('[a-zA-Z\\s]');else source"></div>
+                        <ng-template #source ><p *ngIf="s.value.length!=0 "   [ngStyle]="{'background-color':'red','color':'white'}">Source incorrect </p></ng-template>	        
+                     
+                       </div>
+                      
+                         <!--  <div class="form-group col-md-6">
+                        <td><input class="form-control" type="text" [(ngModel)]="model.source" /></td>
+                        </div> -->
+                    </div>
+
+                </tr>
+
+                <tr>
+                    <td><b>Destination</b></td>
+                    <div class="form-row">
+                      <div class="form-group">
+			
+                        <div class="col-xs-12"><input  #d [ngClass]="{'form-control':'true' }" placeholder="Destination" type="text" [(ngModel)]="model.destination" /></div>
+                        <div  *ngIf="d.value.length>=1 && d.value.match('[a-zA-Z\\s]');else destination"></div>
+                        <ng-template #destination ><p *ngIf="d.value.length!=0 "   [ngStyle]="{'background-color':'red','color':'white'}">Destination incorrect </p></ng-template>	        
+                     
+                       </div>
+                     
+                      <!--  <div class="form-group col-md-6">
+                    <td><input class="form-control" type="text" [(ngModel)]="model.destination" /></td>
+                    </div> -->
+                    </div>
+
+
+                </tr>
+
+                <tr>
+                    <td><b>Start Time</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input class="form-control" type="time" [(ngModel)]="model.startTime" /></td>
+                    </div>
+                    </div>
+
+                </tr>
+
+                <tr>
+                    <td><b>End Time</b></td>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                    <td><input type="time" class="form-control" [(ngModel)]="model.endTime" /></td>
+                    </div>
+                    </div>
+
+                </tr>
+
+                <tr>
+                    <td><b>No of Seats</b></td>
+                    <div class="form-row">
+                      <div class="form-group">
+			
+                        <div class="col-xs-12"><input  #nos [ngClass]="{'form-control':'true' }" placeholder="No of seats" type="text" [(ngModel)]="model.noOfSeats" /></div>
+                        <div  *ngIf="nos.value.length>=1 && nos.value.match('[0-9]+$');else noofseats"></div>
+                        <ng-template #noofseats ><p *ngIf="nos.value.length!=0 "   [ngStyle]="{'background-color':'red','color':'white'}">No of seats incorrect </p></ng-template>	        
+                     
+                       </div>    
+                      
+                      <!-- <div class="form-group col-md-6">
+                    <td><input type="text" class="form-control" [(ngModel)]="model.noOfSeats" required /></td>
+                    </div> -->
+                    </div>
+
+                </tr>
+
+                <tr>
+                    <td><b>Cost Per Seat</b></td>
+                    <div class="form-row">
+                        <div class="form-group">
+                      <div class="col-xs-12"><input  #cps [ngClass]="{'form-control':'true' }" placeholder="Cost per seat" type="text" [(ngModel)]="model.costPerSeat" /></div>
+                      <div  *ngIf="cps.value.length>=1 && cps.value.match('[0-9]+$');else costperseat"></div>
+                      <ng-template #costperseat ><p *ngIf="cps.value.length!=0 "   [ngStyle]="{'background-color':'red','color':'white'}">Cost per seat incorrect </p></ng-template>	        
+                   
+                     </div>     
+                      
+                      <!--  <div class="form-group col-md-6">
+                    <td><input type="text" class="form-control" [(ngModel)]="model.costPerSeat" required /></td>
+                    </div> -->
+                    </div>
+
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" class="btn btn-success" style="font-size: 20px; padding: 10px;"
+                            id="addbutton" [disabled]="validate()" type="button" value="Add Bus" (click)="addBus()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- start footer Area -->
+  <footer class="footer-area section-gap" style="padding: 8px;">
+    <div class="container"  >
+      <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>About Me</h4>
+            <p>
+              “STOP WORRYING ABOUT THE POTHOLES IN THE ROAD AND ENJOY THE JOURNEY”
+            </p>
+            <p class="footer-text">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved </p>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-6">
+
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+          <div class="single-footer-widget">
+            <h4>Follow Me</h4>
+            <p>Let us be social</p>
+            <div class="footer-social d-flex align-items-center">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-dribbble"></i></a>
+              <a href="#"><i class="fa fa-behance"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer Area -->
+
+  <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/vendor/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  <script src="assets/js/easing.min.js"></script>
+  <script src="assets/js/hoverIntent.js"></script>
+  <script src="assets/js/superfish.min.js"></script>
+  <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/jquery.tabs.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/simple-skillbar.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/mail-script.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
